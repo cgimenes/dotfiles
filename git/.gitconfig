@@ -1,0 +1,29 @@
+[http]
+  sslVerify = true
+
+[alias]
+  st = status
+  unstage = restore --staged .
+  d = difftool -d
+  remotes = remote -v
+  branches = branch -a
+  co = checkout
+  tags = tag --list
+
+[color]
+  ui = auto
+
+[diff]
+  tool = meld
+
+[difftool]
+  prompt = false
+
+[core]
+  autocrlf = input
+
+[fetch]
+  prune = true
+
+[pull]
+  ff = only

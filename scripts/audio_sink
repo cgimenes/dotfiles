@@ -1,0 +1,110 @@
+#!/usr/bin/env ruby
+
+require 'thor'
+require 'json'
+
+class Aliks < Thor
+  include Thor::Actions
+
+  def initialize(args = [], local_options = {}, config = {})
+    super
+    @config_path = File.expand_path('~/.config/aliks.json')
+
+    File.open(@config_path, "r") { |file| @aliases = JSON.parse(file.read)["aliases"] }
+
+    @available_sinks = `pacmd list-sinks | grep name: | awk -F": " '{print $2}'`.split("\n").map { |s| s.sub('<', '').sub('>', '') }
+    @default_sink = `pacmd stat | awk -F": " '/^Default sink name: /{print $2}'`.strip
+  end
+
+  desc "get", "Prints the default sink alias"
+  def get
+    message = @aliases[@default_sink]
+    if message.nil?
+      message = `pacmd list-sinks |awk '/name:/ {print $0} /device.description =/ {print $0};' | cut -d: -f2 | cut -d= -f2 | paste -d "|" - - | grep #{@default_sink}`
+        .sub(' "', '')
+        .sub('"', '')
+        .split('|')[1]
+    end
+
+    puts message
+  end
+
+  desc "list", "List alias of available sinks"
+  def list
+    @aliases.select { |k, _| @available_sinks.include? k }.each { |_, v| puts v }
+  end
+
+  desc "set", "Set the default sink by alias"
+  def set(sink)
+    sink_name = @aliases.index sink
+
+    set_default_sink(sink_name)
+    move_all_sink_input(sink_name)
+    unmute_all_sink_input
+  end
+
+  desc "setup", "Creates the configuration file (~/.config/aliks.json) with available sinks"
+  def setup
+    if File.exists? @config_path
+      puts 'Configuration file already exists'
+      return
+    end
+
+    aliases = `pacmd list-sinks |awk '/name:/ {print $0} /device.description =/ {print $0};' | cut -d: -f2 | cut -d= -f2 | paste -d "|" - -`
+                .split("\n")
+                .map { |s| s.strip.sub('<', '').sub('>', '').sub(' "', '').sub('"', '').split('|') }
+                .to_h
+
+    config = {
+      aliases: aliases
+    }
+    File.open(@config_path, "wb") { |file| file.write(JSON.dump(config)) }
+  end
+
+  desc "toggle", "Toggle between available sinks"
+  method_options :reverse => :boolean
+  def toggle
+    order = options.reverse? ? -1 : 1
+    current_index = @available_sinks.index(@default_sink) || 0
+    next_index = current_index + order
+    unless next_index.between?(0, @available_sinks.count - 1)
+      next_index = options.reverse? ? @available_sinks.count - 1 : 0
+    end
+    next_sink = @available_sinks[next_index]
+
+    set_default_sink(next_sink)
+    move_all_sink_input(next_sink)
+    unmute_all_sink_input
+  end
+
+  desc "reset", "Reset default sink"
+  def reset
+    set_default_sink(@default_sink)
+    move_all_sink_input(@default_sink)
+    unmute_all_sink_input
+  end
+
+  private
+
+  def set_default_sink(sink)
+    `pacmd "set-default-sink #{sink}"`
+  end
+
+  def unmute_all_sink_input
+    `pacmd list-sink-inputs |
+      awk '/index:/{print $2}' |
+      xargs -r -I{} pacmd set-sink-input-mute {} false`
+
+    `pacmd list-sink-inputs |
+      awk '/index:/{print $2}' |
+      xargs -r -I{} pacmd set-sink-input-volume {} 0x10000`
+  end
+
+  def move_all_sink_input(sink)
+    `pacmd list-sink-inputs |
+      awk '/index:/{print $2}' |
+      xargs -r -I{} pacmd move-sink-input {} #{sink}`
+  end
+end
+
+Aliks.start

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+sxhkd &
+nitrogen --restore &
+compton &
+nm-applet &
+xfce4-power-manager &
+~/dotfiles/scripts/polybar &
+xsetroot -cursor_name left_ptr &
+orage &
+urxvtd &

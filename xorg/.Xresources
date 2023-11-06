@@ -1,0 +1,98 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.antialias:              1
+Xft.rgba:                   rgba
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: argb:e62d2d2d, argb:e62d2d2d, argb:002d2d2d
+rofi.color-normal: argb:00dedede, #f9f9f9, argb:00dedede, #d64937, #f9f9f9
+rofi.color-active: #dedede, #d64937, #dedede, #d64937, #dedede
+rofi.color-urgent: #dedede, #dc322f, #dedede, #dc322f, #dedede
+rofi.display-drun:
+rofi.display-window: win
+rofi.display-combi: myprompt
+
+! ------------------------------------------------------------------------------
+! urxvt
+! ------------------------------------------------------------------------------
+! border
+URxvt.internalBorder: 5
+
+! transparency
+URxvt.depth: 32
+
+! hide scrollbar
+URxvt.scrollBar: false
+
+! Fonts
+URxvt*font: xft:Terminus:pixelsize=14:style=Regular
+URxvt.boldFont: xft:Terminus:pixelsize=14:style=Regular
+URxvt.italicFont: xft:Terminus:pixelsize=14:Italic
+URxvt.boldItalicFont: xft:Terminus:pixelsize=14:Bold:Italic
+
+! Fix font space (before Terminus it was -1)
+URxvt*letterSpace: 0
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+
+! I do not know
+URxvt.scrollstyle: plain
+
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! disable the scrollback buffer for the secondary screen (inside a pager, like less)
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+! Paste with shift-ctrl-v
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+URxvt.iso14755: False
+
+! colors
+! special
+*.foreground:   #c5c8c6
+*.background:   #1d1f21
+*.cursorColor:  #c5c8c6
+
+! black
+*.color0:       #282a2e
+*.color8:       #373b41
+
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
+
+! green
+*.color2:       #8c9440
+*.color10:      #b5bd68
+
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
+
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
+
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
+
+! cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
+
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6

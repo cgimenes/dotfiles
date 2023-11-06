@@ -1,0 +1,15 @@
+show_frame=false
+fg_set=false
+bg_set=false
+timezone=
+width_set=false
+height_set=false
+lines_vertically=true
+rotation=0
+data0=%X
+font0=Roboto Bold 10
+tooltip=%A %d %B %Y/%V
+hib_timing=false
+data1=%a %d/%m
+font1=Roboto 10
+

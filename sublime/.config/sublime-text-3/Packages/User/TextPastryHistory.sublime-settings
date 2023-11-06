@@ -1,0 +1,29 @@
+{
+	"history":
+	[
+		{
+			"data":
+			{
+				"args":
+				{
+					"text": "filter ",
+					"threshold": 3
+				},
+				"command": "text_pastry_insert_text",
+				"text": "filter "
+			},
+			"key": "acd97ef12c7efb64dcb70cb797baa50d",
+			"label": "filter "
+		}
+	],
+	"last_command":
+	{
+		"args":
+		{
+			"text": "filter ",
+			"threshold": 3
+		},
+		"command": "text_pastry_insert_text",
+		"text": "filter "
+	}
+}

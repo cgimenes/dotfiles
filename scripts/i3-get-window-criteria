@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# c-basic-offset: 4; tab-width: 4; indent-tabs-mode: t
+# vi: set shiftwidth=4 tabstop=4 noexpandtab:
+# :indentSize=4:tabSize=4:noTabs=false:
+
+# i3-get-window-criteria - Get criteria for use with i3 config commands
+
+# source https://faq.i3wm.org/question/2172/how-do-i-find-the-criteria-for-use-with-i3-config-commands-like-for_window-eg-to-force-splashscreens-and-dialogs-to-show-in-floating-mode/
+
+# To use, run this script, then click on a window.
+# Output is in the format: [<name>=<value> <name>=<value> ...]
+
+# Known problem: when WM_NAME is used as fallback for the 'title="<string>"'
+# criterion, quotes in "<string>" are not escaped properly. This is a problem
+# with the output of `xprop`,
+# reported upstream: https://bugs.freedesktop.org/show_bug.cgi?id=66807
+
+set -o nounset
+set -o errexit
+set -o pipefail
+
+# Check for xprop
+for cmd in xprop; do
+    if ! which $cmd > /dev/null 2>&1
+    then
+        errexit "$cmd: command not found"
+    fi
+done
+
+function get_window_criteria() {
+	local match_int='[0-9][0-9]*'
+	local match_string='".*"'
+	local match_qstring='"[^"\\]*(\\.[^"\\]*)*"' # NOTE: Adds 1 backreference
+
+	{
+
+    # Run xprop, transform its output into i3 criteria. Handle fallback to
+    # WM_NAME when _NET_WM_NAME isn't set
+    xprop |
+        sed -nr \
+            -e "s/^WM_CLASS\(STRING\) = ($match_qstring), ($match_qstring)$/instance=\1\nclass=\3/p" \
+            -e "s/^WM_WINDOW_ROLE\(STRING\) = ($match_qstring)$/window_role=\1/p" \
+            -e "/^WM_NAME\(STRING\) = ($match_string)$/{s//title=\1/; h}" \
+            -e "/^_NET_WM_NAME\(UTF8_STRING\) = ($match_qstring)$/{s//title=\1/; h}" \
+            -e '${g; p}'
+	} | sort | tr "\n" " " | sed -r 's/^(.*) $/[\1]\n/'
+}
+
+text=$(get_window_criteria)
+echo "${text}"

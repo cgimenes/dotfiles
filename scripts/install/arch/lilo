@@ -1,0 +1,370 @@
+#!/bin/bash
+#-------------------------------------------------------------------------------
+#Created by helmuthdu mailto: helmuthdu[at]gmail[dot]com
+#Contribution: flexiondotorg
+#-------------------------------------------------------------------------------
+#This program is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#
+#This program is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#-------------------------------------------------------------------------------
+# Run this script after your first boot with archlinux (as root)
+
+if [[ -f `pwd`/sharedfuncs ]]; then
+  source sharedfuncs
+else
+  echo "missing file: sharedfuncs"
+  exit 1
+fi
+
+configure_sudo() {
+  if [[ ! -f  /etc/sudoers.aui ]]; then
+    cp -v /etc/sudoers /etc/sudoers.aui
+    ## Uncomment to allow members of group wheel to execute any command
+    sed -i '/%wheel ALL=(ALL) ALL/s/^#//' /etc/sudoers
+    ## Same thing without a password (not secure)
+    #sed -i '/%wheel ALL=(ALL) NOPASSWD: ALL/s/^#//' /etc/sudoers
+
+    #This config is especially helpful for those using terminal multiplexers like screen, tmux, or ratpoison, and those using sudo from scripts/cronjobs:
+    echo "" >> /etc/sudoers
+    echo 'Defaults !requiretty, !tty_tickets, !umask' >> /etc/sudoers
+    echo 'Defaults visiblepw, path_info, insults' >> /etc/sudoers
+    echo 'Defaults loglinelen=0, logfile =/var/log/sudo.log, log_year, log_host, syslog=auth' >> /etc/sudoers
+    echo 'Defaults passwd_tries=3, passwd_timeout=1' >> /etc/sudoers
+    echo 'Defaults env_reset, always_set_home, set_home, set_logname' >> /etc/sudoers
+    echo 'Defaults !env_editor, editor="/usr/bin/vim:/usr/bin/vi:/usr/bin/nano"' >> /etc/sudoers
+    echo 'Defaults timestamp_timeout=15' >> /etc/sudoers
+    echo 'Defaults passprompt="[sudo] password for %u: "' >> /etc/sudoers
+  fi
+}
+
+install_shell() {
+  package_install "zsh"
+}
+
+install_basic_setup() {
+  package_install "vim"
+  package_install "git"
+  package_install "zip unzip unrar"
+  package_install "avahi nss-mdns"
+  package_install "alsa-utils alsa-plugins pulseaudio pulseaudio-alsa"
+  package_install "ntfs-3g mtpfs"
+  package_install "openssh"
+  package_install "nfs-utils"
+  package_install "samba smbnetfs"
+  package_install "tlp"
+  package_install "cairo fontconfig freetype2"
+  package_install "cups cups-filters ghostscript gsfonts"
+  package_install "gutenprint foomatic-db foomatic-db-engine foomatic-db-nonfree foomatic-db-ppds foomatic-db-nonfree-ppds hplip splix cups-pdf foomatic-db-gutenprint-ppds gtk3-print-backends"
+  package_install "dnsmasq"
+
+  pacman -D --asdeps cairo fontconfig freetype2
+
+  system_ctl enable org.cups.cupsd.service
+  system_ctl enable tlp
+  system_ctl enable tlp-sleep
+  system_ctl disable systemd-rfkill
+  tlp start
+  system_ctl enable rpcbind
+  system_ctl enable nfs-client.target
+  system_ctl enable remote-fs.target
+  system_ctl enable avahi-daemon
+
+  read -p "Install bluetooth? [y/N]: " OPTION
+  if [[ $OPTION == y ]] ; then
+    package_install "bluez bluez-firmware blueman"
+    system_ctl enable bluetooth.service
+    run_as_user "gsettings set org.blueman.plugins.powermanager auto-power-on false"
+  fi
+}
+
+select_user() {
+  create_new_user(){
+    read -p "Username: " username
+    username=`echo $username | tr '[:upper:]' '[:lower:]'`
+    useradd -m -g users -G wheel -s /bin/zsh ${username}
+    passwd ${username}
+    while [[ $? -ne 0 ]]; do
+      passwd ${username}
+    done
+    pause_function
+  }
+
+  print_title "SELECT/CREATE USER - https://wiki.archlinux.org/index.php/Users_and_Groups"
+  users_list=(`cat /etc/passwd | grep "/home" | cut -d: -f1`);
+  PS3="$prompt1"
+  echo "Avaliable Users:"
+  if [[ $(( ${#users_list[@]} )) -gt 0 ]]; then
+    print_warning "WARNING: THE SELECTED USER MUST HAVE SUDO PRIVILEGES"
+  else
+    echo ""
+  fi
+  select OPT in "${users_list[@]}" "Create new user"; do
+    if [[ $OPT == "Create new user" ]]; then
+      create_new_user
+    elif contains_element "$OPT" "${users_list[@]}"; then
+      username=$OPT
+    else
+      invalid_option
+    fi
+    [[ -n $OPT ]] && break
+  done
+}
+
+install_drivers() {
+  package_install "xf86-input-synaptics mesa lib32-mesa xf86-video-intel xf86-video-amdgpu xf86-video-ati nvidia nvidia-utils lib32-nvidia-utils intel-ucode"
+}
+
+install_aurhelper() {
+  package_install "yajl namcap"
+  aui_download_packages "package-query yaourt"
+  pacman -D --asdeps yajl namcap package-query
+
+  if ! is_package_installed "yaourt" ; then
+    echo "Yaourt not installed. EXIT now"
+    pause_function
+    exit 0
+  fi
+
+  AUR_PKG_MANAGER="yaourt --tmp /var/tmp/"
+}
+
+install_xorg() {
+  package_install "xorg-server xorg-server-xwayland xorg-xinit xorg-xkill xorg-xinput xf86-input-libinput xclip xorg-xbacklight xdo"
+  modprobe uinput
+  localectl set-x11-keymap br pc105
+}
+
+install_desktop_environment() {
+  package_install "xfce4 xfce4-battery-plugin xfce4-datetime-plugin xfce4-clipman-plugin xfce4-notifyd xfce4-screenshooter xfce4-taskmanager lxappearance"
+
+  package_install "pavucontrol"
+
+  aur_package_install "gtk-theme-arc-git papirus-icon-theme-git gtk-engine-murrine"
+
+  package_install "libmtp gvfs-mtp"
+
+  package_install "accountsservice gnome-online-accounts"
+
+  package_install "i3"
+
+  package_install "bspwm sxhkd"
+
+  package_install "compton"
+
+  package_install "rofi"
+
+  package_install "ranger"
+
+  package_install "nitrogen"
+
+  package_install "xdo xwininfo xprop xorg-xprop xorg-xwininfo xorg-xdpyinfo xdotool wmctrl xorg-xsetroot"
+
+  aur_package_install "hardcode-tray"
+
+  aur_package_install "i3-gaps polybar siji-git hardcode-tray"
+
+  if [ ! -d "~/.compose-cache" ]; then
+    mkdir -p ~/.compose-cache
+  fi
+  system_ctl enable accounts-daemon
+  echo fs.inotify.max_user_watches=524288 | tee /etc/sysctl.d/40-max-user-watches.conf
+  sysctl --system
+}
+
+install_network_manager() {
+  package_install "networkmanager dnsmasq network-manager-applet nm-connection-editor gnome-keyring"
+  package_install "networkmanager-openconnect networkmanager-openvpn networkmanager-pptp networkmanager-vpnc"
+
+  package_install "networkmanager-dispatcher-ntpd"
+  system_ctl enable NetworkManager-dispatcher.service
+
+  package_install "tlp-rdw"
+
+  system_ctl enable NetworkManager.service
+}
+
+install_accessories_apps(){
+  package_install "pass ack highlight redshift file-roller mousepad ristretto thunar-archive-plugin gnome-disk-utility evince gparted gnome-calculator inkscape gimp orage"
+  aur_package_install "rofi-pass pass-audit rofi-greenclip-beta pasystray-gtk3-standalone neofetch"
+}
+
+install_development_apps(){
+  package_install "meld stow eclipse-java mysql-workbench go stack"
+  aur_package_install "postman-bin android-sdk android-sdk-platform-tools android-sdk-build-tools android-platform visual-studio-code astah-community dbeaver"
+
+  # Sublime Text
+  curl -O https://download.sublimetext.com/sublimehq-pub.gpg
+  sudo pacman-key --add sublimehq-pub.gpg
+  sudo pacman-key --lsign-key 8A8F901A
+  rm sublimehq-pub.gpg
+  echo -e "\n[sublime-text]\nServer = https://download.sublimetext.com/arch/stable/x86_64" | sudo tee -a /etc/pacman.conf
+
+  package_install "sublime-text"
+
+  # Android SDK
+  add_user_to_group ${username} sdkusers
+  chown -R :sdkusers /opt/android-sdk/
+  chmod -R g+w /opt/android-sdk/
+  source /etc/profile
+
+  aur_package_install "jetbrains-toolbox"
+}
+
+install_office_apps(){
+  package_install "libreoffice-fresh"
+}
+
+install_system_apps(){
+  package_install "sysstat acpi htop docker docker-compose icoutils wget"
+  add_user_to_group ${username} docker
+
+  aur_package_install "pamac-aur"
+}
+
+install_internet_apps(){
+  package_install "chromium flashplugin"
+  run_as_user "gpg --recv-keys BBBEBDBB24C6F355"
+  aur_package_install "google-chrome firefox-nightly pepper-flash slack-desktop"
+}
+
+install_audio_apps(){
+  package_install "portaudio playerctl"
+
+  run_as_user "gpg --recv-keys 5CC908FDB71E12C2"
+  run_as_user "gpg --recv-keys D9C4D26D0E604491"
+
+  aur_package_install "spotify"
+  read -p "Install musescore? [y/N]: " OPTION
+  if [[ $OPTION == y ]] ; then
+    aur_package_install "musescore-git"
+  fi
+}
+
+clean_orphan_packages(){
+  pacman -Rsc --noconfirm $(pacman -Qqdt)
+
+  pacman-optimize
+}
+
+finish(){
+  print_info "Certificates go to: /etc/ca-certificates/trust-source/anchors"
+  read -p "Reboot your system [y/N]: " OPTION
+  [[ $OPTION == y ]] && reboot
+}
+
+install_extra(){
+  aur_package_install "ttf-ms-fonts siji-git"
+  package_install "ttf-font-awesome terminus-font" 
+
+  hardcode-tray --apply
+}
+
+reconfigure_grub(){
+  echo GRUB_FORCE_HIDDEN_MENU=\"true\" > /etc/default/grub
+  cp 31_hold_shift /etc/grub.d/
+  chmod a+x /etc/grub.d/31_hold_shift
+  grub-mkconfig -o /boot/grub/grub.cfg
+}
+
+print_title "check_root"
+check_root
+pause_function
+
+print_title "check_connection"
+check_connection
+pause_function
+
+print_title "check_multilib"
+check_multilib
+pause_function
+
+print_title "system_update"
+system_update
+pause_function
+
+print_title "pacman_key"
+pacman_key
+pause_function
+
+print_title "configure_sudo"
+configure_sudo
+pause_function
+
+print_title "install_shell"
+install_shell
+pause_function
+
+print_title "select_user"
+select_user
+pause_function
+
+print_title "install_basic_setup"
+install_basic_setup
+pause_function
+
+print_title "install_drivers"
+install_drivers
+pause_function
+
+print_title "install_aurhelper"
+install_aurhelper
+pause_function
+
+print_title "install_xorg"
+install_xorg
+pause_function
+
+print_title "install_desktop_environment"
+install_desktop_environment
+pause_function
+
+print_title "install_network_manager"
+install_network_manager
+pause_function
+
+print_title "install_accessories_apps"
+install_accessories_apps
+pause_function
+
+print_title "install_development_apps"
+install_development_apps
+pause_function
+
+print_title "install_office_apps"
+install_office_apps
+pause_function
+
+print_title "install_system_apps"
+install_system_apps
+pause_function
+
+print_title "install_internet_apps"
+install_internet_apps
+pause_function
+
+print_title "install_audio_apps"
+install_audio_apps
+pause_function
+
+print_title "install_extra"
+install_extra
+pause_function
+
+print_title "clean_orphan_packages"
+clean_orphan_packages
+pause_function
+
+print_title "reconfigure_grub"
+reconfigure_grub
+pause_function
+
+finish
