@@ -48,7 +48,7 @@ font-1 = "Siji:size=11;2"
 font-2 = "FreeMono:size=11;2"
 
 modules-left = powermenu date sink volume player1 player2
-modules-center = i3
+modules-center = bspwm
 modules-right = backlight eth wlan battery cpu memory keyboard
 
 tray-position = right
@@ -277,10 +277,10 @@ interval = 1
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-exec = ~/.rvm/rubies/default/bin/ruby ~/dotfiles/scripts/audio_sink get
-click-left = ~/.rvm/rubies/default/bin/ruby ~/dotfiles/scripts/audio_sink toggle
-click-right = ~/.rvm/rubies/default/bin/ruby ~/dotfiles/scripts/audio_sink toggle --reverse
-click-middle = ~/.rvm/rubies/default/bin/ruby ~/dotfiles/scripts/audio_sink reset
+exec = /usr/bin/ruby ~/dotfiles/scripts/audio_sink get
+click-left = /usr/bin/ruby ~/dotfiles/scripts/audio_sink toggle
+click-right = /usr/bin/ruby ~/dotfiles/scripts/audio_sink toggle --reverse
+click-middle = /usr/bin/ruby ~/dotfiles/scripts/audio_sink reset
 
 [module/redshift]
 type = custom/script

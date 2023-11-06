@@ -157,7 +157,11 @@
 	    "nodejs",
 	    "npm",
 	    "distrobox",
-	    "docker"
+	    "docker",
+            "alacritty",
+            "zsh",
+            "eza",
+	    "go"
     ],
     "parallel downloads": 0,
     "profile_config": {

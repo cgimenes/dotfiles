@@ -4,11 +4,12 @@
 
 # terminal emulator
 super + Return
-	urxvtc
+	alacritty
 
 # program launcher
 super + @space
-	rofi -modi 'window,run,drun' -show drun -matching fuzzy -hide-scrollbar -lines 12 -padding 18 -width 60 -location 0 -sidebar-mode -columns 3 -font 'Noto Sans 12'
+	dmenu_run
+	#rofi -modi 'window,run,drun' -show drun -matching fuzzy -hide-scrollbar -lines 12 -padding 18 -width 60 -location 0 -sidebar-mode -columns 3 -font 'Noto Sans 12'
 
 # lock screen
 ctrl + alt + l
@@ -16,7 +17,7 @@ ctrl + alt + l
 
 # web browser
 alt + shift + w
-	google-chrome
+	brave
 	
 # screenshot
 Print

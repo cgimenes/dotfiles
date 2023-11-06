@@ -26,4 +26,4 @@ xfce/.config/xfce4/xfce4-screenshooter
 vim/.vim/.netrwhist
 ranger/.config/ranger/history
 qutebrowser/.config/qutebrowser/qsettings/
-
+nvim/.config/nvim/lazy-lock.json

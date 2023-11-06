@@ -6,3 +6,14 @@ rm -rf yay-bin
 
 yay -S brave-browser
 yay -S siji-ttf
+
+#stow bspwm
+#stow nvim
+#stow picom
+#stow polybar
+#stow aliks
+#stow git
+#stow xorg
+#stow zsh
+
+gem install thor
