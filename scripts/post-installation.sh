@@ -6,6 +6,7 @@ rm -rf yay-bin
 
 yay -S brave-browser
 yay -S siji-ttf
+yay -S spotify
 
 #stow bspwm
 #stow nvim

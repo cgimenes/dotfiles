@@ -40,3 +40,5 @@ alias pscpu='ps auxf | sort -nr -k 3'
 # termbin
 alias tb="nc termbin.com 9999"
 
+# mkdir
+alias mkdir="mkdir -p"

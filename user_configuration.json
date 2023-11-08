@@ -161,7 +161,13 @@
             "alacritty",
             "zsh",
             "eza",
-	    "go"
+	    "go",
+            "ttf-inconsolata",
+            "ttf-inconsolata-nerd",
+            "starship",
+            "highlight",
+            "less",
+            "neofetch"
     ],
     "parallel downloads": 0,
     "profile_config": {

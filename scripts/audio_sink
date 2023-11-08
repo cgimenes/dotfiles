@@ -2,6 +2,46 @@
 
 require 'thor'
 require 'json'
+require 'singleton'
+
+class PipeWireProvider
+  include Singleton
+
+  def get_default_sink
+    @default_sink ||= `pactl get-default-sink`.strip
+  end
+
+  def get_available_sinks
+    @available_sinks ||= `pactl list sinks | grep node.name | awk -F" = " '{print $2}'`.strip.split("\n").map { |s| s.gsub('"', '') }
+  end
+
+  def get_first_sink
+    @first_sink ||= `pactl list sinks | awk '/node.name = / {print $0} /device.description =/ {print $0};' | cut -d: -f2 | cut -d= -f2 | paste -d "|" - - | grep #{@default_sink}`
+      .sub(' "', '')
+      .sub('"', '')
+      .split('|')[1]
+  end
+
+  def set_default_sink(sink)
+    `pactl set-default-sink #{sink}`
+  end
+
+  def unmute_all_sink_input
+    `pactl list sink-inputs |
+      awk '/index:/{print $2}' |
+      xargs -r -I{} pactl set-sink-input-mute {} false`
+
+    `pactl list sink-inputs |
+      awk '/index:/{print $2}' |
+      xargs -r -I{} pactl set-sink-input-volume {} 0x10000`
+  end
+
+  def move_all_sink_input(sink)
+    `pactl list sink-inputs |
+      awk '/index:/{print $2}' |
+      xargs -r -I{} pactl move-sink-input {} #{sink}`
+  end
+end
 
 class Aliks < Thor
   include Thor::Actions
@@ -9,21 +49,15 @@ class Aliks < Thor
   def initialize(args = [], local_options = {}, config = {})
     super
     @config_path = File.expand_path('~/.config/aliks.json')
-
     File.open(@config_path, "r") { |file| @aliases = JSON.parse(file.read)["aliases"] }
-
-    @available_sinks = `pacmd list-sinks | grep name: | awk -F": " '{print $2}'`.split("\n").map { |s| s.sub('<', '').sub('>', '') }
-    @default_sink = `pacmd stat | awk -F": " '/^Default sink name: /{print $2}'`.strip
+    @provider = PipeWireProvider.instance
   end
 
   desc "get", "Prints the default sink alias"
   def get
-    message = @aliases[@default_sink]
+    message = @aliases[@provider.get_default_sink]
     if message.nil?
-      message = `pacmd list-sinks |awk '/name:/ {print $0} /device.description =/ {print $0};' | cut -d: -f2 | cut -d= -f2 | paste -d "|" - - | grep #{@default_sink}`
-        .sub(' "', '')
-        .sub('"', '')
-        .split('|')[1]
+      message = @provider.get_first_sink
     end
 
     puts message
@@ -31,16 +65,16 @@ class Aliks < Thor
 
   desc "list", "List alias of available sinks"
   def list
-    @aliases.select { |k, _| @available_sinks.include? k }.each { |_, v| puts v }
+    @aliases.select { |k, _| @provider.get_available_sinks.include? k }.each { |_, v| puts v }
   end
 
   desc "set", "Set the default sink by alias"
   def set(sink)
-    sink_name = @aliases.index sink
+    sink_name = @aliases.detect { |_, v| v == sink }[0]
 
-    set_default_sink(sink_name)
-    move_all_sink_input(sink_name)
-    unmute_all_sink_input
+    @provider.set_default_sink(sink_name)
+    @provider.move_all_sink_input(sink_name)
+    @provider.unmute_all_sink_input
   end
 
   desc "setup", "Creates the configuration file (~/.config/aliks.json) with available sinks"
@@ -50,7 +84,7 @@ class Aliks < Thor
       return
     end
 
-    aliases = `pacmd list-sinks |awk '/name:/ {print $0} /device.description =/ {print $0};' | cut -d: -f2 | cut -d= -f2 | paste -d "|" - -`
+    aliases = `pactl list sinks |awk '/name:/ {print $0} /device.description =/ {print $0};' | cut -d: -f2 | cut -d= -f2 | paste -d "|" - -`
                 .split("\n")
                 .map { |s| s.strip.sub('<', '').sub('>', '').sub(' "', '').sub('"', '').split('|') }
                 .to_h
@@ -65,45 +99,23 @@ class Aliks < Thor
   method_options :reverse => :boolean
   def toggle
     order = options.reverse? ? -1 : 1
-    current_index = @available_sinks.index(@default_sink) || 0
+    current_index = @provider.get_available_sinks.index(@provider.get_default_sink) || 0
     next_index = current_index + order
-    unless next_index.between?(0, @available_sinks.count - 1)
-      next_index = options.reverse? ? @available_sinks.count - 1 : 0
+    unless next_index.between?(0, @provider.get_available_sinks.count - 1)
+      next_index = options.reverse? ? @provider.get_available_sinks.count - 1 : 0
     end
-    next_sink = @available_sinks[next_index]
+    next_sink = @provider.get_available_sinks[next_index]
 
-    set_default_sink(next_sink)
-    move_all_sink_input(next_sink)
-    unmute_all_sink_input
+    @provider.set_default_sink(next_sink)
+    @provider.move_all_sink_input(next_sink)
+    @provider.unmute_all_sink_input
   end
 
   desc "reset", "Reset default sink"
   def reset
-    set_default_sink(@default_sink)
-    move_all_sink_input(@default_sink)
-    unmute_all_sink_input
-  end
-
-  private
-
-  def set_default_sink(sink)
-    `pacmd "set-default-sink #{sink}"`
-  end
-
-  def unmute_all_sink_input
-    `pacmd list-sink-inputs |
-      awk '/index:/{print $2}' |
-      xargs -r -I{} pacmd set-sink-input-mute {} false`
-
-    `pacmd list-sink-inputs |
-      awk '/index:/{print $2}' |
-      xargs -r -I{} pacmd set-sink-input-volume {} 0x10000`
-  end
-
-  def move_all_sink_input(sink)
-    `pacmd list-sink-inputs |
-      awk '/index:/{print $2}' |
-      xargs -r -I{} pacmd move-sink-input {} #{sink}`
+    @provider.set_default_sink(@provider.get_default_sink)
+    @provider.move_all_sink_input(@provider.get_default_sink)
+    @provider.unmute_all_sink_input
   end
 end
 
