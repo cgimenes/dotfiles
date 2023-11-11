@@ -167,7 +167,13 @@
             "starship",
             "highlight",
             "less",
-            "neofetch"
+            "neofetch",
+            "python-psutil",
+            "copyq",
+            "vifm",
+            "xf86-video-intel",
+            "bluez",
+            "blueman"
     ],
     "parallel downloads": 0,
     "profile_config": {

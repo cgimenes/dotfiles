@@ -5,3 +5,9 @@ disabled = false
 #format = '[$time]($style) '
 time_format = '%R'
 style = 'yellow'
+
+[battery]
+disabled = true
+
+[cmd_duration]
+disabled = true
