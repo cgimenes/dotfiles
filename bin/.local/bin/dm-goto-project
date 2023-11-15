@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Set with the flags "-e", "-u","-o pipefail" cause the script to fail
+# if certain things happen, which is a good thing.  Otherwise, we can
+# get hidden bugs that are hard to discover.
+set -euo pipefail
+
+TERM="alacritty"
+
+declare -Ag project_list
+project_list[root]="$HOME/dev/src/github.com/cgimenes"
+
+main() {
+    choice=$(printf '%s\n' "${!project_list[@]}" | sort | ${MENU} 'Go to project directory:' "$@")
+
+    if [ "$choice" ]; then
+        directory=$(printf '%s\n' "${project_list["${choice}"]}")
+        $TERM --working-directory "${directory}"
+    else
+        echo "Program terminated." && exit 0
+    fi
+}
+
+MENU="dmenu -i -l 20 -p"
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main
+

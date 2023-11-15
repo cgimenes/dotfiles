@@ -52,6 +52,9 @@ when 'Spotify'
 when 'Slack', 'discord'
   print 'desktop=^5'
 
+when 'Alacritty'
+  print 'desktop=^2' if title.include? 'nvim'
+
 when ''
   case process
   when 'spotify'
@@ -60,6 +63,3 @@ when ''
 end
 
 print ' '
-
-#for_window [class='com-install4j-runtime-launcher-UnixLauncher' instance='sun-awt-X11-XFramePeer' title=' '] floating enable
-#for_window [class='com-install4j-runtime-launcher-UnixLauncher' instance='com-install4j-runtime-launcher-UnixLauncher' title=' '] floating enable

@@ -8,6 +8,8 @@ trizen -S brave-browser
 trizen -S siji-ttf
 trizen -S spotify
 trizen -S qtile-extras
+trizen -S betterlockscreen
+trizen -S enpass-bin
 
 stow qtile
 stow nvim
@@ -18,5 +20,7 @@ stow aliks
 stow git
 stow xorg
 stow zsh
+stow autorandr
+stow gsimplecal
 
 gem install thor

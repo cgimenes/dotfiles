@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# Set with the flags "-e", "-u","-o pipefail" cause the script to fail
+# if certain things happen, which is a good thing.  Otherwise, we can
+# get hidden bugs that are hard to discover.
+set -euo pipefail
+
+DMENU="dmenu -i -l 20 -p"
+TERM="alacritty -e"
+EDITOR="${TERM} nvim"
+
+# a list of static config files that may not be in the expected places
+declare -Ag confedit_list
+confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"
+confedit_list[aliks]="$HOME/.config/aliks.json"
+confedit_list[bash]="$HOME/.bashrc"
+confedit_list[broot]="$HOME/.config/broot/conf.toml"
+confedit_list[bspwm]="$HOME/.config/bspwm/bspwmrc"
+confedit_list[bspwm ext rules]="$HOME/.config/bspwm/external_rules"
+confedit_list[confedit]="$HOME/.local/bin/dm-confedit"
+confedit_list[dunst]="$HOME/.config/dunst/dunstrc"
+confedit_list[fish]="$HOME/.config/fish/config.fish"
+confedit_list[i3]="$HOME/.config/i3/config"
+confedit_list[neovim init.vim]="$HOME/.config/nvim/init.vim"
+confedit_list[neovim init.lua]="$HOME/.config/nvim/init.lua"
+confedit_list[picom]="$HOME/.config/picom/picom.conf"
+confedit_list[polybar]="$HOME/.config/polybar/config.ini"
+confedit_list[qtile]="$HOME/.config/qtile/config.py"
+confedit_list[qutebrowser bookmarks]="$HOME/.config/qutebrowser/bookmarks/urls"
+confedit_list[qutebrowser quickmarks]="$HOME/.config/qutebrowser/quickmarks"
+confedit_list[qutebrowser config.py]="$HOME/.config/qutebrowser/config.py"
+confedit_list[ssh]="$HOME/.ssh/config"
+confedit_list[sxhkd]="$HOME/.config/sxhkd/sxhkdrc"
+confedit_list[vifm]="$HOME/.config/vifm/vifmrc"
+confedit_list[xinitrc]="$HOME/.xinitrc"
+confedit_list[xresources]="$HOME/.Xresources"
+confedit_list[zsh]="$HOME/.zshrc"
+
+main() {
+    # Clean options array making sure that the files exist
+    declare -A _clean_list
+
+    for i in "${!confedit_list[@]}"; do
+
+        if printf "%s\n" "${_clean_list[@]}" | grep -qw "${confedit_list["${i}"]}"; then
+            continue
+        fi
+
+        [[ -f ${confedit_list["${i}"]} ]] && _clean_list["static:   ${i}"]=${confedit_list["${i}"]}
+    done
+    # Piping the above array (cleaned) into dmenu.
+    # We use "printf '%s\n'" to format the array one item to a line.
+    choice=$(printf '%s\n' "${!_clean_list[@]}" | sort | ${MENU} 'Edit config:' "$@")
+
+    # What to do when/if we choose a file to edit.
+    if [ "$choice" ]; then
+        cfg=$(printf '%s\n' "${_clean_list["${choice}"]}")
+        # shellcheck disable=SC2154
+        $EDITOR "$cfg"
+    # What to do if we just escape without choosing anything.
+    else
+        echo "Program terminated." && exit 0
+    fi
+}
+
+MENU=${DMENU} && [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"
+

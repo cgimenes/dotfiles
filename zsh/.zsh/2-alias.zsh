@@ -14,13 +14,12 @@ alias upd-dist='yay -Syua --noconfirm'
 
 # Vim/Nvim
 alias vim="nvim"
+alias v="nvim"
 
 # Changing "ls" to "eza"
-alias ls='eza -al --color=always --group-directories-first' # my preferred listing
+alias ls='eza --color=always --group-directories-first' # my preferred listing
 alias la='eza -a --color=always --group-directories-first'  # all files and dirs
-alias ll='eza -l --color=always --group-directories-first'  # long format
-alias lt='eza -aT --color=always --group-directories-first' # tree listing
-alias l.='eza -a | egrep "^\."'
+alias ll='eza -al --color=always --group-directories-first'  # long format
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
@@ -30,6 +29,7 @@ alias fgrep='fgrep --color=auto'
 # adding flags
 alias df='df -h'                          # human-readable sizes
 alias free='free -m'                      # show sizes in MB
+alias mkdir="mkdir -p"
 
 # ps
 alias psa="ps auxf"
@@ -39,6 +39,3 @@ alias pscpu='ps auxf | sort -nr -k 3'
 
 # termbin
 alias tb="nc termbin.com 9999"
-
-# mkdir
-alias mkdir="mkdir -p"

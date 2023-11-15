@@ -55,7 +55,7 @@ keys=[
 groups=[]
 
 group_names=["1", "2", "3", "4", "5", "6",]
-group_labels=["1: web", "2: dev", "3: term", "4: chat", "5: music", "6: etc",]
+group_labels=["web", "dev", "term", "chat", "music", "etc",]
 group_layouts=["monadtall", "monadtall", "monadtall", "monadtall", "monadtall", "monadtall",]
 
 for i in range(len(group_names)):
@@ -115,9 +115,11 @@ layouts=[
     # layout.Zoomy(),
 ]
 
+font="Roboto"
+
 widget_defaults=dict(
-    font="Inconsolata",
-    fontsize=14,
+    font=font,
+    fontsize=10,
     padding=0,
     background=colors[0]
 )
@@ -125,12 +127,9 @@ extension_defaults=widget_defaults.copy()
 
 widgets_list=[
     widget.Prompt(
-        font="Inconsolata",
-        fontsize=14,
         foreground=colors[1]
     ),
     widget.GroupBox(
-        fontsize=14,
         margin_y=3,
         margin_x=4,
         padding_y=2,
@@ -148,10 +147,8 @@ widgets_list=[
     ),
     widget.TextBox(
         text='|',
-        font="Inconsolata",
         foreground=colors[1],
         padding=2,
-        fontsize=14
     ),
     widget.CurrentLayoutIcon(
         # custom_icon_paths=[os.path.expanduser("~/.config/qtile/icons")],
@@ -165,10 +162,8 @@ widgets_list=[
     ),
     widget.TextBox(
         text='|',
-        font="Inconsolata",
         foreground=colors[1],
         padding=2,
-        fontsize=14
     ),
     widget.WindowName(
         foreground=colors[6],

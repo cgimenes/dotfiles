@@ -173,20 +173,45 @@
             "vifm",
             "xf86-video-intel",
             "bluez",
-            "blueman"
+            "blueman",
+            "man-db",
+            "ttf-ubuntu-font-family",
+            "ttf-roboto",
+            "arc-gtk-theme",
+            "lxappearance",
+            "bspwm",
+            "sxhkd",
+            "dmenu",
+            "rxvt-unicode",
+            "xdo",
+            "qtile",
+            "xorg-server",
+            "vim",
+            "openssh",
+            "htop",
+            "wget",
+            "xdg-utils",
+            "iwd",
+            "wireless_tools",
+            "wpa_supplicant",
+            "smartmontools",
+            "bat",
+            "autorandr",
+            "xf86-input-libinput",
+            "xorg-xprop",
+            "ripgrep",
+            "xclip",
+            "flameshot",
+            "gsimplecal"
     ],
     "parallel downloads": 0,
     "profile_config": {
         "gfx_driver": "All open-source",
         "greeter": "lightdm-gtk-greeter",
         "profile": {
-            "custom_settings": {
-                "Bspwm": {}
-            },
-            "details": [
-                "Bspwm"
-            ],
-            "main": "Desktop"
+            "custom_settings": {},
+            "details": [],
+            "main": "Minimal"
         }
     },
     "script": "guided",
