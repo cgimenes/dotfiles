@@ -145,6 +145,8 @@
 	    "xorg-xsetroot",
 	    "base-devel",
 	    "noto-fonts",
+            "noto-fonts-emoji",
+            "ttf-noto-nerd",
 	    "ttf-dejavu",
 	    "polybar",
 	    "playerctl",
@@ -177,6 +179,7 @@
             "man-db",
             "ttf-ubuntu-font-family",
             "ttf-roboto",
+            "ttf-roboto-mono-nerd",
             "arc-gtk-theme",
             "lxappearance",
             "bspwm",
@@ -202,7 +205,8 @@
             "ripgrep",
             "xclip",
             "flameshot",
-            "gsimplecal"
+            "gsimplecal",
+            "obsidian"
     ],
     "parallel downloads": 0,
     "profile_config": {
