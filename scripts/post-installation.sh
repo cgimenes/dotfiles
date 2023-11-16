@@ -1,3 +1,5 @@
+timedatectl set-timezone America/Sao_Paulo
+
 git clone https://aur.archlinux.org/trizen.git
 cd trizen
 makepkg -si
@@ -22,5 +24,8 @@ stow xorg
 stow zsh
 stow autorandr
 stow gsimplecal
+stow rofi
 
 gem install thor
+
+distrobox create -i archlinux -n archlinux -Y

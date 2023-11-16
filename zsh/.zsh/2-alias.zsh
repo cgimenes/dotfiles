@@ -15,6 +15,7 @@ alias upd-dist='yay -Syua --noconfirm'
 # Vim/Nvim
 alias vim="nvim"
 alias v="nvim"
+alias n="nvim"
 
 # Changing "ls" to "eza"
 alias ls='eza --color=always --group-directories-first' # my preferred listing

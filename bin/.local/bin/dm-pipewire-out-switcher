@@ -28,6 +28,8 @@ main() {
     fi
 }
 
-MENU="dmenu -i -l 20 -p"
+DMENU="dmenu -i -l 20 -p"
+RMENU="rofi -dmenu -matching fuzzy -p"
+MENU=$RMENU
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main
 

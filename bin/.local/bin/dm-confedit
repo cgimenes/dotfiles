@@ -5,6 +5,8 @@
 set -euo pipefail
 
 DMENU="dmenu -i -l 20 -p"
+RMENU="rofi -dmenu -matching fuzzy -p"
+MENU=$RMENU
 TERM="alacritty -e"
 EDITOR="${TERM} nvim"
 
@@ -62,5 +64,5 @@ main() {
     fi
 }
 
-MENU=${DMENU} && [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"
+MENU=${MENU} && [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main "$@"
 

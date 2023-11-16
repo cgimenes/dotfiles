@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + shift + Return
-	dm-run
+	rofi -show combi
 
 # web browser
 super + b
