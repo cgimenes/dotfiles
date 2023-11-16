@@ -7,7 +7,7 @@ set -euo pipefail
 TERM="alacritty"
 
 declare -Ag project_list
-project_list[root]="$HOME/dev/src/github.com/cgimenes"
+project_list[tmp]="$HOME/dev/src/tmp"
 
 main() {
     choice=$(printf '%s\n' "${!project_list[@]}" | sort | ${MENU} 'Go to project directory:' "$@")

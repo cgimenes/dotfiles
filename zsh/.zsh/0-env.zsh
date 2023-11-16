@@ -9,6 +9,7 @@ bindkey -v
 
 export GOPATH="$HOME/dev"
 export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:$(gem environment user_gemhome)/bin
 
 [[ $- != *i* ]] && return
 

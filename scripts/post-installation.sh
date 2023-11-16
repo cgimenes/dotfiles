@@ -28,4 +28,6 @@ stow rofi
 
 gem install thor
 
-distrobox create -i archlinux -n archlinux -Y
+cd $HOME/dotfiles/distrobox/archlinux/php
+docker build . -f Dockerfile -t php-dev
+distrobox create -i php-dev -n php -Y

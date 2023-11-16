@@ -2,7 +2,7 @@ configuration {
   modes: [ combi ];
   combi-modes: [ run, drun ];
   font: "NotoSans Nerd Font 9";
-  matching: "fuzzy";
+//  matching: "fuzzy";
   combi-hide-mode-prefix: true;
 }
 

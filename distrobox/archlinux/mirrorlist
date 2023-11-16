@@ -1,0 +1,10 @@
+## Brazil
+Server = https://mirror.ufscar.br/archlinux/$repo/os/$arch
+## Brazil
+Server = http://mirror.ufscar.br/archlinux/$repo/os/$arch
+## Brazil
+Server = http://mirror.ufam.edu.br/archlinux/$repo/os/$arch
+## Brazil
+Server = http://linorg.usp.br/archlinux/$repo/os/$arch
+## Brazil
+Server = http://archlinux.c3sl.ufpr.br/$repo/os/$arch

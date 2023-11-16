@@ -9,3 +9,8 @@
 # Restore System
 
 `stow -t / system`
+
+# TODO
+
+- [ ] dunst rice
+- [ ] vifm rice

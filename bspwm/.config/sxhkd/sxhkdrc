@@ -74,8 +74,8 @@ super + shift + r
 	bspc node @/ -R 90
 
 # rotate current selection
-#super + r
-#	bspc node -R 90
+super + r
+	bspc node -R 90
 
 # move current window to a pre-selected space
 super + shift + m
