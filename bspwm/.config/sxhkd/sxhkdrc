@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + shift + Return
-	rofi -show combi
+	rofi -show combi -display-combi "Run:"
 
 # web browser
 super + b

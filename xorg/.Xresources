@@ -6,18 +6,6 @@ Xft.antialias:              1
 Xft.rgba:                   rgba
 
 ! ------------------------------------------------------------------------------
-! ROFI Color theme
-! ------------------------------------------------------------------------------
-rofi.color-enabled: true
-rofi.color-window: argb:e62d2d2d, argb:e62d2d2d, argb:002d2d2d
-rofi.color-normal: argb:00dedede, #f9f9f9, argb:00dedede, #d64937, #f9f9f9
-rofi.color-active: #dedede, #d64937, #dedede, #d64937, #dedede
-rofi.color-urgent: #dedede, #dc322f, #dedede, #dc322f, #dedede
-rofi.display-drun:
-rofi.display-window: win
-rofi.display-combi: myprompt
-
-! ------------------------------------------------------------------------------
 ! urxvt
 ! ------------------------------------------------------------------------------
 ! border

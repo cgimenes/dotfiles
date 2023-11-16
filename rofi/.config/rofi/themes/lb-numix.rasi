@@ -37,8 +37,9 @@
 }
 #window {
     background-color: @background;
-    border:           1;
-    padding:          5;
+    border:           2;
+    padding:          6;
+    width:    600;
 }
 #mainbox {
     border:  0;
@@ -57,8 +58,9 @@
     border:       2px solid 0px 0px ;
     border-color: @separatorcolor;
     spacing:      2px ;
-    scrollbar:    true;
+    scrollbar:    false;
     padding:      2px 0px 0px ;
+    lines: 12;
 }
 #element {
     border:  0;
@@ -66,38 +68,56 @@
 }
 #element.normal.normal {
     background-color: @normal-background;
+}
+#element-text.normal.normal {
     text-color:       @normal-foreground;
 }
 #element.normal.urgent {
     background-color: @urgent-background;
+}
+#element-text.normal.urgent {
     text-color:       @urgent-foreground;
 }
 #element.normal.active {
     background-color: @active-background;
+}
+#element-text.normal.active {
     text-color:       @active-foreground;
 }
 #element.selected.normal {
     background-color: @selected-normal-background;
+}
+#element-text.selected.normal {
     text-color:       @selected-normal-foreground;
 }
 #element.selected.urgent {
     background-color: @selected-urgent-background;
+}
+#element-text.selected.urgent {
     text-color:       @selected-urgent-foreground;
 }
 #element.selected.active {
     background-color: @selected-active-background;
+}
+#element-text.selected.active {
     text-color:       @selected-active-foreground;
 }
 #element.alternate.normal {
     background-color: @alternate-normal-background;
+}
+#element-text.alternate.normal {
     text-color:       @alternate-normal-foreground;
 }
 #element.alternate.urgent {
     background-color: @alternate-urgent-background;
+}
+#element-text.alternate.urgent {
     text-color:       @alternate-urgent-foreground;
 }
 #element.alternate.active {
     background-color: @alternate-active-background;
+}
+#element-text.alternate.active {
     text-color:       @alternate-active-foreground;
 }
 #scrollbar {
@@ -133,11 +153,9 @@
     text-color: @normal-foreground;
 }
 #inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    children:   [ prompt,textbox-prompt-separator,entry,case-indicator ];
 }
-#textbox-prompt-colon {
+#textbox-prompt-separator {
     expand:     false;
-    str:        ":";
-    margin:     0px 0.3em 0em 0em ;
-    text-color: @normal-foreground;
+    str:        " ";
 }

@@ -1,8 +1,9 @@
 configuration {
   modes: [ combi ];
-  combi-modes: [ drun, run ];
+  combi-modes: [ run, drun ];
   font: "NotoSans Nerd Font 9";
   matching: "fuzzy";
+  combi-hide-mode-prefix: true;
 }
 
 @theme "lb-numix"
