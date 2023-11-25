@@ -1,4 +1,5 @@
 timedatectl set-timezone America/Sao_Paulo
+systemctl enable autorandr
 
 git clone https://aur.archlinux.org/trizen.git
 cd trizen
@@ -12,6 +13,9 @@ trizen -S spotify
 trizen -S qtile-extras
 trizen -S betterlockscreen
 trizen -S enpass-bin
+trizen -S dragon-drop
+
+go install github.com/cheat/cheat/cmd/cheat@latest
 
 stow qtile
 stow nvim
@@ -25,9 +29,11 @@ stow zsh
 stow autorandr
 stow gsimplecal
 stow rofi
+stow lf
+stow dunst
 
 gem install thor
 
-cd $HOME/dotfiles/distrobox/archlinux/php
-docker build . -f Dockerfile -t php-dev
-distrobox create -i php-dev -n php -Y
+cd $HOME/dotfiles/distrobox/
+make archlinux
+make php

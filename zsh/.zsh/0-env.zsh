@@ -8,8 +8,14 @@ export MANPAGER="nvim +Man!"
 bindkey -v
 
 export GOPATH="$HOME/dev"
-export PATH=$PATH:$(go env GOPATH)/bin
-export PATH=$PATH:$(gem environment user_gemhome)/bin
+
+if [ -x "$(command -v go)" ]; then
+    export PATH=$PATH:$(go env GOPATH)/bin
+fi
+
+if [ -x "$(command -v gem)" ]; then
+    export PATH=$PATH:$(gem environment user_gemhome)/bin
+fi
 
 [[ $- != *i* ]] && return
 

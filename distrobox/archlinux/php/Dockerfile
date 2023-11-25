@@ -1,10 +1,5 @@
-FROM archlinux
+FROM cgimenes/archlinux
 
-RUN pacman-key --init
+RUN pacman -S --noconfirm nodejs npm php composer
 
-COPY mirrorlist /etc/pacman.d/mirrorlist
-
-RUN pacman -Syuu --noconfirm
-RUN pacman -S --noconfirm \
-	go starship git neovim eza \
-	nodejs npm php composer
+COPY php.ini /etc/php/php.ini

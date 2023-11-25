@@ -22,6 +22,10 @@ Print
 super + n
 	alacritty -e nvim
 
+# lf
+super + e
+	alacritty -e lf
+
 # brightness buttons
 XF86MonBrightness{Up,Down}
 	xbacklight -{inc,dec} 20

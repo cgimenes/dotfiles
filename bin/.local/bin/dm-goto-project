@@ -14,14 +14,14 @@ main() {
 
     if [ "$choice" ]; then
         directory=$(printf '%s\n' "${project_list["${choice}"]}")
-        $TERM --working-directory "${directory}"
+        $TERM --working-directory "${directory}" -e tmux new-session -A -s $choice distrobox enter php
     else
         echo "Program terminated." && exit 0
     fi
 }
 
 DMENU="dmenu -i -l 20 -p"
-RMENU="rofi -dmenu -matching fuzzy -p"
+RMENU="rofi -dmenu -i -matching fuzzy -p"
 MENU=$RMENU
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main
 

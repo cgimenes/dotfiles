@@ -5,7 +5,7 @@
 set -euo pipefail
 
 DMENU="dmenu -i -l 20 -p"
-RMENU="rofi -dmenu -matching fuzzy -p"
+RMENU="rofi -dmenu -i -matching fuzzy -p"
 MENU=$RMENU
 TERM="alacritty -e"
 EDITOR="${TERM} nvim"
@@ -15,13 +15,13 @@ declare -Ag confedit_list
 confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"
 confedit_list[aliks]="$HOME/.config/aliks.json"
 confedit_list[bash]="$HOME/.bashrc"
-confedit_list[broot]="$HOME/.config/broot/conf.toml"
 confedit_list[bspwm]="$HOME/.config/bspwm/bspwmrc"
 confedit_list[bspwm ext rules]="$HOME/.config/bspwm/external_rules"
 confedit_list[confedit]="$HOME/.local/bin/dm-confedit"
 confedit_list[dunst]="$HOME/.config/dunst/dunstrc"
 confedit_list[fish]="$HOME/.config/fish/config.fish"
 confedit_list[i3]="$HOME/.config/i3/config"
+confedit_list[lf]="$HOME/.config/lf/lfrc"
 confedit_list[neovim init.vim]="$HOME/.config/nvim/init.vim"
 confedit_list[neovim init.lua]="$HOME/.config/nvim/init.lua"
 confedit_list[picom]="$HOME/.config/picom/picom.conf"
