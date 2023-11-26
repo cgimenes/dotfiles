@@ -142,13 +142,11 @@
         "bat",
         "blueman",
         "bluez",
-        "bspwm",
         "code",
         "copyq",
         "croc",
         "distrobox",
         "distrobox",
-        "dmenu",
         "docker",
         "eza",
         "flameshot",
@@ -157,8 +155,6 @@
         "go",
         "gsimplecal",
         "highlight",
-        "htop",
-        "iwd",
         "less",
         "lf",
         "lxappearance",
@@ -174,7 +170,6 @@
         "noto-fonts-emoji",
         "npm",
         "obsidian",
-        "openssh",
         "picom",
         "playerctl",
         "polybar",
@@ -184,11 +179,8 @@
         "ripgrep",
         "rofi",
         "ruby",
-        "rxvt-unicode",
-        "smartmontools",
         "starship",
         "stow",
-        "sxhkd",
         "terminus-font",
         "tmux",
         "trash-cli",
@@ -203,16 +195,10 @@
         "unzip",
         "vifm",
         "vim",
-        "wget",
-        "wireless_tools",
         "wireplumber",
-        "wpa_supplicant",
         "xclip",
-        "xdg-utils",
-        "xdo",
         "xf86-input-libinput",
         "xf86-video-intel",
-        "xorg-server",
         "xorg-xprop",
         "xorg-xsetroot",
         "zsh"
@@ -222,9 +208,13 @@
         "gfx_driver": "All open-source",
         "greeter": "lightdm-gtk-greeter",
         "profile": {
-            "custom_settings": {},
-            "details": [],
-            "main": "Minimal"
+            "custom_settings": {
+                "Bspwm": {}
+            },
+            "details": [
+                "Bspwm"
+            ],
+            "main": "Desktop"
         }
     },
     "script": "guided",
