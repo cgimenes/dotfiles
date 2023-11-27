@@ -9,6 +9,10 @@ bindkey -v
 
 export GOPATH="$HOME/dev"
 
+if [ -x "$(command -v /opt/homebrew/bin/brew)" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 if [ -x "$(command -v go)" ]; then
     export PATH=$PATH:$(go env GOPATH)/bin
 fi

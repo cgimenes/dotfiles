@@ -11,3 +11,6 @@ disabled = true
 
 [cmd_duration]
 disabled = true
+
+[docker_context]
+disabled = true
