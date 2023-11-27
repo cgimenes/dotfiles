@@ -14,7 +14,7 @@ if [ -x "$(command -v go)" ]; then
 fi
 
 if [ -x "$(command -v gem)" ]; then
-    export PATH=$PATH:$(gem environment user_gemhome)/bin
+    export PATH=$PATH:$(gem environment path | sed -e "s/:/\/bin:/")/bin
 fi
 
 [[ $- != *i* ]] && return
