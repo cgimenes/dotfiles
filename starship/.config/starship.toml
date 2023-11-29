@@ -1,8 +1,9 @@
 right_format = """$time"""
+add_newline = false
 
 [time]
 disabled = false
-#format = '[$time]($style) '
+format = '[$time]($style) '
 time_format = '%R'
 style = 'yellow'
 
@@ -13,4 +14,7 @@ disabled = true
 disabled = true
 
 [docker_context]
+disabled = true
+
+[line_break]
 disabled = true

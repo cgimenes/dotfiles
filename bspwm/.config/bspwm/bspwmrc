@@ -7,9 +7,9 @@ pgrep -x nm-applet > /dev/null || nm-applet &
 pgrep -x polybar > /dev/null || ~/dotfiles/scripts/polybar &
 pgrep -x copyq > /dev/null || copyq &
 pgrep -x lxsession > /dev/null || lxsession &
-nitrogen --restore
-xsetroot -cursor_name left_ptr
-xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+nitrogen --restore &
+xsetroot -cursor_name left_ptr &
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
 
 # Workspaces
 bspc monitor -d I II III IV V VI

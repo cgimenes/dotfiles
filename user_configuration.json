@@ -155,6 +155,7 @@
         "go",
         "gsimplecal",
         "highlight",
+        "kitty",
         "less",
         "lf",
         "lxappearance",
@@ -188,6 +189,7 @@
         "ttf-font-awesome",
         "ttf-inconsolata",
         "ttf-inconsolata-nerd",
+        "ttf-iosevka-nerd",
         "ttf-noto-nerd",
         "ttf-roboto",
         "ttf-roboto-mono-nerd",
@@ -201,6 +203,7 @@
         "xf86-video-intel",
         "xorg-xprop",
         "xorg-xsetroot",
+        "zoxide",
         "zsh"
     ],
     "parallel downloads": 0,
