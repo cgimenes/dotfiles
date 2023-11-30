@@ -20,14 +20,20 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   { import = 'plugins' },
   -- require 'kickstart.plugins.autoformat',
-  require 'kickstart.plugins.debug',
-}, {})
+}, {
+  change_detection = {
+    notify = false
+  }
+})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- No swap file
+vim.o.swapfile = false
+
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -69,10 +75,20 @@ vim.o.termguicolors = true
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set('n', '<leader>c', '<cmd>bdelete<cr>', { desc = '[C]lose Buffer' })
+vim.keymap.set('n', '<leader>n', '<cmd>enew<cr>', { desc = '[N]ew Buffer' })
+vim.keymap.set('n', '<leader>w', '<cmd>w!<cr>', { desc = '[W]rite to File' })
+vim.keymap.set('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', { desc = 'Comment toggle current line' })
+vim.keymap.set('n', '<leader>h', '<cmd>nohlsearch<cr>', { desc = 'No [H]ighlight' })
+
+vim.keymap.set('n', '<leader>b', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next [B]uffer' }) -- TODO move to bufferline.lua
+vim.keymap.set('n', '<leader>B', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous [B]uffer' }) -- TODO move to bufferline.lua
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Oil
+vim.keymap.set('n', '<leader>o', '<cmd>Oil<cr>', { desc = '[O]il' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
