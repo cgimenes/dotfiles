@@ -74,14 +74,16 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-vim.keymap.set('n', '<leader>c', '<cmd>bdelete<cr>', { desc = '[C]lose Buffer' })
+vim.keymap.set('n', '<leader>c', MiniBufremove.delete, { desc = '[C]lose Buffer' })
 vim.keymap.set('n', '<leader>n', '<cmd>enew<cr>', { desc = '[N]ew Buffer' })
 vim.keymap.set('n', '<leader>w', '<cmd>w!<cr>', { desc = '[W]rite to File' })
 vim.keymap.set('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', { desc = 'Comment toggle current line' })
 vim.keymap.set('n', '<leader>h', '<cmd>nohlsearch<cr>', { desc = 'No [H]ighlight' })
 
-vim.keymap.set('n', '<leader>b', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next [B]uffer' }) -- TODO move to bufferline.lua
-vim.keymap.set('n', '<leader>B', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous [B]uffer' }) -- TODO move to bufferline.lua
+vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next Buffer' }) -- TODO move to bufferline.lua
+vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous Buffer' }) -- TODO move to bufferline.lua
+
+vim.keymap.set('n', '<leader>r', '<cmd>NvimTreeFindFile<cr>', { desc = '[R]eveal in File Explorer' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })

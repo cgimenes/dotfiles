@@ -18,9 +18,9 @@ alias v="nvim"
 alias n="nvim"
 
 # Changing "ls" to "eza"
-alias ls='eza --color=always --group-directories-first' # my preferred listing
-alias la='eza -a --color=always --group-directories-first'  # all files and dirs
-alias ll='eza -al --color=always --group-directories-first'  # long format
+alias ls='eza --icons --group-directories-first'
+alias la='eza -a --icons --group-directories-first'
+alias ll='eza -al --icons --group-directories-first'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'

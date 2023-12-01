@@ -1,4 +1,4 @@
-export TERM="screen-256color"
+export TERM="xterm-256color"
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -20,6 +20,4 @@ fi
 if [ -x "$(command -v gem)" ]; then
     export PATH=$PATH:$(gem environment path | sed -e "s/:/\/bin:/")/bin
 fi
-
-[[ $- != *i* ]] && return
 
