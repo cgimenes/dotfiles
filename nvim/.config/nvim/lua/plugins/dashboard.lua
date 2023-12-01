@@ -9,12 +9,12 @@ return {
       vim.keymap.set('n', '<leader>a', '<cmd>Alpha<cr>', { desc = '[A]lpha Dashboard' }) -- I don't like this here
 
       local logo = [[
-        ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-        ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-        ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-        ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-        ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-        ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
       ]]
       logo = string.rep("\n", 8) .. logo .. "\n\n"
 
@@ -47,8 +47,7 @@ return {
       }
 
       for _, button in ipairs(opts.config.center) do
-        button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
-        button.key_format = "  %s"
+        button.desc = button.desc .. string.rep(" ", 35 - #button.desc)
       end
 
       -- close Lazy and re-open when the dashboard is ready
