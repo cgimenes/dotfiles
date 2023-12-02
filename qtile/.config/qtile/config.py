@@ -12,7 +12,7 @@ mod="mod4"
 # terminal=guess_terminal()
 terminal="alacritty"
 browser="brave"
-launcher="dm-run"
+launcher='rofi -show combi -display-combi "Run:"'
 
 keys=[
     # Switch between windows
@@ -20,7 +20,7 @@ keys=[
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    Key([mod], "Tab", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
     Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
@@ -41,12 +41,11 @@ keys=[
     # Key([mod, "shift"], "space", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack",),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    Key([mod], "space", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen on the focused window",),
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod, "control"], "q", lazy.spawn("dm-logout"), desc="Logout menu"),
     Key([mod, "shift"], "Return", lazy.spawn(launcher), desc="Run launcher"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch web browser"),
@@ -115,7 +114,7 @@ layouts=[
     # layout.Zoomy(),
 ]
 
-font="Roboto"
+font="Iosevka Nerd Font"
 
 widget_defaults=dict(
     font=font,
