@@ -18,7 +18,10 @@ return {
       end
 
       require('nvim-tree').setup({
-        on_attach = on_attach
+        on_attach = on_attach,
+        view = {
+          width = 80,
+        },
       })
 
       vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'Tree [E]xplorer' })
