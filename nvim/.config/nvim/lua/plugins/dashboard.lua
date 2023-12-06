@@ -6,7 +6,7 @@ return {
       'nvim-tree/nvim-web-devicons'
     },
     opts = function()
-      vim.keymap.set('n', '<leader>a', '<cmd>Alpha<cr>', { desc = '[A]lpha Dashboard' }) -- I don't like this here
+      vim.keymap.set('n', '<leader>d', '<cmd>Dashboard<cr>', { desc = '[D]ashboard' }) -- I don't like this here
 
       local logo = [[
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗

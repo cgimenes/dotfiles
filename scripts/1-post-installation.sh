@@ -33,4 +33,3 @@ trizen -S --noconfirm siji-ttf
 trizen -S --noconfirm betterlockscreen
 trizen -S --noconfirm enpass-bin
 trizen -S --noconfirm dragon-drop
-#trizen -S --noconfirm qtile-extras
