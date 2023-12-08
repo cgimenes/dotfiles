@@ -19,8 +19,15 @@ return {
       },
     },
     config = function ()
+      local telescopeConfig = require("telescope.config")
+      local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
+      table.insert(vimgrep_arguments, "--hidden")
+      table.insert(vimgrep_arguments, "--glob")
+      table.insert(vimgrep_arguments, "!**/vendor/*")
+
       require('telescope').setup {
         defaults = {
+          vimgrep_arguments = vimgrep_arguments,
           mappings = {
             i = {
               ['<C-u>'] = false,
@@ -42,20 +49,25 @@ return {
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
-      vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-
       local function find_files()
         require('telescope.builtin').find_files {
           find_command = {
             'rg',
             '--files',
-            '--iglob', '!pkg',
-            '--iglob', '!.cache',
-            '--iglob', '!.git',
-            '--iglob', '!.npm',
-            '--iglob', '!.local/share',
+            '--glob', '!**/pkg/*',
+            '--glob', '!**/.cache/*',
+            '--glob', '!**/.git/*',
+            '--glob', '!**/.npm/*',
+            '--glob', '!**/vendor/*',
+            '--glob', '!**/node_modules/*',
+            '--glob', '!**/.local/share/*',
             '--hidden',
-            '--color', 'never'
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
           },
         }
       end
