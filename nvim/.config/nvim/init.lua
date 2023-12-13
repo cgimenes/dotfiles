@@ -83,8 +83,6 @@ vim.keymap.set('n', '<leader>h', '<cmd>nohlsearch<cr>', { desc = 'No [H]ighlight
 vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next Buffer' }) -- TODO move to bufferline.lua
 vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous Buffer' }) -- TODO move to bufferline.lua
 
-vim.keymap.set('n', '<leader>r', '<cmd>NvimTreeFindFile<cr>', { desc = '[R]eveal in File Explorer' })
-
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

@@ -13,7 +13,7 @@ return {
 
         vim.keymap.set('n', 'l', api.node.open.edit, opts "Open")
         vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts "Close Directory")
-        vim.keymap.set('n', '<C-R>', api.tree.change_root_to_parent, opts('Up'))
+        vim.keymap.set('n', '<bs>', api.tree.change_root_to_parent, opts('Up'))
         vim.keymap.set('n', '<C-r>', api.tree.change_root_to_node, opts('CD'))
       end
 
@@ -21,6 +21,9 @@ return {
         on_attach = on_attach,
         view = {
           width = 80,
+        },
+        update_focused_file = {
+          enable = true,
         },
       })
 

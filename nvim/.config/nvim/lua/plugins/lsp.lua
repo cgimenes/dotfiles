@@ -12,7 +12,7 @@ return {
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
     },
-    config = function ()
+    config = function()
       --  This function gets run when an LSP connects to a particular buffer.
       local on_attach = function(_, bufnr)
         local nmap = function(keys, func, desc)
@@ -28,6 +28,7 @@ return {
         nmap('<leader>lf', vim.lsp.buf.format, '[F]ormat')
 
         nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        nmap('gD', function() vim.lsp.buf.declaration() end, '[G]oto [D]eclaration')
         nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
         nmap('<leader>ld', require('telescope.builtin').lsp_document_symbols, '[D]ocument Symbols')
