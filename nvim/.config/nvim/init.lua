@@ -38,6 +38,8 @@ vim.o.hlsearch = true
 -- Make line numbers default
 vim.wo.number = true
 
+vim.wo.relativenumber = true
+
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
@@ -73,6 +75,17 @@ vim.o.termguicolors = true
 
 -- Keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+vim.keymap.set('i', "jk", "<Esc>")
+
+vim.keymap.set('n', "<C-L>", "<C-W><C-L>")
+vim.keymap.set('n', "<C-H>", "<C-W><C-H>")
+vim.keymap.set('n', "<C-K>", "<C-W><C-K>")
+vim.keymap.set('n', "<C-J>", "<C-W><C-J>")
+vim.keymap.set('n', "<C-d>", "<C-d>zz")
+vim.keymap.set('n', "<C-u>", "<C-u>zz")
+vim.keymap.set('n', "n", "nzzzv")
+vim.keymap.set('n', "N", "Nzzzv")
 
 vim.keymap.set('n', '<leader>c', MiniBufremove.delete, { desc = '[C]lose Buffer' })
 vim.keymap.set('n', '<leader>n', '<cmd>enew<cr>', { desc = '[N]ew Buffer' })
