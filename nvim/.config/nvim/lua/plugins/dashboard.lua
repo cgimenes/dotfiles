@@ -6,6 +6,29 @@ return {
       'nvim-tree/nvim-web-devicons'
     },
     opts = function()
+      local function find_files()
+        require('telescope.builtin').find_files {
+          find_command = {
+            'rg',
+            '--files',
+            '--glob', '!**/pkg/*',
+            '--glob', '!**/.cache/*',
+            '--glob', '!**/.git/*',
+            '--glob', '!**/.npm/*',
+            '--glob', '!**/vendor/*',
+            '--glob', '!**/node_modules/*',
+            '--glob', '!**/.local/share/*',
+            '--hidden',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+          },
+        }
+      end
+
       vim.keymap.set('n', '<leader>d', '<cmd>Dashboard<cr>', { desc = '[D]ashboard' }) -- I don't like this here
 
       local logo = [[
@@ -29,7 +52,7 @@ return {
           header = vim.split(logo, "\n"),
           -- stylua: ignore
           center = {
-            { action = "Telescope find_files",                                     desc = " Find file",       icon = " ", key = "f" },
+            { action = find_files,                                                 desc = " Find file",       icon = " ", key = "f" },
             { action = "ene | startinsert",                                        desc = " New file",        icon = " ", key = "n" },
             { action = "Telescope projects",                                       desc = " Projects",        icon = " ", key = "p" },
             { action = "Telescope oldfiles",                                       desc = " Recent files",    icon = " ", key = "r" },

@@ -11,10 +11,18 @@ return {
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
+
+      -- Breadcrumbs
+      "SmiteshP/nvim-navic",
     },
     config = function()
       --  This function gets run when an LSP connects to a particular buffer.
-      local on_attach = function(_, bufnr)
+      local on_attach = function(client, bufnr)
+        if client.server_capabilities.documentSymbolProvider then
+          local navic = require("nvim-navic")
+          navic.attach(client, bufnr)
+        end
+
         local nmap = function(keys, func, desc)
           if desc then
             desc = 'LSP: ' .. desc
@@ -27,10 +35,10 @@ return {
         nmap('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
         nmap('<leader>lf', vim.lsp.buf.format, '[F]ormat')
 
-        nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-        nmap('gD', function() vim.lsp.buf.declaration() end, '[G]oto [D]eclaration')
+        nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
         nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-        nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        -- nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+        -- nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
         nmap('<leader>ld', require('telescope.builtin').lsp_document_symbols, '[D]ocument Symbols')
         nmap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
 
@@ -60,7 +68,6 @@ return {
       local servers = {
         -- html = { filetypes = { 'html', 'twig', 'hbs'} },
         intelephense = {},
-        solargraph = {},
         tailwindcss = {},
         tsserver = {},
 

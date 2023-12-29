@@ -71,6 +71,11 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- Remove empty line at end of files
+vim.opt.endofline = false
+vim.opt.endoffile = false
+vim.opt.fixendofline = false
+
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -84,17 +89,17 @@ vim.keymap.set('n', "<C-K>", "<C-W><C-K>")
 vim.keymap.set('n', "<C-J>", "<C-W><C-J>")
 vim.keymap.set('n', "<C-d>", "<C-d>zz")
 vim.keymap.set('n', "<C-u>", "<C-u>zz")
+vim.keymap.set('n', "<C-o>", "<C-o>zz")
 vim.keymap.set('n', "n", "nzzzv")
 vim.keymap.set('n', "N", "Nzzzv")
 
-vim.keymap.set('n', '<leader>c', MiniBufremove.delete, { desc = '[C]lose Buffer' })
-vim.keymap.set('n', '<leader>n', '<cmd>enew<cr>', { desc = '[N]ew Buffer' })
+vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>', { desc = '[N]ew Buffer' })
 vim.keymap.set('n', '<leader>w', '<cmd>w!<cr>', { desc = '[W]rite to File' })
-vim.keymap.set('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', { desc = 'Comment toggle current line' })
-vim.keymap.set('n', '<leader>h', '<cmd>nohlsearch<cr>', { desc = 'No [H]ighlight' })
+vim.keymap.set('n', '<leader>-', '<Plug>(comment_toggle_linewise_current)', { desc = 'Comment toggle current line' })
+vim.keymap.set('n', '<leader>n', '<cmd>nohlsearch<cr>', { desc = '[N]o Highlight' })
 
-vim.keymap.set('n', ']b', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next Buffer' }) -- TODO move to bufferline.lua
-vim.keymap.set('n', '[b', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Previous Buffer' }) -- TODO move to bufferline.lua
+vim.keymap.set('v', '>', '>gv')
+vim.keymap.set('v', '<', '<gv')
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
