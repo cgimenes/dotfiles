@@ -1,6 +1,6 @@
 return {
   {
-    'NvChad/nvim-colorizer.lua',
+    'uga-rosa/ccc.nvim',
     opts = {},
   }
 }
