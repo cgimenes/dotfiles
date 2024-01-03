@@ -83,10 +83,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set('i', "jk", "<Esc>")
 
-vim.keymap.set('n', "<C-L>", "<C-W><C-L>")
-vim.keymap.set('n', "<C-H>", "<C-W><C-H>")
-vim.keymap.set('n', "<C-K>", "<C-W><C-K>")
-vim.keymap.set('n', "<C-J>", "<C-W><C-J>")
+vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr>')
+
 vim.keymap.set('n', "<C-d>", "<C-d>zz")
 vim.keymap.set('n', "<C-u>", "<C-u>zz")
 vim.keymap.set('n', "<C-o>", "<C-o>zz")

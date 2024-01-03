@@ -27,6 +27,7 @@ vim/.vim/.netrwhist
 ranger/.config/ranger/history
 qutebrowser/.config/qutebrowser/qsettings/
 nvim/.config/nvim/lazy-lock.json
+nvim/.config/nvim/session/
 bin/.local/bin/trans
 bin/.local/bin/lvim
 __pycache__/
