@@ -13,7 +13,12 @@ return {
       'folke/neodev.nvim',
 
       -- Breadcrumbs
-      "SmiteshP/nvim-navic",
+      {
+        "SmiteshP/nvim-navic",
+        opts = {
+          highlight = true
+        },
+      }
     },
     config = function()
       --  This function gets run when an LSP connects to a particular buffer.
@@ -38,7 +43,7 @@ return {
         nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
         nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         -- nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        -- nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
         nmap('<leader>ld', require('telescope.builtin').lsp_document_symbols, '[D]ocument Symbols')
         nmap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
 

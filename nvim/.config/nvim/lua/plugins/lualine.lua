@@ -196,12 +196,42 @@ return {
     -- See `:help lualine.txt`
     opts = {
       options = {
+        globalstatus = true,
         icons_enabled = true,
         theme = 'onedark',
         component_separators = '',
         section_separators = '',
         disabled_filetypes = {
-          'dashboard',
+          statusline = {
+            'dashboard',
+          },
+          winbar = {
+            "help",
+            "startify",
+            "dashboard",
+            "lazy",
+            "neo-tree",
+            "neogitstatus",
+            "NvimTree",
+            "Trouble",
+            "alpha",
+            "lir",
+            "Outline",
+            "spectre_panel",
+            "toggleterm",
+            "DressingSelect",
+            "Jaq",
+            "harpoon",
+            "dap-repl",
+            "dap-terminal",
+            "dapui_console",
+            "dapui_hover",
+            "lab",
+            "notify",
+            "noice",
+            "neotest-summary",
+            "",
+          },
         },
       },
       sections = {
@@ -237,11 +267,6 @@ return {
               modified = { fg = colors.yellow },
               removed = { fg = colors.red },
             },
-            cond = nil,
-          },
-          {
-            "filename",
-            color = {},
             cond = nil,
           },
         },
@@ -322,17 +347,32 @@ return {
           },
         },
         lualine_z = {
-          -- {
-          --   "progress",
-          --   fmt = function()
-          --     return "%P/%L"
-          --   end,
-          --   color = {},
-          -- },
+          {
+            "searchcount",
+          },
         },
       },
       winbar = {
         lualine_c = {
+          {
+            "filename",
+            color = {},
+            cond = nil,
+          },
+          {
+            "navic",
+            color_correction = nil,
+            navic_opts = nil,
+          },
+        },
+      },
+      inactive_winbar = {
+        lualine_c = {
+          {
+            "filename",
+            color = {},
+            cond = nil,
+          },
           {
             "navic",
             color_correction = nil,

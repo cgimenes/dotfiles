@@ -37,7 +37,6 @@ vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
-
 vim.wo.relativenumber = true
 
 -- Enable mouse mode
@@ -62,7 +61,7 @@ vim.o.smartcase = true
 vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.o.updatetime = 100
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
@@ -98,6 +97,9 @@ vim.keymap.set('n', '<leader>n', '<cmd>nohlsearch<cr>', { desc = '[N]o Highlight
 
 vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', '<', '<gv')
+
+vim.keymap.set('n', '[<Space>', 'O<Esc>j')
+vim.keymap.set('n', ']<Space>', 'o<Esc>k')
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
