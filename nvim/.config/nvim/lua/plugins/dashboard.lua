@@ -29,7 +29,7 @@ return {
         }
       end
 
-      vim.keymap.set('n', '<leader>d', '<cmd>Dashboard<cr>', { desc = '[D]ashboard' }) -- I don't like this here
+      vim.keymap.set('n', '<leader>;', '<cmd>Dashboard<cr>', { desc = 'Dashboard' }) -- I don't like this here
 
       local logo = [[
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗

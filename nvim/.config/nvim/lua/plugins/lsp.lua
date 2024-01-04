@@ -6,7 +6,6 @@ return {
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
@@ -71,11 +70,6 @@ return {
       --  If you want to override the default filetypes that your language server will attach to you can
       --  define the property 'filetypes' to the map in question.
       local servers = {
-        -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-        intelephense = {},
-        tailwindcss = {},
-        tsserver = {},
-
         lua_ls = {
           Lua = {
             workspace = { checkThirdParty = false },
@@ -108,6 +102,42 @@ return {
           }
         end,
       }
+
+      local diagnostic_config = {
+        signs = true,
+        virtual_text = {
+          spacing = 4,
+          source = "if_many",
+          prefix = "●",
+          -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+          -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+          -- prefix = "icons",
+        },
+        update_in_insert = false,
+        underline = true,
+        severity_sort = true,
+        float = {
+          focusable = true,
+          style = "minimal",
+          border = "rounded",
+          source = "always",
+          header = "",
+          prefix = "",
+        },
+      }
+
+      vim.diagnostic.config(diagnostic_config)
+
+      local signs = {
+        { name = "DiagnosticSignError", text = ' ' },
+        { name = "DiagnosticSignWarn", text = ' ' },
+        { name = "DiagnosticSignHint", text = ' 󰌶' },
+        { name = "DiagnosticSignInfo", text = ' ' },
+      }
+
+      for _, sign in ipairs(signs) do
+        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+      end
     end
   },
 }
