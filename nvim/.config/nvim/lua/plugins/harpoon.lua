@@ -9,8 +9,8 @@ return {
       require("harpoon"):setup()
     end,
     keys = {
-      { '<leader>ha', function() require('harpoon'):list():append() end, desc = '[A]dd to Harpoon' },
-      { '<leader>hh', function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end, desc = '[H]arpoon Menu' },
+      { '<leader>a', function() require('harpoon'):list():append() end, desc = '[A]dd to Harpoon' },
+      { '<C-g>', function() require('harpoon').ui:toggle_quick_menu(require('harpoon'):list()) end, desc = '[H]arpoon Menu' },
       { '<leader>h1', function() require('harpoon'):list():select(1) end, desc = '[1] Harpoon' },
       { '<leader>h2', function() require('harpoon'):list():select(2) end, desc = '[2] Harpoon' },
       { '<leader>h3', function() require('harpoon'):list():select(3) end, desc = '[3] Harpoon' },

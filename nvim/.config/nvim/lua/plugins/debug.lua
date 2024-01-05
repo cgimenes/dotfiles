@@ -85,11 +85,11 @@ return {
       dap.adapters.php = {
         type = 'executable',
         command = 'node',
-        args = { vim.fn.stdpath 'config' .. '/debuggers/vscode-php-debug/out/phpDebug.js' }
+        args = { vim.fn.stdpath 'cache' .. '/debuggers/vscode-php-debug/out/phpDebug.js' }
       }
 
-      -- git clone https://github.com/xdebug/vscode-php-debug.git
-      -- cd vscode-php-debug
+      -- git clone https://github.com/xdebug/vscode-php-debug.git ~/.cache/nvim/debuggers/vscode-php-debug
+      -- cd ~/.cache/nvim/debuggers/vscode-php-debug
       -- npm install && npm run build
 
       dap.configurations.php = {
@@ -97,12 +97,34 @@ return {
           type = 'php',
           request = 'launch',
           name = 'Listen for Xdebug',
-          port = 9003
+          port = 9003,
+          pathMappings = {
+            ["/application"] = '${workspaceFolder}',
+          }
         }
       }
 
       require('dap-go').setup()
       require('dap-ruby').setup()
-    end,
+
+      vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
+      vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })
+      vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = '#98c379', bg = '#31353f' })
+
+      vim.fn.sign_define('DapBreakpoint',
+        { text = ' ●', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapBreakpointCondition',
+        { text = ' ●', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapBreakpointRejected',
+        { text = ' ●', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapLogPoint', {
+        text = ' ●',
+        texthl = 'DapLogPoint',
+        linehl = 'DapLogPoint',
+        numhl =
+        'DapLogPoint'
+      })
+      vim.fn.sign_define('DapStopped', { text = ' ', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
+    end
   }
 }

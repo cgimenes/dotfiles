@@ -1,3 +1,5 @@
+alias fcd='cd $(fd -H -t d | fzf)'
+
 # Clipboard
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
