@@ -17,7 +17,10 @@ return {
         opts = {
           highlight = true
         },
-      }
+      },
+
+      -- JSON schemas
+      "b0o/schemastore.nvim",
     },
     config = function()
       --  This function gets run when an LSP connects to a particular buffer.
@@ -70,6 +73,12 @@ return {
       --  If you want to override the default filetypes that your language server will attach to you can
       --  define the property 'filetypes' to the map in question.
       local servers = {
+        jsonls = {
+          json = {
+            schemas = require('schemastore').json.schemas(),
+            validate = { enable = true },
+          },
+        },
         lua_ls = {
           Lua = {
             workspace = { checkThirdParty = false },
@@ -83,6 +92,7 @@ return {
 
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
       capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
       -- Ensure the servers above are installed

@@ -42,3 +42,6 @@ alias pscpu='ps auxf | sort -nr -k 3'
 
 # termbin
 alias tb="nc termbin.com 9999"
+
+# hacks
+alias fv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'

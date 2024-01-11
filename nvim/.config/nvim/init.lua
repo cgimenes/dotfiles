@@ -19,7 +19,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   { import = 'plugins' },
-  -- require 'kickstart.plugins.autoformat',
 }, {
   change_detection = {
     notify = false
@@ -100,6 +99,8 @@ vim.keymap.set('v', '<', '<gv')
 
 vim.keymap.set('n', '[<Space>', 'O<Esc>j')
 vim.keymap.set('n', ']<Space>', 'o<Esc>k')
+
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = "Paste without yanking" })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })

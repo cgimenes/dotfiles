@@ -65,7 +65,6 @@ return {
       require('nvim-tree').setup({
         on_attach = on_attach,
         view = {
-          -- width = 80,
           adaptive_size = true,
         },
         update_focused_file = {
@@ -73,6 +72,11 @@ return {
         },
         git = {
           enable = false,
+        },
+        actions = {
+          open_file = {
+            quit_on_open = true,
+          },
         },
       })
 
