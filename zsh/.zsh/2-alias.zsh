@@ -1,5 +1,3 @@
-alias fcd='cd $(fd -H -t d | fzf)'
-
 # Clipboard
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
@@ -45,3 +43,5 @@ alias tb="nc termbin.com 9999"
 
 # hacks
 alias fv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
+alias fcd='cd $(fd -H -t d | fzf)'
+
