@@ -61,6 +61,10 @@ return {
             show_line = false,
             initial_mode = 'normal',
           },
+          lsp_implementations = {
+            show_line = false,
+            initial_mode = 'normal',
+          },
           colorscheme = {
             enable_preview = true,
           }

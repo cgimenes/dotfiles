@@ -53,6 +53,18 @@ return {
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
         vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
         vim.keymap.set('n', '<leader>lm', vim.diagnostic.open_float, { desc = 'Open floating diagnostic [M]essage' })
+        vim.keymap.set('n', '<leader>lD', function ()
+          vim.diagnostic.config({
+            virtual_text = false,
+            underline = false,
+          })
+        end, { desc = '[D]isable diagnostic virtual text' })
+        vim.keymap.set('n', '<leader>lR', function ()
+          vim.diagnostic.config({
+            virtual_text = true,
+            underline = true,
+          })
+        end, { desc = '[E]nable diagnostic virtual text' })
 
         -- See `:help K` for why this keymap
         nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -145,10 +157,10 @@ return {
       vim.diagnostic.config(diagnostic_config)
 
       local signs = {
-        { name = "DiagnosticSignError", text = ' ' },
-        { name = "DiagnosticSignWarn", text = ' ' },
-        { name = "DiagnosticSignHint", text = ' 󰌶' },
-        { name = "DiagnosticSignInfo", text = ' ' },
+        { name = "DiagnosticSignError", text = '' },
+        { name = "DiagnosticSignWarn", text = '' },
+        { name = "DiagnosticSignHint", text = '󰌶' },
+        { name = "DiagnosticSignInfo", text = '' },
       }
 
       for _, sign in ipairs(signs) do

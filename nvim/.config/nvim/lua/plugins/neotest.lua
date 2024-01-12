@@ -9,11 +9,28 @@ return {
     },
     config = function()
       require('neotest').setup({
-        status = { virtual_text = true },
-        output = { open_on_run = true },
+        output = {
+          open_on_run = true
+        },
         adapters = {
           require("neotest-phpunit"),
         },
+        summary = {
+          animated = false,
+        },
+        icons = {
+          expanded = "",
+          child_prefix = "",
+          child_indent = "",
+          final_child_prefix = "",
+          non_collapsible = "",
+          collapsed = "",
+
+          passed = "",
+          running = "",
+          failed = "",
+          unknown = ""
+        }
       })
     end,
     keys = {

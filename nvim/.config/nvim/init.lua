@@ -28,6 +28,9 @@ require('lazy').setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Cursor line
+vim.o.cursorline = true
+
 -- No swap file
 vim.o.swapfile = false
 

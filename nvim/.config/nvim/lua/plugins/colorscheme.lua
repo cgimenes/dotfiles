@@ -43,5 +43,13 @@ return {
       -- vim.cmd.colorscheme "catppuccin-frappe"
       -- vim.cmd.colorscheme "catppuccin-latte"
     end,
-  }
+  },
+  {
+    'nordtheme/vim',
+    priority = 1000,
+    config = function()
+      -- vim.opt.termguicolors = true
+      -- vim.cmd.colorscheme 'nord'
+    end,
+  },
 }
