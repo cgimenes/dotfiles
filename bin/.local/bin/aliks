@@ -51,10 +51,10 @@ class Aliks < Thor
 
   desc 'get', 'Prints the default sink alias'
   def get
-    message = @aliases[@provider.default_sink]
-    message = @provider.default_sink if message.nil?
-
-    puts message
+    sink = @provider.list_sinks.detect { |s| s['name'] == @provider.default_sink }
+    port = ''
+    port = ": #{sink['ports'][0]['description']}" if sink['ports'].size > 1
+    puts sink['description'] + port
   end
 
   desc 'list', 'List alias of available sinks'
