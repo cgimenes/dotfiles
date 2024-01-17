@@ -18,7 +18,7 @@ return {
         end,
       },
     },
-    config = function ()
+    config = function()
       local telescopeConfig = require("telescope.config")
       local telescopeStrategies = require('telescope.pickers.layout_strategies')
       local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
@@ -27,7 +27,8 @@ return {
       table.insert(vimgrep_arguments, "!**/vendor/*")
 
       telescopeStrategies.vertical_merged = function(picker, max_columns, max_lines, layout_config)
-        local layout = require('telescope.pickers.layout_strategies').vertical(picker, max_columns, max_lines, layout_config)
+        local layout = require('telescope.pickers.layout_strategies').vertical(picker, max_columns, max_lines,
+          layout_config)
         layout.results.line = layout.results.line - 1
         layout.results.height = layout.results.height + 1
         layout.results.title = ''
@@ -37,10 +38,15 @@ return {
 
       require('telescope').setup {
         defaults = {
+          prompt_prefix = " ",
+          selection_caret = " ",
           vimgrep_arguments = vimgrep_arguments,
           mappings = {
             i = {
-              ['<C-b>'] = require('telescope.actions').delete_buffer,
+              ['<C-d>'] = require('telescope.actions').delete_buffer,
+            },
+            n = {
+              ["dd"] = require('telescope.actions').delete_buffer,
             },
           },
           layout_strategy = 'vertical_merged',
@@ -64,6 +70,9 @@ return {
           lsp_implementations = {
             show_line = false,
             initial_mode = 'normal',
+          },
+          lsp_document_symbols = {
+            symbol_width = 50,
           },
           colorscheme = {
             enable_preview = true,
@@ -105,7 +114,8 @@ return {
       end
 
       vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = 'Search [R]ecently opened files' })
+      vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles,
+        { desc = 'Search [R]ecently opened files' })
       vim.keymap.set('n', '<leader>s/', buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
       vim.keymap.set('n', '<leader>sf', find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })

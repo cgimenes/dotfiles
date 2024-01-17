@@ -28,6 +28,10 @@ require('lazy').setup({
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Show spaces
+vim.o.list = false
+vim.o.lcs = "space:·"
+
 -- Cursor line
 vim.o.cursorline = true
 
@@ -103,6 +107,9 @@ vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('n', '[<Space>', 'O<Esc>j')
 vim.keymap.set('n', ']<Space>', 'o<Esc>k')
 
+vim.keymap.set('n', '[q', '<cmd>cprev<cr>')
+vim.keymap.set('n', ']q', '<cmd>cnext<cr>')
+
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = "Paste without yanking" })
 
 -- Remap for dealing with word wrap
@@ -111,6 +118,9 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- Oil
 vim.keymap.set('n', '<leader>o', '<cmd>Oil<cr>', { desc = '[O]il' })
+
+-- Show spaces
+vim.keymap.set('n', '<leader><space>', '<cmd>set list!<cr>', { desc = 'Toggle show spaces' })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
