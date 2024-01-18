@@ -21,6 +21,7 @@ return {
 
       -- JSON schemas
       "b0o/schemastore.nvim",
+
     },
     config = function()
       --  This function gets run when an LSP connects to a particular buffer.
@@ -45,7 +46,7 @@ return {
         nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
         nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
         -- nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+        nmap('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
         nmap('<leader>ld', require('telescope.builtin').lsp_document_symbols, '[D]ocument Symbols')
         nmap('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
 
@@ -53,13 +54,13 @@ return {
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
         vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
         vim.keymap.set('n', '<leader>lm', vim.diagnostic.open_float, { desc = 'Open floating diagnostic [M]essage' })
-        vim.keymap.set('n', '<leader>lD', function ()
+        vim.keymap.set('n', '<leader>lD', function()
           vim.diagnostic.config({
             virtual_text = false,
             underline = false,
           })
         end, { desc = '[D]isable diagnostic virtual text' })
-        vim.keymap.set('n', '<leader>lR', function ()
+        vim.keymap.set('n', '<leader>lR', function()
           vim.diagnostic.config({
             virtual_text = true,
             underline = true,
@@ -154,5 +155,22 @@ return {
         vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
       end
     end
+  },
+  {
+    -- Diagnostics list
+    "folke/trouble.nvim",
+    opts = {
+    },
+    keys = {
+      { '<leader>lt', '<cmd>TroubleToggle document_diagnostics<cr>', desc = 'Document Diagnostics' },
+      { 'gR', '<cmd>Trouble lsp_references<cr>', desc = 'Symbol References' },
+      { 'gI', '<cmd>Trouble lsp_implementations<cr>', desc = 'Symbol Implementations' },
+    },
+    cmd = {
+      "Trouble",
+      "TroubleClose",
+      "TroubleToggle",
+      "TroubleRefresh",
+    },
   },
 }

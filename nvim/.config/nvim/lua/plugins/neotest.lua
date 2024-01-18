@@ -13,7 +13,9 @@ return {
           open_on_run = true
         },
         adapters = {
-          require("neotest-phpunit"),
+          require("neotest-phpunit")({
+            dap = require('dap').configurations.php[1]
+          }),
         },
         summary = {
           animated = false,

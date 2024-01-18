@@ -4,6 +4,8 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export MANPAGER="nvim +Man!"
 
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/config"
+
 # Set VI mode
 bindkey -v
 

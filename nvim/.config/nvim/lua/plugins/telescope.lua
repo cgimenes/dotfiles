@@ -21,6 +21,8 @@ return {
     config = function()
       local telescopeConfig = require("telescope.config")
       local telescopeStrategies = require('telescope.pickers.layout_strategies')
+      local actions = require("telescope.actions")
+      local trouble = require("trouble.providers.telescope")
       local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
       table.insert(vimgrep_arguments, "--hidden")
       table.insert(vimgrep_arguments, "--glob")
@@ -43,10 +45,12 @@ return {
           vimgrep_arguments = vimgrep_arguments,
           mappings = {
             i = {
-              ['<C-d>'] = require('telescope.actions').delete_buffer,
+              ['<C-d>'] = actions.delete_buffer,
+              ["<c-t>"] = trouble.open_with_trouble,
             },
             n = {
-              ["dd"] = require('telescope.actions').delete_buffer,
+              ["dd"] = actions.delete_buffer,
+              ["<c-t>"] = trouble.open_with_trouble,
             },
           },
           layout_strategy = 'vertical_merged',

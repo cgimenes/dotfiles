@@ -98,6 +98,7 @@ return {
           type = 'php',
           request = 'launch',
           name = 'Listen for Xdebug',
+          log = true,
           port = 9003,
           pathMappings = {
             ["/application"] = '${workspaceFolder}',
