@@ -1,11 +1,11 @@
 #!/bin/bash
 
 cd /tmp
-git clone https://aur.archlinux.org/trizen.git
-cd trizen
+git clone https://aur.archlinux.org/paru.git
+cd paru
 makepkg -si --noconfirm
 cd ..
-rm -rf trizen
+rm -rf paru
 
 cd $HOME
 git clone https://github.com/cgimenes/dotfiles.git
@@ -25,11 +25,12 @@ stow rofi
 stow lf
 stow dunst
 stow bin
+stow rg
 
 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -
-trizen -S --noconfirm spotify
-trizen -S --noconfirm brave-bin
-trizen -S --noconfirm siji-ttf
-trizen -S --noconfirm betterlockscreen
-trizen -S --noconfirm enpass-bin
-trizen -S --noconfirm dragon-drop
+paru -S --noconfirm spotify
+paru -S --noconfirm brave-bin
+paru -S --noconfirm siji-ttf
+paru -S --noconfirm betterlockscreen
+paru -S --noconfirm enpass-bin
+paru -S --noconfirm dragon-drop
