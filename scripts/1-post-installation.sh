@@ -26,6 +26,7 @@ stow lf
 stow dunst
 stow bin
 stow rg
+stow tmux
 
 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -
 paru -S --noconfirm spotify

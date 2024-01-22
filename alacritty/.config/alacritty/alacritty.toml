@@ -3,22 +3,22 @@ import = [
 ]
 
 [font]
-size = 11.0
+size = 12
 
 [font.bold]
-family = "Iosevka Nerd Font Mono"
+family = "Iosevka"
 style = "Bold"
 
 [font.bold_italic]
-family = "Iosevka Nerd Font Mono"
+family = "Iosevka"
 style = "Bold Italic"
 
 [font.italic]
-family = "Iosevka Nerd Font Mono"
+family = "Iosevka"
 style = "Italic"
 
 [font.normal]
-family = "Iosevka Nerd Font Mono"
+family = "Iosevka"
 style = "Regular"
 
 [window.padding]
