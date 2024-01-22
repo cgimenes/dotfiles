@@ -47,7 +47,7 @@ cmd unarchive ${{
       *.tar.gz) tar -xzvf "$f" ;;
       *.tar.bz2) tar -xjvf "$f" ;;
       *.tar) tar -xvf "$f" ;;
-      *) echo "Unsupported format" ;;
+      *) echo "Unsupported format. Trying unzip"; unzip "$f" ;;
   esac
 }}
 
@@ -142,5 +142,6 @@ map gD cd ~/Downloads
 map gd cd ~/dev/src
 map gt cd ~/dev/src/tmp
 map gc cd ~/dev/src/github.com/cgimenes
+map gm cd /run/media
 
 map f fzf_jump

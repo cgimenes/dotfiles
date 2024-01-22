@@ -49,38 +49,38 @@ URxvt.iso14755: False
 
 ! colors
 ! special
-*.foreground:   #c5c8c6
-*.background:   #1d1f21
-*.cursorColor:  #c5c8c6
+*.foreground:   #dcd7ba
+*.background:   #1f1f28
+*.cursorColor:  #dcd7ba
 
 ! black
-*.color0:       #282a2e
-*.color8:       #373b41
+*.color0:       #090618
+*.color8:       #727169
 
 ! red
-*.color1:       #a54242
-*.color9:       #cc6666
+*.color1:       #c34043
+*.color9:       #e82424
 
 ! green
-*.color2:       #8c9440
-*.color10:      #b5bd68
+*.color2:       #76946a
+*.color10:      #98bb6c
 
 ! yellow
-*.color3:       #de935f
-*.color11:      #f0c674
+*.color3:       #c0a36e
+*.color11:      #e6c384
 
 ! blue
-*.color4:       #5f819d
-*.color12:      #81a2be
+*.color4:       #7e9cd8
+*.color12:      #7fb4ca
 
 ! magenta
-*.color5:       #85678f
-*.color13:      #b294bb
+*.color5:       #957fb8
+*.color13:      #938aa9
 
 ! cyan
-*.color6:       #5e8d87
-*.color14:      #8abeb7
+*.color6:       #6a9589
+*.color14:      #7aa89f
 
 ! white
-*.color7:       #707880
-*.color15:      #c5c8c6
+*.color7:       #c8c093
+*.color15:      #dcd7ba
