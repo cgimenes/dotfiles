@@ -6,19 +6,19 @@ import = [
 size = 12
 
 [font.bold]
-family = "Iosevka"
+family = "JetBrains Mono"
 style = "Bold"
 
 [font.bold_italic]
-family = "Iosevka"
+family = "JetBrains Mono"
 style = "Bold Italic"
 
 [font.italic]
-family = "Iosevka"
+family = "JetBrains Mono"
 style = "Italic"
 
 [font.normal]
-family = "Iosevka"
+family = "JetBrains Mono"
 style = "Regular"
 
 [window.padding]
