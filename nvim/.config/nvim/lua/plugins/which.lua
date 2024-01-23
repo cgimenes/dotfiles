@@ -7,6 +7,7 @@ return {
       require('which-key').register {
         ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]ebug', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
         ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
         ['<leader>l'] = { name = '[L]SP', _ = 'which_key_ignore' },
         ['<leader>q'] = { name = 'Session', _ = 'which_key_ignore' },

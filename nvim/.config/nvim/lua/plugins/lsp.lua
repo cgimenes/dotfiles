@@ -160,6 +160,7 @@ return {
     -- Diagnostics list
     "folke/trouble.nvim",
     opts = {
+      cycle_results = false,
     },
     keys = {
       { '<leader>lt', '<cmd>TroubleToggle document_diagnostics<cr>', desc = 'Document Diagnostics' },
