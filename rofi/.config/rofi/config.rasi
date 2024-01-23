@@ -1,9 +1,9 @@
 configuration {
   modes: [ combi ];
   combi-modes: [ run, drun ];
-  font: "Iosevka NF 12";
-//  matching: "fuzzy";
+  font: "JetBrainsMonoNL NF 11";
   combi-hide-mode-prefix: true;
+//  matching: "fuzzy";
 }
 
 @theme "kanagawa"
