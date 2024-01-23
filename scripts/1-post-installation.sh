@@ -35,3 +35,4 @@ paru -S --noconfirm siji-ttf
 paru -S --noconfirm betterlockscreen
 paru -S --noconfirm enpass-bin
 paru -S --noconfirm dragon-drop
+paru -S --noconfirm slack-desktop

@@ -7,7 +7,7 @@ super + Return
 	alacritty
 
 # program launcher
-super + shift + Return
+super + d
 	rofi -show combi -display-combi "Run:"
 
 # web browser
@@ -182,11 +182,11 @@ super + {Left,Down,Up,Right}
 #
 # dm scripts
 #
-super + d; e
+super + shift + p; e
 	dm-confedit
 
-super + d; g
+super + shift + p; g
 	dm-goto-project
 
-super + d; p
+super + shift + p; p
 	dm-pipewire-out-switcher
