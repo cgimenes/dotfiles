@@ -8,10 +8,13 @@ pgrep -x polybar > /dev/null || ~/dotfiles/scripts/polybar &
 pgrep -x copyq > /dev/null || copyq &
 pgrep -x lxsession > /dev/null || lxsession &
 nitrogen --restore &
-xsetroot -cursor_name left_ptr &
-xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
-xinput set-prop "DELL0B56:00 04F3:317E Touchpad" "libinput Tapping Enabled" 1 &
 udiskie &
+
+# X configs
+xsetroot -cursor_name left_ptr
+xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+xinput set-prop "DELL0B56:00 04F3:317E Touchpad" "libinput Tapping Enabled" 1
+setxkbmap -layout 'us,us,br,br' -variant ',intl,thinkpad,'
 
 # Workspaces
 bspc monitor -d I II III IV V VI
