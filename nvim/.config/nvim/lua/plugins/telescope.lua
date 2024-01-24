@@ -47,6 +47,7 @@ return {
             i = {
               ['<C-d>'] = actions.delete_buffer,
               ["<c-t>"] = trouble.open_with_trouble,
+              ["<esc>"] = actions.close,
             },
             n = {
               ["dd"] = actions.delete_buffer,
