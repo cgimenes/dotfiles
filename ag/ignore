@@ -24,6 +24,8 @@ public/assets
 .bundle
 .byebug_history
 .env
+composer.lock
+package.lock
 db/*.sqlite3
 log/*.log
 rerun.txt

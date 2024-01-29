@@ -17,6 +17,8 @@ web:*.{html,css,js,jsx,tsx,ts}*
 --glob=!**/vendor/*'
 --glob=!**/node_modules/*'
 --glob=!**/.local/share/*'
+--glob=!**/composer.lock'
+--glob=!**/package.lock'
 
 # Because who cares about case!?
 --smart-case
