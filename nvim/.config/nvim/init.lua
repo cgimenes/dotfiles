@@ -88,7 +88,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set('i', "jk", "<Esc>")
 
-vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr>')
+vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>TroubleClose<cr>')
 
 vim.keymap.set('n', "<C-d>", "<C-d>zz")
 vim.keymap.set('n', "<C-u>", "<C-u>zz")
