@@ -135,6 +135,7 @@
     "ntp": true,
     "offline": false,
     "packages": [
+        "acpilight",
         "alacritty",
         "arc-gtk-theme",
         "autorandr",
