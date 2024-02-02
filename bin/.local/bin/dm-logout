@@ -26,12 +26,11 @@ grep-desktop() {
 main() {
     # An array of options to choose.
     declare -a options=(
+        "Shutdown"
         "Lock screen"
         "Logout"
         "Reboot"
-        "Shutdown"
         "Suspend"
-        "Quit"
     )
 
     # look up what managers are used (makes it more dynamic)
@@ -80,9 +79,6 @@ main() {
         else
             output "User chose not to suspend." && exit 0
         fi
-        ;;
-    'Quit')
-        output "Program terminated." && exit 0
         ;;
     # It is a common practice to use the wildcard asterisk symbol (*) as a final
     # pattern to define the default case. This pattern will always match.
