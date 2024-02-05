@@ -110,7 +110,12 @@ vim.keymap.set('n', ']<Space>', 'o<Esc>k')
 vim.keymap.set('n', '[q', '<cmd>cprev<cr>')
 vim.keymap.set('n', ']q', '<cmd>cnext<cr>')
 
-vim.keymap.set('x', '<leader>p', '"_dP', { desc = "Paste without yanking" })
+vim.keymap.set('v', '$', 'g_')
+
+-- Better pasting experience
+vim.keymap.set('n', '<leader>pp', '"_dp', { desc = "Paste without yanking" })
+vim.keymap.set('n', '<leader>pe', '$p', { desc = "Paste at the end of current line" })
+vim.keymap.set('n', '<leader>pE', '$pa', { desc = "Paste at the end of current line and enter insert mode" })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
