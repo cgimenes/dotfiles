@@ -1,5 +1,34 @@
 return {
   {
+    'tpope/vim-fugitive',
+    config = function ()
+      vim.keymap.set('n', '<leader>gs', '<cmd>Git<cr><C-w>o', { desc = '[G]it [S]tatus' })
+      vim.keymap.set('n', '<leader>gd', '<cmd>Gvdiff<cr>', { desc = '[G]it [D]iff' })
+      vim.keymap.set('n', '<leader>gb', '<cmd>G blame<cr>', { desc = '[G]it [B]lame' })
+    end,
+    dependencies = {
+      "tpope/vim-rhubarb",
+    }
+  },
+  {
+    "sindrets/diffview.nvim",
+    cmd = 'DiffviewFileHistory',
+    keys = {
+      { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
+    }
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    cmd = 'LazyGit',
+    keys = {
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Restore Session" },
+    }
+  },
+  {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
