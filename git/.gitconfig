@@ -2,12 +2,10 @@
   sslVerify = true
 
 [alias]
-  st = status
+  uncommit = reset --soft HEAD^
   unstage = restore --staged .
-  d = difftool -d
   remotes = remote -v
   branches = branch -a
-  co = checkout
   tags = tag --list
 
 [color]
@@ -26,7 +24,11 @@
   prune = true
 
 [pull]
-  ff = only
+  rebase = true
+
 [user]
-	email = marcelo.gimenes.oliveira@gmail.com
-	name = Marcelo Gimenes de Oliveira
+  email = marcelo.gimenes.oliveira@gmail.com
+  name = Marcelo Gimenes de Oliveira
+
+[hub]
+  protocol = ssh
