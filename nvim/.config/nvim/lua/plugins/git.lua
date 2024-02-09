@@ -15,7 +15,18 @@ return {
     cmd = 'DiffviewFileHistory',
     keys = {
       { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
-    }
+    },
+    config = function()
+      local diffview = require("diffview")
+
+      require("diffview").setup({
+        keymaps = {
+          file_history_panel = {
+            { "n", "gq", diffview.close, { desc = "Close" } },
+          },
+        },
+      })
+    end,
   },
   {
     "kdheepak/lazygit.nvim",
