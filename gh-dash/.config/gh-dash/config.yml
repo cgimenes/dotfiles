@@ -1,6 +1,8 @@
 prSections:
-- title: My Pull Requests
+- title: My Open PRs
   filters: is:open author:@me
+- title: My Merged PRs
+  filters: is:merged author:@me
 - title: Needs My Review
   filters: is:open draft:false review-requested:@me
 issuesSections:
