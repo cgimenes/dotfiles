@@ -48,7 +48,7 @@ main() {
     # What to do when/if we choose one of the options.
     case $choice in
     'Logout')
-        if [[ "$(echo -e "No\nYes" | ${MENU} "${choice}?")" == "Yes" ]]; then
+        if [[ "$(echo -e "Yes\nNo" | ${MENU} "${choice}?")" == "Yes" ]]; then
             for manager in "${managers[@]}"; do
                 loginctl kill-user "$UID"
             done
@@ -60,21 +60,21 @@ main() {
         betterlockscreen -l dim
         ;;
     'Reboot')
-        if [[ "$(echo -e "No\nYes" | ${MENU} "${choice}?")" == "Yes" ]]; then
+        if [[ "$(echo -e "Yes\nNo" | ${MENU} "${choice}?")" == "Yes" ]]; then
             systemctl reboot
         else
             output "User chose not to reboot." && exit 0
         fi
         ;;
     'Shutdown')
-        if [[ "$(echo -e "No\nYes" | ${MENU} "${choice}?")" == "Yes" ]]; then
+        if [[ "$(echo -e "Yes\nNo" | ${MENU} "${choice}?")" == "Yes" ]]; then
             systemctl poweroff
         else
             output "User chose not to shutdown." && exit 0
         fi
         ;;
     'Suspend')
-        if [[ "$(echo -e "No\nYes" | ${MENU} "${choice}?")" == "Yes" ]]; then
+        if [[ "$(echo -e "Yes\nNo" | ${MENU} "${choice}?")" == "Yes" ]]; then
             systemctl suspend
         else
             output "User chose not to suspend." && exit 0
