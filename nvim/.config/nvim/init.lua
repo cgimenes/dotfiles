@@ -113,7 +113,7 @@ vim.keymap.set('n', ']q', '<cmd>cnext<cr>')
 vim.keymap.set('v', '$', 'g_')
 
 -- Better pasting experience
-vim.keymap.set('x', '<leader>pp', '"_dp', { desc = "Paste without yanking" })
+vim.keymap.set('x', '<leader>pp', '"_dP', { desc = "Paste without yanking" })
 vim.keymap.set('x', '<leader>pe', '$p', { desc = "Paste at the end of current line" })
 vim.keymap.set('x', '<leader>pE', '$pa', { desc = "Paste at the end of current line and enter insert mode" })
 
