@@ -1,3 +1,6 @@
+# Git
+alias gdsn="gds --name-only"
+
 # Clipboard
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
@@ -48,4 +51,4 @@ alias lg="lazygit"
 alias fv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
 alias fcd='cd $(fd -H -t d | fzf)'
 alias updatemirrors='curl -s "https://archlinux.org/mirrorlist/?country=BR&protocol=https" | sed -e "s/^#Server/Server/" -e "/^#/d" | rankmirrors - | sudo tee /etc/pacman.d/mirrorlist'
-
+alias xargs='xargs ' # expands aliases for piping into xargs
