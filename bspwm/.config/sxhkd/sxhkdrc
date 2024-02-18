@@ -185,11 +185,8 @@ super + {Left,Down,Up,Right}
 #
 # dm scripts
 #
-super + shift + p; e
+super + shift + e
 	dm-confedit
 
-super + shift + p; g
-	dm-goto-project
-
-super + shift + p; p
+super + shift + p
 	dm-pipewire-out-switcher

@@ -3,6 +3,8 @@ if [ ! -d "${HOME}/.zgen" ]; then
     git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 fi
 
+export ZGEN_AUTOLOAD_COMPINIT=0
+
 # load zgen
 source "${HOME}/.zgen/zgen.zsh"
 
@@ -21,10 +23,9 @@ if ! zgen saved; then
     zgen load zsh-users/zsh-autosuggestions
     zgen load chrissicool/zsh-256color
     zgen load superbrothers/zsh-kubectl-prompt
-    zgen oh-my-zsh plugins/colored-man-pages
 
     # save all to init script
-    ZGEN_AUTOLOAD_COMPINIT=0 zgen save
+    zgen save
 fi
 
 # plugin's config
