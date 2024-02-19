@@ -35,10 +35,17 @@ local function harpoon_files()
     else
       contents[index] = string.format("%%#HarpoonNumberInactive# %s. %%#HarpoonInactive#%s ", index, file_name)
     end
+    contents[index] = string.format('%%%s@LualineSwitchHarpoon@%s%%X', index, contents[index])
   end
 
   return table.concat(contents)
 end
+
+vim.cmd([[
+  function! LualineSwitchHarpoon(index, mouseclicks, mousebutton, modifiers)
+    execute ":lua require(\"harpoon\"):list():select(" .. a:index .. ")"
+  endfunction
+]])
 
 local colors = {
   bg = "#202328",

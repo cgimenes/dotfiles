@@ -10,10 +10,11 @@ return {
 
       local colors = require("kanagawa.colors").setup()
       local theme_colors = colors.theme
-      vim.cmd('highlight! HarpoonActive guibg=' .. theme_colors.ui.bg .. ' guifg=' .. theme_colors.syn.identifier)
-      vim.cmd('highlight! HarpoonNumberActive guibg=' .. theme_colors.ui.bg .. ' guifg=' .. theme_colors.syn.number)
-      vim.cmd('highlight! HarpoonInactive guibg=' .. theme_colors.ui.bg_p1 .. ' guifg=' .. theme_colors.ui.fg)
-      vim.cmd('highlight! HarpoonNumberInactive guibg=' .. theme_colors.ui.bg_p1 .. ' guifg=' .. theme_colors.syn.number)
+
+      vim.api.nvim_set_hl(0, 'HarpoonActive', { ctermbg = 0, fg = theme_colors.syn.identifier, bg = theme_colors.ui.bg })
+      vim.api.nvim_set_hl(0, 'HarpoonNumberActive', { ctermbg = 0, fg = theme_colors.syn.number, bg = theme_colors.ui.bg })
+      vim.api.nvim_set_hl(0, 'HarpoonInactive', { ctermbg = 0, fg = theme_colors.syn.fg, bg = theme_colors.ui.bg_p1 })
+      vim.api.nvim_set_hl(0, 'HarpoonNumberInactive', { ctermbg = 0, fg = theme_colors.syn.number, bg = theme_colors.ui.bg_p1 })
     end,
     keys = {
       { '<leader>ha', function() require('harpoon'):list():append() end,                                 desc = '[A]dd to Harpoon' },
