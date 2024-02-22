@@ -88,7 +88,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set('i', "jk", "<Esc>")
 
-vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>TroubleClose<cr>')
+-- Close everything
+vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>TroubleClose<cr><cmd>DiffviewClose<cr>')
 
 vim.keymap.set('n', "<C-d>", "<C-d>zz")
 vim.keymap.set('n', "<C-u>", "<C-u>zz")
@@ -129,13 +130,21 @@ vim.keymap.set('n', '<leader><space>', '<cmd>set list!<cr>', { desc = 'Toggle sh
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
+  group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
-  group = highlight_group,
   pattern = '*',
 })
 
+vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('CloseWithQ', { clear = true }),
+  callback = function()
+    vim.keymap.set("n", "q", "<cmd>quit<car>", { buffer = args.buf })
+  end,
+  pattern = {
+    "spectre_panel"
+  },
+})
 -- vim: ts=2 sts=2 sw=2 et

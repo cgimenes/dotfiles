@@ -24,9 +24,6 @@
   prune = true
   pruneTags = true
 
-[pull]
-  rebase = true
-
 [user]
   email = marcelo.gimenes.oliveira@gmail.com
   name = Marcelo Gimenes de Oliveira
