@@ -90,6 +90,9 @@ return {
           },
         },
         intelephense = {},
+        tsserver = {},
+        tailwindcss = {},
+        ruby_ls = {},
       }
 
       -- Setup neovim lua configuration
