@@ -1,7 +1,7 @@
 return {
   {
     'tpope/vim-fugitive',
-    config = function ()
+    config = function()
       vim.keymap.set('n', '<leader>gs', '<cmd>Git<cr><C-w>o', { desc = '[G]it [S]tatus' })
       vim.keymap.set('n', '<leader>gd', '<cmd>Gvdiff<cr>', { desc = '[G]it [D]iff' })
       vim.keymap.set('n', '<leader>gb', '<cmd>G blame<cr>', { desc = '[G]it [B]lame' })
@@ -12,7 +12,9 @@ return {
   },
   {
     "sindrets/diffview.nvim",
-    cmd = 'DiffviewFileHistory',
+    cmd = {
+      'DiffviewOpen',
+    },
     keys = {
       { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
     },

@@ -1,7 +1,6 @@
 return {
   {
     "windwp/nvim-spectre",
-    event = "BufRead",
     opts = {},
     cmd = "Spectre",
     keys = {

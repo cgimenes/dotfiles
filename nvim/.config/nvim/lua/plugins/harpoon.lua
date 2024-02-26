@@ -6,7 +6,12 @@ return {
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      require("harpoon"):setup()
+      require("harpoon"):setup({
+        settings = {
+          save_on_toggle = true,
+          sync_on_ui_close = true,
+        }
+      })
 
       local colors = require("kanagawa.colors").setup()
       local theme_colors = colors.theme

@@ -81,8 +81,9 @@ return {
           },
         },
       })
-
-      vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'Tree [E]xplorer' })
-    end
+    end,
+    keys = {
+      { "<leader>e", '<cmd>NvimTreeToggle<cr>', desc = "Tree [E]xplorer" },
+    }
   }
 }

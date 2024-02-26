@@ -86,7 +86,7 @@ vim.opt.fixendofline = false
 -- Keymaps for better default experience
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
-vim.keymap.set('i', "jk", "<Esc>")
+vim.keymap.set({ 'i', 'v' }, "jk", "<Esc>")
 
 -- Close everything
 vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>TroubleClose<cr><cmd>DiffviewClose<cr>')
@@ -114,9 +114,9 @@ vim.keymap.set('n', ']q', '<cmd>cnext<cr>')
 vim.keymap.set('v', '$', 'g_')
 
 -- Better pasting experience
-vim.keymap.set('x', '<leader>pp', '"_dP', { desc = "Paste without yanking" })
-vim.keymap.set('x', '<leader>pe', '$p', { desc = "Paste at the end of current line" })
-vim.keymap.set('x', '<leader>pE', '$pa', { desc = "Paste at the end of current line and enter insert mode" })
+vim.keymap.set('n', '<leader>pp', '"_dP', { desc = "Paste without yanking" })
+vim.keymap.set('n', '<leader>pe', '$p', { desc = "Paste at the end of current line" })
+vim.keymap.set('n', '<leader>pE', '$pa', { desc = "Paste at the end of current line and enter insert mode" })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -144,7 +144,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set("n", "q", "<cmd>quit<car>", { buffer = args.buf })
   end,
   pattern = {
-    "spectre_panel"
+    "spectre_panel",
   },
 })
 -- vim: ts=2 sts=2 sw=2 et
