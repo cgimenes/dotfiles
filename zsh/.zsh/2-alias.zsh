@@ -41,9 +41,6 @@ alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias psmem='ps auxf | sort -nr -k 4'
 alias pscpu='ps auxf | sort -nr -k 3'
 
-# termbin
-alias tb="nc termbin.com 9999"
-
 # lazygit
 alias lg="lazygit"
 

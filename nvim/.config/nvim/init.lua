@@ -1,80 +1,69 @@
--- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
--- Install package manager
---    https://github.com/folke/lazy.nvim
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  }
-end
-vim.opt.rtp:prepend(lazypath)
-
-require('lazy').setup({
-  { import = 'plugins' },
-}, {
-  change_detection = {
-    notify = false
-  }
-})
-
 -- [[ Setting options ]]
--- See `:help vim.o`
-
--- Show spaces
-vim.o.list = false
-vim.o.lcs = "space:·"
-
--- Cursor line
-vim.o.cursorline = true
-
--- No swap file
-vim.o.swapfile = false
-
--- Set highlight on search
-vim.o.hlsearch = true
+-- See `:help vim.opt`
+-- NOTE: You can change these options as you wish!
+--  For more options, you can see `:help option-list`
 
 -- Make line numbers default
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.opt.number = true
+-- You can also add relative line numbers, for help with jumping.
+--  Experiment for yourself to see if you like it!
+vim.opt.relativenumber = true
 
--- Enable mouse mode
-vim.o.mouse = 'a'
+-- Enable mouse mode, can be useful for resizing splits for example!
+vim.opt.mouse = 'a'
+
+-- Don't show the mode, since it's already in status line
+vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+vim.opt.clipboard = 'unnamedplus'
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
+
+-- No swap file
+vim.opt.swapfile = false
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 100
-vim.o.timeoutlen = 300
+vim.opt.updatetime = 100 -- was 250
+vim.opt.timeoutlen = 300
 
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+-- Configure how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
--- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+-- Sets how neovim will display certain whitespace in the editor.
+--  See :help 'list'
+--  and :help 'listchars'
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
+
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 10
 
 -- Remove empty line at end of files
 vim.opt.endofline = false
@@ -82,8 +71,20 @@ vim.opt.endoffile = false
 vim.opt.fixendofline = false
 
 -- [[ Basic Keymaps ]]
+--  See `:help vim.keymap.set()`
 
--- Keymaps for better default experience
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+--
+-- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
+-- or just use <C-\><C-n> to exit terminal mode
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set({ 'i', 'v' }, "jk", "<Esc>")
@@ -114,7 +115,7 @@ vim.keymap.set('n', ']q', '<cmd>cnext<cr>')
 vim.keymap.set('v', '$', 'g_')
 
 -- Better pasting experience
-vim.keymap.set('n', '<leader>pp', '"_dP', { desc = "Paste without yanking" })
+vim.keymap.set('v', '<leader>p', '"_dP', { desc = "Paste without yanking" })
 vim.keymap.set('n', '<leader>pe', '$p', { desc = "Paste at the end of current line" })
 vim.keymap.set('n', '<leader>pE', '$pa', { desc = "Paste at the end of current line and enter insert mode" })
 
@@ -125,19 +126,21 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 -- Oil
 vim.keymap.set('n', '<leader>o', '<cmd>Oil<cr>', { desc = '[O]il' })
 
--- Show spaces
-vim.keymap.set('n', '<leader><space>', '<cmd>set list!<cr>', { desc = 'Toggle show spaces' })
+-- [[ Basic Autocommands ]]
+--  See :help lua-guide-autocommands
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
-  group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
-  pattern = '*',
 })
 
+-- Use q to close Spectre
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('CloseWithQ', { clear = true }),
   callback = function()
@@ -147,4 +150,23 @@ vim.api.nvim_create_autocmd('FileType', {
     "spectre_panel",
   },
 })
+
+-- [[ Install `lazy.nvim` plugin manager ]]
+--    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+end ---@diagnostic disable-next-line: undefined-field
+vim.opt.rtp:prepend(lazypath)
+
+require('lazy').setup({
+  { import = 'plugins' },
+}, {
+  change_detection = {
+    notify = false
+  }
+})
+
+-- See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

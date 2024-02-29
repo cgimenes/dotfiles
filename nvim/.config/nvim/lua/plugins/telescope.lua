@@ -1,6 +1,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
+    event = 'VeryLazy',
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -15,6 +16,7 @@ return {
         "nvim-telescope/telescope-live-grep-args.nvim",
         version = "^1.0.0",
       },
+      { 'nvim-telescope/telescope-ui-select.nvim' },
     },
     config = function()
       local telescopeConfig = require("telescope.config")
@@ -78,11 +80,17 @@ return {
           colorscheme = {
             enable_preview = true,
           }
-        }
+        },
+        extensions = {
+          ['ui-select'] = {
+            require('telescope.themes').get_dropdown(),
+          },
+        },
       }
 
-      -- Enable telescope fzf native, if installed
+      -- Enable telescope extensions, if they are installed
       pcall(require('telescope').load_extension, 'fzf')
+      pcall(require('telescope').load_extension, 'ui-select')
 
       require("telescope").load_extension("live_grep_args")
 
@@ -116,12 +124,14 @@ return {
         }
       end
 
-      vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc = '[F]ind existing buffers' })
       vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles,
         { desc = 'Search [R]ecently opened files' })
       vim.keymap.set('n', '<leader>s/', buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
       vim.keymap.set('n', '<leader>sf', find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+      vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
+      vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', require("telescope").extensions.live_grep_args.live_grep_args,
         { desc = '[S]earch by [G]rep' })
