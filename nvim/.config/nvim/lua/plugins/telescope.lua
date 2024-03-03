@@ -1,7 +1,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    event = 'VeryLazy',
+    event = 'VimEnter',
     branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -13,45 +13,44 @@ return {
         end,
       },
       {
-        "nvim-telescope/telescope-live-grep-args.nvim",
-        version = "^1.0.0",
+        'nvim-telescope/telescope-live-grep-args.nvim',
+        version = '^1.0.0',
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
     },
     config = function()
-      local telescopeConfig = require("telescope.config")
-      local telescopeStrategies = require('telescope.pickers.layout_strategies')
-      local actions = require("telescope.actions")
-      local trouble = require("trouble.providers.telescope")
+      local telescopeConfig = require 'telescope.config'
+      local telescopeStrategies = require 'telescope.pickers.layout_strategies'
+      local actions = require 'telescope.actions'
+      local trouble = require 'trouble.providers.telescope'
       local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
-      table.insert(vimgrep_arguments, "--hidden")
-      table.insert(vimgrep_arguments, "--glob")
-      table.insert(vimgrep_arguments, "!**/vendor/*")
+      table.insert(vimgrep_arguments, '--hidden')
+      table.insert(vimgrep_arguments, '--glob')
+      table.insert(vimgrep_arguments, '!**/vendor/*')
 
       telescopeStrategies.vertical_merged = function(picker, max_columns, max_lines, layout_config)
-        local layout = require('telescope.pickers.layout_strategies').vertical(picker, max_columns, max_lines,
-          layout_config)
+        local layout = require('telescope.pickers.layout_strategies').vertical(picker, max_columns, max_lines, layout_config)
         layout.results.line = layout.results.line - 1
         layout.results.height = layout.results.height + 1
         layout.results.title = ''
-        layout.results.borderchars = { '─', '│', '─', '│', '├', '┤', "╯", "╰" }
+        layout.results.borderchars = { '─', '│', '─', '│', '├', '┤', '╯', '╰' }
         return layout
       end
 
       require('telescope').setup {
         defaults = {
-          prompt_prefix = " ",
-          selection_caret = " ",
+          prompt_prefix = ' ',
+          selection_caret = ' ',
           vimgrep_arguments = vimgrep_arguments,
           mappings = {
             i = {
               ['<C-d>'] = actions.delete_buffer,
-              ["<c-t>"] = trouble.open_with_trouble,
-              ["<esc>"] = actions.close,
+              ['<c-t>'] = trouble.open_with_trouble,
+              ['<esc>'] = actions.close,
             },
             n = {
-              ["dd"] = actions.delete_buffer,
-              ["<c-t>"] = trouble.open_with_trouble,
+              ['dd'] = actions.delete_buffer,
+              ['<c-t>'] = trouble.open_with_trouble,
             },
           },
           layout_strategy = 'vertical_merged',
@@ -65,7 +64,7 @@ return {
               preview_height = 0.6,
             },
           },
-          sorting_strategy = 'ascending'
+          sorting_strategy = 'ascending',
         },
         pickers = {
           lsp_references = {
@@ -79,7 +78,7 @@ return {
           },
           colorscheme = {
             enable_preview = true,
-          }
+          },
         },
         extensions = {
           ['ui-select'] = {
@@ -92,7 +91,7 @@ return {
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
 
-      require("telescope").load_extension("live_grep_args")
+      require('telescope').load_extension 'live_grep_args'
 
       local function buffer_fuzzy_find()
         require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -106,13 +105,20 @@ return {
           find_command = {
             'rg',
             '--files',
-            '--glob', '!**/pkg/*',
-            '--glob', '!**/.cache/*',
-            '--glob', '!**/.git/*',
-            '--glob', '!**/.npm/*',
-            '--glob', '!**/vendor/*',
-            '--glob', '!**/node_modules/*',
-            '--glob', '!**/.local/share/*',
+            '--glob',
+            '!**/pkg/*',
+            '--glob',
+            '!**/.cache/*',
+            '--glob',
+            '!**/.git/*',
+            '--glob',
+            '!**/.npm/*',
+            '--glob',
+            '!**/vendor/*',
+            '--glob',
+            '!**/node_modules/*',
+            '--glob',
+            '!**/.local/share/*',
             '--hidden',
             '--color=never',
             '--no-heading',
@@ -125,19 +131,17 @@ return {
       end
 
       vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc = '[F]ind existing buffers' })
-      vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles,
-        { desc = 'Search [R]ecently opened files' })
+      vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = 'Search [R]ecently opened files' })
       vim.keymap.set('n', '<leader>s/', buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
       vim.keymap.set('n', '<leader>sf', find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', require("telescope").extensions.live_grep_args.live_grep_args,
-        { desc = '[S]earch by [G]rep' })
+      vim.keymap.set('n', '<leader>sg', require('telescope').extensions.live_grep_args.live_grep_args, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sl', require('telescope.builtin').resume, { desc = '[S]earch Resume' })
       vim.keymap.set('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch Colorschemes' })
-    end
+    end,
   },
 }
