@@ -37,19 +37,16 @@ return {
       vim.keymap.set('n', '<leader>db', dap.step_back, { desc = 'Step Back' })
       vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Continue' })
       vim.keymap.set('n', '<leader>dC', dap.run_to_cursor, { desc = 'Run To Cursor' })
-      vim.keymap.set('n', '<leader>dd', dap.disconnect, { desc = 'Disconnect' })
-      vim.keymap.set('n', '<leader>dg', dap.session, { desc = 'Get Session' })
       vim.keymap.set('n', '<leader>di', dap.step_into, { desc = 'Step Into' })
-      vim.keymap.set('n', '<leader>do', dap.step_over, { desc = 'Step Over' })
-      vim.keymap.set('n', '<leader>du', dap.step_out, { desc = 'Step Out' })
+      vim.keymap.set('n', '<leader>dn', dap.step_over, { desc = 'Step Over/Next Line' })
+      vim.keymap.set('n', '<leader>do', dap.step_out, { desc = 'Step Out' })
       vim.keymap.set('n', '<leader>dp', dap.pause, { desc = 'Pause' })
       vim.keymap.set('n', '<leader>dr', dap.repl.toggle, { desc = 'Toggle Repl' })
-      vim.keymap.set('n', '<leader>ds', dap.continue, { desc = 'Start' })
-      vim.keymap.set('n', '<leader>dq', dap.close, { desc = 'Quit' })
+      vim.keymap.set('n', '<leader>dq', dap.terminate, { desc = 'Terminate' })
       vim.keymap.set('n', '<leader>dU', function()
-        dapui.toggle({ reset = true })
+        dapui.toggle { reset = true }
       end, { desc = 'Toggle UI' })
-      vim.keymap.set('n', '<leader>dB', function()
+      vim.keymap.set('n', '<leader>dT', function()
         dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
       end, { desc = 'Debug: Set Breakpoint' })
 
@@ -75,9 +72,6 @@ return {
         },
       }
 
-      -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-      vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
-
       dap.listeners.after.event_initialized['dapui_config'] = dapui.open
       dap.listeners.before.event_terminated['dapui_config'] = dapui.close
       dap.listeners.before.event_exited['dapui_config'] = dapui.close
@@ -85,7 +79,28 @@ return {
       dap.adapters.php = {
         type = 'executable',
         command = 'node',
-        args = { vim.fn.stdpath 'cache' .. '/debuggers/vscode-php-debug/out/phpDebug.js' }
+        args = { vim.fn.stdpath 'cache' .. '/debuggers/vscode-php-debug/out/phpDebug.js' },
+      }
+
+      dap.adapters.lldb = {
+        type = 'executable',
+        command = '/usr/bin/lldb-vscode',
+        name = 'lldb',
+      }
+
+      dap.configurations.c = {
+        {
+          name = 'LLDB',
+          type = 'lldb',
+          request = 'launch',
+          program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+          end,
+          cwd = '${workspaceFolder}',
+          stopOnEntry = false,
+          args = {},
+          env = { 'LD_LIBRARY_PATH=./build/' },
+        },
       }
 
       -- git clone https://github.com/xdebug/vscode-php-debug.git ~/.cache/nvim/debuggers/vscode-php-debug
@@ -100,9 +115,9 @@ return {
           log = true,
           port = 9003,
           pathMappings = {
-            ["/application"] = '${workspaceFolder}',
-          }
-        }
+            ['/application'] = '${workspaceFolder}',
+          },
+        },
       }
 
       require('dap-go').setup()
@@ -112,20 +127,16 @@ return {
       vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })
       vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = '#98c379', bg = '#31353f' })
 
-      vim.fn.sign_define('DapBreakpoint',
-        { text = '●', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
-      vim.fn.sign_define('DapBreakpointCondition',
-        { text = '●', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
-      vim.fn.sign_define('DapBreakpointRejected',
-        { text = '●', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapBreakpointCondition', { text = '●', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapBreakpointRejected', { text = '●', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
       vim.fn.sign_define('DapLogPoint', {
         text = '●',
         texthl = 'DapLogPoint',
         linehl = 'DapLogPoint',
-        numhl =
-        'DapLogPoint'
+        numhl = 'DapLogPoint',
       })
       vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
-    end
-  }
+    end,
+  },
 }
