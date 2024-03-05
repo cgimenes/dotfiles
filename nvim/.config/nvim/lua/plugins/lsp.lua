@@ -155,6 +155,7 @@ return {
         'stylua', -- Used to format lua code
         'black',
         'isort',
+        'php-cs-fixer',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
