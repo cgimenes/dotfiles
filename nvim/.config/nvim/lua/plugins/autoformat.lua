@@ -19,6 +19,11 @@ return {
         -- is found.
         -- javascript = { { "prettierd", "prettier" } },
       },
+      formatters = {
+        php_cs_fixer = {
+          args = { 'fix', '--config=.php-cs-fixer.dist.php', '$FILENAME' },
+        },
+      },
     },
   },
 }

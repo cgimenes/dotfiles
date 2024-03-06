@@ -44,6 +44,9 @@ alias pscpu='ps auxf | sort -nr -k 3'
 # lazygit
 alias lg="lazygit"
 
+# taskwarrior
+alias tt="taskwarrior-tui"
+
 # hacks
 alias fv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
 alias fcd='cd $(fd -H -t d | fzf)'
