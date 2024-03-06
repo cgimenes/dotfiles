@@ -117,6 +117,7 @@ return {
         tsserver = {},
         tailwindcss = {},
         ruby_ls = {},
+        gopls = {},
 
         lua_ls = {
           -- cmd = {...},

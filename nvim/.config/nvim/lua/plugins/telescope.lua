@@ -106,8 +106,6 @@ return {
             'rg',
             '--files',
             '--glob',
-            '!**/pkg/*',
-            '--glob',
             '!**/.cache/*',
             '--glob',
             '!**/.git/*',
