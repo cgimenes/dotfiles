@@ -28,7 +28,6 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 
 vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>', { desc = '[N]ew Buffer' })
 vim.keymap.set('n', '<leader>w', '<cmd>w!<cr>', { desc = '[W]rite to File' })
-vim.keymap.set('n', '<leader>-', '<Plug>(comment_toggle_linewise_current)', { desc = 'Comment toggle current line' })
 vim.keymap.set('n', '<leader>n', '<cmd>nohlsearch<cr>', { desc = '[N]o Highlight' })
 
 vim.keymap.set('v', '>', '>gv')
@@ -52,4 +51,4 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Oil
-vim.keymap.set('n', '<leader>o', '<cmd>Oil<cr>', { desc = '[O]il' })
+vim.keymap.set('n', '<leader>E', '<cmd>Oil<cr>', { desc = 'Oil [E]xplorer' })

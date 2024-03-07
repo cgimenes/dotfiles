@@ -43,3 +43,4 @@ uda.taskwarrior-tui.shortcuts.1=$HOME/dotfiles/scripts/modify-task.sh priority:H
 uda.taskwarrior-tui.shortcuts.2=$HOME/dotfiles/scripts/modify-task.sh priority:M
 uda.taskwarrior-tui.shortcuts.3=$HOME/dotfiles/scripts/modify-task.sh priority:L
 uda.taskwarrior-tui.shortcuts.4=$HOME/dotfiles/scripts/modify-task.sh priority:
+uda.taskwarrior-tui.shortcuts.5=$HOME/dotfiles/scripts/modify-task.sh +review

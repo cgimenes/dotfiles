@@ -14,5 +14,8 @@ return {
     opts = {
       signs = false,
     },
+    keys = {
+      { '<leader>st', '<cmd>TodoTelescope<cr>', desc = '[S]earch [T]odo' },
+    },
   },
 }
