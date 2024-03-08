@@ -28,7 +28,6 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 
 vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>', { desc = '[N]ew Buffer' })
 vim.keymap.set('n', '<leader>w', '<cmd>w!<cr>', { desc = '[W]rite to File' })
-vim.keymap.set('n', '<leader>n', '<cmd>nohlsearch<cr>', { desc = '[N]o Highlight' })
 
 vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', '<', '<gv')

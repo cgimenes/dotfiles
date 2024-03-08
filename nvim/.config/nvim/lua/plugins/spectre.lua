@@ -1,10 +1,12 @@
 return {
   {
-    "windwp/nvim-spectre",
-    opts = {},
-    cmd = "Spectre",
+    'nvim-pack/nvim-spectre',
+    build = false,
+    cmd = 'Spectre',
+    opts = { open_cmd = 'noswapfile vnew' },
+    -- stylua: ignore
     keys = {
-      { "<leader>r", "<cmd>Spectre<cr>", desc = "[R]eplace with Spectre" },
-    }
+      { "<leader>r", function() require("spectre").open() end, desc = "[R]eplace in files (Spectre)" },
+    },
   },
 }

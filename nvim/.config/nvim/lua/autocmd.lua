@@ -11,14 +11,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
-
--- Use q to close Spectre
-vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('CloseWithQ', { clear = true }),
-  callback = function()
-    vim.keymap.set('n', 'q', '<cmd>quit<car>', { buffer = args.buf })
-  end,
-  pattern = {
-    'spectre_panel',
-  },
-})
