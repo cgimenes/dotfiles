@@ -27,6 +27,8 @@ stow dunst
 stow bin
 stow rg
 stow tmux
+stow taskwarrior
+stow gh-dash
 
 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -
 paru -S --noconfirm spotify
@@ -39,3 +41,7 @@ paru -S --noconfirm slack-desktop
 paru -S --noconfirm insync
 
 rm -rf .config/autostart/**
+
+gh extension install dlvhdr/gh-dash
+
+gem install thor
