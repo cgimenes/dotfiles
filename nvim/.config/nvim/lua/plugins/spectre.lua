@@ -6,7 +6,7 @@ return {
     opts = { open_cmd = 'noswapfile vnew' },
     -- stylua: ignore
     keys = {
-      { "<leader>r", function() require("spectre").open() end, desc = "[R]eplace in files (Spectre)" },
+      { "<leader>rs", function() require("spectre").open() end, desc = "[R]eplace in files ([S]pectre)" },
     },
   },
 }

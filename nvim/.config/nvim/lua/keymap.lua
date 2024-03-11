@@ -51,3 +51,6 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- Oil
 vim.keymap.set('n', '<leader>E', '<cmd>Oil<cr>', { desc = 'Oil [E]xplorer' })
+
+-- Snippets
+vim.keymap.set('n', '<leader>os', '<cmd>source ~/.config/nvim/lua/snippets.lua<cr>', { desc = 'Reload snippets' })

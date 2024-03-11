@@ -47,7 +47,6 @@ return {
           map('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
           map('<leader>lr', vim.lsp.buf.rename, '[R]ename')
           map('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
-          map('<leader>lf', vim.lsp.buf.format, '[F]ormat')
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 

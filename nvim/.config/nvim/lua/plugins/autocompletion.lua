@@ -31,7 +31,7 @@ return {
       --    set up the ones that are useful for you.
       -- 'rafamadriz/friendly-snippets',
     },
-    config = function ()
+    config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
@@ -67,22 +67,23 @@ return {
               luasnip.jump(-1)
             end
           end, { 'i', 's' }),
+          -- add choice keybind
         },
         formatting = {
           format = function(_, item)
-            local icons = require("icons").kind
+            local icons = require('icons').kind
             if icons[item.kind] then
-              item.kind = icons[item.kind] .. " " .. item.kind
+              item.kind = icons[item.kind] .. ' ' .. item.kind
             end
             return item
           end,
         },
         sources = {
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "path" },
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
         },
       }
-    end
+    end,
   },
 }
