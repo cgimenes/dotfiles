@@ -9,14 +9,6 @@ return {
       -- Useful status updates for LSP
       { 'j-hui/fidget.nvim', opts = {} },
 
-      -- Breadcrumbs
-      {
-        'SmiteshP/nvim-navic',
-        opts = {
-          highlight = true,
-        },
-      },
-
       -- JSON schemas
       'b0o/schemastore.nvim',
     },
@@ -25,12 +17,6 @@ return {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-
-          -- Enable Breadcrumbs
-          if client.server_capabilities.documentSymbolProvider then
-            local navic = require 'nvim-navic'
-            navic.attach(client, event.buf)
-          end
 
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })

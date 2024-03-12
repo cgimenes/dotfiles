@@ -2,7 +2,7 @@ local window_width_limit = 100
 
 local conditions = {
   buffer_not_empty = function()
-    return vim.fn.empty(vim.fn.expand "%:t") ~= 1
+    return vim.fn.empty(vim.fn.expand '%:t') ~= 1
   end,
   hide_in_width = function()
     return vim.o.columns > window_width_limit
@@ -21,19 +21,19 @@ local function diff_source()
 end
 
 local function harpoon_files()
-  local harpoon = require("harpoon")
+  local harpoon = require 'harpoon'
   local marks_length = harpoon:list():length()
 
   local contents = {}
-  local current_file_path = vim.fn.fnamemodify(vim.fn.expand("%:p"), ":.")
+  local current_file_path = vim.fn.fnamemodify(vim.fn.expand '%:p', ':.')
   for index = 1, marks_length do
     local harpoon_file_path = harpoon:list():get(index).value
-    local file_name = harpoon_file_path == "" and "(empty)" or vim.fn.fnamemodify(harpoon_file_path, ':t')
+    local file_name = harpoon_file_path == '' and '(empty)' or vim.fn.fnamemodify(harpoon_file_path, ':t')
 
     if current_file_path == harpoon_file_path then
-      contents[index] = string.format("%%#HarpoonNumberActive# %s. %%#HarpoonActive#%s ", index, file_name)
+      contents[index] = string.format('%%#HarpoonNumberActive# %s. %%#HarpoonActive#%s ', index, file_name)
     else
-      contents[index] = string.format("%%#HarpoonNumberInactive# %s. %%#HarpoonInactive#%s ", index, file_name)
+      contents[index] = string.format('%%#HarpoonNumberInactive# %s. %%#HarpoonInactive#%s ', index, file_name)
     end
     contents[index] = string.format('%%%s@LualineSwitchHarpoon@%s%%X', index, contents[index])
   end
@@ -41,28 +41,15 @@ local function harpoon_files()
   return table.concat(contents)
 end
 
-vim.cmd([[
+vim.cmd [[
   function! LualineSwitchHarpoon(index, mouseclicks, mousebutton, modifiers)
     execute ":lua require(\"harpoon\"):list():select(" .. a:index .. ")"
   endfunction
-]])
+]]
 
-local colors = {
-  bg = "#202328",
-  fg = "#bbc2cf",
-  yellow = "#ECBE7B",
-  cyan = "#008080",
-  darkblue = "#081633",
-  green = "#98be65",
-  orange = "#FF8800",
-  violet = "#a9a1e1",
-  magenta = "#c678dd",
-  purple = "#c678dd",
-  blue = "#51afef",
-  red = "#ec5f67",
-}
+local colors = require 'colors'
 
-local icons = require("icons")
+local icons = require 'icons'
 
 return {
   {
@@ -80,31 +67,31 @@ return {
             'dashboard',
           },
           winbar = {
-            "help",
-            "startify",
-            "dashboard",
-            "lazy",
-            "neo-tree",
-            "neogitstatus",
-            "NvimTree",
-            "Trouble",
-            "alpha",
-            "lir",
-            "Outline",
-            "spectre_panel",
-            "toggleterm",
-            "DressingSelect",
-            "Jaq",
-            "harpoon",
-            "dap-repl",
-            "dap-terminal",
-            "dapui_console",
-            "dapui_hover",
-            "lab",
-            "notify",
-            "noice",
-            "neotest-summary",
-            "",
+            'help',
+            'startify',
+            'dashboard',
+            'lazy',
+            'neo-tree',
+            'neogitstatus',
+            'NvimTree',
+            'Trouble',
+            'alpha',
+            'lir',
+            'Outline',
+            'spectre_panel',
+            'toggleterm',
+            'DressingSelect',
+            'Jaq',
+            'harpoon',
+            'dap-repl',
+            'dap-terminal',
+            'dapui_console',
+            'dapui_hover',
+            'lab',
+            'notify',
+            'noice',
+            'neotest-summary',
+            '',
           },
         },
       },
@@ -112,7 +99,7 @@ return {
         lualine_a = {
           {
             function()
-              return " " .. icons.ui.Target .. " "
+              return ' ' .. icons.ui.Target .. ' '
             end,
             padding = { left = 0, right = 0 },
             color = {},
@@ -121,19 +108,19 @@ return {
         },
         lualine_b = {
           {
-            "b:gitsigns_head",
+            'b:gitsigns_head',
             icon = icons.git.Branch,
-            color = { gui = "bold" },
+            color = { gui = 'bold' },
           },
         },
         lualine_c = {
           {
-            "diff",
+            'diff',
             source = diff_source,
             symbols = {
-              added = icons.git.LineAdded .. " ",
-              modified = icons.git.LineModified .. " ",
-              removed = icons.git.LineRemoved .. " ",
+              added = icons.git.LineAdded .. ' ',
+              modified = icons.git.LineModified .. ' ',
+              removed = icons.git.LineRemoved .. ' ',
             },
             padding = { left = 2, right = 1 },
             diff_color = {
@@ -143,23 +130,29 @@ return {
             },
             cond = nil,
           },
+          {
+            'filename',
+            color = {},
+            path = 1,
+            cond = nil,
+          },
         },
         lualine_x = {
           {
-            "diagnostics",
-            sources = { "nvim_diagnostic" },
+            'diagnostics',
+            sources = { 'nvim_diagnostic' },
             symbols = {
-              error = icons.diagnostics.BoldError .. " ",
-              warn = icons.diagnostics.BoldWarning .. " ",
-              info = icons.diagnostics.BoldInformation .. " ",
-              hint = icons.diagnostics.BoldHint .. " ",
+              error = icons.diagnostics.BoldError .. ' ',
+              warn = icons.diagnostics.BoldWarning .. ' ',
+              info = icons.diagnostics.BoldInformation .. ' ',
+              hint = icons.diagnostics.BoldHint .. ' ',
             },
           },
           {
             function()
               local buf_clients = vim.lsp.get_active_clients { bufnr = 0 }
               if #buf_clients == 0 then
-                return "LSP Inactive"
+                return 'LSP Inactive'
               end
 
               local buf_ft = vim.bo.filetype
@@ -168,11 +161,11 @@ return {
 
               -- add client
               for _, client in pairs(buf_clients) do
-                if client.name ~= "null-ls" and client.name ~= "copilot" then
+                if client.name ~= 'null-ls' and client.name ~= 'copilot' then
                   table.insert(buf_client_names, client.name)
                 end
 
-                if client.name == "copilot" then
+                if client.name == 'copilot' then
                   copilot_active = true
                 end
               end
@@ -187,76 +180,48 @@ return {
               -- local supported_linters = linters.list_registered(buf_ft)
               -- vim.list_extend(buf_client_names, supported_linters)
 
-              local unique_client_names = table.concat(buf_client_names, ", ")
-              local language_servers = string.format("[%s]", unique_client_names)
+              local unique_client_names = table.concat(buf_client_names, ', ')
+              local language_servers = string.format('[%s]', unique_client_names)
 
               if copilot_active then
-                language_servers = language_servers .. "%#SLCopilot#" .. " " .. icons.git.Octoface .. "%*"
+                language_servers = language_servers .. '%#SLCopilot#' .. ' ' .. icons.git.Octoface .. '%*'
               end
 
               return language_servers
             end,
-            color = { gui = "bold" },
+            color = { gui = 'bold' },
             cond = conditions.hide_in_width,
           },
           {
             function()
-              local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
-              return icons.ui.Tab .. " " .. shiftwidth
+              local shiftwidth = vim.api.nvim_buf_get_option(0, 'shiftwidth')
+              return icons.ui.Tab .. ' ' .. shiftwidth
             end,
             padding = 1,
           },
           {
-            "filetype",
+            'filetype',
             cond = nil,
             padding = {
               left = 1,
-              right = 1
-            }
+              right = 1,
+            },
           },
         },
         lualine_y = {
           {
-            "location",
+            'location',
           },
         },
         lualine_z = {
           {
-            "searchcount",
+            'searchcount',
           },
         },
       },
       tabline = {
         lualine_a = {
-          { harpoon_files }
-        },
-      },
-      winbar = {
-        lualine_c = {
-          {
-            "filename",
-            color = {},
-            cond = nil,
-          },
-          {
-            "navic",
-            color_correction = nil,
-            navic_opts = nil,
-          },
-        },
-      },
-      inactive_winbar = {
-        lualine_c = {
-          {
-            "filename",
-            color = {},
-            cond = nil,
-          },
-          {
-            "navic",
-            color_correction = nil,
-            navic_opts = nil,
-          },
+          { harpoon_files },
         },
       },
     },
