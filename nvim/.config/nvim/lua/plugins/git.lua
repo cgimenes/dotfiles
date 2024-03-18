@@ -7,39 +7,39 @@ return {
       vim.keymap.set('n', '<leader>gb', '<cmd>G blame<cr>', { desc = '[G]it [B]lame' })
     end,
     dependencies = {
-      "tpope/vim-rhubarb",
-    }
+      'tpope/vim-rhubarb',
+    },
   },
   {
-    "sindrets/diffview.nvim",
+    'sindrets/diffview.nvim',
     cmd = {
       'DiffviewOpen',
     },
     keys = {
-      { "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
+      { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'File History' },
     },
     config = function()
-      local diffview = require("diffview")
+      local diffview = require 'diffview'
 
-      require("diffview").setup({
+      require('diffview').setup {
         keymaps = {
           file_history_panel = {
-            { "n", "gq", diffview.close, { desc = "Close" } },
+            { 'n', 'gq', diffview.close, { desc = 'Close' } },
           },
         },
-      })
+      }
     end,
   },
   {
-    "kdheepak/lazygit.nvim",
+    'kdheepak/lazygit.nvim',
     -- optional for floating window border decoration
     dependencies = {
-      "nvim-lua/plenary.nvim",
+      'nvim-lua/plenary.nvim',
     },
     cmd = 'LazyGit',
     keys = {
-      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "Restore Session" },
-    }
+      { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'Restore Session' },
+    },
   },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -47,11 +47,11 @@ return {
     opts = {
       -- See `:help gitsigns.txt`
       signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "󰐊" },
-        topdelete = { text = "󰐊" },
-        changedelete = { text = "▎" },
+        add = { text = '▎' },
+        change = { text = '▎' },
+        delete = { text = '󰐊' },
+        topdelete = { text = '󰐊' },
+        changedelete = { text = '▎' },
       },
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
@@ -80,5 +80,14 @@ return {
         end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
       end,
     },
-  }
+  },
+  {
+    'pwntester/octo.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    opts = {},
+  },
 }

@@ -16,6 +16,7 @@ return {
         adapters = {
           require 'neotest-phpunit' {
             -- dap = require('dap').configurations.php[1],
+            filter_dirs = { '.git', 'node_modules', 'vendor' },
           },
         },
         summary = {
