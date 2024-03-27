@@ -42,6 +42,37 @@ interface {}
     )
   ),
   s(
+    'trait',
+    fmt(
+      [[
+<?php
+
+declare(strict_types=1);
+
+namespace {};
+
+trait {}
+{{
+    {}
+}}
+]],
+      {
+        d(1, function()
+          local path = vim.fn.fnamemodify(vim.fn.expand '%', ':h:gs?/?\\?')
+          return sn(nil, {
+            i(1, path:sub(1, 1):upper() .. path:sub(2)),
+          })
+        end),
+        d(2, function()
+          return sn(nil, {
+            i(1, vim.fn.fnamemodify(vim.fn.expand '%', ':t:r')),
+          })
+        end),
+        i(3),
+      }
+    )
+  ),
+  s(
     'pfunc',
     fmt(
       [[

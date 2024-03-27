@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'spectre_panel',
     'neotest-output',
+    'neotest-output-panel',
     'help',
   },
 })
