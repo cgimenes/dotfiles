@@ -89,5 +89,8 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     opts = {},
+    keys = {
+      { '<leader>gP', '<cmd>Octo pr create<cr>', desc = 'Create PR' },
+    },
   },
 }
