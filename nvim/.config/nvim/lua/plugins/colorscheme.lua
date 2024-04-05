@@ -1,9 +1,8 @@
 return {
   {
     'navarasu/onedark.nvim',
-    lazy = false,
     priority = 1000,
-    config = function()
+    init = function()
       require('onedark').setup {
         style = 'darker',
       }
@@ -11,10 +10,9 @@ return {
     end,
   },
   {
-    "folke/tokyonight.nvim",
-    lazy = false,
+    'folke/tokyonight.nvim',
     priority = 1000,
-    config = function()
+    init = function()
       require('tokyonight').setup {
         style = 'storm',
         -- style = 'night',
@@ -24,20 +22,18 @@ return {
     end,
   },
   {
-    "rebelot/kanagawa.nvim",
-    lazy = false,
+    'rebelot/kanagawa.nvim',
     priority = 1000,
-    config = function()
-      require('kanagawa').load("wave")
+    init = function()
+      require('kanagawa').load 'wave'
       -- require('kanagawa').load("dragon")
       -- require('kanagawa').load("lotus")
     end,
   },
   {
-    "catppuccin/nvim",
-    lazy = false,
+    'catppuccin/nvim',
     priority = 1000,
-    config = function()
+    init = function()
       -- vim.cmd.colorscheme "catppuccin-macchiato"
       -- vim.cmd.colorscheme "catppuccin-mocha"
       -- vim.cmd.colorscheme "catppuccin-frappe"
@@ -47,7 +43,7 @@ return {
   {
     'nordtheme/vim',
     priority = 1000,
-    config = function()
+    init = function()
       -- vim.opt.termguicolors = true
       -- vim.cmd.colorscheme 'nord'
     end,
