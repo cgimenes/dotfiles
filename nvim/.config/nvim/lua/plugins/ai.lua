@@ -7,7 +7,7 @@ return {
   --  - ci'  - [C]hange [I]nside [']quote
   {
     'echasnovski/mini.ai',
-    event = 'verylazy',
+    event = 'VeryLazy',
     opts = {},
   },
 }

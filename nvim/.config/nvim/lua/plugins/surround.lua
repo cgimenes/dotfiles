@@ -6,7 +6,7 @@ return {
   -- - sr)'  - [S]urround [R]eplace [)] [']
   {
     'echasnovski/mini.surround',
-    event = 'verylazy',
+    event = 'VeryLazy',
     opts = {
       n_lines = 500,
     },
