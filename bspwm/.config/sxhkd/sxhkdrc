@@ -22,9 +22,9 @@ Print
 super + n
 	alacritty -e nvim
 
-# lf
+# file explorer
 super + e
-	alacritty -e lf
+	alacritty -e yazi
 
 # brightness buttons
 XF86MonBrightness{Up,Down}
