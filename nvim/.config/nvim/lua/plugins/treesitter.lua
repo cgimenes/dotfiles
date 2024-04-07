@@ -2,34 +2,43 @@ return {
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    config = function()
+    opts = {
+      ensure_installed = {
+        'bash',
+        'bash',
+        'c',
+        'cpp',
+        'go',
+        'html',
+        'javascript',
+        'lua',
+        'luadoc',
+        'php',
+        'python',
+        'rasi',
+        'ruby',
+        'rust',
+        'tsx',
+        'typescript',
+        'sql',
+        'vim',
+        'vimdoc',
+      },
+      auto_install = true,
+      highlight = {
+        enable = true,
+        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+        --  If you are experiencing weird indenting issues, add the language to
+        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
+        additional_vim_regex_highlighting = { 'ruby' },
+      },
+      indent = { enable = true, disable = { 'ruby' } },
+    },
+    config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
       ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = {
-          'bash',
-          'html',
-          'c',
-          'cpp',
-          'go',
-          'lua',
-          'python',
-          'rust',
-          'tsx',
-          'javascript',
-          'typescript',
-          'vimdoc',
-          'vim',
-          'bash',
-          'ruby',
-          'php',
-          'rasi',
-        },
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-      }
+      require('nvim-treesitter.configs').setup(opts)
 
       -- There are additional nvim-treesitter modules that you can use to interact
       -- with nvim-treesitter. You should go explore a few and see what interests you:
