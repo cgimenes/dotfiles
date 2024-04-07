@@ -9,41 +9,33 @@ local conditions = {
   end,
 }
 
-local function diff_source()
-  local gitsigns = vim.b.gitsigns_status_dict
-  if gitsigns then
-    return {
-      added = gitsigns.added,
-      modified = gitsigns.changed,
-      removed = gitsigns.removed,
-    }
+local function grapple_files()
+  local Grapple = require 'grapple'
+
+  local tags, err = Grapple.tags()
+  if not tags then
+    return vim.notify(err, vim.log.levels.ERROR)
   end
-end
 
-local function harpoon_files()
-  local harpoon = require 'harpoon'
-  local marks_length = harpoon:list():length()
+  local current_file_path = vim.fn.expand '%:p'
+  local results = {}
+  for index, tag in ipairs(tags) do
+    local file_name = vim.fn.fnamemodify(tag.path, ':t')
 
-  local contents = {}
-  local current_file_path = vim.fn.fnamemodify(vim.fn.expand '%:p', ':.')
-  for index = 1, marks_length do
-    local harpoon_file_path = harpoon:list():get(index).value
-    local file_name = harpoon_file_path == '' and '(empty)' or vim.fn.fnamemodify(harpoon_file_path, ':t')
-
-    if current_file_path == harpoon_file_path then
-      contents[index] = string.format('%%#HarpoonNumberActive# %s. %%#HarpoonActive#%s ', index, file_name)
+    if current_file_path == tag.path then
+      results[index] = string.format('%%#GrappleCurrent# %s. %%#GrappleName#%s ', index, file_name)
     else
-      contents[index] = string.format('%%#HarpoonNumberInactive# %s. %%#HarpoonInactive#%s ', index, file_name)
+      results[index] = string.format('%%#GrappleHint# %s. %%#GrappleHint#%s ', index, file_name)
     end
-    contents[index] = string.format('%%%s@LualineSwitchHarpoon@%s%%X', index, contents[index])
+    results[index] = string.format('%%%s@LualineSwitchGrapple@%s%%X', index, results[index])
   end
 
-  return table.concat(contents)
+  return table.concat(results)
 end
 
 vim.cmd [[
-  function! LualineSwitchHarpoon(index, mouseclicks, mousebutton, modifiers)
-    execute ":lua require(\"harpoon\"):list():select(" .. a:index .. ")"
+  function! LualineSwitchGrapple(index, mouseclicks, mousebutton, modifiers)
+    execute ":Grapple select index=" .. a:index
   endfunction
 ]]
 
@@ -83,6 +75,7 @@ return {
             'DressingSelect',
             'Jaq',
             'harpoon',
+            'grapple',
             'dap-repl',
             'dap-terminal',
             'dapui_console',
@@ -114,22 +107,6 @@ return {
           },
         },
         lualine_c = {
-          {
-            'diff',
-            source = diff_source,
-            symbols = {
-              added = icons.git.LineAdded .. ' ',
-              modified = icons.git.LineModified .. ' ',
-              removed = icons.git.LineRemoved .. ' ',
-            },
-            padding = { left = 2, right = 1 },
-            diff_color = {
-              added = { fg = colors.green },
-              modified = { fg = colors.yellow },
-              removed = { fg = colors.red },
-            },
-            cond = nil,
-          },
           {
             'filename',
             color = {},
@@ -221,7 +198,7 @@ return {
       },
       tabline = {
         lualine_a = {
-          { harpoon_files },
+          { grapple_files },
         },
       },
     },
