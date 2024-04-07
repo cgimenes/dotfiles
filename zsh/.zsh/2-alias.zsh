@@ -1,3 +1,6 @@
+# Tmux
+alias ta='tmux list-sessions && tmux a || tmux'
+
 # Git
 alias gdsn="gds --name-only"
 

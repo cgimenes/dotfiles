@@ -19,6 +19,7 @@ brew install --cask vial
 brew install --cask signal
 brew install --cask telegram
 brew install neovim
+brew install yazi
 brew install stow
 brew install tmux
 brew install fastfetch
