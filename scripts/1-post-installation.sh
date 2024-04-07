@@ -45,3 +45,5 @@ rm -rf .config/autostart/**
 gh extension install dlvhdr/gh-dash
 
 gem install thor
+
+fc-cache -fv
