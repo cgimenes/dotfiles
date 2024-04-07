@@ -194,6 +194,7 @@
         "ruby",
         "starship",
         "stow",
+        "sxiv",
         "taskwarrior-tui",
         "terminus-font",
         "tldr",
@@ -221,6 +222,7 @@
         "xorg-xkill",
         "xorg-xprop",
         "xorg-xsetroot",
+        "yazi",
         "zoxide",
         "zsh"
     ],

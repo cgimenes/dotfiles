@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-	alacritty
+	wezterm start --cwd .
 
 # program launcher
 super + d
@@ -20,11 +20,11 @@ Print
 
 # neovim
 super + n
-	alacritty -e nvim
+	wezterm -e nvim
 
 # file explorer
 super + e
-	alacritty -e yazi
+	wezterm -e yazi
 
 # brightness buttons
 XF86MonBrightness{Up,Down}
