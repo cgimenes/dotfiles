@@ -30,5 +30,6 @@ config.window_padding = {
 config.font = wezterm.font("Iosevka Nerd Font Mono")
 config.font_size = 18.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+config.window_close_confirmation = "NeverPrompt"
 
 return config
