@@ -18,6 +18,7 @@ brew install --cask soundsource
 brew install --cask vial
 brew install --cask signal
 brew install --cask telegram
+brew install --cask sublime-text
 brew install neovim
 brew install yazi
 brew install stow

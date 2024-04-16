@@ -28,6 +28,7 @@ config.window_padding = {
 	top = 2,
 	bottom = 2,
 }
+config.window_decorations = "TITLE|RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 config.font = wezterm.font("Iosevka Nerd Font Mono")
 config.font_size = 18.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
