@@ -21,8 +21,6 @@ if ! zgen saved; then
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-completions
     zgen load zsh-users/zsh-autosuggestions
-    zgen load chrissicool/zsh-256color
-    zgen load superbrothers/zsh-kubectl-prompt
     zgen load Aloxaf/fzf-tab
 
     # save all to init script

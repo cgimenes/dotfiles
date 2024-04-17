@@ -32,6 +32,4 @@
 		# The file is either new or does not exist. Either way, -C will handle it correctly
 		compinit -C
 	fi
-        
-        autoload -U ~/.zsh/completions/*(:t)
 } ${ZDOTDIR:-$HOME}/.zcompdump
