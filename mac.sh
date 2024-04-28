@@ -19,6 +19,13 @@ brew install --cask vial
 brew install --cask signal
 brew install --cask telegram
 brew install --cask sublime-text
+brew install --cask dynalist
+brew install --cask qbittorrent
+brew install --cask iina
+brew install --cask docker
+brew install mpv
+brew install unar
+brew install croc
 brew install neovim
 brew install yazi
 brew install stow
