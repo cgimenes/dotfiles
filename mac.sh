@@ -2,6 +2,8 @@
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+curl -L https://nixos.org/nix/install | sh
+
 brew install --cask enpass
 brew install --cask kitty
 brew install --cask brave-browser
