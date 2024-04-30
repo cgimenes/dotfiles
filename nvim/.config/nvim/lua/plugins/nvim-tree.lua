@@ -57,7 +57,6 @@ return {
         vim.keymap.set('n', '<Right>', api.node.open.edit, opts "Open")
         vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts "Close Directory")
         vim.keymap.set('n', '<Left>', api.node.navigate.parent_close, opts "Close Directory")
-        vim.keymap.set('n', '<bs>', api.tree.change_root_to_parent, opts('Up'))
         vim.keymap.set('n', '<C-r>', api.tree.change_root_to_node, opts('CD'))
 
         vim.keymap.set('n', '<c-f>', launch_find_files, opts('Launch Find Files'))
