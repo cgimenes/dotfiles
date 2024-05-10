@@ -25,6 +25,7 @@ brew install --cask dynalist
 brew install --cask qbittorrent
 brew install --cask iina
 brew install --cask docker
+brew install --cask raycast
 brew install mpv
 brew install unar
 brew install croc
