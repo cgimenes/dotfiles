@@ -8,6 +8,7 @@ return {
         'bash',
         'c',
         'cpp',
+        'diff',
         'go',
         'html',
         'javascript',

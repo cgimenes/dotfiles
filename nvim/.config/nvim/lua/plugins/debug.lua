@@ -18,7 +18,7 @@ return {
       require('mason-nvim-dap').setup {
         -- Makes a best effort to setup the various debuggers with
         -- reasonable debug configurations
-        automatic_setup = true,
+        automatic_installation = true,
 
         -- You can provide additional configuration to the handlers,
         -- see mason-nvim-dap README for more information
@@ -121,7 +121,13 @@ return {
         },
       }
 
-      require('dap-go').setup()
+      require('dap-go').setup {
+        delve = {
+          -- On Windows delve must be run attached or it crashes.
+          -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
+          detached = vim.fn.has 'win32' == 0,
+        },
+      }
       require('dap-ruby').setup()
 
       vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
