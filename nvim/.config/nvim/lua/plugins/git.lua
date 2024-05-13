@@ -12,11 +12,9 @@ return {
   },
   {
     'sindrets/diffview.nvim',
-    cmd = {
-      'DiffviewOpen',
-    },
     keys = {
       { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'File History' },
+      { '<leader>go', '<cmd>DiffviewOpen<cr>', desc = 'Open Git diff view' },
     },
     config = function()
       local diffview = require 'diffview'
@@ -38,7 +36,7 @@ return {
     },
     cmd = 'LazyGit',
     keys = {
-      { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'Restore Session' },
+      { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
     },
   },
   {
