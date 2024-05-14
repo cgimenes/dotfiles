@@ -26,6 +26,8 @@ brew install --cask qbittorrent
 brew install --cask iina
 brew install --cask docker
 brew install --cask raycast
+brew install --cask burp-suite
+brew install --cask infra
 brew install mpv
 brew install unar
 brew install croc
