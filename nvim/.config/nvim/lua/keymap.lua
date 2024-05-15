@@ -42,8 +42,5 @@ vim.keymap.set('n', '<leader>pE', '$pa', { desc = 'Paste at the end of current l
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Oil
-vim.keymap.set('n', '<leader>E', '<cmd>Oil<cr>', { desc = 'Oil [E]xplorer' })
-
 -- Snippets
 vim.keymap.set('n', '<leader>os', '<cmd>source ~/.config/nvim/lua/snippets.lua<cr>', { desc = 'Reload snippets' })
