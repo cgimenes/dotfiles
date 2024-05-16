@@ -43,4 +43,4 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Snippets
-vim.keymap.set('n', '<leader>os', '<cmd>source ~/.config/nvim/lua/snippets.lua<cr>', { desc = 'Reload snippets' })
+vim.keymap.set('n', '<leader>os', function() require('snippets').load_snippets() end, { desc = 'Reload snippets' })
