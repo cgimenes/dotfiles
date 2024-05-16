@@ -40,6 +40,7 @@ return {
           -- Diagnostic keymaps
           map('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic message')
           map(']d', vim.diagnostic.goto_next, 'Go to next diagnostic message')
+          map('<leader>lm', vim.diagnostic.open_float, 'Open floating diagnostic [M]essage')
           vim.keymap.set({ 'i', 'n' }, '<C-k>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'Signature Documentation' })
 
           -- The following two autocommands are used to highlight references of the
@@ -79,22 +80,6 @@ return {
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, 'Toggle Inlay [H]ints')
           end
-
-          -- Show diagnostics under the cursor when holding position
-          vim.api.nvim_create_autocmd('CursorHold', {
-            buffer = event.buf,
-            callback = function()
-              local opts = {
-                focusable = false,
-                close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
-                border = 'rounded',
-                source = 'always',
-                prefix = ' ',
-                scope = 'line',
-              }
-              vim.diagnostic.open_float(nil, opts)
-            end,
-          })
         end,
       })
 
