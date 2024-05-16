@@ -33,24 +33,6 @@ return {
         },
       }
 
-      -- Basic debugging keymaps, feel free to change to your liking!
-      vim.keymap.set('n', '<leader>dt', dap.toggle_breakpoint, { desc = 'Toggle Breakpoint' })
-      vim.keymap.set('n', '<leader>db', dap.step_back, { desc = 'Step Back' })
-      vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Continue' })
-      vim.keymap.set('n', '<leader>dC', dap.run_to_cursor, { desc = 'Run To Cursor' })
-      vim.keymap.set('n', '<leader>di', dap.step_into, { desc = 'Step Into' })
-      vim.keymap.set('n', '<leader>dn', dap.step_over, { desc = 'Step Over/Next Line' })
-      vim.keymap.set('n', '<leader>do', dap.step_out, { desc = 'Step Out' })
-      vim.keymap.set('n', '<leader>dp', dap.pause, { desc = 'Pause' })
-      vim.keymap.set('n', '<leader>dr', dap.repl.toggle, { desc = 'Toggle Repl' })
-      vim.keymap.set('n', '<leader>dq', dap.terminate, { desc = 'Terminate' })
-      vim.keymap.set('n', '<leader>dU', function()
-        dapui.toggle { reset = true }
-      end, { desc = 'Toggle UI' })
-      vim.keymap.set('n', '<leader>dT', function()
-        dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-      end, { desc = 'Debug: Set Breakpoint' })
-
       -- Dap UI setup
       -- For more information, see |:help nvim-dap-ui|
       dapui.setup {
@@ -145,5 +127,19 @@ return {
       })
       vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
     end,
+    keys = {
+      { '<leader>dt', '<cmd>DapToggleBreakpoint<cr>', desc = 'Toggle Breakpoint' },
+      { '<leader>dc', '<cmd>DapContinue<cr>', desc = 'Continue' },
+      { '<leader>di', '<cmd>DapStep_into<cr>', desc = 'Step Into' },
+      { '<leader>dn', '<cmd>DapStep_over<cr>', desc = 'Step Over/Next Line' },
+      { '<leader>do', '<cmd>DapStep_out<cr>', desc = 'Step Out' },
+      { '<leader>dr', '<cmd>DapToggleRepl<cr>', desc = 'Toggle Repl' },
+      { '<leader>dq', '<cmd>DapTerminate<cr>', desc = 'Terminate' },
+      { '<leader>db', function() require('dap').step_back() end, desc = 'Step Back' },
+      { '<leader>dC', function() require('dap').run_to_cursor() end, desc = 'Run To Cursor' },
+      { '<leader>dp', function() require('dap').pause() end, desc = 'Pause' },
+      { '<leader>dU', function() require('dapui').toggle { reset = true } end, desc = 'Toggle UI' },
+      { '<leader>dT', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, desc = 'Debug: Set Breakpoint' },
+    }
   },
 }
