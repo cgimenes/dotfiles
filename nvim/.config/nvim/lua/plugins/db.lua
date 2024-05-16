@@ -11,6 +11,9 @@ return {
       'DBUIAddConnection',
       'DBUIFindBuffer',
     },
+    keys = {
+      { '<leader>D', '<cmd>tabnew<cr><cmd>DBUI<cr>', desc = 'Open DBUI in a new tab' },
+    },
     init = function()
       vim.g.db_ui_use_nerd_fonts = 1
     end,

@@ -29,7 +29,7 @@ return {
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          map('<leader>lD', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
           map('<leader>ld', require('telescope.builtin').lsp_document_symbols, '[D]ocument Symbols')
           map('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
           map('<leader>rl', vim.lsp.buf.rename, '[R]ename ([L]SP)')
