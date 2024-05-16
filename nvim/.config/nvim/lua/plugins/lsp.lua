@@ -123,7 +123,7 @@ return {
         intelephense = {},
         tsserver = {},
         tailwindcss = {},
-        ruby_ls = {},
+        ruby_lsp = {},
         gopls = {},
 
         lua_ls = {
