@@ -200,6 +200,9 @@ return {
         lualine_a = {
           { grapple_files },
         },
+        lualine_z = {
+          { 'tabs' },
+        }
       },
     },
   },
