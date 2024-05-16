@@ -1,6 +1,7 @@
 return {
   {
     'nvim-tree/nvim-tree.lua',
+    enabled = false,
     config = function ()
       local on_attach = function(bufnr)
         local api = require('nvim-tree.api')
