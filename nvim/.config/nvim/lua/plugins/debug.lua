@@ -5,6 +5,8 @@ return {
       'nvim-neotest/nvim-nio',
       'rcarriga/nvim-dap-ui',
 
+      'theHamsta/nvim-dap-virtual-text',
+
       'williamboman/mason.nvim',
       'jay-babu/mason-nvim-dap.nvim',
 
@@ -32,6 +34,8 @@ return {
           'codelldb',
         },
       }
+
+      require("nvim-dap-virtual-text").setup()
 
       -- Dap UI setup
       -- For more information, see |:help nvim-dap-ui|
