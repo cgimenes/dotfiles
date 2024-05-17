@@ -72,3 +72,9 @@ vim.opt.scrolloff = 1
 vim.opt.endofline = false
 vim.opt.endoffile = false
 vim.opt.fixendofline = false
+
+vim.filetype.add {
+  extension = {
+    hurl = 'hurl',
+  },
+}
