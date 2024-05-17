@@ -3,7 +3,7 @@ return {
     'stevearc/oil.nvim',
     opts = {
       keymaps = {
-        ["gq"] = "actions.close",
+        ["q"] = "actions.close",
       },
     },
     cmd = 'Oil',
