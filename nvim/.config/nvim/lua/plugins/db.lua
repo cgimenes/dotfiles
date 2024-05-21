@@ -20,9 +20,11 @@ return {
   },
   {
     'kndndrj/nvim-dbee',
-    enabled = false,
     dependencies = {
       'MunifTanjim/nui.nvim',
+    },
+    cmd = {
+      'Dbee',
     },
     build = function()
       -- Install tries to automatically detect the install method.
