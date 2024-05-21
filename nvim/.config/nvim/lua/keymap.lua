@@ -45,3 +45,5 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- Snippets
 vim.keymap.set('n', '<leader>os', function() require('snippets').load_snippets() end, { desc = 'Reload snippets' })
+
+vim.keymap.set('n', '<leader>of', '<cmd>Telescope filetypes<cr>', { desc = 'Change [F]iletype' })
