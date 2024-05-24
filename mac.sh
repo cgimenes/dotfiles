@@ -46,6 +46,7 @@ brew install ripgrep
 brew install golang
 brew install lazygit
 brew install raylib
+brew install ouch
 
 git clone https://github.com/cgimenes/dotfiles.git
 cd dotfiles

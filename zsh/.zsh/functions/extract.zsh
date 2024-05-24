@@ -11,24 +11,21 @@ function extract {
     do
       if [ -f "$n" ] ; then
           case "${n%,}" in
-            *.cbt|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
-                         tar xvf "$n"       ;;
-            *.lzma)      unlzma ./"$n"      ;;
-            *.bz2)       bunzip2 ./"$n"     ;;
-            *.cbr|*.rar)       unrar x -ad ./"$n" ;;
-            *.gz)        gunzip ./"$n"      ;;
-            *.cbz|*.epub|*.zip)       unzip ./"$n"       ;;
-            *.z)         uncompress ./"$n"  ;;
-            *.7z|*.arj|*.cab|*.cb7|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.pkg|*.rpm|*.udf|*.wim|*.xar)
-                         7z x ./"$n"        ;;
-            *.xz)        unxz ./"$n"        ;;
-            *.exe)       cabextract ./"$n"  ;;
-            *.cpio)      cpio -id < ./"$n"  ;;
-            *.cba|*.ace)      unace x ./"$n"      ;;
+            *.tar|*.zip|*.7z|*.gz|*.xz|*.lzma|*.bz|*.bz2|*.lz4|*.sz|*.zst|*.rar|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz)
+                            ouch d "$n"        ;;
+            *.cbt)          tar xvf "$n"       ;;
+            *.cbr)          unrar x -ad ./"$n" ;;
+            *.cbz|*.epub)   unzip ./"$n"       ;;
+            *.z)            uncompress ./"$n"  ;;
+            *.arj|*.cab|*.cb7|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.pkg|*.rpm|*.udf|*.wim|*.xar)
+                            7z x ./"$n"        ;;
+            *.exe)          cabextract ./"$n"  ;;
+            *.cpio)         cpio -id < ./"$n"  ;;
+            *.cba|*.ace)    unace x ./"$n"      ;;
             *)
-                         echo "extract: '$n' - unknown archive method"
-                         return 1
-                         ;;
+                            echo "extract: '$n' - unknown archive method"
+                            return 1
+                            ;;
           esac
       else
           echo "'$n' - file does not exist"
