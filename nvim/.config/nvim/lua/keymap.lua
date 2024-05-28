@@ -10,7 +10,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('i', 'jk', '<Esc>')
 
 -- Close everything
-vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>TroubleClose<cr><cmd>DiffviewClose<cr><cmd>diffoff<cr>')
+vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>TroubleClose<cr><cmd>diffoff<cr><cmd>DiffviewClose<cr>')
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')

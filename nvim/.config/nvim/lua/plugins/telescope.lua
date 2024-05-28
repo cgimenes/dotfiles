@@ -101,31 +101,38 @@ return {
       end
 
       local function find_files()
-        require('telescope.builtin').find_files {
-          find_command = {
-            'rg',
-            '--files',
-            '--glob',
-            '!**/.cache/*',
-            '--glob',
-            '!**/.git/*',
-            '--glob',
-            '!**/.npm/*',
-            '--glob',
-            '!**/vendor/*',
-            '--glob',
-            '!**/node_modules/*',
-            '--glob',
-            '!**/.local/share/*',
-            '--hidden',
-            '--color=never',
-            '--no-heading',
-            '--with-filename',
-            '--line-number',
-            '--column',
-            '--smart-case',
-          },
+        opts = {}
+        opts.find_command = {
+          'rg',
+          '--files',
+          '--glob',
+          '!**/.cache/*',
+          '--glob',
+          '!**/.git/*',
+          '--glob',
+          '!**/.npm/*',
+          '--glob',
+          '!**/vendor/*',
+          '--glob',
+          '!**/node_modules/*',
+          '--glob',
+          '!**/.local/share/*',
+          '--hidden',
+          '--color=never',
+          '--no-heading',
+          '--with-filename',
+          '--line-number',
+          '--column',
+          '--smart-case',
         }
+
+        if vim.bo.filetype == 'oil' then
+          local basedir = require('oil').get_current_dir()
+          opts.cwd = basedir
+          opts.search_dirs = { basedir }
+        end
+
+        require('telescope.builtin').find_files(opts)
       end
 
       vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc = '[F]ind existing buffers' })
@@ -136,7 +143,16 @@ return {
       vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-      vim.keymap.set('n', '<leader>sg', require('telescope').extensions.live_grep_args.live_grep_args, { desc = '[S]earch by [G]rep' })
+      vim.keymap.set('n', '<leader>sg', function()
+        local command = '""<Esc>i'
+        if vim.bo.filetype == 'oil' then
+          local basedir = require('oil').get_current_dir()
+          command = string.format('"" %s<Esc>_3li', basedir)
+        end
+
+        require('telescope').extensions.live_grep_args.live_grep_args()
+        vim.fn.feedkeys(vim.api.nvim_replace_termcodes(command, true, true, true), 'n')
+      end, { desc = '[S]earch by [G]rep' })
       vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sl', require('telescope.builtin').resume, { desc = '[S]earch Resume' })
       vim.keymap.set('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch Colorschemes' })
