@@ -55,3 +55,14 @@
 ;; etc).
 
 (setq projectile-project-search-path '("~/dev/src"))
+
+(after! org
+  (setq org-agenda-deadline-leaders
+          '("" "" "%2d d. ago: ")
+        org-deadline-warning-days 0
+        org-agenda-span 7
+        org-agenda-start-day "-0d"
+        org-agenda-skip-function-global
+          '(org-agenda-skip-entry-if 'todo 'done)
+        org-log-done 'time)
+)
