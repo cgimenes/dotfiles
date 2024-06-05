@@ -4,9 +4,14 @@ return {
     build = false,
     cmd = 'Spectre',
     opts = { open_cmd = 'noswapfile vnew' },
-    -- stylua: ignore
     keys = {
-      { "<leader>rs", function() require("spectre").open() end, desc = "[R]eplace in files ([S]pectre)" },
+      {
+        '<leader>rs',
+        function()
+          require('spectre').open()
+        end,
+        desc = '[R]eplace in files ([S]pectre)',
+      },
     },
   },
 }
