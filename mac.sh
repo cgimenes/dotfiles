@@ -4,62 +4,72 @@
 
 curl -L https://nixos.org/nix/install | sh
 
-brew install --cask enpass
-brew install --cask kitty
 brew install --cask brave-browser
-brew install --cask wezterm
+brew install --cask burp-suite
+brew install --cask docker
+brew install --cask enpass
+brew install --cask flameshot
+brew install --cask iina
+brew install --cask infra
+brew install --cask kitty
 brew install --cask notion-calendar
 brew install --cask obsidian
-brew install --cask google-drive
-brew install --cask flameshot
-brew install --cask visual-studio-code
-brew install --cask whatsapp
-brew install --cask spotify
-brew install --cask rectangle
-brew install --cask soundsource
-brew install --cask vial
-brew install --cask signal
-brew install --cask telegram
-brew install --cask sublime-text
-brew install --cask dynalist
 brew install --cask qbittorrent
-brew install --cask iina
-brew install --cask docker
 brew install --cask raycast
-brew install --cask burp-suite
-brew install --cask infra
-brew install mpv
-brew install unar
+brew install --cask rectangle
+brew install --cask signal
+brew install --cask soundsource
+brew install --cask spotify
+brew install --cask sublime-text
+brew install --cask syncthing
+brew install --cask telegram
+brew install --cask tradingview
+brew install --cask veracrypt
+brew install --cask vial
+brew install --cask visual-studio-code
+brew install --cask wezterm
+brew install --cask whatsapp
 brew install croc
-brew install neovim
-brew install yazi
-brew install stow
-brew install tmux
-brew install fastfetch
-brew install zoxide
-brew install starship
 brew install eza
+brew install fastfetch
 brew install fzf
 brew install gh
-brew install node
-brew install ripgrep
-brew install golang
+brew install git
+brew install go
+brew install highlight
 brew install lazygit
-brew install raylib
+brew install mpv
+brew install neovim
+brew install node
 brew install ouch
+brew install raylib
+brew install ripgrep
+brew install starship
+brew install stow
+brew install tmux
+brew install yazi
+brew install zoxide
+
+brew tap railwaycat/emacsmacport
+brew install emacs-mac --with-modules
+ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
+
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
 
 git clone https://github.com/cgimenes/dotfiles.git
 cd dotfiles
 
 stow ag
-stow kitty
+stow emacs
 stow gh-dash
 stow git
-stow nvim
+stow kitty
 stow lf
+stow nvim
 stow rg
 stow starship
 stow taskwarrior
 stow tmux
-stow zsh
 stow wezterm
+stow zsh

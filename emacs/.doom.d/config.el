@@ -1,7 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
-;;
 ;; - `doom-font' -- the primary font to use
 ;; - `doom-variable-pitch-font' -- a non-monospace font (where applicable)
 ;; - `doom-big-font' -- used for `doom-big-font-mode'; use this for
@@ -21,23 +20,8 @@
 (setq doom-theme 'kanagawa)
 (setq display-line-numbers-type 'relative)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-;; Whenever you reconfigure a package, make sure to wrap your config in an
-;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
-;;
-;;   (after! PACKAGE
-;;     (setq x y))
-;;
-;; The exceptions to this rule:
-;;
-;;   - Setting file/directory variables (like `org-directory')
-;;   - Setting variables which explicitly tell you to set them before their
-;;     package is loaded (see 'C-h v VARIABLE' to look up their documentation).
-;;   - Setting doom variables (which start with 'doom-' or '+').
-;;
 ;; Here are some additional functions/macros that will help you configure Doom.
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -50,19 +34,21 @@
 ;;
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
 ;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
 ;; etc).
 
 (setq projectile-project-search-path '("~/dev/src"))
 
 (after! org
+  (setq org-todo-keywords
+    '((sequence "TODO" "WAIT" "HOLD" "DOING" "|" "DONE" "KILL")))
   (setq org-agenda-deadline-leaders
-          '("" "" "%2d d. ago: ")
-        org-deadline-warning-days 0
-        org-agenda-span 7
-        org-agenda-start-day "-0d"
-        org-agenda-skip-function-global
-          '(org-agenda-skip-entry-if 'todo 'done)
-        org-log-done 'time)
+    '("" "" "%2d d. ago: ")
+    org-deadline-warning-days 0
+    org-agenda-span 7
+    org-agenda-start-day "-0d"
+    org-agenda-skip-function-global '(org-agenda-skip-entry-if 'todo 'done)
+    org-log-done 'time)
 )
+
+(setq-default tab-width 4)
