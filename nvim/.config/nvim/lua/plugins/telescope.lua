@@ -93,13 +93,6 @@ return {
 
       require('telescope').load_extension 'live_grep_args'
 
-      local function buffer_fuzzy_find()
-        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          winblend = 10,
-          previewer = false,
-        })
-      end
-
       local function find_files()
         opts = {}
         opts.find_command = {
@@ -136,12 +129,10 @@ return {
       end
 
       vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc = '[F]ind existing buffers' })
-      vim.keymap.set('n', '<leader>sr', require('telescope.builtin').oldfiles, { desc = 'Search [R]ecently opened files' })
-      vim.keymap.set('n', '<leader>s/', buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
-      vim.keymap.set('n', '<leader>sf', find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = 'Search [R]ecently opened files' })
+      vim.keymap.set('n', '<leader>ff', find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
-      vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', function()
         local command = '""<Esc>i'

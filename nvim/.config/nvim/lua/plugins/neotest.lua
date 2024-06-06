@@ -6,6 +6,7 @@ return {
       'nvim-lua/plenary.nvim',
       'antoinemadec/FixCursorHold.nvim',
       'olimorris/neotest-phpunit',
+      'nvim-neotest/neotest-python'
     },
     config = function()
       require('neotest').setup {
@@ -18,6 +19,7 @@ return {
             -- dap = require('dap').configurations.php[1],
             filter_dirs = { '.git', 'node_modules', 'vendor' },
           },
+          require("neotest-python")
         },
         summary = {
           animated = false,

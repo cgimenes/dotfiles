@@ -48,4 +48,12 @@ return {
       -- vim.cmd.colorscheme 'nord'
     end,
   },
+  {
+    'sainnhe/everforest',
+    priority = 1000,
+    init = function()
+      -- vim.g.everforest_enable_italic = true
+      -- vim.cmd.colorscheme 'everforest'
+    end,
+  },
 }
