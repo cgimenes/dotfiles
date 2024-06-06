@@ -199,24 +199,25 @@ return {
     -- Diagnostics list
     'folke/trouble.nvim',
     opts = {
-      cycle_results = false,
+      focus = true,
+      modes = {
+        symbols = {
+          focus = true,
+        },
+      },
     },
     keys = {
-      { '<leader>lt', '<cmd>TroubleToggle document_diagnostics<cr>', desc = 'Document Diagnostics' },
-      { 'gR', '<cmd>Trouble lsp_references<cr>', desc = 'Symbol References' },
-      { 'gI', '<cmd>Trouble lsp_implementations<cr>', desc = 'Symbol Implementations' },
+      { '<leader>lt', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Document Diagnostics' },
+      { '<leader>lo', '<cmd>Trouble symbols toggle<cr>', desc = 'Document Symbols (Outline)' },
+      { 'gR', '<cmd>Trouble lsp_references toggle<cr>', desc = 'Symbol References' },
+      { 'gI', '<cmd>Trouble lsp_implementations toggle<cr>', desc = 'Symbol Implementations' },
     },
-    cmd = {
-      'Trouble',
-      'TroubleClose',
-      'TroubleToggle',
-      'TroubleRefresh',
-    },
+    cmd = 'Trouble',
   },
   {
-    -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     -- used for completion, annotations and signatures of Neovim apis
-    'folke/neodev.nvim',
-    opts = {},
+    'folke/lazydev.nvim',
+    ft = 'lua',
   },
 }

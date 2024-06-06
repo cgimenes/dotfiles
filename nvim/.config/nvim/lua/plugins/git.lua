@@ -11,6 +11,9 @@ return {
   },
   {
     'sindrets/diffview.nvim',
+    cmd = {
+      'DiffviewClose',
+    },
     keys = {
       { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'File History' },
       { '<leader>go', '<cmd>DiffviewOpen<cr>', desc = 'Open Git diff view' },
