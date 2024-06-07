@@ -17,7 +17,7 @@
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 (setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18))
 
-(setq doom-theme 'kanagawa)
+;; (setq doom-theme 'kanagawa)
 (setq display-line-numbers-type 'relative)
 
 (setq org-directory "~/org/")
