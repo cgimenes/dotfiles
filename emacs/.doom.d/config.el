@@ -40,10 +40,8 @@
 (setq projectile-project-search-path '("~/dev/src"))
 
 (after! org
-  (setq org-todo-keywords
-    '((sequence "TODO" "WAIT" "HOLD" "DOING" "|" "DONE" "KILL")))
-  (setq org-agenda-deadline-leaders
-    '("" "" "%2d d. ago: ")
+  (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
+    org-todo-keywords '((sequence "TODO" "WAIT" "HOLD" "DOING" "|" "DONE" "KILL"))
     org-deadline-warning-days 0
     org-agenda-span 7
     org-agenda-start-day "-0d"
