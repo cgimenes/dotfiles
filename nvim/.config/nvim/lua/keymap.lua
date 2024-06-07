@@ -20,7 +20,7 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 
 vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>', { desc = '[N]ew Buffer' })
 vim.keymap.set('n', '<leader>bd', '<cmd>windo diffthis<cr>', { desc = '[D]iff' })
-vim.keymap.set('n', '<leader>bs', '<cmd>w!<cr>', { desc = '[W]rite to File' })
+vim.keymap.set('n', '<leader>bs', '<cmd>silent w!<cr>', { desc = '[W]rite to File' })
 vim.keymap.set('n', '<leader>w', '<C-w>')
 
 vim.keymap.set('v', '>', '>gv')
