@@ -20,8 +20,6 @@
 ;; (setq doom-theme 'kanagawa)
 (setq display-line-numbers-type 'relative)
 
-(setq org-directory "~/org/")
-
 ;; Here are some additional functions/macros that will help you configure Doom.
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -39,6 +37,7 @@
 
 (setq projectile-project-search-path '("~/dev/src"))
 
+(setq org-directory "~/org/")
 (after! org
   (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
     org-todo-keywords '((sequence "TODO" "WAIT" "HOLD" "DOING" "|" "DONE" "KILL"))
@@ -50,3 +49,12 @@
 )
 
 (setq-default tab-width 4)
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("<tab>" . 'copilot-accept-completion)
+              ("TAB" . 'copilot-accept-completion)
+              ("C-TAB" . 'copilot-accept-completion-by-word)
+              ("C-<tab>" . 'copilot-accept-completion-by-word)))
