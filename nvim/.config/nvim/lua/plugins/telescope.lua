@@ -130,7 +130,7 @@ return {
 
       vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc = '[F]ind existing buffers' })
       vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = 'Search [R]ecently opened files' })
-      vim.keymap.set('n', '<leader>ff', find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>fF', find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
