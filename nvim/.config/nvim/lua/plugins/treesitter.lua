@@ -67,4 +67,9 @@ return {
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
+  {
+    'windwp/nvim-ts-autotag',
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    opts = {},
+  },
 }
