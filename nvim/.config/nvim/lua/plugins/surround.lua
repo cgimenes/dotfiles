@@ -11,4 +11,6 @@ return {
       n_lines = 500,
     },
   },
+  -- Make surround repeatable
+  { 'tpope/vim-repeat', event = 'VeryLazy' },
 }
