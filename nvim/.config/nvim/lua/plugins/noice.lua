@@ -34,5 +34,12 @@ return {
         },
       },
     },
+    keys = {
+      {
+        '<leader>N',
+        '<cmd>NoiceTelescope<cr>',
+        desc = '[N]otification history',
+      },
+    }
   },
 }
