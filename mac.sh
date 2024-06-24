@@ -6,6 +6,7 @@ curl -L https://nixos.org/nix/install | sh
 
 brew install --cask brave-browser
 brew install --cask burp-suite
+brew install --cask discord
 brew install --cask docker
 brew install --cask enpass
 brew install --cask flameshot
@@ -22,6 +23,7 @@ brew install --cask soundsource
 brew install --cask spotify
 brew install --cask sublime-text
 brew install --cask syncthing
+brew install --cask tailscale
 brew install --cask telegram
 brew install --cask tradingview
 brew install --cask veracrypt
@@ -37,6 +39,7 @@ brew install gh
 brew install git
 brew install go
 brew install highlight
+brew install httpie
 brew install lazygit
 brew install mpv
 brew install neovim
