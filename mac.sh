@@ -29,6 +29,7 @@ brew install --cask vial
 brew install --cask visual-studio-code
 brew install --cask wezterm
 brew install --cask whatsapp
+brew install --cask nikitabobko/tap/aerospace
 brew install croc
 brew install eza
 brew install fastfetch
@@ -73,3 +74,4 @@ stow taskwarrior
 stow tmux
 stow wezterm
 stow zsh
+stow aerospace
