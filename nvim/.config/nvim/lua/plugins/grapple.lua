@@ -16,6 +16,8 @@ return {
       { '<leader>h3', '<cmd>Grapple select index=3<cr>', desc = 'Select third tag' },
       { '<leader>h4', '<cmd>Grapple select index=4<cr>', desc = 'Select fourth tag' },
       { '<leader>h5', '<cmd>Grapple select index=5<cr>', desc = 'Select fifth tag' },
+      { '<leader>h6', '<cmd>Grapple select index=6<cr>', desc = 'Select sixth tag' },
+      { '<leader>h7', '<cmd>Grapple select index=7<cr>', desc = 'Select seventh tag' },
     },
   },
 }
