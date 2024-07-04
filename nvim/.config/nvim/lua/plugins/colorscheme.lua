@@ -56,4 +56,23 @@ return {
       -- vim.cmd.colorscheme 'everforest'
     end,
   },
+  {
+    'lunarvim/synthwave84.nvim',
+    priority = 1000,
+    init = function()
+      require('synthwave84').setup {
+        glow = {
+          error_msg = false,
+          type2 = false,
+          func = false,
+          keyword = false,
+          operator = false,
+          buffer_current_target = false,
+          buffer_visible_target = false,
+          buffer_inactive_target = false,
+        },
+      }
+      -- vim.cmd.colorscheme 'synthwave84'
+    end,
+  },
 }

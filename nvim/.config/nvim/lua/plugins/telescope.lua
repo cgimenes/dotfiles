@@ -128,7 +128,7 @@ return {
         require('telescope.builtin').find_files(opts)
       end
 
-      vim.keymap.set('n', '<leader>bf', require('telescope.builtin').buffers, { desc = '[F]ind existing buffers' })
+      vim.keymap.set('n', '<leader>bl', require('telescope.builtin').buffers, { desc = '[L]ist existing buffers' })
       vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = 'Search [R]ecently opened files' })
       vim.keymap.set('n', '<leader>fF', find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
@@ -144,9 +144,10 @@ return {
         require('telescope').extensions.live_grep_args.live_grep_args()
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes(command, true, true, true), 'n')
       end, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+      vim.keymap.set('n', '<leader>lT', require('telescope.builtin').diagnostics, { desc = 'Search Diagnostics' })
       vim.keymap.set('n', '<leader>sl', require('telescope.builtin').resume, { desc = '[S]earch Resume' })
-      vim.keymap.set('n', '<leader>sc', require('telescope.builtin').colorscheme, { desc = '[S]earch Colorschemes' })
+      vim.keymap.set('n', '<leader>oc', require('telescope.builtin').colorscheme, { desc = '[S]earch Colorschemes' })
+      vim.keymap.set('n', '<leader>of', '<cmd>Telescope filetypes<cr>', { desc = 'Change [F]iletype' })
     end,
   },
 }

@@ -19,10 +19,9 @@ return {
         lua = { 'stylua' },
         python = { 'isort', 'black' },
         go = { 'gofmt' },
-        php = { 'php_cs_fixer' },
+        php = { 'pint' },
 
-        -- You can use a sub-list to tell conform to run *until* a formatter
-        -- is found.
+        -- You can use a sub-list to tell conform to run *until* a formatter is found.
         -- javascript = { { "prettierd", "prettier" } },
       },
       formatters = {

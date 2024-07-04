@@ -55,7 +55,7 @@ return {
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     keys = {
       {
-        '<leader>oc',
+        '<leader>oC',
         function()
           local tsc = require 'treesitter-context'
           tsc.toggle()
