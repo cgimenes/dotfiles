@@ -93,3 +93,7 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.toggl.daneel'
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.cron.electron'
+run = 'layout floating'

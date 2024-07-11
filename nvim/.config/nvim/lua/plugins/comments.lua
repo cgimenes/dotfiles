@@ -20,6 +20,13 @@ return {
     },
     opts = {
       signs = false,
+      search = {
+        pattern = [[\b(KEYWORDS)\b]],
+      },
+      highlight = {
+        pattern = [[.*<(KEYWORDS)\s*:?\s*]],
+        keyword = "bg"
+      },
     },
     keys = {
       { '<leader>st', '<cmd>TodoTelescope<cr>', desc = '[S]earch [T]odo' },
