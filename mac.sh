@@ -11,7 +11,7 @@ brew install --cask docker
 brew install --cask enpass
 brew install --cask flameshot
 brew install --cask iina
-brew install --cask ice
+brew install --cask jordanbaird-ice
 brew install --cask infra
 brew install --cask kitty
 brew install --cask notion-calendar
