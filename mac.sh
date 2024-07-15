@@ -18,7 +18,6 @@ brew install --cask notion-calendar
 brew install --cask obsidian
 brew install --cask qbittorrent
 brew install --cask raycast
-brew install --cask rectangle
 brew install --cask signal
 brew install --cask soundsource
 brew install --cask spotify
