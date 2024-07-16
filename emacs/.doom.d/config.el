@@ -40,12 +40,20 @@
 (setq org-directory "~/org/")
 (after! org
   (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
-    org-todo-keywords '((sequence "TODO" "WAIT" "HOLD" "DOING" "|" "DONE" "KILL"))
+    org-todo-keywords '((sequence "TODO" "WAIT" "HOLD" "DOING" "|" "DONE"))
     org-deadline-warning-days 0
-    org-agenda-span 7
+    org-agenda-span 14
     org-agenda-start-day "-0d"
     org-agenda-skip-function-global '(org-agenda-skip-entry-if 'todo 'done)
-    org-log-done 'time)
+    org-log-done 'date)
+  ;; (setq
+  ;;   org-insert-heading-respect-content t
+
+  ;;   org-hide-emphasis-markers t
+  ;;   org-pretty-entities t
+
+  ;;   org-agenda-tags-column 0
+  ;;   org-agenda-block-separator ?─
 )
 
 (setq-default tab-width 4)
