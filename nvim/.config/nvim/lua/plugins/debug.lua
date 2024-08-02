@@ -12,6 +12,7 @@ return {
 
       'leoluz/nvim-dap-go',
       'suketa/nvim-dap-ruby',
+      'mfussenegger/nvim-dap-python',
     },
     config = function()
       local dap = require 'dap'
@@ -115,6 +116,7 @@ return {
         },
       }
       require('dap-ruby').setup()
+      require('dap-python').setup("python")
 
       vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
       vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })
@@ -134,9 +136,9 @@ return {
     keys = {
       { '<leader>dt', '<cmd>DapToggleBreakpoint<cr>', desc = 'Toggle Breakpoint' },
       { '<leader>dc', '<cmd>DapContinue<cr>', desc = 'Continue' },
-      { '<leader>di', '<cmd>DapStep_into<cr>', desc = 'Step Into' },
-      { '<leader>dn', '<cmd>DapStep_over<cr>', desc = 'Step Over/Next Line' },
-      { '<leader>do', '<cmd>DapStep_out<cr>', desc = 'Step Out' },
+      { '<leader>di', '<cmd>DapStepInto<cr>', desc = 'Step Into' },
+      { '<leader>dn', '<cmd>DapStepOver<cr>', desc = 'Step Over/Next Line' },
+      { '<leader>do', '<cmd>DapStepOut<cr>', desc = 'Step Out' },
       { '<leader>dr', '<cmd>DapToggleRepl<cr>', desc = 'Toggle Repl' },
       { '<leader>dq', '<cmd>DapTerminate<cr>', desc = 'Terminate' },
       { '<leader>db', function() require('dap').step_back() end, desc = 'Step Back' },

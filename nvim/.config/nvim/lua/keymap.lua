@@ -44,8 +44,15 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Snippets
-vim.keymap.set('n', '<leader>os', function() require('snippets').load_snippets() end, { desc = 'Reload snippets' })
+vim.keymap.set('n', '<leader>os', function()
+  require('snippets').load_snippets()
+end, { desc = 'Reload snippets' })
 
 vim.keymap.set('n', '<leader>yr', '<cmd>let @+ = expand("%")<cr>', { desc = 'Yank relative filename' })
 vim.keymap.set('n', '<leader>yf', '<cmd>let @+ = expand("%:p")<cr>', { desc = 'Yank full filename' })
 vim.keymap.set('n', '<leader>yn', '<cmd>let @+ = expand("%:t")<cr>', { desc = 'Yank filename' })
+
+-- Mouse support
+vim.keymap.set('n', '<C-LeftMouse>', '<LeftMouse>gd')
+vim.keymap.set('n', '<X1Mouse>', '<C-o>')
+vim.keymap.set('n', '<X2Mouse>', '<C-i>')

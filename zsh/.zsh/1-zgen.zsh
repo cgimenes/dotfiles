@@ -18,6 +18,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/kubectl
+    zgen oh-my-zsh plugins/docker
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-completions
     zgen load zsh-users/zsh-autosuggestions
