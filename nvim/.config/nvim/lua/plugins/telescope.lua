@@ -93,44 +93,45 @@ return {
 
       require('telescope').load_extension 'live_grep_args'
 
-      local function find_files()
-        opts = {}
-        opts.find_command = {
-          'rg',
-          '--files',
-          '--glob',
-          '!**/.cache/*',
-          '--glob',
-          '!**/.git/*',
-          '--glob',
-          '!**/.npm/*',
-          '--glob',
-          '!**/vendor/*',
-          '--glob',
-          '!**/node_modules/*',
-          '--glob',
-          '!**/.local/share/*',
-          '--hidden',
-          '--color=never',
-          '--no-heading',
-          '--with-filename',
-          '--line-number',
-          '--column',
-          '--smart-case',
-        }
-
-        if vim.bo.filetype == 'oil' then
-          local basedir = require('oil').get_current_dir()
-          opts.cwd = basedir
-          opts.search_dirs = { basedir }
+      local function find_files(check_oil)
+        return function()
+          opts = {}
+          opts.find_command = {
+            'rg',
+            '--files',
+            '--glob',
+            '!**/.cache/*',
+            '--glob',
+            '!**/.git/*',
+            '--glob',
+            '!**/.npm/*',
+            '--glob',
+            '!**/vendor/*',
+            '--glob',
+            '!**/node_modules/*',
+            '--glob',
+            '!**/.local/share/*',
+            '--hidden',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+          }
+          if check_oil and vim.bo.filetype == 'oil' then
+            local basedir = require('oil').get_current_dir()
+            opts.cwd = basedir
+            opts.search_dirs = { basedir }
+          end
+          require('telescope.builtin').find_files(opts)
         end
-
-        require('telescope.builtin').find_files(opts)
       end
 
       vim.keymap.set('n', '<leader>bl', require('telescope.builtin').buffers, { desc = '[L]ist existing buffers' })
       vim.keymap.set('n', '<leader>fr', require('telescope.builtin').oldfiles, { desc = 'Search [R]ecently opened files' })
-      vim.keymap.set('n', '<leader>fF', find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>fF', find_files(false), { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>.', find_files(true), { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', require('telescope.builtin').keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
