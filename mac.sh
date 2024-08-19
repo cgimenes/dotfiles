@@ -14,6 +14,7 @@ brew install --cask iina
 brew install --cask jordanbaird-ice
 brew install --cask infra
 brew install --cask kitty
+brew install --cask nikitabobko/tap/aerospace
 brew install --cask notion-calendar
 brew install --cask obsidian
 brew install --cask qbittorrent
@@ -31,7 +32,7 @@ brew install --cask vial
 brew install --cask visual-studio-code
 brew install --cask wezterm
 brew install --cask whatsapp
-brew install --cask nikitabobko/tap/aerospace
+brew install --cask yaak
 brew install croc
 brew install eza
 brew install fastfetch
