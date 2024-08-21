@@ -33,6 +33,8 @@ vim.keymap.set('n', '[q', '<cmd>cprev<cr>')
 vim.keymap.set('n', ']q', '<cmd>cnext<cr>')
 
 vim.keymap.set('v', '$', 'g_')
+vim.keymap.set('v', 'J', '<cmd>m +1<cr>')
+vim.keymap.set('v', 'K', '<cmd>m -2<cr>')
 
 -- Better pasting experience
 vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Paste without yanking' })

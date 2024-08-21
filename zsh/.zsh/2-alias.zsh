@@ -23,6 +23,13 @@ alias vim="nvim"
 alias v="nvim"
 alias n="nvim"
 
+# Python
+alias mkvenv="python3 -m venv .venv"
+alias actvenv="source .venv/bin/activate"
+alias rmvenv="rm -rf .venv"
+alias poylock="poetry lock"
+alias poyinstall="poetry install"
+
 # Changing "ls" to "eza"
 alias ls='eza --icons --group-directories-first'
 alias la='eza -a --icons --group-directories-first'
