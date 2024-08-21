@@ -1,6 +1,0 @@
-{
-  "cmd": ["php", "$file"],
-  "file_regex": "php$",
-  "selector": "source.php",
-  "working_dir": "${project_path:${folder:${file_path}}}"
-}

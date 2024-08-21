@@ -1,8 +1,0 @@
-{
-    "pep8_ignore":
-    [
-        "E401",
-        "E501"
-    ],
-    "anaconda_linting_behaviour": "load-save"
-}

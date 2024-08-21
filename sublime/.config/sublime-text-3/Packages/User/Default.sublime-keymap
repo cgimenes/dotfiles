@@ -1,4 +1,0 @@
-[
-  { "keys": ["ctrl+shift+pagedown"], "command": "switch_tabs"},
-  { "keys": ["ctrl+shift+pageup"], "command": "switch_tabs"}
-]
