@@ -24,7 +24,7 @@ alias v="nvim"
 alias n="nvim"
 
 # Python
-alias mkvenv="python3 -m venv .venv"
+alias mkvenv="python3 -m venv .venv; source .venv/bin/activate; pip install poetry debugpy"
 alias actvenv="source .venv/bin/activate"
 alias rmvenv="rm -rf .venv"
 alias poylock="poetry lock"

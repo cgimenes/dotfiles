@@ -38,6 +38,7 @@ brew install eza
 brew install fastfetch
 brew install fzf
 brew install gh
+brew install ghq
 brew install git
 brew install go
 brew install highlight
@@ -54,6 +55,8 @@ brew install stow
 brew install tmux
 brew install yazi
 brew install zoxide
+
+git config --global ghq.root '~/dev/src'
 
 brew tap railwaycat/emacsmacport
 brew install emacs-mac --with-modules
