@@ -6,6 +6,8 @@ export MANPAGER="nvim +Man!"
 
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/config"
 
+export DISABLE_AUTO_UPDATE=true
+
 # Set VI mode
 bindkey -v
 
@@ -23,3 +25,8 @@ if [ -x "$(command -v gem)" ]; then
     export PATH=$PATH:$(gem environment path | sed -e "s/:/\/bin:/")/bin
 fi
 
+if [ -x "$(command -v pyenv)" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi

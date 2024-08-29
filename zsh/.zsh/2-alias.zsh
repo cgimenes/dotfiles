@@ -24,11 +24,7 @@ alias v="nvim"
 alias n="nvim"
 
 # Python
-alias mkvenv="python3 -m venv .venv; source .venv/bin/activate; pip install poetry debugpy"
-alias actvenv="source .venv/bin/activate"
-alias rmvenv="rm -rf .venv"
-alias poylock="poetry lock"
-alias poyinstall="poetry install"
+alias actvenv='source $(poetry env info --path)/bin/activate'
 
 # Changing "ls" to "eza"
 alias ls='eza --icons --group-directories-first'

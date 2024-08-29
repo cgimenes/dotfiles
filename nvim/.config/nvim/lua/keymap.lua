@@ -50,7 +50,7 @@ vim.keymap.set('n', '<leader>os', function()
   require('snippets').load_snippets()
 end, { desc = 'Reload snippets' })
 
-vim.keymap.set('n', '<leader>yr', '<cmd>let @+ = expand("%")<cr>', { desc = 'Yank relative filename' })
+vim.keymap.set('n', '<leader>yr', '<cmd>let @+ = expand("%:.")<cr>', { desc = 'Yank relative filename' })
 vim.keymap.set('n', '<leader>yf', '<cmd>let @+ = expand("%:p")<cr>', { desc = 'Yank full filename' })
 vim.keymap.set('n', '<leader>yn', '<cmd>let @+ = expand("%:t")<cr>', { desc = 'Yank filename' })
 
