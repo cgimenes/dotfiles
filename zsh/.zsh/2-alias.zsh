@@ -4,10 +4,6 @@ alias ta='tmux list-sessions && tmux a || tmux'
 # Git
 alias gdsn="gds --name-only"
 
-# Clipboard
-alias setclip='xclip -selection c'
-alias getclip='xclip -selection clipboard -o'
-
 # Highlight
 alias hat='highlight -O ansi --force'
 
@@ -28,8 +24,6 @@ alias actvenv='source $(poetry env info --path)/bin/activate'
 
 # Changing "ls" to "eza"
 alias ls='eza --icons --group-directories-first'
-alias la='eza -a --icons --group-directories-first'
-alias ll='eza -al --icons --group-directories-first'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'
