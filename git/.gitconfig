@@ -27,3 +27,6 @@
 
 [hub]
   protocol = ssh
+
+[ghq]
+  root = ~/dev/src
