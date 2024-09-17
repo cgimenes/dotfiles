@@ -20,7 +20,7 @@ local function grapple_files()
   local current_file_path = vim.fn.expand '%:p'
   local results = {}
   for index, tag in ipairs(tags) do
-    local file_name = vim.fn.fnamemodify(tag.path, ':t')
+    local file_name = vim.fn.fnamemodify(tag.path, ':h:t') .. '/' .. vim.fn.fnamemodify(tag.path, ':t')
 
     if current_file_path == tag.path then
       results[index] = string.format('%%#GrappleCurrent# %s. %%#GrappleName#%s ', index, file_name)
