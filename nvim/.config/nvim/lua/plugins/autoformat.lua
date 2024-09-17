@@ -20,9 +20,7 @@ return {
         python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
         go = { 'gofmt' },
         php = { 'pint' },
-
-        -- You can use a sub-list to tell conform to run *until* a formatter is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { 'prettier' },
       },
       formatters = {
         php_cs_fixer = {

@@ -149,6 +149,7 @@ return {
         'stylua',
         'ruff',
         'php-cs-fixer',
+        'prettier',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
