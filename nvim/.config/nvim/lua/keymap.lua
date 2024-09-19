@@ -58,3 +58,21 @@ vim.keymap.set('n', '<leader>yn', '<cmd>let @+ = expand("%:t")<cr>', { desc = 'Y
 vim.keymap.set('n', '<C-LeftMouse>', '<LeftMouse>gd')
 vim.keymap.set('n', '<X1Mouse>', '<C-o>')
 vim.keymap.set('n', '<X2Mouse>', '<C-i>')
+
+-- Find/replace
+vim.keymap.set('n', '<leader>rs', function()
+  vim.ui.input({ prompt = 'Pattern: ' }, function(pattern)
+    if pattern then
+      vim.cmd('silent grep! ' .. pattern)
+      vim.cmd('copen')
+    end
+  end)
+end, { desc = '[S]earch using :grep' })
+
+vim.keymap.set('n', '<leader>rr', function()
+  vim.ui.input({ prompt = 'Pattern: ' }, function(pattern)
+    if pattern then
+      vim.cmd('cdo %s/' .. pattern .. '/gc')
+    end
+  end)
+end, { desc = '[R]eplace using :cdo' })

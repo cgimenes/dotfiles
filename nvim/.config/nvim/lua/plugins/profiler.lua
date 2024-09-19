@@ -1,5 +1,4 @@
 return {
-
   {
     'stevearc/profile.nvim',
     event = 'VeryLazy',

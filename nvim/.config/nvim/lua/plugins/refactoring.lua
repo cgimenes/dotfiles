@@ -8,7 +8,7 @@ return {
     },
     config = function()
       require('refactoring').setup()
-      vim.keymap.set({ 'n', 'x' }, '<leader>lr', function()
+      vim.keymap.set({ 'n', 'x' }, '<leader>lR', function()
         require('refactoring').select_refactor()
       end, { desc = '[R]efactor' })
     end,

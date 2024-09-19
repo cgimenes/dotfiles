@@ -29,7 +29,7 @@ return {
           map('<leader>lD', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
           map('<leader>ld', require('telescope.builtin').lsp_document_symbols, '[D]ocument Symbols')
           map('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
-          map('<leader>rl', vim.lsp.buf.rename, '[R]ename ([L]SP)')
+          map('<leader>lr', vim.lsp.buf.rename, '[R]ename')
           map('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
