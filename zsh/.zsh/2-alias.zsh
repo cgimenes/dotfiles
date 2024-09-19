@@ -3,6 +3,8 @@ alias ta='tmux list-sessions && tmux a || tmux'
 
 # Git
 alias gdsn="gds --name-only"
+alias lg="lazygit"
+alias ghqg="ghq get -p"
 
 # Highlight
 alias hat='highlight -O ansi --force'
@@ -40,9 +42,6 @@ alias psa="ps auxf"
 alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias psmem='ps auxf | sort -nr -k 4'
 alias pscpu='ps auxf | sort -nr -k 3'
-
-# lazygit
-alias lg="lazygit"
 
 # hacks
 alias fv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
