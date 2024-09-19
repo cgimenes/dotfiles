@@ -77,7 +77,6 @@ stow lf
 stow nvim
 stow rg
 stow starship
-stow taskwarrior
 stow tmux
 stow wezterm
 stow zsh

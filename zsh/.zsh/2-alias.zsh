@@ -44,11 +44,8 @@ alias pscpu='ps auxf | sort -nr -k 3'
 # lazygit
 alias lg="lazygit"
 
-# taskwarrior
-alias tt="taskwarrior-tui"
-
 # hacks
 alias fv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
-alias fcd='cd $(fd -H -t d | fzf)'
+alias fcd='cd $(fd -H -t d | fzf-tmux -p --reverse)'
 alias updatemirrors='curl -s "https://archlinux.org/mirrorlist/?country=BR&protocol=https" | sed -e "s/^#Server/Server/" -e "/^#/d" | rankmirrors - | sudo tee /etc/pacman.d/mirrorlist'
 alias xargs='xargs ' # expands aliases for piping into xargs
