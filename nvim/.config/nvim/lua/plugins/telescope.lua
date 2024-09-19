@@ -16,7 +16,6 @@ return {
         'nvim-telescope/telescope-live-grep-args.nvim',
         version = '^1.0.0',
       },
-      { 'nvim-telescope/telescope-ui-select.nvim' },
     },
     config = function()
       local telescopeConfig = require 'telescope.config'
@@ -80,16 +79,10 @@ return {
             enable_preview = true,
           },
         },
-        extensions = {
-          ['ui-select'] = {
-            require('telescope.themes').get_dropdown(),
-          },
-        },
       }
 
       -- Enable telescope extensions, if they are installed
       pcall(require('telescope').load_extension, 'fzf')
-      pcall(require('telescope').load_extension, 'ui-select')
 
       require('telescope').load_extension 'live_grep_args'
 

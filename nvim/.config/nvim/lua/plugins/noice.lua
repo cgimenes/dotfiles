@@ -40,6 +40,17 @@ return {
         '<cmd>NoiceTelescope<cr>',
         desc = '[N]otification history',
       },
-    }
+    },
+  },
+  {
+    'stevearc/dressing.nvim',
+    opts = {
+      input = {
+        enabled = false,
+      },
+      select = {
+        backend = { 'nui' },
+      },
+    },
   },
 }
