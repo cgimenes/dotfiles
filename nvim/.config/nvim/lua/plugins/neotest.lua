@@ -1,10 +1,10 @@
 return {
   {
     'nvim-neotest/neotest',
+    enabled = false,
     lazy = true,
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'antoinemadec/FixCursorHold.nvim',
       'olimorris/neotest-phpunit',
       'nvim-neotest/neotest-python',
     },
