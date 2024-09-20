@@ -30,3 +30,6 @@
 
 [ghq]
   root = ~/dev/src
+
+[pull]
+  ff = true
