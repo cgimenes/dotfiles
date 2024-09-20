@@ -98,12 +98,21 @@ return {
             color = {},
             cond = nil,
           },
+          {
+            function()
+              local reg = vim.fn.reg_recording()
+              if reg == '' then
+                return ''
+              end
+              return 'recording to ' .. reg
+            end,
+            color = { bg = colors.red, gui = 'bold' },
+          },
         },
         lualine_b = {
           {
             'b:gitsigns_head',
             icon = icons.git.Branch,
-            color = { gui = 'bold' },
           },
         },
         lualine_c = {
@@ -161,7 +170,7 @@ return {
               local language_servers = string.format('[%s]', unique_client_names)
 
               if copilot_active then
-                language_servers = language_servers .. '%#SLCopilot#' .. ' ' .. icons.git.Octoface .. '%*'
+                language_servers = language_servers .. ' %#SLCopilot#' .. ' ' .. icons.git.Octoface .. '%*'
               end
 
               return language_servers
@@ -202,7 +211,7 @@ return {
         },
         lualine_z = {
           { 'tabs' },
-        }
+        },
       },
     },
   },
