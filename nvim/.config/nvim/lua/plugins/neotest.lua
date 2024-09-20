@@ -6,7 +6,7 @@ return {
       'nvim-lua/plenary.nvim',
       'antoinemadec/FixCursorHold.nvim',
       'olimorris/neotest-phpunit',
-      'nvim-neotest/neotest-python'
+      'nvim-neotest/neotest-python',
     },
     config = function()
       require('neotest').setup {
@@ -19,7 +19,7 @@ return {
             -- dap = require('dap').configurations.php[1],
             filter_dirs = { '.git', 'node_modules', 'vendor' },
           },
-          require("neotest-python")
+          require 'neotest-python',
         },
         summary = {
           animated = false,
@@ -41,12 +41,12 @@ return {
     end,
     keys = {
       {
-        '<leader>td',
+        '<leader>tA',
         function()
           vim.api.nvim_command 'write'
-          require('neotest').run.run { strategy = 'dap' }
+          require('neotest').run.run(vim.loop.cwd())
         end,
-        desc = 'Debug Nearest',
+        desc = 'Run All Test Files',
       },
       {
         '<leader>tf',
@@ -60,9 +60,9 @@ return {
         '<leader>tF',
         function()
           vim.api.nvim_command 'write'
-          require('neotest').run.run(vim.loop.cwd())
+          require('neotest').run.run(vim.fn.expand '%', { strategy = 'dap' })
         end,
-        desc = 'Run All Test Files',
+        desc = 'Debug File',
       },
       {
         '<leader>tr',
@@ -73,12 +73,28 @@ return {
         desc = 'Run Nearest',
       },
       {
+        '<leader>tR',
+        function()
+          vim.api.nvim_command 'write'
+          require('neotest').run.run { strategy = 'dap' }
+        end,
+        desc = 'Debug Nearest',
+      },
+      {
         '<leader>tl',
         function()
           vim.api.nvim_command 'write'
           require('neotest').run.run_last()
         end,
         desc = 'Run Last',
+      },
+      {
+        '<leader>tl',
+        function()
+          vim.api.nvim_command 'write'
+          require('neotest').run.run_last { strategy = 'dap' }
+        end,
+        desc = 'Debug Last',
       },
       {
         '<leader>ts',
