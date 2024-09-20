@@ -32,13 +32,13 @@ return {
           map('<leader>lr', vim.lsp.buf.rename, '[R]ename')
           map('<leader>la', vim.lsp.buf.code_action, 'Code [A]ction')
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
+          map('<leader>lk', vim.lsp.buf.signature_help, 'Signature Documentation')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- Diagnostic keymaps
           map('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic message')
           map(']d', vim.diagnostic.goto_next, 'Go to next diagnostic message')
           map('<leader>lm', vim.diagnostic.open_float, 'Open floating diagnostic [M]essage')
-          vim.keymap.set({ 'i', 'n' }, '<C-k>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'Signature Documentation' })
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
