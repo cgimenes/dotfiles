@@ -72,7 +72,7 @@ end, { desc = '[S]earch using :grep' })
 vim.keymap.set('n', '<leader>rr', function()
   vim.ui.input({ prompt = 'Pattern: ' }, function(pattern)
     if pattern then
-      vim.cmd('cdo %s/' .. pattern .. '/gc | update')
+      vim.cmd('cdo s/' .. pattern .. '/gc | update')
     end
   end)
 end, { desc = '[R]eplace using :cdo' })
