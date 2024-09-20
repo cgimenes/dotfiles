@@ -21,3 +21,21 @@ disabled = true
 
 [gcloud]
 disabled = true
+
+[package]
+disabled = true
+
+[nodejs]
+format = '\[[nodejs ($version)]($style)\]'
+
+[php]
+format = '\[[php ($version)]($style)\]'
+
+[git_branch]
+format = '\[[git $branch]($style)\]'
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+
+[python]
+format = '\[[py ${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
