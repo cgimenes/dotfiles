@@ -53,23 +53,13 @@ return {
     'nvim-treesitter/nvim-treesitter-context',
     opts = { mode = 'cursor', max_lines = 3 },
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-    keys = {
-      {
-        '<leader>oC',
-        function()
-          local tsc = require 'treesitter-context'
-          tsc.toggle()
-        end,
-        desc = 'Toggle Treesitter [C]ontext',
-      },
-    },
   },
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
   {
     'windwp/nvim-ts-autotag',
-    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     opts = {},
   },
 }
