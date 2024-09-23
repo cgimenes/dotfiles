@@ -2,23 +2,28 @@ return {
   {
     'folke/which-key.nvim',
     event = 'VimEnter',
-    config = function()
-      require('which-key').setup()
-
-      require('which-key').register {
-        ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ebug', _ = 'which_key_ignore' },
-        ['<leader>f'] = { name = '[F]ile', _ = 'which_key_ignore' },
-        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Grapple', _ = 'which_key_ignore' },
-        ['<leader>l'] = { name = '[L]SP', _ = 'which_key_ignore' },
-        ['<leader>o'] = { name = '[O]ptions', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = 'Find and [R]eplace', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]est', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]indow', _ = 'which_key_ignore' },
-        ['<leader>y'] = { name = '[Y]ank', _ = 'which_key_ignore' },
-      }
-    end,
+    opts = {
+      icons = {
+        -- set icon mappings to true if you have a Nerd Font
+        mappings = true,
+        -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
+        -- default whick-key.nvim defined Nerd Font icons, otherwise define a string table
+        keys = {},
+      },
+      spec = {
+        { '<leader>b', group = '[B]uffer' },
+        { '<leader>d', group = '[D]ebug' },
+        { '<leader>f', group = '[F]ile' },
+        { '<leader>g', group = '[G]it' },
+        { '<leader>h', group = 'Grapple' },
+        { '<leader>l', group = '[L]SP' },
+        { '<leader>o', group = '[O]ptions' },
+        { '<leader>r', group = 'Find and [R]eplace' },
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>t', group = '[T]est' },
+        { '<leader>w', group = '[W]indow' },
+        { '<leader>y', group = '[Y]ank' },
+      },
+    },
   },
 }

@@ -36,6 +36,12 @@ format = '\[[git $branch]($style)\]'
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style))'
+ahead = ">"
+behind = "<"
+diverged = "<>"
+renamed = "r"
+deleted = "x"
 
 [python]
 format = '\[[py ${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+

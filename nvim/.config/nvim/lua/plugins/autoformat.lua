@@ -1,12 +1,13 @@
 return {
   {
     'stevearc/conform.nvim',
-    lazy = false,
+    event = { 'BufWritePre' },
+    cmd = { 'ConformInfo' },
     keys = {
       {
         '<leader>lf',
         function()
-          require('conform').format { async = true, lsp_fallback = true }
+          require('conform').format { async = true, lsp_format = 'fallback' }
         end,
         mode = '',
         desc = '[F]ormat buffer',
@@ -20,7 +21,7 @@ return {
         python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
         go = { 'gofmt' },
         php = { 'pint' },
-        javascript = { 'prettier' },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
       },
       formatters = {
         php_cs_fixer = {
