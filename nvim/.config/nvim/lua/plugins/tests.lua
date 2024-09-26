@@ -57,7 +57,7 @@ return {
     end,
     keys = {
       {
-        '<leader>tR',
+        '<leader>tN',
         function()
           vim.api.nvim_command 'write'
           require('neotest').run.run { strategy = 'dap' }

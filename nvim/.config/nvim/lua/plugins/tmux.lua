@@ -14,4 +14,16 @@ return {
       { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
     },
   },
+  {
+    'cgimenes/tmux-files.nvim',
+    keys = {
+      {
+        '<leader>sx',
+        function()
+          require('tmux-files').select()
+        end,
+        desc = 'Edit file from TMUX panes',
+      },
+    },
+  },
 }
