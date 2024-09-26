@@ -63,7 +63,7 @@ vim.keymap.set('n', '<leader>rs', function()
   vim.ui.input({ prompt = 'Pattern: ' }, function(pattern)
     if pattern then
       vim.cmd('silent grep! ' .. pattern)
-      vim.cmd('copen')
+      vim.cmd 'copen'
     end
   end)
 end, { desc = '[S]earch using :grep' })
@@ -75,3 +75,6 @@ vim.keymap.set('n', '<leader>rr', function()
     end
   end)
 end, { desc = '[R]eplace using :cdo' })
+
+vim.keymap.set('n', '<leader>cl', '<cmd>.lua<CR>', { desc = 'Execute the current line' })
+vim.keymap.set('n', '<leader>cf', '<cmd>source %<CR>', { desc = 'Execute the current file' })
