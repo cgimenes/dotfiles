@@ -4,5 +4,7 @@ require 'autocmd'
 require 'lazy-init'
 require 'snippets'
 
--- See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+P = function(v)
+  print(vim.inspect(v))
+  return v
+end

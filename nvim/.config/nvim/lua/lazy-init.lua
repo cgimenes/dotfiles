@@ -15,4 +15,7 @@ require('lazy').setup({
   change_detection = {
     notify = false,
   },
+  dev = {
+    path = '~/dev/src/github.com/cgimenes',
+  },
 })
