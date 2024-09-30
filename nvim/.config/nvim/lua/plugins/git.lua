@@ -57,6 +57,7 @@ return {
         local gs = package.loaded.gitsigns
 
         vim.keymap.set('n', '<leader>gp', gs.preview_hunk, { buffer = bufnr, desc = '[G]it hunk [P]review' })
+        vim.keymap.set('n', '<leader>gr', gs.reset_hunk, { buffer = bufnr, desc = '[G]it hunk [R]eset' })
         vim.keymap.set('n', '<leader>gl', gs.blame_line, { buffer = bufnr, desc = '[G]it Blame [L]ine' })
 
         -- don't override the built-in and fugitive keymaps

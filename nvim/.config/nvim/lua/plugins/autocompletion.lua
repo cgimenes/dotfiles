@@ -96,7 +96,7 @@ return {
             return item
           end,
         },
-        sources = cmp.config.sources({
+        sources = {
           {
             name = 'lazydev',
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
@@ -104,13 +104,11 @@ return {
           },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
-        }, {
-          { name = 'copilot' },
-        }, {
+          { name = 'copilot', group_index = 2 },
           { name = 'path' },
           { name = 'buffer' },
           -- { name = 'cmp-dbee' },
-        }),
+        },
       }
 
       -- Setup up vim-dadbod
