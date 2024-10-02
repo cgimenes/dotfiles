@@ -1,3 +1,5 @@
+local prettier = { 'prettierd', 'prettier', stop_after_first = true }
+
 return {
   {
     'stevearc/conform.nvim',
@@ -21,7 +23,14 @@ return {
         python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
         go = { 'gofmt' },
         php = { 'pint' },
-        javascript = { "prettierd", "prettier", stop_after_first = true },
+        sql = { 'sqlfluff' },
+        javascript = prettier,
+        typescript = prettier,
+        css = prettier,
+        html = prettier,
+        json = prettier,
+        yaml = prettier,
+        markdown = prettier,
       },
       formatters = {
         php_cs_fixer = {
