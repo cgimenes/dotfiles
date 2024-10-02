@@ -15,7 +15,7 @@
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
-(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18))
+(setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'semi-light))
 
 ;; (setq doom-theme 'kanagawa)
 (setq display-line-numbers-type 'relative)
@@ -40,12 +40,12 @@
 (setq org-directory "~/org/")
 (after! org
   (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
-    org-todo-keywords '((sequence "TODO" "WAIT" "HOLD" "DOING" "|" "DONE"))
-    org-deadline-warning-days 0
-    org-agenda-span 14
-    org-agenda-start-day "-0d"
-    org-agenda-skip-function-global '(org-agenda-skip-entry-if 'todo 'done)
-    org-log-done 'date)
+        org-todo-keywords '((sequence "TODO" "WAIT" "HOLD" "DOING" "|" "DONE"))
+        org-deadline-warning-days 0
+        org-agenda-span 14
+        org-agenda-start-day "-0d"
+        org-agenda-skip-function-global '(org-agenda-skip-entry-if 'todo 'done)
+        org-log-done 'date)
   ;; (setq
   ;;   org-insert-heading-respect-content t
 
@@ -54,15 +54,6 @@
 
   ;;   org-agenda-tags-column 0
   ;;   org-agenda-block-separator ?─
-)
+  )
 
 (setq-default tab-width 4)
-
-;; accept completion from copilot and fallback to company
-(use-package! copilot
-  :hook (prog-mode . copilot-mode)
-  :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
-              ("C-TAB" . 'copilot-accept-completion-by-word)
-              ("C-<tab>" . 'copilot-accept-completion-by-word)))
