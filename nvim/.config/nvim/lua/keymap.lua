@@ -19,7 +19,7 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 
 vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>', { desc = '[N]ew Buffer' })
 vim.keymap.set('n', '<leader>bd', '<cmd>windo diffthis<cr>', { desc = '[D]iff' })
-vim.keymap.set('n', '<leader>bs', '<cmd>silent w!<cr>', { desc = '[S]ave file' })
+vim.keymap.set('n', '<leader>bs', '<cmd>silent wa!<cr>', { desc = '[S]ave file' })
 vim.keymap.set('n', '<leader>w', '<C-w>')
 
 vim.keymap.set('v', '>', '>gv')
@@ -60,7 +60,8 @@ vim.keymap.set('n', '<X2Mouse>', '<C-i>')
 
 -- Find/replace
 vim.keymap.set('n', '<leader>rs', function()
-  vim.ui.input({ prompt = 'Pattern: ' }, function(pattern)
+  local cword = vim.fn.expand '<cword>'
+  vim.ui.input({ prompt = 'Pattern: ', default = cword }, function(pattern)
     if pattern then
       vim.cmd('silent grep! ' .. pattern)
       vim.cmd 'copen'
@@ -69,7 +70,7 @@ vim.keymap.set('n', '<leader>rs', function()
 end, { desc = '[S]earch using :grep' })
 
 vim.keymap.set('n', '<leader>rr', function()
-  vim.ui.input({ prompt = 'Pattern: ' }, function(pattern)
+  vim.ui.input({ prompt = 'Pattern: ', default = '\\V' }, function(pattern)
     if pattern then
       vim.cmd('cdo s/' .. pattern .. '/gc | update')
     end

@@ -30,7 +30,7 @@ return {
           map('<leader>lw', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace Symbols')
           map('<leader>lr', function()
             vim.lsp.buf.rename()
-            vim.cmd 'silent! wa'
+            vim.cmd 'silent wa'
           end, '[R]ename')
           map('<leader>la', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
           map('<leader>lk', vim.lsp.buf.signature_help, 'Signature Documentation')
