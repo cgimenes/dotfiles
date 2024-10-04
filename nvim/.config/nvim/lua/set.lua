@@ -74,6 +74,9 @@ vim.opt.endofline = false
 vim.opt.endoffile = false
 vim.opt.fixendofline = false
 
+-- Disable splash screen
+vim.opt.shortmess:append('I')
+
 vim.filetype.add {
   extension = {
     hurl = 'hurl',
