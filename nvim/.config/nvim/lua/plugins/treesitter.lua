@@ -55,8 +55,9 @@ return {
     'JoosepAlviste/nvim-ts-context-commentstring',
   },
   {
+    -- Use treesitter to autoclose and autorename html tag
     'windwp/nvim-ts-autotag',
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-    opts = {},
+    config = {},
   },
 }

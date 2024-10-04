@@ -8,7 +8,7 @@ return {
       'CccHighlighterDisable',
       'CccHighlighterToggle',
     },
-    opts = {},
+    config = true,
     keys = {
       { '<leader>oh', '<cmd>CccHighlighterToggle<cr>', desc = 'Toggle Color [H]ighlighter' },
     },
