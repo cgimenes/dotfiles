@@ -43,6 +43,7 @@ brew install git
 brew install go
 brew install highlight
 brew install httpie
+brew install k9s
 brew install lazygit
 brew install mpv
 brew install neovim
