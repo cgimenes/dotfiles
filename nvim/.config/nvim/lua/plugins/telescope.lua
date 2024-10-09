@@ -43,7 +43,13 @@ return {
           vimgrep_arguments = vimgrep_arguments,
           mappings = {
             i = {
-              ['<C-d>'] = actions.delete_buffer,
+              ['<C-d>'] = function(prompt_bufnr)
+                local action_state = require 'telescope.actions.state'
+                local current_picker = action_state.get_current_picker(prompt_bufnr)
+                current_picker:delete_selection(function(selection)
+                  return pcall(vim.api.nvim_buf_delete, selection.bufnr, { force = true })
+                end)
+              end,
               ['<c-t>'] = open_with_trouble,
               ['<esc>'] = actions.close,
             },
