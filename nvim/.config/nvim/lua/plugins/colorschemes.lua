@@ -41,14 +41,6 @@ return {
     end,
   },
   {
-    'nordtheme/vim',
-    priority = 1000,
-    init = function()
-      -- vim.opt.termguicolors = true
-      -- vim.cmd.colorscheme 'nord'
-    end,
-  },
-  {
     'sainnhe/everforest',
     priority = 1000,
     init = function()
@@ -73,6 +65,48 @@ return {
         },
       }
       -- vim.cmd.colorscheme 'synthwave84'
+    end,
+  },
+  {
+    'EdenEast/nightfox.nvim',
+    priority = 1000,
+    init = function()
+      -- vim.cmd.colorscheme 'nightfox'
+      -- vim.cmd.colorscheme 'dayfox'
+      -- vim.cmd.colorscheme 'dawnfox'
+      -- vim.cmd.colorscheme 'duskfox'
+      -- vim.cmd.colorscheme 'nordfox'
+      -- vim.cmd.colorscheme 'terafox'
+      -- vim.cmd.colorscheme 'carbonfox'
+    end,
+  },
+  {
+    'AlexvZyl/nordic.nvim',
+    priority = 1000,
+    init = function()
+      -- require('nordic').load()
+    end,
+  },
+  {
+    'luisiacc/gruvbox-baby',
+    priority = 1000,
+    init = function()
+      -- vim.cmd.colorscheme 'gruvbox-baby'
+    end,
+  },
+  {
+    'tiagovla/tokyodark.nvim',
+    priority = 1000,
+    init = function()
+      require('tokyodark').setup()
+      -- vim.cmd.colorscheme 'tokyodark'
+    end,
+  },
+  {
+    'cpea2506/one_monokai.nvim',
+    priority = 1000,
+    init = function()
+      -- vim.cmd.colorscheme 'one_monokai'
     end,
   },
 }
