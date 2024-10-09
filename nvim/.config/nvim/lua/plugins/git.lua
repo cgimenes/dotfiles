@@ -16,7 +16,6 @@ return {
     },
     keys = {
       { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'File History' },
-      { '<leader>go', '<cmd>DiffviewOpen<cr>', desc = 'Open Git diff view' },
     },
     config = function()
       local diffview = require 'diffview'
@@ -80,6 +79,19 @@ return {
           return '<Ignore>'
         end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
       end,
+    },
+  },
+  {
+    'akinsho/git-conflict.nvim',
+    version = '*',
+    opts = {
+      default_mappings = false,
+    },
+    cmd = {
+      'GitConflictListQf',
+    },
+    keys = {
+      { '<leader>gc', '<cmd>GitConflictListQf<cr>', desc = 'List [G]it [C]onflicts' },
     },
   },
 }

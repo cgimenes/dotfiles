@@ -36,3 +36,5 @@ alias xargs='xargs ' # expands aliases for piping into xargs
 alias dc='docker compose'
 alias dce='docker compose exec'
 alias dceit='docker compose exec -it'
+alias dcl='docker compose logs'
+alias dclf='docker compose logs -f'

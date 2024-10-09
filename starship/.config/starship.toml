@@ -33,9 +33,11 @@ format = '\[[php ($version)]($style)\]'
 
 [git_branch]
 format = '\[[git $branch]($style)\]'
+style = "bright-black"
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style))'
+style = 'cyan'
 ahead = ">"
 behind = "<"
 diverged = "<>"
@@ -44,4 +46,12 @@ deleted = "x"
 
 [python]
 format = '\[[py ${pyenv_prefix}(${version})(\($virtualenv\))]($style)\]'
+style = "bright-black"
 
+[directory]
+style = "blue"
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"

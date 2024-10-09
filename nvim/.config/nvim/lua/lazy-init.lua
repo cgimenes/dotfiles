@@ -18,4 +18,24 @@ require('lazy').setup({
   dev = {
     path = '~/dev/src/github.com/cgimenes',
   },
+  performance = {
+    rtp = {
+      -- disable unused builtin plugins from neovim
+      disabled_plugins = {
+        'gzip',
+        'health',
+        'matchit',
+        'matchparen',
+        'netrw',
+        'netrwPlugin',
+        'rplugin',
+        'tar',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zip',
+        'zipPlugin',
+      },
+    },
+  },
 })

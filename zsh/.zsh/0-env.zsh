@@ -8,6 +8,11 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/config"
 
 export DISABLE_AUTO_UPDATE=true
 
+export FZF_DEFAULT_OPTS="
+  --cycle
+  --bind=ctrl-u:half-page-up
+  --bind=ctrl-d:half-page-down"
+
 # Set VI mode
 bindkey -v
 
