@@ -31,3 +31,8 @@ alias mkdir='mkdir -p'
 alias fv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
 alias fcd='cd $(fd -H -t d | fzf-tmux -p --reverse)'
 alias xargs='xargs ' # expands aliases for piping into xargs
+
+# Docker Compose
+alias dc='docker compose'
+alias dce='docker compose exec'
+alias dceit='docker compose exec -it'
