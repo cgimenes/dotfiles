@@ -1,248 +1,241 @@
 {
-    "additional-repositories": [],
-    "archinstall-language": "English",
-    "audio_config": {
-        "audio": "pipewire"
-    },
-    "bootloader": "Grub",
-    "config_version": "2.6.3",
-    "debug": false,
-    "disk_config": {
-        "config_type": "default_layout",
-        "device_modifications": [
-            {
-                "device": "/dev/sda",
-                "partitions": [
-                    {
-                        "btrfs": [],
-                        "dev_path": null,
-                        "flags": [
-                            "Boot"
-                        ],
-                        "fs_type": "fat32",
-                        "mount_options": [],
-                        "mountpoint": "/boot",
-                        "obj_id": "a3bd7be5-2fc7-42bf-99c5-e0088771c831",
-                        "size": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "MiB",
-                            "value": 203
-                        },
-                        "start": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "MiB",
-                            "value": 3
-                        },
-                        "status": "create",
-                        "type": "primary"
-                    },
-                    {
-                        "btrfs": [
-                            {
-                                "compress": false,
-                                "mountpoint": "/",
-                                "name": "@",
-                                "nodatacow": false
-                            },
-                            {
-                                "compress": false,
-                                "mountpoint": "/home",
-                                "name": "@home",
-                                "nodatacow": false
-                            },
-                            {
-                                "compress": false,
-                                "mountpoint": "/var/log",
-                                "name": "@log",
-                                "nodatacow": false
-                            },
-                            {
-                                "compress": false,
-                                "mountpoint": "/var/cache/pacman/pkg",
-                                "name": "@pkg",
-                                "nodatacow": false
-                            },
-                            {
-                                "compress": false,
-                                "mountpoint": "/.snapshots",
-                                "name": "@.snapshots",
-                                "nodatacow": false
-                            }
-                        ],
-                        "dev_path": null,
-                        "flags": [],
-                        "fs_type": "btrfs",
-                        "mount_options": [
-                            "compress=zstd"
-                        ],
-                        "mountpoint": null,
-                        "obj_id": "294f1f05-4fdd-4a6d-b4f9-cc650dee792f",
-                        "size": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "B",
-                            "value": 22884597760
-                        },
-                        "start": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "MiB",
-                            "value": 206
-                        },
-                        "status": "create",
-                        "type": "primary"
-                    }
-                ],
-                "wipe": true
-            }
-        ]
-    },
-    "hostname": "archlinux",
-    "kernels": [
-        "linux"
-    ],
-    "locale_config": {
-        "kb_layout": "us",
-        "sys_enc": "UTF-8",
-        "sys_lang": "en_US"
-    },
-    "mirror_config": {
-        "custom_mirrors": [],
-        "mirror_regions": {
-            "Brazil": [
-                "https://mirror.ufscar.br/archlinux/$repo/os/$arch",
-                "http://mirror.ufscar.br/archlinux/$repo/os/$arch",
-                "http://mirror.ufam.edu.br/archlinux/$repo/os/$arch",
-                "http://linorg.usp.br/archlinux/$repo/os/$arch",
-                "http://archlinux.c3sl.ufpr.br/$repo/os/$arch"
-            ]
-        }
-    },
-    "network_config": {
-        "type": "nm"
-    },
-    "no_pkg_lookups": false,
-    "ntp": true,
-    "offline": false,
-    "packages": [
-        "acpilight",
-        "alacritty",
-        "arc-gtk-theme",
-        "autorandr",
-        "base-devel",
-        "bat",
-        "blueman",
-        "bluez",
-        "bolt",
-        "code",
-        "copyq",
-        "croc",
-        "dbeaver",
-        "distrobox",
-        "docker",
-        "docker-compose",
-        "emacs",
-        "eza",
-        "fastfetch",
-        "fd",
-        "flameshot",
-        "fzf",
-        "git",
-        "github-cli",
-        "git-lfs",
-        "go",
-        "gsimplecal",
-        "highlight",
-        "i3-wm",
-        "i3status",
-        "inotify-tools",
-        "kitty",
-        "lazygit",
-        "less",
-        "lf",
-        "lxappearance",
-        "lxsession",
-        "man-db",
-        "man-pages",
-        "mpv",
-        "neovim",
-        "network-manager-applet",
-        "nitrogen",
-        "nodejs",
-        "noto-fonts",
-        "noto-fonts-emoji",
-        "npm",
-        "obsidian",
-        "os-prober",
-        "ouch",
-        "pacman-contrib",
-        "picom",
-        "playerctl",
-        "polybar",
-        "qpwgraph",
-        "ripgrep",
-        "rofi",
-        "ruby",
-        "starship",
-        "stow",
-        "sxiv",
-        "terminus-font",
-        "tldr",
-        "tmux",
-        "translate-shell",
-        "trash-cli",
-        "ttc-iosevka",
-        "ttf-dejavu",
-        "ttf-font-awesome",
-        "ttf-inconsolata",
-        "ttf-inconsolata-nerd",
-        "ttf-iosevka-nerd",
-        "ttf-jetbrains-mono",
-        "ttf-jetbrains-mono-nerd",
-        "ttf-noto-nerd",
-        "ttf-roboto",
-        "ttf-roboto-mono-nerd",
-        "ttf-ubuntu-font-family",
-        "udiskie",
-        "unzip",
-        "vim",
-        "xclip",
-        "xf86-input-libinput",
-        "xf86-video-intel",
-        "xorg-xkill",
-        "xorg-xprop",
-        "xorg-xsetroot",
-        "yazi",
-        "zoxide",
-        "zsh"
-    ],
-    "parallel downloads": 0,
-    "profile_config": {
-        "gfx_driver": "All open-source",
-        "greeter": "lightdm-gtk-greeter",
-        "profile": {
-            "custom_settings": {
-                "Bspwm": {}
+  "additional-repositories": [],
+  "archinstall-language": "English",
+  "audio_config": {
+    "audio": "pipewire"
+  },
+  "bootloader": "Grub",
+  "config_version": "2.6.3",
+  "debug": false,
+  "disk_config": {
+    "config_type": "default_layout",
+    "device_modifications": [
+      {
+        "device": "/dev/sda",
+        "partitions": [
+          {
+            "btrfs": [],
+            "dev_path": null,
+            "flags": ["Boot"],
+            "fs_type": "fat32",
+            "mount_options": [],
+            "mountpoint": "/boot",
+            "obj_id": "a3bd7be5-2fc7-42bf-99c5-e0088771c831",
+            "size": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "MiB",
+              "value": 203
             },
-            "details": [
-                "Bspwm"
+            "start": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "MiB",
+              "value": 3
+            },
+            "status": "create",
+            "type": "primary"
+          },
+          {
+            "btrfs": [
+              {
+                "compress": false,
+                "mountpoint": "/",
+                "name": "@",
+                "nodatacow": false
+              },
+              {
+                "compress": false,
+                "mountpoint": "/home",
+                "name": "@home",
+                "nodatacow": false
+              },
+              {
+                "compress": false,
+                "mountpoint": "/var/log",
+                "name": "@log",
+                "nodatacow": false
+              },
+              {
+                "compress": false,
+                "mountpoint": "/var/cache/pacman/pkg",
+                "name": "@pkg",
+                "nodatacow": false
+              },
+              {
+                "compress": false,
+                "mountpoint": "/.snapshots",
+                "name": "@.snapshots",
+                "nodatacow": false
+              }
             ],
-            "main": "Desktop"
-        }
-    },
-    "script": "guided",
-    "silent": false,
-    "swap": true,
-    "timezone": "UTC",
-    "version": "2.6.3"
+            "dev_path": null,
+            "flags": [],
+            "fs_type": "btrfs",
+            "mount_options": ["compress=zstd"],
+            "mountpoint": null,
+            "obj_id": "294f1f05-4fdd-4a6d-b4f9-cc650dee792f",
+            "size": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "B",
+              "value": 22884597760
+            },
+            "start": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "MiB",
+              "value": 206
+            },
+            "status": "create",
+            "type": "primary"
+          }
+        ],
+        "wipe": true
+      }
+    ]
+  },
+  "hostname": "archlinux",
+  "kernels": ["linux"],
+  "locale_config": {
+    "kb_layout": "us",
+    "sys_enc": "UTF-8",
+    "sys_lang": "en_US"
+  },
+  "mirror_config": {
+    "custom_mirrors": [],
+    "mirror_regions": {
+      "Brazil": [
+        "https://mirror.ufscar.br/archlinux/$repo/os/$arch",
+        "http://mirror.ufscar.br/archlinux/$repo/os/$arch",
+        "http://mirror.ufam.edu.br/archlinux/$repo/os/$arch",
+        "http://linorg.usp.br/archlinux/$repo/os/$arch",
+        "http://archlinux.c3sl.ufpr.br/$repo/os/$arch"
+      ]
+    }
+  },
+  "network_config": {
+    "type": "nm"
+  },
+  "no_pkg_lookups": false,
+  "ntp": true,
+  "offline": false,
+  "packages": [
+    "acpilight",
+    "alacritty",
+    "arc-gtk-theme",
+    "autorandr",
+    "base-devel",
+    "bat",
+    "blueman",
+    "bluez",
+    "bolt",
+    "code",
+    "copyq",
+    "croc",
+    "dbeaver",
+    "distrobox",
+    "docker",
+    "docker-compose",
+    "emacs",
+    "eza",
+    "fastfetch",
+    "fd",
+    "flameshot",
+    "fzf",
+    "git",
+    "github-cli",
+    "git-lfs",
+    "go",
+    "gsimplecal",
+    "highlight",
+    "i3-wm",
+    "i3status",
+    "inotify-tools",
+    "k9s",
+    "kitty",
+    "lazygit",
+    "less",
+    "lf",
+    "lxappearance",
+    "lxsession",
+    "man-db",
+    "man-pages",
+    "mpv",
+    "neovim",
+    "network-manager-applet",
+    "nitrogen",
+    "nodejs",
+    "noto-fonts",
+    "noto-fonts-emoji",
+    "npm",
+    "obsidian",
+    "os-prober",
+    "ouch",
+    "pacman-contrib",
+    "picom",
+    "playerctl",
+    "polybar",
+    "qpwgraph",
+    "ripgrep",
+    "rofi",
+    "ruby",
+    "starship",
+    "stow",
+    "sxiv",
+    "terminus-font",
+    "tldr",
+    "tmux",
+    "translate-shell",
+    "trash-cli",
+    "ttc-iosevka",
+    "ttf-dejavu",
+    "ttf-font-awesome",
+    "ttf-inconsolata",
+    "ttf-inconsolata-nerd",
+    "ttf-iosevka-nerd",
+    "ttf-jetbrains-mono",
+    "ttf-jetbrains-mono-nerd",
+    "ttf-noto-nerd",
+    "ttf-roboto",
+    "ttf-roboto-mono-nerd",
+    "ttf-ubuntu-font-family",
+    "udiskie",
+    "unzip",
+    "vim",
+    "xclip",
+    "xf86-input-libinput",
+    "xf86-video-intel",
+    "xorg-xkill",
+    "xorg-xprop",
+    "xorg-xsetroot",
+    "yazi",
+    "zoxide",
+    "zsh"
+  ],
+  "parallel downloads": 0,
+  "profile_config": {
+    "gfx_driver": "All open-source",
+    "greeter": "lightdm-gtk-greeter",
+    "profile": {
+      "custom_settings": {
+        "Bspwm": {}
+      },
+      "details": ["Bspwm"],
+      "main": "Desktop"
+    }
+  },
+  "script": "guided",
+  "silent": false,
+  "swap": true,
+  "timezone": "UTC",
+  "version": "2.6.3"
 }

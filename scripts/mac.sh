@@ -33,6 +33,7 @@ brew install --cask visual-studio-code
 brew install --cask wezterm
 brew install --cask whatsapp
 brew install --cask yaak
+brew install bat
 brew install croc
 brew install eza
 brew install fastfetch

@@ -6,8 +6,8 @@ alias gdsn='gds --name-only'
 alias lg='lazygit'
 alias ghqg='ghq get -p'
 
-# Highlight
-alias hat='highlight -O ansi --force'
+# Bat highlight
+alias bat='bat --style=plain'
 
 # Vim/Nvim
 alias vim='nvim'
@@ -31,6 +31,7 @@ alias mkdir='mkdir -p'
 alias fv='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
 alias fcd='cd $(fd -H -t d | fzf-tmux -p --reverse)'
 alias xargs='xargs ' # expands aliases for piping into xargs
+alias c='clear'
 
 # Docker Compose
 alias dc='docker compose'
