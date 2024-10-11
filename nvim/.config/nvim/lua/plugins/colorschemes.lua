@@ -2,22 +2,23 @@ return {
   {
     'navarasu/onedark.nvim',
     priority = 1000,
+    opts = {
+      style = 'darker',
+    },
     init = function()
-      require('onedark').setup {
-        style = 'darker',
-      }
       -- require('onedark').load()
     end,
   },
   {
     'folke/tokyonight.nvim',
     priority = 1000,
+    opts = {
+      transparent = true,
+      style = 'storm',
+      -- style = 'night',
+      -- style = 'moon',
+    },
     init = function()
-      require('tokyonight').setup {
-        style = 'storm',
-        -- style = 'night',
-        -- style = 'moon',
-      }
       -- require('tokyonight').load()
     end,
   },
@@ -54,19 +55,19 @@ return {
   {
     'lunarvim/synthwave84.nvim',
     priority = 1000,
+    opts = {
+      glow = {
+        error_msg = false,
+        type2 = false,
+        func = false,
+        keyword = false,
+        operator = false,
+        buffer_current_target = false,
+        buffer_visible_target = false,
+        buffer_inactive_target = false,
+      },
+    },
     init = function()
-      require('synthwave84').setup {
-        glow = {
-          error_msg = false,
-          type2 = false,
-          func = false,
-          keyword = false,
-          operator = false,
-          buffer_current_target = false,
-          buffer_visible_target = false,
-          buffer_inactive_target = false,
-        },
-      }
       -- vim.cmd.colorscheme 'synthwave84'
     end,
   },
@@ -100,8 +101,10 @@ return {
   {
     'tiagovla/tokyodark.nvim',
     priority = 1000,
+    opts = {
+      transparent_background = true,
+    },
     init = function()
-      require('tokyodark').setup()
       -- vim.cmd.colorscheme 'tokyodark'
     end,
   },
