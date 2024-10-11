@@ -11,7 +11,9 @@ function extract {
     do
       if [ -f "$n" ] ; then
           case "${n%,}" in
-            *.tar|*.zip|*.7z|*.gz|*.xz|*.lzma|*.bz|*.bz2|*.lz4|*.sz|*.zst|*.rar|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz)
+            *.zip)
+                            unzip "$n"         ;;
+            *.tar|*.7z|*.gz|*.xz|*.lzma|*.bz|*.bz2|*.lz4|*.sz|*.zst|*.rar|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz)
                             ouch d "$n"        ;;
             *.cbt)          tar xvf "$n"       ;;
             *.cbr)          unrar x -ad ./"$n" ;;
