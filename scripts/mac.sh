@@ -80,4 +80,3 @@ stow starship
 stow tmux
 stow wezterm
 stow zsh
-stow aerospace

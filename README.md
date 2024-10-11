@@ -1,16 +1,7 @@
-# Backup Cinnamon
+# Install Arch Linux
 
-`dconf dump /org/cinnamon/ > cinnamon_desktop_backup`
-
-# Restore Cinnamon
-
-`dconf load /org/cinnamon/ < cinnamon_desktop_backup`
-
-# Restore System
-
-`stow -t / system`
-
-# TODO
-
-- [ ] dunst rice
-- [ ] vifm rice
+```sh
+curl https://raw.githubusercontent.com/cgimenes/dotfiles/refs/heads/master/user_configuration.json > user_configuration.json
+su ...
+curl https://raw.githubusercontent.com/cgimenes/dotfiles/refs/heads/master/scripts/1-post-installation.sh | bash
+```
