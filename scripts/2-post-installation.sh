@@ -1,22 +1,17 @@
 #!/bin/bash
 
-sudo su
+curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -
+paru -S --noconfirm spotify
+paru -S --noconfirm brave-bin
+paru -S --noconfirm siji-ttf
+paru -S --noconfirm betterlockscreen
+paru -S --noconfirm enpass-bin
+paru -S --noconfirm dragon-drop
+paru -S --noconfirm slack-desktop
+paru -S --noconfirm insync
 
-timedatectl set-timezone America/Sao_Paulo
-systemctl enable autorandr
-systemctl enable docker
-systemctl enable bluetooth
+rm -rf .config/autostart/**
 
-usermod -aG docker oliveira
-usermod -aG video oliveira
-chsh -s /bin/zsh oliveira
+gem install thor
 
-# Allow video group to control backlight and leds
-cat > /etc/udev/rules.d/90-backlight.rules <<- EOM
-SUBSYSTEM=="backlight", ACTION=="add", \
-  RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness", \
-  RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"
-SUBSYSTEM=="leds", ACTION=="add", KERNEL=="*::kbd_backlight", \
-  RUN+="/bin/chgrp video /sys/class/leds/%k/brightness", \
-  RUN+="/bin/chmod g+w /sys/class/leds/%k/brightness"
-EOM
+fc-cache -fv
