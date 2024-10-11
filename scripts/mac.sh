@@ -13,7 +13,6 @@ brew install --cask flameshot
 brew install --cask iina
 brew install --cask jordanbaird-ice
 brew install --cask infra
-brew install --cask kitty
 brew install --cask nikitabobko/tap/aerospace
 brew install --cask notion-calendar
 brew install --cask obsidian
@@ -74,7 +73,6 @@ stow ag
 stow emacs
 stow gh-dash
 stow git
-stow kitty
 stow lf
 stow nvim
 stow rg
