@@ -10,24 +10,27 @@ local conditions = {
 }
 
 local function grapple_files()
-  local Grapple = require 'grapple'
-
-  local tags, err = Grapple.tags()
-  if not tags then
-    return vim.notify(err, vim.log.levels.ERROR)
-  end
-
-  local current_file_path = vim.fn.expand '%:p'
   local results = {}
-  for index, tag in ipairs(tags) do
-    local file_name = vim.fn.fnamemodify(tag.path, ':h:t') .. '/' .. vim.fn.fnamemodify(tag.path, ':t')
 
-    if current_file_path == tag.path then
-      results[index] = string.format('%%#GrappleCurrent# %s. %%#GrappleName#%s ', index, file_name)
-    else
-      results[index] = string.format('%%#GrappleHint# %s. %%#GrappleHint#%s ', index, file_name)
+  if vim.fn.tabpagenr() == 1 then
+    local Grapple = require 'grapple'
+
+    local tags, err = Grapple.tags()
+    if not tags then
+      return vim.notify(err, vim.log.levels.ERROR)
     end
-    results[index] = string.format('%%%s@LualineSwitchGrapple@%s%%X', index, results[index])
+
+    local current_file_path = vim.fn.expand '%:p'
+    for index, tag in ipairs(tags) do
+      local file_name = vim.fn.fnamemodify(tag.path, ':h:t') .. '/' .. vim.fn.fnamemodify(tag.path, ':t')
+
+      if current_file_path == tag.path then
+        results[index] = string.format('%%#GrappleCurrent# %s. %%#GrappleName#%s ', index, file_name)
+      else
+        results[index] = string.format('%%#GrappleHint# %s. %%#GrappleHint#%s ', index, file_name)
+      end
+      results[index] = string.format('%%%s@LualineSwitchGrapple@%s%%X', index, results[index])
+    end
   end
 
   return table.concat(results)

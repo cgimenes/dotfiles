@@ -8,6 +8,7 @@ return {
       },
       spec = {
         { '<leader>b', group = '[B]uffer' },
+        { '<leader>c', group = '[C]ode' },
         { '<leader>d', group = '[D]ebug' },
         { '<leader>f', group = '[F]ile' },
         { '<leader>g', group = '[G]it' },
