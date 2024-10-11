@@ -33,5 +33,6 @@ config.font = wezterm.font("Iosevka Nerd Font Mono", { weight = "Light" })
 config.font_size = 18.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.window_close_confirmation = "NeverPrompt"
+config.window_background_opacity = 0.90
 
 return config

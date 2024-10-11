@@ -24,6 +24,9 @@ return {
   {
     'rebelot/kanagawa.nvim',
     priority = 1000,
+    opts = {
+      transparent = true,
+    },
     init = function()
       require('kanagawa').load 'wave'
       -- require('kanagawa').load("dragon")
