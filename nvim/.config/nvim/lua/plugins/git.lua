@@ -1,10 +1,11 @@
 return {
   {
     'tpope/vim-fugitive',
-    config = function()
-      vim.keymap.set('n', '<leader>gd', '<cmd>Gvdiff<cr>', { desc = '[G]it [D]iff' })
-      vim.keymap.set('n', '<leader>gb', '<cmd>G blame<cr>', { desc = '[G]it [B]lame' })
-    end,
+    keys = {
+      { '<leader>gb', '<cmd>G blame<cr>', desc = '[G]it [B]lame' },
+      { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List [G]it [C]onflicts' },
+      { '<leader>gd', '<cmd>Gvdiff<cr>', desc = '[G]it [D]iff' },
+    },
     dependencies = {
       'tpope/vim-rhubarb',
     },
@@ -31,20 +32,16 @@ return {
   },
   {
     'kdheepak/lazygit.nvim',
-    -- optional for floating window border decoration
     dependencies = {
-      'nvim-lua/plenary.nvim',
+      'nvim-lua/plenary.nvim', -- optional for floating window border decoration
     },
-    cmd = 'LazyGit',
     keys = {
       { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
     },
   },
   {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
-      -- See `:help gitsigns.txt`
       signs = {
         add = { text = '▎' },
         change = { text = '▎' },
@@ -79,19 +76,6 @@ return {
           return '<Ignore>'
         end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
       end,
-    },
-  },
-  {
-    'akinsho/git-conflict.nvim',
-    version = '*',
-    opts = {
-      default_mappings = false,
-    },
-    cmd = {
-      'GitConflictListQf',
-    },
-    keys = {
-      { '<leader>gc', '<cmd>GitConflictListQf<cr>', desc = 'List [G]it [C]onflicts' },
     },
   },
 }
