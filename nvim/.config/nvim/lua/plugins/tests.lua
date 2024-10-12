@@ -8,11 +8,24 @@ return {
       vim.cmd "let test#strategy = 'vimux'"
     end,
     keys = {
-      { '<leader>tn', '<cmd>w<cr><cmd>TestNearest<cr>', desc = '[T]est [N]earest' },
-      { '<leader>tf', '<cmd>w<cr><cmd>TestFile<cr>', desc = '[T]est [F]ile' },
-      { '<leader>ts', '<cmd>w<cr><cmd>TestSuite<cr>', desc = '[T]est [S]uite' },
-      { '<leader>tl', '<cmd>w<cr><cmd>TestLast<cr>', desc = '[T]est [L]ast' },
-      { '<leader>tv', '<cmd>w<cr><cmd>TestVisit<cr>', desc = '[T]est [V]isit' },
+      { '<leader>tn', '<cmd>wa<cr><cmd>TestNearest<cr>', desc = '[T]est [N]earest' },
+      { '<leader>tf', '<cmd>wa<cr><cmd>TestFile<cr>', desc = '[T]est [F]ile' },
+      { '<leader>ts', '<cmd>wa<cr><cmd>TestSuite<cr>', desc = '[T]est [S]uite' },
+      { '<leader>tl', '<cmd>wa<cr><cmd>TestLast<cr>', desc = '[T]est [L]ast' },
+      {
+        '<leader>tv',
+        function()
+          vim.g.VimuxOrientation = 'v'
+        end,
+        desc = '[T]est [V]ertical',
+      },
+      {
+        '<leader>th',
+        function()
+          vim.g.VimuxOrientation = 'h'
+        end,
+        desc = '[T]est [H]orizontal',
+      },
       { '<leader>tq', '<cmd>VimuxCloseRunner<cr>', desc = '[T]est [Q]uit' },
     },
   },
@@ -59,7 +72,7 @@ return {
       {
         '<leader>tN',
         function()
-          vim.api.nvim_command 'write'
+          vim.api.nvim_command 'wa'
           require('neotest').run.run { strategy = 'dap' }
         end,
         desc = 'Debug Nearest',
