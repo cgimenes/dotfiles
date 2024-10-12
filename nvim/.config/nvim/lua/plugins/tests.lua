@@ -6,6 +6,7 @@ return {
     },
     config = function()
       vim.cmd "let test#strategy = 'vimux'"
+      vim.g.VimuxCloseOnExit = 1
     end,
     keys = {
       { '<leader>tn', '<cmd>wa<cr><cmd>TestNearest<cr>', desc = '[T]est [N]earest' },

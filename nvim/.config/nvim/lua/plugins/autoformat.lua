@@ -23,7 +23,7 @@ return {
         python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
         go = { 'gofmt' },
         php = { 'pint' },
-        sql = { 'sqlfluff' },
+        sql = { 'sqlfluff', 'sqlfmt', stop_after_first = true },
         javascript = prettier,
         typescript = prettier,
         css = prettier,
