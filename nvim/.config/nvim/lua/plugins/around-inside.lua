@@ -8,6 +8,6 @@ return {
   {
     'echasnovski/mini.ai',
     event = 'VeryLazy',
-    config = {},
+    config = true,
   },
 }
