@@ -39,3 +39,6 @@ alias dce='docker compose exec'
 alias dceit='docker compose exec -it'
 alias dcl='docker compose logs'
 alias dclf='docker compose logs -f'
+
+# Python
+alias poetsh='source $(poetry env info --path)/bin/activate' # Activate poetry shell without subshell

@@ -89,7 +89,6 @@ return {
         formatting = {
           format = function(_, item)
             local icons = require('icons').kind
-            icons.Copilot = ''
             if icons[item.kind] then
               item.kind = icons[item.kind] .. ' ' .. item.kind
             end
