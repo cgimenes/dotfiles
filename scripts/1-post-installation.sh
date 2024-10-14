@@ -26,5 +26,4 @@ stow rofi
 stow starship
 stow tmux
 stow wezterm
-stow xorg
 stow zsh
