@@ -172,6 +172,7 @@ return {
         update_in_insert = false,
         underline = false,
         severity_sort = true,
+        virtual_lines = { only_current_line = true }, -- lsp_lines plugin
         float = {
           focusable = true,
           style = 'minimal',
@@ -234,10 +235,8 @@ return {
     ft = 'lua',
   },
   {
-    'rachartier/tiny-inline-diagnostic.nvim',
-    event = 'VeryLazy', -- Or `LspAttach`
-    config = function()
-      require('tiny-inline-diagnostic').setup()
-    end,
+    'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+    event = 'LspAttach',
+    config = true,
   },
 }
