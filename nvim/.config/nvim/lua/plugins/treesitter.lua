@@ -60,4 +60,13 @@ return {
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
     config = true,
   },
+  {
+    -- Splitting/joining blocks of code
+    'Wansmer/treesj',
+    keys = {
+      { '<space>lj', '<cmd>TSJJoin<cr>', desc = '[J]oin Node' },
+      { '<space>ls', '<cmd>TSJSplit<cr>', desc = '[S]plit Node' },
+    },
+    config = true,
+  },
 }
