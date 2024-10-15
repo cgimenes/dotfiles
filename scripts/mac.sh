@@ -13,11 +13,11 @@ brew install --cask flameshot
 brew install --cask iina
 brew install --cask jordanbaird-ice
 brew install --cask infra
-brew install --cask nikitabobko/tap/aerospace
 brew install --cask notion-calendar
 brew install --cask obsidian
 brew install --cask qbittorrent
 brew install --cask raycast
+brew install --cask rectangle
 brew install --cask signal
 brew install --cask soundsource
 brew install --cask spotify
@@ -26,7 +26,6 @@ brew install --cask syncthing
 brew install --cask tailscale
 brew install --cask telegram
 brew install --cask tradingview
-brew install --cask veracrypt
 brew install --cask vial
 brew install --cask visual-studio-code
 brew install --cask wezterm
