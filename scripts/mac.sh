@@ -11,8 +11,9 @@ brew install --cask docker
 brew install --cask enpass
 brew install --cask flameshot
 brew install --cask iina
-brew install --cask jordanbaird-ice
 brew install --cask infra
+brew install --cask jordanbaird-ice
+brew install --cask librewolf
 brew install --cask notion-calendar
 brew install --cask obsidian
 brew install --cask qbittorrent
