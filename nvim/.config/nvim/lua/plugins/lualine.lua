@@ -7,6 +7,9 @@ local conditions = {
   hide_in_width = function()
     return vim.o.columns > window_width_limit
   end,
+  first_tab = function()
+    return vim.fn.tabpagenr() == 1
+  end,
 }
 
 local function grapple_files()
@@ -94,7 +97,7 @@ return {
             function()
               return ' ' .. icons.ui.Target .. ' '
             end,
-            padding = { left = 0, right = 0 },
+            padding = { left = 0, right = 1 },
             color = {},
             cond = nil,
           },
@@ -160,7 +163,7 @@ return {
               local language_servers = string.format('[%s]', unique_client_names)
 
               if copilot_active then
-                language_servers = language_servers .. ' %#SLCopilot#' .. ' ' .. icons.git.Octoface .. '%*'
+                language_servers = language_servers .. ' %#SLCopilot#' .. ' ' .. icons.git.Octoface .. ' %*'
               end
 
               return language_servers
@@ -171,17 +174,13 @@ return {
           {
             function()
               local shiftwidth = vim.api.nvim_buf_get_option(0, 'shiftwidth')
-              return icons.ui.Tab .. ' ' .. shiftwidth
+              return icons.ui.Tab .. '  ' .. shiftwidth
             end,
             padding = 1,
           },
           {
             'filetype',
-            cond = nil,
-            padding = {
-              left = 1,
-              right = 1,
-            },
+            padding = 1,
           },
           {
             'encoding',
@@ -203,9 +202,7 @@ return {
         lualine_a = {
           {
             grapple_files,
-            cond = function()
-              return vim.fn.tabpagenr() == 1
-            end,
+            cond = conditions.first_tab,
             padding = 0,
           },
         },
