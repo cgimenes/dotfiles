@@ -57,8 +57,6 @@ brew install tmux
 brew install yazi
 brew install zoxide
 
-git config --global ghq.root '~/dev/src'
-
 brew tap railwaycat/emacsmacport
 brew install emacs-mac --with-modules
 ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
@@ -69,11 +67,8 @@ git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 git clone https://github.com/cgimenes/dotfiles.git
 cd dotfiles
 
-stow ag
 stow emacs
-stow gh-dash
 stow git
-stow lf
 stow nvim
 stow rg
 stow starship
