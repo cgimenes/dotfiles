@@ -144,7 +144,6 @@ return {
         require('telescope').extensions.live_grep_args.live_grep_args()
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes(command, true, true, true), 'n')
       end, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>lT', require('telescope.builtin').diagnostics, { desc = 'Search Diagnostics' })
       vim.keymap.set('n', '<leader>sl', require('telescope.builtin').resume, { desc = '[S]earch Resume' })
       vim.keymap.set('n', '<leader>oc', require('telescope.builtin').colorscheme, { desc = '[S]earch Colorschemes' })
       vim.keymap.set('n', '<leader>of', '<cmd>Telescope filetypes<cr>', { desc = 'Change [F]iletype' })

@@ -64,8 +64,8 @@ return {
     -- Splitting/joining blocks of code
     'Wansmer/treesj',
     keys = {
-      { '<space>lj', '<cmd>TSJJoin<cr>', desc = '[J]oin Node' },
-      { '<space>ls', '<cmd>TSJSplit<cr>', desc = '[S]plit Node' },
+      { '<space>lnj', '<cmd>TSJJoin<cr>', desc = '[J]oin' },
+      { '<space>lns', '<cmd>TSJSplit<cr>', desc = '[S]plit' },
     },
     config = true,
   },
