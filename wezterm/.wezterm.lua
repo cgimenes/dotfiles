@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.front_end = "WebGpu"
+config.front_end = "OpenGL"
 config.hide_tab_bar_if_only_one_tab = true
 config.force_reverse_video_cursor = true
 config.colors = {
@@ -30,8 +30,8 @@ config.window_padding = {
 }
 config.window_decorations = "TITLE|RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 config.font = wezterm.font_with_fallback({
-	{ family = "Iosevka Term", weight = "Light" },
-	{ family = "JetBrains Mono", weight = "Light" },
+	{ family = "Iosevka Term", weight = "Medium" },
+	{ family = "JetBrains Mono", weight = "Medium" },
 })
 config.font_size = 18.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
