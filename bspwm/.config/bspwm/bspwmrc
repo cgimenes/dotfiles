@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # Autostart
-$HOME/dotfiles/autostart.sh
+$HOME/dotfiles/scripts/autostart.sh
 
 # Workspaces
 bspc monitor -d I II III IV V VI
