@@ -9,10 +9,10 @@ return {
       vim.g.VimuxCloseOnExit = 1
     end,
     keys = {
-      { '<leader>tn', '<cmd>wa<cr><cmd>TestNearest<cr>', desc = '[T]est [N]earest' },
-      { '<leader>tf', '<cmd>wa<cr><cmd>TestFile<cr>', desc = '[T]est [F]ile' },
-      { '<leader>ts', '<cmd>wa<cr><cmd>TestSuite<cr>', desc = '[T]est [S]uite' },
-      { '<leader>tl', '<cmd>wa<cr><cmd>TestLast<cr>', desc = '[T]est [L]ast' },
+      { '<leader>tn', '<cmd>silent! wa<cr><cmd>TestNearest<cr>', desc = '[T]est [N]earest' },
+      { '<leader>tf', '<cmd>silent! wa<cr><cmd>TestFile<cr>', desc = '[T]est [F]ile' },
+      { '<leader>ts', '<cmd>silent! wa<cr><cmd>TestSuite<cr>', desc = '[T]est [S]uite' },
+      { '<leader>tl', '<cmd>silent! wa<cr><cmd>TestLast<cr>', desc = '[T]est [L]ast' },
       {
         '<leader>tv',
         function()
@@ -73,7 +73,7 @@ return {
       {
         '<leader>tN',
         function()
-          vim.api.nvim_command 'wa'
+          vim.api.nvim_command 'silent! wa'
           require('neotest').run.run { strategy = 'dap' }
         end,
         desc = 'Debug Nearest',
