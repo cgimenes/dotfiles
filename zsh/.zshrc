@@ -9,6 +9,8 @@ source ~/.zsh/2-alias.zsh
 source ~/.zsh/3-functions.zsh
 source ~/.zsh/4-autocompletion.zsh
 source ~/.zsh/5-prompt.zsh
+source ~/.zsh/6-fzf.zsh
+source ~/.zsh/7-oh-my-zsh-plugins.zsh
 source ~/.zsh/8-zoxide.zsh
 source ~/.zsh/999-custom.zsh
 
