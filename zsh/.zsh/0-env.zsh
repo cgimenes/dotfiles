@@ -8,9 +8,6 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/config"
 
 export DISABLE_AUTO_UPDATE=true
 
-# Set VI mode
-bindkey -v
-
 export GOPATH="$HOME/dev"
 
 if [ -x "$(command -v /opt/homebrew/bin/brew)" ]; then
