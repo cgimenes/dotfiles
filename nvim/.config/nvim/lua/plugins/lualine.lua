@@ -10,6 +10,9 @@ local conditions = {
   first_tab = function()
     return vim.fn.tabpagenr() == 1
   end,
+  more_than_one_tab = function()
+    return vim.fn.tabpagenr '$' > 1
+  end,
 }
 
 local function grapple_files()
@@ -210,6 +213,7 @@ return {
           {
             'tabs',
             show_modified_status = false,
+            cond = conditions.more_than_one_tab,
           },
         },
       },
