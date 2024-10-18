@@ -29,7 +29,7 @@ local function grapple_files()
     local file_name = vim.fn.fnamemodify(tag.path, ':h:t') .. '/' .. vim.fn.fnamemodify(tag.path, ':t')
 
     if current_file_path == tag.path then
-      results[index] = string.format('%%#GrappleCurrent# %s. %%#GrappleName#%s ', index, file_name)
+      results[index] = string.format('%%#GrappleBold# %s. %%#GrappleBold#%s ', index, file_name)
     else
       results[index] = string.format('%%#GrappleHint# %s. %%#GrappleHint#%s ', index, file_name)
     end
