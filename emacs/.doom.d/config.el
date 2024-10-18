@@ -18,7 +18,8 @@
 (setq doom-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'semi-light))
 
 (setq doom-theme 'kanagawa-wave)
-(setq display-line-numbers-type 'relative)
+(setq display-line-numbers-type t)
+(doom/set-frame-opacity 92)
 
 ;; Here are some additional functions/macros that will help you configure Doom.
 ;;
