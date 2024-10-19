@@ -35,3 +35,4 @@ bin/.local/state
 __pycache__/
 alacritty.yml.bak
 nvim/.config/nvim/Session.vim
+Brewfile.lock.json
