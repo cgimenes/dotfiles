@@ -23,10 +23,10 @@ config.colors = {
 	indexed = { [16] = "#ffa066", [17] = "#ff5d62" },
 }
 config.window_padding = {
-	left = 2,
-	right = 2,
-	top = 2,
-	bottom = 2,
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
 config.window_decorations = "TITLE|RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 config.font = wezterm.font_with_fallback({

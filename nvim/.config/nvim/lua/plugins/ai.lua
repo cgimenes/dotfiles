@@ -36,6 +36,7 @@ return {
     },
     keys = {
       { '<leader>ac', '<cmd>GpChatToggle<cr>', desc = '[A]I Toggle [C]hat' },
+      { '<leader>ap', '<cmd>GpPopup<cr>', desc = '[A]I [P]opup' },
     },
   },
 }
