@@ -8,6 +8,9 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/config"
 
 export DISABLE_AUTO_UPDATE=true
 
+# Set Emacs mode
+bindkey -e
+
 export GOPATH="$HOME/dev"
 
 if [ -x "$(command -v /opt/homebrew/bin/brew)" ]; then
