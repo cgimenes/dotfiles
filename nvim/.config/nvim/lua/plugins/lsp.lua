@@ -20,14 +20,9 @@ return {
 
           map('gvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', '[G]oto [D]efinition')
           map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-          map('gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
-          map('<leader>lD', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-          map('<leader>ls', require('telescope.builtin').lsp_document_symbols, 'Document [S]ymbols')
-          map('<leader>lS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace [S]ymbols')
           map('<leader>lr', function()
             vim.lsp.buf.rename()
             vim.cmd 'silent wa'
@@ -195,37 +190,6 @@ return {
         vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
       end
     end,
-  },
-  {
-    -- Diagnostics list
-    'folke/trouble.nvim',
-    opts = {
-      focus = true,
-      modes = {
-        symbols = {
-          focus = true,
-          win = {
-            type = 'float',
-            relative = 'editor',
-            size = { width = 0.8, height = 0.8 },
-            position = { 0.5, 0.5 },
-            border = 'rounded',
-            title = 'Outline',
-            title_pos = 'center',
-          },
-          keys = {
-            ['<cr>'] = 'jump_close',
-          },
-        },
-      },
-    },
-    keys = {
-      { '<leader>ld', '<cmd>Trouble diagnostics toggle<cr>', desc = 'Document Diagnostics' },
-      { '<leader>lo', '<cmd>Trouble symbols toggle<cr>', desc = 'Document Symbols (Outline)' },
-      { 'gR', '<cmd>Trouble lsp_references toggle<cr>', desc = 'Symbol References' },
-      { 'gI', '<cmd>Trouble lsp_implementations toggle<cr>', desc = 'Symbol Implementations' },
-    },
-    cmd = 'Trouble',
   },
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
