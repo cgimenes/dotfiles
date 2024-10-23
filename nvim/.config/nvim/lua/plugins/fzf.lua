@@ -1,8 +1,24 @@
 return {
   'ibhagwan/fzf-lua',
   opts = {
+    'default-title',
     grep = {
       rg_opts = '--hidden --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
+    },
+    keymap = {
+      builtin = {
+        ['<C-d>'] = 'preview-page-down',
+        ['<C-u>'] = 'preview-page-up',
+      },
+      fzf = {
+        ['ctrl-f'] = 'half-page-down',
+        ['ctrl-b'] = 'half-page-up',
+        ['ctrl-a'] = 'beginning-of-line',
+        ['ctrl-e'] = 'end-of-line',
+        ['ctrl-d'] = 'preview-page-down',
+        ['ctrl-u'] = 'preview-page-up',
+        ['ctrl-q'] = 'select-all+accept',
+      },
     },
   },
   keys = {
