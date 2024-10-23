@@ -5,6 +5,7 @@ return {
       { '<leader>gb', '<cmd>G blame<cr>', desc = '[G]it [B]lame' },
       { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List [G]it [C]onflicts' },
       { '<leader>gd', '<cmd>Gvdiff<cr>', desc = '[G]it [D]iff' },
+      { '<leader>gB', ':GBrowse<cr>', desc = '[G]it [B]rowse', mode = { 'n', 'v' } },
     },
     dependencies = {
       'tpope/vim-rhubarb',
