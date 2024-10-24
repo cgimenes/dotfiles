@@ -30,7 +30,7 @@ vim.keymap.set('v', 'J', '<cmd>m +1<cr>')
 vim.keymap.set('v', 'K', '<cmd>m -2<cr>')
 
 -- Better pasting experience
-vim.keymap.set('v', '<leader>p', '"_dP', { desc = 'Paste without yanking' })
+vim.keymap.set('v', '<leader>pp', '"_dP', { desc = 'Paste without yanking' })
 vim.keymap.set('n', '<leader>pe', '$p', { desc = 'Paste at the end of current line' })
 vim.keymap.set('n', '<leader>pE', '$pa', { desc = 'Paste at the end of current line and enter insert mode' })
 
