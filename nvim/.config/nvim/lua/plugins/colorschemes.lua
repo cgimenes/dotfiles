@@ -36,6 +36,13 @@ return {
           },
         },
       },
+      overrides = function()
+        return {
+          NormalFloat = { bg = 'none' },
+          FloatBorder = { bg = 'none' },
+          FloatTitle = { bg = 'none' },
+        }
+      end,
     },
     init = function()
       require('kanagawa').load 'wave'
