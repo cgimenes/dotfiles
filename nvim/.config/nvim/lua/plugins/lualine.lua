@@ -45,9 +45,38 @@ vim.cmd [[
   endfunction
 ]]
 
-local colors = require 'colors'
+local colors = require('kanagawa.colors').setup({ theme = 'wave' })
+local theme = colors.theme
+local palette = colors.palette
 
 local icons = require 'icons'
+
+local modes = setmetatable({
+  ['n'] = 'N',
+  ['no'] = 'N',
+  ['v'] = 'V',
+  ['V'] = 'VL',
+  [''] = 'VB',
+  ['s'] = 'S',
+  ['S'] = 'SL',
+  [''] = 'SB',
+  ['i'] = 'I',
+  ['ic'] = 'I',
+  ['R'] = 'R',
+  ['Rv'] = 'VR',
+  ['c'] = 'C',
+  ['cv'] = 'EX',
+  ['ce'] = 'X',
+  ['r'] = 'P',
+  ['rm'] = 'M',
+  ['r?'] = 'C',
+  ['!'] = 'SH',
+  ['t'] = 'T',
+}, {
+  __index = function()
+    return '-'
+  end,
+})
 
 return {
   {
@@ -57,7 +86,48 @@ return {
       options = {
         globalstatus = true,
         icons_enabled = true,
-        theme = 'auto',
+        theme = function()
+          local mode_colors = {
+            normal = palette.crystalBlue,
+            insert = palette.springGreen,
+            visual = palette.surimiOrange,
+            replace = palette.waveRed,
+            command = palette.autumnYellow,
+          }
+
+          return {
+            inactive = {
+              a = { fg = theme.ui.fg, bg = theme.ui.bg, gui = 'bold' },
+              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              c = { fg = theme.ui.fg, bg = nil },
+            },
+            visual = {
+              a = { fg = theme.ui.bg_m3, bg = mode_colors.visual, gui = 'bold' },
+              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              c = { fg = theme.ui.fg, bg = nil },
+            },
+            replace = {
+              a = { fg = theme.ui.bg_m3, bg = mode_colors.replace, gui = 'bold' },
+              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              c = { fg = theme.ui.fg, bg = nil },
+            },
+            normal = {
+              a = { fg = theme.ui.bg_m3, bg = mode_colors.normal, gui = 'bold' },
+              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              c = { fg = theme.ui.fg, bg = nil },
+            },
+            insert = {
+              a = { fg = theme.ui.bg_m3, bg = mode_colors.insert, gui = 'bold' },
+              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              c = { fg = theme.ui.fg, bg = nil },
+            },
+            command = {
+              a = { fg = theme.ui.bg_m3, bg = mode_colors.command, gui = 'bold' },
+              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              c = { fg = theme.ui.fg, bg = nil },
+            },
+          }
+        end,
         component_separators = '',
         section_separators = '',
         disabled_filetypes = {
@@ -98,9 +168,9 @@ return {
         lualine_a = {
           {
             function()
-              return ' ' .. icons.ui.Target .. ' '
+              return modes[vim.api.nvim_get_mode().mode]
             end,
-            padding = { left = 0, right = 1 },
+            padding = 1,
             color = {},
             cond = nil,
           },
@@ -112,7 +182,7 @@ return {
               end
               return 'recording to ' .. reg
             end,
-            color = { bg = colors.red, gui = 'bold' },
+            color = { bg = palette.peachRed, gui = 'bold' },
           },
         },
         lualine_b = {
@@ -166,7 +236,7 @@ return {
               local language_servers = string.format('[%s]', unique_client_names)
 
               if copilot_active then
-                language_servers = language_servers .. ' %#SLCopilot#' .. ' ' .. icons.git.Octoface .. ' %*'
+                language_servers = language_servers .. ' ' .. icons.git.Octoface .. ' '
               end
 
               return language_servers
