@@ -21,3 +21,7 @@ stow tmux
 stow wezterm
 stow zsh
 stow bat
+
+# configure key repetition speeds
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 14
