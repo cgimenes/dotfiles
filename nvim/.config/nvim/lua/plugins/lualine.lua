@@ -45,7 +45,7 @@ vim.cmd [[
   endfunction
 ]]
 
-local colors = require('kanagawa.colors').setup({ theme = 'wave' })
+local colors = require('kanagawa.colors').setup { theme = 'wave' }
 local theme = colors.theme
 local palette = colors.palette
 
@@ -192,6 +192,11 @@ return {
           },
         },
         lualine_c = {
+          {
+            function()
+              return '%='
+            end,
+          },
           {
             'filename',
             color = {},
