@@ -6,9 +6,6 @@ alias gdsn='gds --name-only'
 alias lg='lazygit'
 alias ghqg='ghq get -p'
 
-# Bat highlight
-alias bat='bat --style=plain'
-
 # Vim/Nvim
 alias vim='nvim'
 alias v='nvim'

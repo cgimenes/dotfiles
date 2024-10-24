@@ -12,6 +12,7 @@ git clone https://github.com/cgimenes/dotfiles.git
 cd $HOME/dotfiles
 stow aliks
 stow autorandr
+stow bat
 stow bin
 stow bspwm
 stow dunst
