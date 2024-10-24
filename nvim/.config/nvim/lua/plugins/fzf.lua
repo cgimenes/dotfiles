@@ -9,6 +9,8 @@ return {
     },
     grep = {
       rg_opts = '--hidden --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
+      RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
+      rg_glob = true, -- always parse glob patterns
     },
     keymap = {
       builtin = {

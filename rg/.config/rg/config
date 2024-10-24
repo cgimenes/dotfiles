@@ -1,32 +1,13 @@
-# Don't let ripgrep vomit really long lines to my terminal, and show a preview.
 --max-columns=150
 --max-columns-preview
-
-# Add an 'web' type.
---type-add
-web:*.{html,css,js,jsx,tsx,ts}*
-
-# Search hidden files / directories (e.g. dotfiles) by default
 --hidden
-
-# Using glob patterns to include/exclude files or folders
---glob=!**/pkg/*'
---glob=!**/.cache/*'
---glob=!**/.git/*'
---glob=!**/.npm/*'
---glob=!**/vendor/*'
---glob=!**/node_modules/*'
---glob=!**/.local/share/*'
---glob=!**/composer.lock'
---glob=!**/package.lock'
-
-# Because who cares about case!?
 --smart-case
 
-
-
-#            '--color=never',
-#            '--no-heading',
-#            '--with-filename',
-#            '--line-number',
-#            '--column',
+--glob=!**/.git/*
+--glob=!**/.npm/*
+--glob=!**/vendor/*
+--glob=!**/node_modules/*
+--glob=!**/.local/share/*
+--glob=!**/composer.lock
+--glob=!**/package.lock
+--glob=!**/poetry.lock
