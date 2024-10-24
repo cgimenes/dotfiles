@@ -1,6 +1,3 @@
--- [[ Basic Keymaps ]]
---  See `:help vim.keymap.set()`
-
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
@@ -25,9 +22,6 @@ vim.keymap.set('n', '<leader>w', '<C-w>')
 vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', '<', '<gv')
 
-vim.keymap.set('n', '[<Space>', 'O<Esc>j')
-vim.keymap.set('n', ']<Space>', 'o<Esc>k')
-
 vim.keymap.set('n', '[q', '<cmd>cprev<cr>')
 vim.keymap.set('n', ']q', '<cmd>cnext<cr>')
 
@@ -49,6 +43,7 @@ vim.keymap.set('n', '<leader>os', function()
   require('snippets').load_snippets()
 end, { desc = 'Reload snippets' })
 
+-- Yank filename
 vim.keymap.set('n', '<leader>yr', '<cmd>let @+ = expand("%:.")<cr>', { desc = 'Yank relative filename' })
 vim.keymap.set('n', '<leader>yf', '<cmd>let @+ = expand("%:p")<cr>', { desc = 'Yank full filename' })
 vim.keymap.set('n', '<leader>yn', '<cmd>let @+ = expand("%:t")<cr>', { desc = 'Yank filename' })
@@ -77,7 +72,9 @@ vim.keymap.set('n', '<leader>rr', function()
   end)
 end, { desc = '[R]eplace using :cdo' })
 
+-- Execute code
 vim.keymap.set('n', '<leader>cl', '<cmd>.lua<CR>', { desc = 'Execute the current line' })
 vim.keymap.set('n', '<leader>cf', '<cmd>source %<CR>', { desc = 'Execute the current file' })
 
+-- Toggle relative numbers
 vim.keymap.set('n', '<leader>or', '<cmd>set relativenumber!<cr>', { desc = 'Toggle relative numbers' })

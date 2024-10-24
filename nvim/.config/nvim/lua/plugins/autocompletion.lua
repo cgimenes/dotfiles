@@ -32,7 +32,6 @@ return {
       'hrsh7th/cmp-buffer',
     },
     config = function()
-      -- See `:help cmp`
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
       luasnip.config.setup {}

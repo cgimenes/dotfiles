@@ -79,10 +79,13 @@ return {
     -- LSP
     { 'gr', '<cmd>FzfLua lsp_references<cr>', desc = '[G]oto [R]eferences' },
     { 'gi', '<cmd>FzfLua lsp_implementations<cr>', desc = '[G]oto [I]mplementation' },
-    { '<leader>lT', '<cmd>FzfLua lsp_type_definitions<cr>', desc = '[T]ype Definition' },
     { '<leader>ls', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Document [S]ymbols' },
     { '<leader>lS', '<cmd>FzfLua lsp_dynamic_workspace_symbols<cr>', desc = 'Workspace [S]ymbols' },
     { '<leader>ld', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Document [D]iagnostics' },
+    -- Jump to the type of the word under your cursor.
+    --  Useful when you're not sure what type a variable is and you want to see
+    --  the definition of its *type*, not where it was *defined*.
+    { '<leader>lT', '<cmd>FzfLua lsp_type_definitions<cr>', desc = '[T]ype Definition' },
 
     -- Paste
     { '<leader>pr', '<cmd>FzfLua registers<cr>', desc = '[P]aste [R]egister', mode = { 'n', 'v' } },
