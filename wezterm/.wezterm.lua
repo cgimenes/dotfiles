@@ -38,4 +38,12 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.window_close_confirmation = "NeverPrompt"
 config.window_background_opacity = 0.92
 
+config.keys = {
+	{
+		key = "Enter",
+		mods = "ALT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+}
+
 return config

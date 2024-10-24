@@ -2,20 +2,12 @@ return {
   {
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
+    event = "InsertEnter",
     build = ':Copilot auth',
     opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-      filetypes = {
-        markdown = true,
-        help = true,
-      },
+      suggestion = { enabled = true, auto_trigger = true },
+      panel = { enabled = true },
     },
-  },
-  {
-    'zbirenbaum/copilot-cmp',
-    dependencies = 'zbirenbaum/copilot.lua',
-    config = true,
   },
   {
     'robitx/gp.nvim',
