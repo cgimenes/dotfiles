@@ -2,6 +2,11 @@ return {
   'ibhagwan/fzf-lua',
   opts = {
     'default-title',
+    winopts = {
+      preview = {
+        wrap = 'wrap',
+      },
+    },
     grep = {
       rg_opts = '--hidden --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
     },
