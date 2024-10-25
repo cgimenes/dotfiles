@@ -46,13 +46,7 @@ return {
       end,
       desc = '[S]earch [F]iles',
     },
-    {
-      '<leader>fF',
-      function()
-        require('fzf-lua').files()
-      end,
-      desc = '[S]earch [F]iles',
-    },
+    { '<leader>fF', require('fzf-lua').files, desc = '[S]earch [F]iles' },
 
     -- Search
     { '<leader>sl', '<cmd>FzfLua resume<cr>', desc = '[S]earch Resume' },
