@@ -131,4 +131,8 @@ return {
       -- vim.cmd.colorscheme 'one_monokai'
     end,
   },
+  {
+    'scottmckendry/cyberdream.nvim',
+    priority = 1000,
+  },
 }

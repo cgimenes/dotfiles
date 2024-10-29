@@ -19,5 +19,6 @@ vim.api.nvim_create_autocmd('FileType', {
     'neotest-output-panel',
     'help',
     'fugitiveblame',
+    'grug-far',
   },
 })
