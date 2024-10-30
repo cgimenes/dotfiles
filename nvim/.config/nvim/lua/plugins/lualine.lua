@@ -16,17 +16,28 @@ local conditions = {
 }
 
 local function grapple_files()
-  local Grapple = require 'grapple'
-
-  local tags, err = Grapple.tags()
+  local tags, err = require('grapple').tags()
   if not tags then
     return vim.notify(err, vim.log.levels.ERROR)
+  end
+
+  local file_names = {}
+  for _, tag in pairs(tags) do
+    local file_name = vim.fn.fnamemodify(tag.path, ':t')
+    if not file_names[file_name] then
+      file_names[file_name] = {}
+    end
+
+    table.insert(file_names[file_name], tag)
   end
 
   local current_file_path = vim.fn.expand '%:p'
   local results = {}
   for index, tag in ipairs(tags) do
-    local file_name = vim.fn.fnamemodify(tag.path, ':h:t') .. '/' .. vim.fn.fnamemodify(tag.path, ':t')
+    local file_name = vim.fn.fnamemodify(tag.path, ':t')
+    if #file_names[file_name] > 1 then
+      file_name = vim.fn.fnamemodify(tag.path, ':h:t') .. '/' .. file_name
+    end
 
     if current_file_path == tag.path then
       results[index] = string.format('%%#GrappleBold# %s. %%#GrappleBold#%s ', index, file_name)
