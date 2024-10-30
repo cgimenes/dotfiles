@@ -16,10 +16,15 @@ return {
           return vim.startswith(name, '.') or name == '__pycache__'
         end,
       },
+      float = {
+        padding = 5,
+        max_width = 100,
+      },
     },
     cmd = 'Oil',
     keys = {
       { '-', '<cmd>Oil<cr>', desc = 'Oil [E]xplorer' },
+      { '<leader>-', '<cmd>Oil --float<cr>', desc = 'Floating Oil [E]xplorer' },
     },
   },
 }
