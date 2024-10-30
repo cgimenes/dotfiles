@@ -4,7 +4,11 @@ return {
     opts = {
       keymaps = {
         ['q'] = 'actions.close',
-        ['<C-r>'] = 'actions.refresh',
+        ['<C-t>'] = false,
+        ['<C-h>'] = false,
+        ['<C-l>'] = false,
+        ['<M-v>'] = { 'actions.select', opts = { vertical = true }, desc = 'Open the entry in a vertical split' },
+        ['<M-s>'] = { 'actions.select', opts = { horizontal = true }, desc = 'Open the entry in a horizontal split' },
       },
       skip_confirm_for_simple_edits = true,
       view_options = {
