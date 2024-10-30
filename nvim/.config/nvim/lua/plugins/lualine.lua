@@ -108,32 +108,32 @@ return {
           return {
             inactive = {
               a = { fg = theme.ui.fg, bg = theme.ui.bg, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              b = { fg = theme.ui.fg, bg = nil },
               c = { fg = theme.ui.fg, bg = nil },
             },
             visual = {
               a = { fg = theme.ui.bg_m3, bg = mode_colors.visual, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              b = { fg = theme.ui.fg, bg = nil },
               c = { fg = theme.ui.fg, bg = nil },
             },
             replace = {
               a = { fg = theme.ui.bg_m3, bg = mode_colors.replace, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              b = { fg = theme.ui.fg, bg = nil },
               c = { fg = theme.ui.fg, bg = nil },
             },
             normal = {
               a = { fg = theme.ui.bg_m3, bg = mode_colors.normal, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              b = { fg = theme.ui.fg, bg = nil },
               c = { fg = theme.ui.fg, bg = nil },
             },
             insert = {
               a = { fg = theme.ui.bg_m3, bg = mode_colors.insert, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              b = { fg = theme.ui.fg, bg = nil },
               c = { fg = theme.ui.fg, bg = nil },
             },
             command = {
               a = { fg = theme.ui.bg_m3, bg = mode_colors.command, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = theme.ui.bg },
+              b = { fg = theme.ui.fg, bg = nil },
               c = { fg = theme.ui.fg, bg = nil },
             },
           }
