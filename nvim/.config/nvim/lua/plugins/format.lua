@@ -36,6 +36,9 @@ return {
         php_cs_fixer = {
           args = { 'fix', '--config=.php-cs-fixer.dist.php', '--allow-risky=yes', '$FILENAME' },
         },
+        sqlfluff = {
+          args = { 'fix', '--dialect', 'postgres', '-' },
+        },
       },
     },
   },

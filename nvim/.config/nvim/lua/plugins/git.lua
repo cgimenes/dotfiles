@@ -79,4 +79,16 @@ return {
       end,
     },
   },
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'ibhagwan/fzf-lua',
+      'sindrets/diffview.nvim', -- optional - Diff integration
+    },
+    config = true,
+    keys = {
+      { '<leader>gn', '<cmd>Neogit<cr>', desc = '[N]eo[G]it' },
+    },
+  },
 }

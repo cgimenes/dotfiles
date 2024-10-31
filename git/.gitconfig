@@ -33,3 +33,6 @@
 
 [pull]
   ff = true
+
+[status]
+  showUntrackedFiles = all

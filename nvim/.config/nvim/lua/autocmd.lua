@@ -17,6 +17,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'spectre_panel',
     'neotest-output',
     'neotest-output-panel',
+    'neotest-summary',
     'help',
     'fugitiveblame',
     'grug-far',
