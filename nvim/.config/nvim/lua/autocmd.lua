@@ -23,3 +23,16 @@ vim.api.nvim_create_autocmd('FileType', {
     'grug-far',
   },
 })
+
+-- Enable folding with treesitter
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    if require('nvim-treesitter.parsers').has_parser() then
+      vim.opt.foldmethod = 'expr'
+      vim.opt.foldlevel = 10
+      vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+    else
+      vim.opt.foldmethod = 'manual'
+    end
+  end,
+})
