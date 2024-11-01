@@ -203,11 +203,6 @@ return {
         },
         lualine_c = {
           {
-            function()
-              return '%='
-            end,
-          },
-          {
             'filename',
             color = {},
             path = 1,
