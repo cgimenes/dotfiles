@@ -24,6 +24,7 @@ return {
         go = { 'gofmt' },
         php = { 'pint' },
         sql = { 'sqlfluff', 'sqlfmt', stop_after_first = true },
+        sh = { 'shfmt' },
         javascript = prettier,
         typescript = prettier,
         css = prettier,
@@ -41,5 +42,10 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      require('conform').setup(opts)
+
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
   },
 }
