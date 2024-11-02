@@ -115,8 +115,12 @@ return {
         'sqlfluff',
         'sqlfmt',
         'shfmt',
-        'pint',
       })
+
+      if vim.fn.executable 'composer' == 1 then
+        vim.list_extend(ensure_installed, { 'pint' })
+      end
+
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
