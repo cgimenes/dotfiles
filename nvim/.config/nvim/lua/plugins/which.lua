@@ -15,6 +15,7 @@ return {
         { '<leader>h', group = 'Grapple' },
         { '<leader>l', group = '[L]SP' },
         { '<leader>ln', group = '[N]ode' },
+        { '<leader>L', group = '[L]eetCode' },
         { '<leader>o', group = '[O]ptions' },
         { '<leader>r', group = 'Find and [R]eplace' },
         { '<leader>s', group = '[S]earch' },
