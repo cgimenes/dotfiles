@@ -22,6 +22,7 @@ brew "tmux"
 brew "yazi"
 brew "zoxide"
 
+cask "bluesnooze"
 cask "brave-browser"
 cask "burp-suite"
 cask "docker"
