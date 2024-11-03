@@ -6,7 +6,6 @@ brew "emacs-mac", args: ["with-modules"]
 brew "eza"
 brew "fastfetch"
 brew "fzf"
-brew "gh"
 brew "ghq"
 brew "git"
 brew "go"
