@@ -49,7 +49,9 @@ return {
             -- dap = require('dap').configurations.php[1],
             filter_dirs = { '.git', 'node_modules', 'vendor' },
           },
-          require 'neotest-python',
+          require 'neotest-python' {
+            dap = { justMyCode = false },
+          },
         },
         summary = {
           animated = false,
@@ -77,6 +79,14 @@ return {
           require('neotest').run.run { strategy = 'dap' }
         end,
         desc = 'Debug Nearest',
+      },
+      {
+        '<leader>tL',
+        function()
+          vim.api.nvim_command 'silent! wa'
+          require('neotest').run.run_last { strategy = 'dap' }
+        end,
+        desc = 'Debug Last',
       },
       {
         '<leader>to',
