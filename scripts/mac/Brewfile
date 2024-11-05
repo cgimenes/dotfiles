@@ -1,54 +1,55 @@
-tap "railwaycat/emacsmacport"
+tap 'railwaycat/emacsmacport'
 
-brew "bat"
-brew "croc"
-brew "emacs-mac", args: ["with-modules"]
-brew "eza"
-brew "fastfetch"
-brew "fzf"
-brew "ghq"
-brew "git"
-brew "go"
-brew "httpie"
-brew "k9s"
-brew "lazygit"
-brew "mise"
-brew "neovim"
-brew "node"
-brew "ouch"
-brew "ripgrep"
-brew "starship"
-brew "stow"
-brew "tmux"
-brew "yazi"
-brew "zoxide"
+brew 'bat'
+brew 'croc'
+brew 'emacs-mac', args: ['with-modules']
+brew 'eza'
+brew 'fastfetch'
+brew 'fzf'
+brew 'ghq'
+brew 'git'
+brew 'go'
+brew 'k9s'
+brew 'lazygit'
+brew 'mise'
+brew 'neovim'
+brew 'node'
+brew 'ouch'
+brew 'ripgrep'
+brew 'starship'
+brew 'stow'
+brew 'tmux'
+brew 'yazi'
+brew 'zoxide'
 
-cask "bluesnooze"
-cask "brave-browser"
-cask "burp-suite"
-cask "docker"
-cask "enpass"
-cask "flameshot"
-cask "iina"
-cask "infra"
-cask "jordanbaird-ice"
-cask "librewolf"
-cask "notion-calendar"
-cask "obsidian"
-cask "qbittorrent"
-cask "raycast"
-cask "shortcat"
-cask "soundsource"
-cask "spotify"
-cask "sublime-text"
-cask "syncthing"
-cask "vial"
-cask "visual-studio-code"
-cask "wezterm"
-cask "whatsapp"
-cask "yaak"
+cask 'bluesnooze'
+cask 'brave-browser'
+cask 'burp-suite'
+cask 'docker'
+cask 'enpass'
+cask 'flameshot'
+cask 'infra'
+cask 'jordanbaird-ice'
+cask 'librewolf'
+cask 'notion-calendar'
+cask 'obsidian'
+cask 'raycast'
+cask 'shortcat'
+cask 'soundsource'
+cask 'spotify'
+cask 'sublime-text'
+cask 'syncthing'
+cask 'vial'
+cask 'visual-studio-code'
+cask 'wezterm'
+cask 'yaak'
 
-cask "discord"
-cask "signal"
-cask "telegram"
-cask "tailscale"
+if ENV['WORK_COMPUTER'] != "true"
+  cask 'discord'
+  cask 'iina'
+  cask 'qbittorrent'
+  cask 'signal'
+  cask 'tailscale'
+  cask 'telegram'
+  cask 'whatsapp'
+end
