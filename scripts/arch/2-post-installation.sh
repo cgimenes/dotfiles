@@ -15,3 +15,4 @@ rm -rf .config/autostart/**
 gem install thor
 
 fc-cache -fv
+bat cache --build
