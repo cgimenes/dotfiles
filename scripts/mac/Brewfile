@@ -44,7 +44,7 @@ cask 'visual-studio-code'
 cask 'wezterm'
 cask 'yaak'
 
-if ENV['WORK_COMPUTER'] != "true"
+unless system('echo ${WORK_COMPUTER}')
   cask 'discord'
   cask 'iina'
   cask 'qbittorrent'
