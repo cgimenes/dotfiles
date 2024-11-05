@@ -23,7 +23,7 @@ return {
         lua = { 'stylua' },
         php = { 'pint' },
         python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
-        ruby = { 'rubocup' },
+        ruby = { 'rubocop' },
         sh = { 'shfmt' },
         sql = { 'sqlfluff', 'sqlfmt', stop_after_first = true },
         zsh = { 'shfmt' },

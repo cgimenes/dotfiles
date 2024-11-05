@@ -110,7 +110,7 @@ return {
         'php-cs-fixer',
         'prettier',
         'prettierd',
-        'rubocup',
+        'rubocop',
         'ruff',
         'shfmt',
         'sqlfluff',
