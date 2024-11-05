@@ -25,6 +25,7 @@ return {
         php = { 'pint' },
         sql = { 'sqlfluff', 'sqlfmt', stop_after_first = true },
         sh = { 'shfmt' },
+        zsh = { 'shfmt' },
         javascript = prettier,
         typescript = prettier,
         css = prettier,

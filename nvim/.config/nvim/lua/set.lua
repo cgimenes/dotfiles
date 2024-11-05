@@ -73,4 +73,7 @@ vim.filetype.add {
   extension = {
     http = 'http',
   },
+  filename = {
+    ['Brewfile'] = 'ruby',
+  },
 }
