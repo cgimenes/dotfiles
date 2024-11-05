@@ -3,15 +3,17 @@ if [[ "$ZPROF" = true ]]; then
 fi
 
 # load configs
-source ~/.zsh/0-env.zsh
-source ~/.zsh/1-zgen.zsh
-source ~/.zsh/2-alias.zsh
-source ~/.zsh/3-functions.zsh
-source ~/.zsh/4-autocompletion.zsh
-source ~/.zsh/5-prompt.zsh
-source ~/.zsh/6-fzf.zsh
-source ~/.zsh/7-oh-my-zsh-plugins.zsh
-source ~/.zsh/8-zoxide.zsh
+source ~/.zsh/00-env.zsh
+source ~/.zsh/01-opts.zsh
+source ~/.zsh/02-integrations.zsh
+source ~/.zsh/03-zgen.zsh
+source ~/.zsh/04-alias.zsh
+source ~/.zsh/05-functions.zsh
+source ~/.zsh/06-autocompletion.zsh
+source ~/.zsh/07-prompt.zsh
+source ~/.zsh/08-fzf.zsh
+source ~/.zsh/09-oh-my-zsh-plugins.zsh
+source ~/.zsh/10-zoxide.zsh
 source ~/.zsh/999-custom.zsh
 
 if [[ "$ZPROF" = true ]]; then
