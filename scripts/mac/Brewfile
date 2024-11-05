@@ -44,7 +44,8 @@ cask 'visual-studio-code'
 cask 'wezterm'
 cask 'yaak'
 
-unless system('echo ${WORK_COMPUTER}')
+personal_computer = !system('echo ${WORK_COMPUTER}')
+if personal_computer
   cask 'discord'
   cask 'iina'
   cask 'qbittorrent'
@@ -52,4 +53,8 @@ unless system('echo ${WORK_COMPUTER}')
   cask 'tailscale'
   cask 'telegram'
   cask 'whatsapp'
+
+  mas 'Kindle', id: 302_584_613
+else
+  mas 'Toggl Track', id: 1_291_898_086
 end
