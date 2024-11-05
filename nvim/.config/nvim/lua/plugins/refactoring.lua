@@ -13,6 +13,7 @@ return {
           require('refactoring').select_refactor()
         end,
         desc = '[R]efactor',
+        mode = { 'n', 'v' },
       },
     },
   },
