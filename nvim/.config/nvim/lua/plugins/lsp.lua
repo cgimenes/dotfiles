@@ -107,14 +107,15 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua',
-        'ruff',
         'php-cs-fixer',
-        'prettierd',
         'prettier',
+        'prettierd',
+        'rubocup',
+        'ruff',
+        'shfmt',
         'sqlfluff',
         'sqlfmt',
-        'shfmt',
+        'stylua',
       })
 
       if vim.fn.executable 'composer' == 1 then
