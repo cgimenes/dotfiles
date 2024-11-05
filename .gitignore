@@ -1,38 +1,10 @@
-Package Control.last-run
-Package Control.ca-list
-Package Control.ca-bundle
-Package Control.system-ca-bundle
-Package Control.user-ca-bundle
-Package Control.merged-ca-bundle
-Package Control.cache/
-Package Control.ca-certs/
-SublimeLinter/
-Color Highlighter/
-*.sublime-workspace
-Projects/
-sublime/.config/sublime-text-3/Cache/
-sublime/.config/sublime-text-3/Index/
-sublime/.config/sublime-text-3/Installed Packages/
-sublime/.config/sublime-text-3/Local/
-sublime/.config/sublime-text-3/Packages/
-sublime/.config/sublime-text-3/Backup/
-xfce/.config/xfce4/xfconf/xfce-perchannel-xml/displays.xml
-xfce/.config/xfce4/xfconf/xfce-perchannel-xml/pointers.xml
-xfce/.config/xfce4/xfconf/xfce-perchannel-xml/ristretto.xml
-xfce/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
-xfce/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml
-xfce/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml
-xfce/.config/xfce4/xfce4-screenshooter
 vim/.vim/.netrwhist
-ranger/.config/ranger/history
-qutebrowser/.config/qutebrowser/qsettings/
 nvim/.config/nvim/lazy-lock.json
 nvim/.config/nvim/session/
+nvim/.config/nvim/Session.vim
 bin/.local/bin/trans
 bin/.local/bin/lvim
 bin/.local/share
 bin/.local/state
 __pycache__/
-alacritty.yml.bak
-nvim/.config/nvim/Session.vim
 Brewfile.lock.json

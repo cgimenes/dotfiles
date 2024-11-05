@@ -14,7 +14,7 @@ source ~/.zsh/07-prompt.zsh
 source ~/.zsh/08-fzf.zsh
 source ~/.zsh/09-oh-my-zsh-plugins.zsh
 source ~/.zsh/10-zoxide.zsh
-source ~/.zsh/999-custom.zsh
+[[ -f ~/.zcustom ]] && source ~/.zcustom
 
 if [[ "$ZPROF" = true ]]; then
   zprof
@@ -24,4 +24,3 @@ profzsh() {
   shell=${1-$SHELL}
   ZPROF=true $shell -i -c exit
 }
-
