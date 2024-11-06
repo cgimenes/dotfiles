@@ -2,7 +2,6 @@ return {
   'ibhagwan/fzf-lua',
   opts = {
     'default-title',
-    fzf_colors = true,
     winopts = {
       preview = {
         wrap = 'wrap',
