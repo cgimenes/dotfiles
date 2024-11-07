@@ -3,7 +3,7 @@ alias ta='tmux list-sessions && tmux a || tmux'
 
 # Git
 alias gdsn='gds --name-only'
-alias lg='lazygit'
+alias lzg='lazygit'
 alias ghqg='ghq get -p'
 
 # Vim/Nvim
@@ -31,11 +31,7 @@ alias xargs='xargs ' # expands aliases for piping into xargs
 alias c='clear'
 
 # Docker Compose
-alias dc='docker compose'
-alias dce='docker compose exec'
-alias dceit='docker compose exec -it'
-alias dcl='docker compose logs'
-alias dclf='docker compose logs -f'
+alias lzd='lazydocker'
 
 # Python
 alias poetsh='source $(poetry env info --path)/bin/activate' # Activate poetry shell without subshell
