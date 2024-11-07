@@ -12,7 +12,7 @@ source ~/.zsh/05-functions.zsh
 source ~/.zsh/06-autocompletion.zsh
 source ~/.zsh/07-prompt.zsh
 source ~/.zsh/08-fzf.zsh
-source ~/.zsh/09-oh-my-zsh-plugins.zsh
+source ~/.zsh/09-oh-my-zsh.zsh
 source ~/.zsh/10-zoxide.zsh
 [[ -f ~/.zcustom ]] && source ~/.zcustom
 
