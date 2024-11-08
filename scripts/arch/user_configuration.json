@@ -154,6 +154,7 @@
     "git",
     "git-lfs",
     "go",
+    "go-yq",
     "gsimplecal",
     "i3-wm",
     "i3status",

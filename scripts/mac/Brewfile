@@ -21,6 +21,7 @@ brew 'starship'
 brew 'stow'
 brew 'tmux'
 brew 'yazi'
+brew 'yq'
 brew 'zoxide'
 
 cask 'bluesnooze'
