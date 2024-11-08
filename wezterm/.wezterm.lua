@@ -36,7 +36,8 @@ config.font = wezterm.font_with_fallback({
 config.font_size = 18.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.window_close_confirmation = "NeverPrompt"
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.92
+config.macos_window_background_blur = 15
 
 config.keys = {
 	{
