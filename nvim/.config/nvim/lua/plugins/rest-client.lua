@@ -10,6 +10,7 @@ return {
       {
         '<leader>Rs',
         function()
+          vim.api.nvim_command 'tabnew'
           require('kulala').scratchpad()
         end,
         desc = '[S]cratchpad',
