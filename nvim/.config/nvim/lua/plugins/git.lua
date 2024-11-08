@@ -97,4 +97,15 @@ return {
       vim.api.nvim_set_hl(0, 'ConflictMarkerCommonAncestorsHunk', { bg = '#754a81' })
     end,
   },
+  {
+    -- gw - open the workflow file below the cursor on GitHub
+    -- gr - open the workflow run below the cursor on GitHub
+    -- gj - open the job of the workflow run below the cursor on GitHub
+    -- d - dispatch a new run for the workflow below the cursor on GitHub
+    'topaxi/gh-actions.nvim',
+    config = true,
+    keys = {
+      { '<leader>ga', '<cmd>GhActions<cr>', desc = 'Open Github [A]ctions' },
+    },
+  },
 }
