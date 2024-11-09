@@ -52,6 +52,7 @@ if personal_computer
   cask 'iina'
   cask 'qbittorrent'
   cask 'signal'
+  cask 'steam'
   cask 'tailscale'
   cask 'telegram'
   cask 'whatsapp'
