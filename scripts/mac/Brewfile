@@ -6,6 +6,7 @@ brew 'emacs-mac', args: ['with-modules']
 brew 'eza'
 brew 'fastfetch'
 brew 'fzf'
+brew 'gh'
 brew 'ghq'
 brew 'git'
 brew 'go'
@@ -27,6 +28,7 @@ brew 'zoxide'
 cask 'bluesnooze'
 cask 'brave-browser'
 cask 'burp-suite'
+cask 'dbeaver-community'
 cask 'docker'
 cask 'enpass'
 cask 'flameshot'
@@ -36,6 +38,7 @@ cask 'librewolf'
 cask 'notion-calendar'
 cask 'obsidian'
 cask 'raycast'
+cask 'rectangle'
 cask 'shortcat'
 cask 'soundsource'
 cask 'spotify'
@@ -45,6 +48,8 @@ cask 'vial'
 cask 'visual-studio-code'
 cask 'wezterm'
 cask 'yaak'
+
+mas 'Toggl Track', id: 1_291_898_086
 
 personal_computer = !system('echo ${WORK_COMPUTER}')
 if personal_computer
@@ -58,6 +63,4 @@ if personal_computer
   cask 'whatsapp'
 
   mas 'Kindle', id: 302_584_613
-else
-  mas 'Toggl Track', id: 1_291_898_086
 end
