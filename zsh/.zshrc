@@ -14,6 +14,7 @@ source ~/.zsh/07-prompt.zsh
 source ~/.zsh/08-fzf.zsh
 source ~/.zsh/09-oh-my-zsh.zsh
 source ~/.zsh/10-zoxide.zsh
+source ~/.zsh/11-pet.zsh
 [[ -f ~/.zcustom ]] && source ~/.zcustom
 
 if [[ "$ZPROF" = true ]]; then

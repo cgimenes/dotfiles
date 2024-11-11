@@ -1,0 +1,7 @@
+
+[[Snippets]]
+  Description = "Remove duplicated lines (sorting)"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "sort -u <file>"

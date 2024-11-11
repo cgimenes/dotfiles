@@ -9,6 +9,7 @@ paru -S --noconfirm enpass-bin
 paru -S --noconfirm dragon-drop
 paru -S --noconfirm slack-desktop
 paru -S --noconfirm insync
+paru -S --noconfirm pet-bin
 
 rm -rf .config/autostart/**
 
