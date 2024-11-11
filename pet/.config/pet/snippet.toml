@@ -1,7 +1,69 @@
-
 [[Snippets]]
   Description = "Remove duplicated lines (sorting)"
   Filename = "~/.config/pet/snippet.toml"
   Output = ""
   Tag = []
-  command = "sort -u <file>"
+  command = "sort -u <file> > <result>"
+
+[[Snippets]]
+  Description = "Remove duplicated lines (order preserved)"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "cat -n <file> | sort -uk2 | sort -nk1 | cut -f2-"
+
+[[Snippets]]
+  Description = "Remove lines from file1 that are found in file2"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "grep -F -v -x -f <file2> <file1>"
+
+[[Snippets]]
+  Description = "Ruby debug"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "/usr/bin/zsh -c \"bash -c '/home/gimenes/.rvm/bin/rvm ruby-2.3.8 do /home/gimenes/.rvm/rubies/ruby-2.3.8/bin/ruby /home/gimenes/.rvm/gems/ruby-2.3.8/gems/ruby-debug-ide-2.3.1/bin/rdebug-ide --key-value --step-over-in-blocks --disable-int-handler --evaluation-timeout 10 --evaluation-control --time-limit 100 --memory-limit 0 --rubymine-protocol-extensions --port 32943 --host 0.0.0.0 --dispatcher-port 38073 -- /home/gimenes/dev/src/github.com/cgimenes/lms/bin/rails server -b 0.0.0.0 -p 3000 -e local_development'\""
+
+[[Snippets]]
+  Description = "Confuse people SSHing to your host with a redirect back to theirs"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "socat -d -d TCP-L:22,reuseaddr,fork SYSTEM:\"nc \\$SOCAT_PEERADDR 22\""
+
+[[Snippets]]
+  Description = "Wireshark over SSH"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "wireshark -k -i <(ssh sheep@46.101.153.159 \"tshark -F pcap -w - -f 'not tcp port 22'\")"
+
+[[Snippets]]
+  Description = "Get all machines answering ICMP within an IP range"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "nmap -sn 192.168.0.0/24"
+
+[[Snippets]]
+  Description = "Python 3 HTTP server"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "python3 -m http.server"
+
+[[Snippets]]
+  Description = "Python 2 HTTP server"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "python2 -m SimpleHTTPServer"
+
+[[Snippets]]
+  Description = "MD5SUM every file in a folder and save in a file (used for diffying two directories)"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "find <dir> -type f -exec md5sum {} + | sort -k 2 > <dir>.txt"
