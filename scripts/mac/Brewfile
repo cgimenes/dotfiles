@@ -5,6 +5,7 @@ brew 'croc'
 brew 'emacs-mac', args: ['with-modules']
 brew 'eza'
 brew 'fastfetch'
+brew 'fd'
 brew 'fzf'
 brew 'gh'
 brew 'ghq'
