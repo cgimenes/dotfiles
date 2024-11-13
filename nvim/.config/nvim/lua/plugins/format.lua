@@ -19,6 +19,7 @@ return {
       notify_on_error = true,
       format_on_save = false,
       formatters_by_ft = {
+        eruby = { 'erb_format' },
         go = { 'gofmt' },
         lua = { 'stylua' },
         php = { 'pint' },
