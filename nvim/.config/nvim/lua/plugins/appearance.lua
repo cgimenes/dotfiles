@@ -65,9 +65,6 @@ return {
   {
     -- Better vim.select
     'stevearc/dressing.nvim',
-    dependencies = {
-      'ibhagwan/fzf-lua',
-    },
     opts = {
       input = {
         enabled = false,
