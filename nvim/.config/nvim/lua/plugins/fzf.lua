@@ -85,5 +85,8 @@ return {
 
     -- Paste
     { '<leader>pr', '<cmd>FzfLua registers<cr>', desc = '[P]aste [R]egister', mode = { 'n', 'v' } },
+
+    -- Jumps
+    { '<leader>J', '<cmd>FzfLua jumps<cr>', desc = '[J]umps' },
   },
 }
