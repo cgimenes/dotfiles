@@ -1,6 +1,9 @@
 return {
   {
     'tpope/vim-fugitive',
+    cmd = {
+      'G',
+    },
     keys = {
       { '<leader>gb', '<cmd>G blame<cr>', desc = '[G]it [B]lame' },
       { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List [G]it [C]onflicts' },

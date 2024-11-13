@@ -297,6 +297,16 @@ return {
           },
         },
       },
+      extensions = {
+        'fugitive',
+        'fzf',
+        'lazy',
+        'man',
+        'mason',
+        'nvim-dap-ui',
+        'oil',
+        'quickfix',
+      },
     },
   },
 }
