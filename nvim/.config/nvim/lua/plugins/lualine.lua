@@ -13,6 +13,16 @@ local conditions = {
   more_than_one_tab = function()
     return vim.fn.tabpagenr '$' > 1
   end,
+  not_hlsearch = function()
+    if vim.v.hlsearch == 0 then
+      return true
+    end
+
+    local ok, result = pcall(vim.fn.searchcount, { timeout = 500 })
+    if not ok or next(result) == nil then
+      return true
+    end
+  end,
 }
 
 local function grapple_files()
@@ -276,6 +286,10 @@ return {
           },
         },
         lualine_z = {
+          {
+            'progress',
+            cond = conditions.not_hlsearch,
+          },
           {
             'searchcount',
           },
