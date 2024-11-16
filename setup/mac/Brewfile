@@ -57,6 +57,7 @@ personal_computer = !system('echo ${WORK_COMPUTER}')
 if personal_computer
   brew 'libyaml' # for Rails
   brew 'postgresql' # for Rails
+  brew 'vips' # for Rails
 
   cask 'discord'
   cask 'iina'
