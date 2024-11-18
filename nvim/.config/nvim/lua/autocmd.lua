@@ -10,9 +10,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Use q to close certain windows
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('CloseWithQ', { clear = true }),
-  callback = function(args)
-    vim.keymap.set('n', 'q', '<cmd>q<cr>', { buffer = args.buf })
-  end,
+  command = [[nnoremap <buffer> q <cmd>q<cr>]],
   pattern = {
     'spectre_panel',
     'neotest-output',
@@ -113,4 +111,10 @@ vim.api.nvim_create_autocmd('VimEnter', {
     vim.cmd 'Oil'
   end,
   desc = 'Open on VimEnter',
+})
+
+-- Close quickfix menu after selecting choice
+vim.api.nvim_create_autocmd('FileType', {
+  command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>]],
+  pattern = { 'qf' },
 })
