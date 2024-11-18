@@ -88,7 +88,13 @@ return {
         },
         intelephense = {},
         ts_ls = {},
-        tailwindcss = {},
+        tailwindcss = {
+          settings = {
+            tailwindCSS = {
+              ['includeLanguages'] = { ['eruby'] = 'erb' },
+            },
+          },
+        },
         ruby_lsp = {},
         gopls = {},
         ruff = { autostart = false }, -- Disable ruff LSP
