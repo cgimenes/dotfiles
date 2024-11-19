@@ -1,3 +1,4 @@
+
 [[Snippets]]
   Description = "Remove duplicated lines (sorting)"
   Filename = "~/.config/pet/snippet.toml"
@@ -67,3 +68,10 @@
   Output = ""
   Tag = []
   command = "find <dir> -type f -exec md5sum {} + | sort -k 2 > <dir>.txt"
+
+[[Snippets]]
+  Description = "Find commit which deleted a file"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "git log --all -1 -- <file>"
