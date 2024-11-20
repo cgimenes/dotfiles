@@ -16,6 +16,7 @@
 
 [core]
   autocrlf = input
+  pager = delta
 
 [fetch]
   prune = true
@@ -36,3 +37,13 @@
 
 [status]
   showUntrackedFiles = all
+
+[delta]
+  navigate = true
+  dark = true
+
+[merge]
+  conflictStyle = zdiff3
+
+[interactive]
+  diffFilter = delta --color-only
