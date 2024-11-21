@@ -59,7 +59,7 @@ return {
       },
     },
     keys = {
-      { '<leader>N', '<cmd>NoiceFzf<cr>', desc = '[N]otification history' },
+      { '<leader>N', '<cmd>NoiceHistory<cr>', desc = '[N]otification history' },
     },
   },
   {
