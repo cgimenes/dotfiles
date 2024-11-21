@@ -75,3 +75,17 @@
   Output = ""
   Tag = []
   command = "git log --all -1 -- <file>"
+
+[[Snippets]]
+  Description = "Use FZF to set kubectl current namespace"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "kubectl get namespace --no-headers | fzf | awk '{ print $1}' | xargs -I {} kubectl config set-context --current --namespace={}"
+
+[[Snippets]]
+  Description = "Use FZF to set kubectl current context"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "kubectl config get-contexts --no-headers | fzf | awk '{ print $1}' | xargs kubectl config use-context"
