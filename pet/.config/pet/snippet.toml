@@ -103,3 +103,10 @@
   Output = ""
   Tag = []
   command = "curl 'wttr.in/<city>?Fq'"
+
+[[Snippets]]
+  Description = "psql select to CSV"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "\\copy (select * from foo) To '/tmp/test.csv' With CSV DELIMITER ',' HEADER"
