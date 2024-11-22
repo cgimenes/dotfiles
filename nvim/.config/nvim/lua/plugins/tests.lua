@@ -1,6 +1,7 @@
 return {
   {
     'vim-test/vim-test',
+    cmd = 'TestSuite',
     dependencies = {
       'preservim/vimux',
     },
