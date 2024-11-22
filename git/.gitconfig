@@ -10,6 +10,7 @@
 
 [diff]
   tool = meld
+  colorMoved = default
 
 [difftool]
   prompt = false
@@ -41,6 +42,9 @@
 [delta]
   navigate = true
   dark = true
+  line-numbers = true
+  hunk-header-style = raw
+  hunk-header-decoration-style = ul
 
 [merge]
   conflictStyle = zdiff3
