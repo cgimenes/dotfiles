@@ -7,6 +7,9 @@ return {
         wrap = 'wrap',
       },
     },
+    files = {
+      git_icons = false,
+    },
     grep = {
       rg_opts = '--hidden --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
       RIPGREP_CONFIG_PATH = vim.env.RIPGREP_CONFIG_PATH,
