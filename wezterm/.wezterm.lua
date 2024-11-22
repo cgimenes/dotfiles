@@ -28,6 +28,8 @@ config.window_padding = {
 	top = 0,
 	bottom = 0,
 }
+config.initial_rows = 39
+config.initial_cols = 126
 config.window_decorations = "TITLE|RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 config.font = wezterm.font_with_fallback({
 	{ family = "Iosevka Term", weight = "Medium" },
