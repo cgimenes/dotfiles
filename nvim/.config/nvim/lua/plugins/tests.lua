@@ -13,20 +13,6 @@ return {
       { '<leader>tf', '<cmd>silent! wa<cr><cmd>TestFile<cr>', desc = '[T]est [F]ile' },
       { '<leader>ts', '<cmd>silent! wa<cr><cmd>TestSuite<cr>', desc = '[T]est [S]uite' },
       { '<leader>tl', '<cmd>silent! wa<cr><cmd>TestLast<cr>', desc = '[T]est [L]ast' },
-      {
-        '<leader>tv',
-        function()
-          vim.g.VimuxOrientation = 'v'
-        end,
-        desc = '[T]est [V]ertical',
-      },
-      {
-        '<leader>th',
-        function()
-          vim.g.VimuxOrientation = 'h'
-        end,
-        desc = '[T]est [H]orizontal',
-      },
       { '<leader>tq', '<cmd>VimuxCloseRunner<cr>', desc = '[T]est [Q]uit' },
     },
   },
@@ -40,13 +26,11 @@ return {
     },
     config = function()
       require('neotest').setup {
-        -- log_level = vim.log.levels.INFO,
         output = {
           open_on_run = true,
         },
         adapters = {
           require 'neotest-phpunit' {
-            -- dap = require('dap').configurations.php[1],
             filter_dirs = { '.git', 'node_modules', 'vendor' },
           },
           require 'neotest-python' {
