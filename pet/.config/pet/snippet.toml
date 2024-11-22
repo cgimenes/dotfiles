@@ -89,3 +89,17 @@
   Output = ""
   Tag = []
   command = "kubectl config get-contexts --no-headers | fzf | awk '{ print $1}' | xargs kubectl config use-context"
+
+[[Snippets]]
+  Description = "Crypto Exchange Rates"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "curl 'rate.sx/<coin>?qF'"
+
+[[Snippets]]
+  Description = "Weather"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "curl 'wttr.in/<city>?Fq'"
