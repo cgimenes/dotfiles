@@ -6,7 +6,7 @@ return {
       { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List [G]it [C]onflicts' },
       { '<leader>gd', '<cmd>Gvdiff<cr>', desc = '[G]it [D]iff' },
       { '<leader>gB', ':GBrowse<cr>', desc = '[G]it [B]rowse', mode = { 'n', 'v' } },
-      { '<leader>gG', '<cmd>vert G<cr>', desc = '[G]it Status' },
+      { '<leader>G', '<cmd>vert G<cr>', desc = '[G]it Status' },
     },
     dependencies = {
       'tpope/vim-rhubarb',
@@ -55,7 +55,7 @@ return {
         local gs = package.loaded.gitsigns
 
         vim.keymap.set('n', '<leader>gp', gs.preview_hunk, { buffer = bufnr, desc = '[G]it hunk [P]review' })
-        vim.keymap.set('n', '<leader>gr', gs.reset_hunk, { buffer = bufnr, desc = '[G]it hunk [R]eset' })
+        vim.keymap.set('n', '<leader>gR', gs.reset_hunk, { buffer = bufnr, desc = '[G]it hunk [R]eset' })
         vim.keymap.set('n', '<leader>gl', gs.blame_line, { buffer = bufnr, desc = '[G]it Blame [L]ine' })
 
         -- don't override the built-in and fugitive keymaps
