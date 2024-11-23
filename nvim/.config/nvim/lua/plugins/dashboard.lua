@@ -29,6 +29,7 @@ return {
         config = {
           header = vim.split(logo, '\n'),
           center = {
+            { action = 'Yazi', desc= ' Yazi', key = 'y' },
             { action = 'Oil', desc= ' Oil', key = 'o' },
             { action = 'ene | startinsert', desc = ' New file', key = 'n' },
             { action = 'Lazy', desc = ' Lazy', key = 'l' },
