@@ -66,38 +66,7 @@ vim.cmd [[
   endfunction
 ]]
 
-local colors = require('kanagawa.colors').setup { theme = 'wave' }
-local theme = colors.theme
-local palette = colors.palette
-
 local icons = require 'icons'
-
-local modes = setmetatable({
-  ['n'] = 'N',
-  ['no'] = 'N',
-  ['v'] = 'V',
-  ['V'] = 'VL',
-  [''] = 'VB',
-  ['s'] = 'S',
-  ['S'] = 'SL',
-  [''] = 'SB',
-  ['i'] = 'I',
-  ['ic'] = 'I',
-  ['R'] = 'R',
-  ['Rv'] = 'VR',
-  ['c'] = 'C',
-  ['cv'] = 'EX',
-  ['ce'] = 'X',
-  ['r'] = 'P',
-  ['rm'] = 'M',
-  ['r?'] = 'C',
-  ['!'] = 'SH',
-  ['t'] = 'T',
-}, {
-  __index = function()
-    return '-'
-  end,
-})
 
 return {
   {
@@ -106,48 +75,7 @@ return {
       options = {
         globalstatus = true,
         icons_enabled = true,
-        theme = function()
-          local mode_colors = {
-            normal = palette.crystalBlue,
-            insert = palette.springGreen,
-            visual = palette.surimiOrange,
-            replace = palette.waveRed,
-            command = palette.autumnYellow,
-          }
-
-          return {
-            inactive = {
-              a = { fg = theme.ui.fg, bg = theme.ui.bg, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = nil },
-              c = { fg = theme.ui.fg, bg = nil },
-            },
-            visual = {
-              a = { fg = theme.ui.bg_m3, bg = mode_colors.visual, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = nil },
-              c = { fg = theme.ui.fg, bg = nil },
-            },
-            replace = {
-              a = { fg = theme.ui.bg_m3, bg = mode_colors.replace, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = nil },
-              c = { fg = theme.ui.fg, bg = nil },
-            },
-            normal = {
-              a = { fg = theme.ui.bg_m3, bg = mode_colors.normal, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = nil },
-              c = { fg = theme.ui.fg, bg = nil },
-            },
-            insert = {
-              a = { fg = theme.ui.bg_m3, bg = mode_colors.insert, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = nil },
-              c = { fg = theme.ui.fg, bg = nil },
-            },
-            command = {
-              a = { fg = theme.ui.bg_m3, bg = mode_colors.command, gui = 'bold' },
-              b = { fg = theme.ui.fg, bg = nil },
-              c = { fg = theme.ui.fg, bg = nil },
-            },
-          }
-        end,
+        theme = 'auto',
         component_separators = '',
         section_separators = '',
         disabled_filetypes = {
@@ -187,13 +115,10 @@ return {
       sections = {
         lualine_a = {
           {
-            function()
-              return modes[vim.api.nvim_get_mode().mode]
-            end,
-            padding = 1,
-            color = {},
-            cond = nil,
+            'mode',
           },
+        },
+        lualine_b = {
           {
             function()
               local reg = vim.fn.reg_recording()
@@ -202,10 +127,7 @@ return {
               end
               return 'recording to ' .. reg
             end,
-            color = { bg = palette.peachRed, gui = 'bold' },
           },
-        },
-        lualine_b = {
           {
             'b:gitsigns_head',
             icon = icons.git.Branch,

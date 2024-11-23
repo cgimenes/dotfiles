@@ -11,16 +11,17 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 14
 git clone https://github.com/cgimenes/dotfiles.git
 cd dotfiles
 
+stow bat
 stow emacs
 stow git
+stow lazygit
 stow nvim
 stow rg
 stow starship
 stow tmux
 stow wezterm
-stow zsh
-stow bat
 stow yazi
+stow zsh
 
 # run brew bundle
 cd scripts/mac; brew bundle

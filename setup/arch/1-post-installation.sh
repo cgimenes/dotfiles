@@ -19,6 +19,7 @@ stow dunst
 stow emacs
 stow git
 stow gsimplecal
+stow lazygit
 stow nvim
 stow picom
 stow polybar
@@ -27,5 +28,5 @@ stow rofi
 stow starship
 stow tmux
 stow wezterm
-stow zsh
 stow yazi
+stow zsh

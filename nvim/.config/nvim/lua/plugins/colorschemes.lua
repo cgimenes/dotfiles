@@ -45,7 +45,7 @@ return {
       end,
     },
     init = function()
-      require('kanagawa').load 'wave'
+      -- require('kanagawa').load 'wave'
       -- require('kanagawa').load("dragon")
       -- require('kanagawa').load("lotus")
     end,
@@ -138,7 +138,7 @@ return {
       transparent = true,
     },
     init = function()
-      -- vim.cmd.colorscheme 'cyberdream'
+      vim.cmd.colorscheme 'cyberdream'
     end,
   },
 }
