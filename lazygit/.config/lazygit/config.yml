@@ -5,6 +5,7 @@ git:
 gui:
   border: single
   showCommandLog: false
+  skipDiscardChangeWarning: true
   theme:
     activeBorderColor:
       - "#5ef1ff"
