@@ -17,6 +17,7 @@ stow git
 stow lazygit
 stow nvim
 stow rg
+stow skhd
 stow starship
 stow tmux
 stow wezterm
@@ -34,3 +35,6 @@ git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
 
 # install bat theme
 bat cache --build
+
+# skhd
+skhd --start-service
