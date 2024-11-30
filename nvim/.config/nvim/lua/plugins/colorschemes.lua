@@ -4,6 +4,10 @@ return {
     priority = 1000,
     opts = {
       style = 'darker',
+      transparent = true,
+    },
+    lualine = {
+      transparent = true,
     },
     init = function()
       -- require('onedark').load()
