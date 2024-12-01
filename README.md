@@ -1,8 +1,11 @@
 # Install Arch Linux
 
 ```sh
-curl https://raw.githubusercontent.com/cgimenes/dotfiles/refs/heads/master/scripts/arch/user_configuration.json > user_configuration.json
-archinstall --config user_configuration.json
+rmmod pcspkr
+rmmod snd_pcsp
+iwctl station wlan0 connect "..."
+curl https://raw.githubusercontent.com/cgimenes/dotfiles/refs/heads/master/scripts/arch/user_configuration.json > setup.json
+archinstall --config setup.json
 su ...
 cd
 curl https://raw.githubusercontent.com/cgimenes/dotfiles/refs/heads/master/scripts/arch/1-post-installation.sh | bash

@@ -110,3 +110,17 @@
   Output = ""
   Tag = []
   command = "\\copy (select * from foo) To '/tmp/test.csv' With CSV DELIMITER ',' HEADER"
+
+[[Snippets]]
+  Description = "cat to 0x0.st"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "cat <file> | curl -F'file=@-' https://0x0.st"
+
+[[Snippets]]
+  Description = "Send file to 0x0.st"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "curl -F'file=@<file>' https://0x0.st"
