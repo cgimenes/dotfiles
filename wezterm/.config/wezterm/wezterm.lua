@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
-config.front_end = "OpenGL"
 config.hide_tab_bar_if_only_one_tab = true
 config.force_reverse_video_cursor = true
 config.colors = require("cyberdream")
@@ -18,7 +17,6 @@ config.font = wezterm.font_with_fallback({
 	{ family = "Iosevka Term", weight = "Medium" },
 	{ family = "JetBrains Mono", weight = "Medium" },
 })
-config.font_size = 18.0
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.window_close_confirmation = "NeverPrompt"
 config.window_background_opacity = 0.92
@@ -31,5 +29,14 @@ config.keys = {
 		action = wezterm.action.DisableDefaultAssignment,
 	},
 }
+
+local hostname = wezterm.hostname()
+if hostname == 'archlinux' then
+	config.front_end = "WebGpu"
+	config.font_size = 14.0
+else
+	config.front_end = "OpenGL"
+	config.font_size = 18.0
+end
 
 return config
