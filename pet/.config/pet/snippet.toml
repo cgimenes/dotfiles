@@ -25,7 +25,7 @@
   Filename = "~/.config/pet/snippet.toml"
   Output = ""
   Tag = []
-  command = "/usr/bin/zsh -c \"bash -c '/home/gimenes/.rvm/bin/rvm ruby-2.3.8 do /home/gimenes/.rvm/rubies/ruby-2.3.8/bin/ruby /home/gimenes/.rvm/gems/ruby-2.3.8/gems/ruby-debug-ide-2.3.1/bin/rdebug-ide --key-value --step-over-in-blocks --disable-int-handler --evaluation-timeout 10 --evaluation-control --time-limit 100 --memory-limit 0 --rubymine-protocol-extensions --port 32943 --host 0.0.0.0 --dispatcher-port 38073 -- /home/gimenes/dev/src/github.com/cgimenes/lms/bin/rails server -b 0.0.0.0 -p 3000 -e local_development'\""
+  command = "/usr/bin/zsh -c \"bash -c '~/.rvm/bin/rvm ruby-2.3.8 do ~/.rvm/rubies/ruby-2.3.8/bin/ruby ~/.rvm/gems/ruby-2.3.8/gems/ruby-debug-ide-2.3.1/bin/rdebug-ide --key-value --step-over-in-blocks --disable-int-handler --evaluation-timeout 10 --evaluation-control --time-limit 100 --memory-limit 0 --rubymine-protocol-extensions --port 32943 --host 0.0.0.0 --dispatcher-port 38073 -- ~/dev/src/github.com/cgimenes/lms/bin/rails server -b 0.0.0.0 -p 3000 -e local_development'\""
 
 [[Snippets]]
   Description = "Confuse people SSHing to your host with a redirect back to theirs"
