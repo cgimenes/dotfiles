@@ -1,5 +1,7 @@
 #!/bin/bash
 
+chsh -s /bin/zsh $USER
+
 cd /tmp
 git clone https://aur.archlinux.org/paru.git
 cd paru
@@ -10,6 +12,8 @@ rm -rf paru
 cd $HOME
 git clone https://github.com/cgimenes/dotfiles.git
 cd $HOME/dotfiles
+git remote set-url origin git@github.com:cgimenes/dotfiles.git
+
 stow aliks
 stow autorandr
 stow bat
@@ -21,6 +25,7 @@ stow git
 stow gsimplecal
 stow lazygit
 stow nvim
+stow pet
 stow picom
 stow polybar
 stow rg

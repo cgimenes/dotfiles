@@ -10,6 +10,5 @@ archinstall --config setup.json
 su ...
 cd
 curl https://raw.githubusercontent.com/cgimenes/dotfiles/refs/heads/master/scripts/arch/1-post-installation.sh | bash
-chsh -s /bin/zsh ...
 ```
 
