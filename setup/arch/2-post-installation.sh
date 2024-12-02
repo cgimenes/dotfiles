@@ -10,6 +10,7 @@ paru -S --noconfirm dragon-drop
 paru -S --noconfirm slack-desktop
 paru -S --noconfirm pet-bin
 paru -S --noconfirm librewolf-bin
+paru -S --noconfirm mise-bin
 
 rm -rf .config/autostart/**
 
