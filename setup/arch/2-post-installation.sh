@@ -11,6 +11,7 @@ paru -S --noconfirm slack-desktop
 paru -S --noconfirm pet-bin
 paru -S --noconfirm librewolf-bin
 paru -S --noconfirm mise-bin
+paru -S --noconfirm lazydocker
 
 rm -rf .config/autostart/**
 
