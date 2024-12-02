@@ -4,6 +4,8 @@ timedatectl set-timezone America/Sao_Paulo
 systemctl enable autorandr
 systemctl enable docker
 systemctl enable bluetooth
+systemctl enable syncthing.service --user
+systemctl enable tailscaled
 
 usermod -aG docker $USER
 usermod -aG video $USER
