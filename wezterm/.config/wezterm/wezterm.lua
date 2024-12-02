@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+config.front_end = "OpenGL"
 config.hide_tab_bar_if_only_one_tab = true
 config.force_reverse_video_cursor = true
 config.colors = require("cyberdream")
@@ -32,10 +33,8 @@ config.keys = {
 
 local hostname = wezterm.hostname()
 if hostname == 'archlinux' then
-	config.front_end = "WebGpu"
 	config.font_size = 14.0
 else
-	config.front_end = "OpenGL"
 	config.font_size = 18.0
 end
 
