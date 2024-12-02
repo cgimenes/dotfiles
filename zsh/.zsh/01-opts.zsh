@@ -8,5 +8,6 @@ setopt APPENDHISTORY      # Ensures that each command entered in the current ses
 setopt HIST_IGNORE_DUPS   # Do not record an event that was just recorded again
 setopt HIST_FIND_NO_DUPS  # Do not display a previously found event
 setopt EXTENDED_HISTORY   # Write the history file in the ':start:elapsed;command' format
+HISTFILE=~/.zsh_history
 HISTSIZE=5000000
 SAVEHIST=$HISTSIZE
