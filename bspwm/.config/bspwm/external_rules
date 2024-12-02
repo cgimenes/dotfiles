@@ -56,7 +56,7 @@ when 'Slack', 'discord'
 when 'qBittorrent'
   print 'desktop=^6'
 
-when 'Gnome-calculator', 'Orage', 'Nitrogen', 'Enpass', 'Nm-connection-editor', 'Pavucontrol'
+when 'Gnome-calculator', 'Orage', 'Nitrogen', 'Enpass', 'Nm-connection-editor', 'Pavucontrol', 'Vial'
   print 'state=floating'
 
 when ''
