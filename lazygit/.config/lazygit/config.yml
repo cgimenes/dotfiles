@@ -6,6 +6,13 @@ gui:
   border: single
   showCommandLog: false
   skipDiscardChangeWarning: true
+  # kanagawa
+  theme:
+    selectedLineBgColor:
+      - "#2d4f67"
+    defaultFgColor:
+      - "#dcd7ba"
+
   # cyberdream
   # theme:
   #   activeBorderColor:

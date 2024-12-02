@@ -1,5 +1,10 @@
 gui:
   border: rounded
+  # kanagawa
+  theme:
+    selectedLineBgColor:
+      - "#2d4f67"
+
   # cyberdream
   # theme:
   #   activeBorderColor:
