@@ -19,7 +19,9 @@ process = `ps -p "$(xdo pid #{id})" -o comm= 2>/dev/null`.strip
 
 # generic rules
 case clazz
-when 'Nightly', 'FirefoxNightly'
+when 'Brave-browser'
+  print 'desktop=^1'
+when 'Nightly', 'FirefoxNightly', 'LibreWolf'
   print 'desktop=^1' if instance == 'Navigator'
   case instance
   when 'Devtools', 'Dialog', 'GtkFileChooserDialog', 'Prompt'
