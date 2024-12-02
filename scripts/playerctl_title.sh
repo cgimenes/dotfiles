@@ -15,6 +15,6 @@ if [ "$status" != "Playing" ]; then
   return 0
 fi
 
-title="$(playerctl -p $1 metadata xesam:title)"
+title="$(playerctl -p $1 metadata xesam:title | sed 's/\(.\{15\}\).*/\1.../')"
 artist="$(playerctl -p $1 metadata xesam:artist)"
 echo "$artist: $title"
