@@ -193,6 +193,7 @@
         "picom",
         "playerctl",
         "polybar",
+        "postgresql-libs",
         "qbittorrent",
         "qpwgraph",
         "ripgrep",
