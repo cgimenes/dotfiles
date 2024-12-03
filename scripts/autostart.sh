@@ -17,5 +17,6 @@ autorandr -c &
 xsetroot -cursor_name left_ptr &
 xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
 xinput set-prop "DELL0B56:00 04F3:317E Touchpad" "libinput Tapping Enabled" 1 &
+xinput set-prop "pointer:Logitech MX Ergo" "libinput Accel Speed" -1 &
 setxkbmap -layout 'us,us,br,br' -variant 'intl,,thinkpad,' -option 'grp:alt_space_toggle' -option 'ctrl:nocaps' &
 
