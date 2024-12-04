@@ -12,6 +12,7 @@ git clone https://github.com/cgimenes/dotfiles.git
 cd dotfiles
 
 stow bat
+stow btop
 stow emacs
 stow git
 stow lazygit

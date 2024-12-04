@@ -19,6 +19,7 @@ stow autorandr
 stow bat
 stow bin
 stow bspwm
+stow btop
 stow dunst
 stow emacs
 stow git
