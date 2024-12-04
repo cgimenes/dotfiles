@@ -26,6 +26,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Enable folding with treesitter
 vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('treesitter-folding', { clear = true }),
   callback = function()
     if package.loaded['nvim-treesitter.parsers'] then
       if require('nvim-treesitter.parsers').has_parser() then
@@ -71,6 +72,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Close quickfix menu after selecting choice
 vim.api.nvim_create_autocmd('FileType', {
+  group = vim.api.nvim_create_augroup('quickfix-close-with-g<CR>', { clear = true }),
   command = [[nnoremap <buffer> g<CR> <CR>:cclose<CR>]],
   pattern = { 'qf' },
 })
