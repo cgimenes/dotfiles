@@ -192,3 +192,6 @@ super + shift + e
 
 super + shift + p
 	dm-pipewire-out-switcher
+
+super + shift + v
+	mpv $(xclip -out -selection clipboard)
