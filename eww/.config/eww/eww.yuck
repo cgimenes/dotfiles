@@ -15,15 +15,16 @@
     (right)))
 
 (defwidget left []
-  (box :orientation "h" :space-evenly false :halign "start" :class "left_modules"
-    (workspaces)))
+  (box :orientation "h" :space-evenly false :spacing 10 :halign "start" :class "left_modules"
+    (workspaces)
+    (sink)))
 
 (defwidget center []
-  (box :orientation "h" :space-evenly false :halign "center" :class "center_modules"
+  (box :orientation "h" :space-evenly false :spacing 10 :halign "center" :class "center_modules"
     (music)))
 
 (defwidget right []
-  (box :orientation "h" :space-evenly false :halign "end" :class "right_modules"
+  (box :orientation "h" :space-evenly false :spacing 10 :halign "end" :class "right_modules"
     (metric :label "🔊"
             :value volume
             :onchange "amixer -D pulse sset Master {}%")
@@ -42,9 +43,9 @@
     (systray :prepend-new true :icon-size 20)
     time))
 
-(deflisten workspace "scripts/workspaces.sh")
+(deflisten workspaces "scripts/workspaces.sh")
 (defwidget workspaces []
-  (literal :content workspace))
+  (literal :content workspaces))
 
 (defwidget metric [label value onchange]
   (box :orientation "h"
@@ -60,9 +61,19 @@
 (deflisten music :initial ""
   "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 (defwidget music []
-  {music != "" ? "🎵${music}" : ""})
+  (button :onclick "playerctl play-pause"
+          :onmiddleclick "playerctl previous"
+          :onrightclick "playerctl next"
+    {music}))
 
-(defpoll volume :interval "1s" "scripts/getvol.sh")
+(deflisten sink "scripts/aliks get")
+(defwidget sink []
+  (button :onclick "scripts/aliks toggle"
+          :onmiddleclick "scripts/aliks reset"
+          :onrightclick "scripts/aliks toggle --reverse"
+    {sink}))
+
+(defpoll volume :interval "1s" "pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}'")
 
 (defpoll time :interval "10s"
   "date '+%Y-%m-%d %H:%M'")
