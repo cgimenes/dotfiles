@@ -20,3 +20,7 @@ fi
 if [ -x "$(command -v mise)" ]; then
 	eval "$(mise activate zsh)"
 fi
+
+if [ -d "$HOME/dev/google-cloud-sdk/" ]; then
+	export PATH=$PATH:$HOME/dev/google-cloud-sdk/bin
+fi

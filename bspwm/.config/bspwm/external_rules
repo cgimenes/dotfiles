@@ -1,69 +1,94 @@
-#!/usr/bin/env ruby
-#
-# bspwm: external_rules_command
+#!/bin/sh
 
-# hostname
-# hostname = `hostname`.strip
 # arguments
-id = ARGV[0]
-clazz = ARGV[1]
-instance = ARGV[2]
+id=$1
+clazz=$2
+instance=$3
+
 # xprop
-xprop = `xprop -id #{id}`.strip
-# role and title
-matches = xprop.match(/(?:^WM_WINDOW_ROLE\(STRING\) = \"(.*)\"$)|(?:^_NET_WM_NAME\(UTF8_STRING\) = \"(.*)\")/)
-role = matches.nil? ? '' : matches[1]
-title = matches.nil? ? '' : matches[2]
+xprop=$(xprop -id "$id" 2>/dev/null)
+role=$(echo "$xprop" | grep -oP '(?<=WM_WINDOW_ROLE\(STRING\) = ")[^"]*' | head -n 1)
+title=$(echo "$xprop" | grep -oP '(?<=_NET_WM_NAME\(UTF8_STRING\) = ")[^"]*' | head -n 1)
+
 # process name
-process = `ps -p "$(xdo pid #{id})" -o comm= 2>/dev/null`.strip
+process=$(ps -p "$(xdo pid "$id")" -o comm= 2>/dev/null)
 
-# generic rules
-case clazz
-when 'Brave-browser'
-  print 'desktop=^1'
+desktop=""
+state=""
 
-when 'Nightly', 'FirefoxNightly', 'LibreWolf'
-  print 'desktop=^1' if instance == 'Navigator'
-  case instance
-  when 'Devtools', 'Dialog', 'GtkFileChooserDialog', 'Prompt'
-    print 'state=floating'
-  else
-    print 'state=tiled'
-  end
-  case role
-  when 'GtkFileChooserDialog'
-    print 'state=floating'
-  end
+# Determine the desktop and state based on the class, instance, role, and title
+case "$clazz" in
+  "Brave-browser")
+    desktop=1
+    ;;
 
-when 'Chromium', 'Google-chrome'
-  print 'desktop=^1'
-  print ' state=floating' if role == 'pop-up'
+  "Nightly"|"FirefoxNightly"|"LibreWolf")
+    if [[ "$instance" == "Navigator" ]]; then
+      desktop=1
+    fi
+    case "$instance" in
+      "Devtools"|"Dialog"|"GtkFileChooserDialog"|"Prompt")
+        state="floating"
+        ;;
+      *)
+        state="tiled"
+        ;;
+    esac
+    if [[ "$role" == "GtkFileChooserDialog" ]]; then
+      state="floating"
+    fi
+    ;;
 
-when 'jetbrains-idea', 'jetbrains-phpstorm', 'VSCodium', 'code-oss'
-  print 'desktop=^2'
-  print ' state=floating' if title == 'win0'
+  "Chromium"|"Google-chrome")
+    desktop=1
+    if [[ "$role" == "pop-up" ]]; then
+      state="floating"
+    fi
+    ;;
 
-when 'DBeaver', 'Postman', 'Dynalist', 'Emacs'
-  print 'desktop=^4'
-  print ' state=tiled'
+  "jetbrains-idea"|"jetbrains-phpstorm"|"VSCodium"|"code-oss")
+    desktop=2
+    if [[ "$title" == "win0" ]]; then
+      state="floating"
+    fi
+    ;;
 
-when 'Spotify'
-  print 'desktop=^5'
+  "DBeaver"|"Postman"|"Dynalist"|"Emacs")
+    desktop=4
+    state="tiled"
+    ;;
 
-when 'Slack', 'discord'
-  print 'desktop=^5'
+  "Spotify")
+    desktop=5
+    ;;
 
-when 'qBittorrent'
-  print 'desktop=^6'
+  "Slack"|"discord")
+    desktop=5
+    ;;
 
-when 'Gnome-calculator', 'Orage', 'Nitrogen', 'Enpass', 'Nm-connection-editor', 'Pavucontrol', 'Vial'
-  print 'state=floating'
+  "qBittorrent"|"transmission-gtk")
+    desktop=6
+    state="tiled"
+    ;;
 
-when ''
-  case process
-  when 'spotify'
-    print 'desktop=^5'
-  end
-end
+  "Gnome-calculator"|"Orage"|"Nitrogen"|"Enpass"|"Nm-connection-editor"|"Pavucontrol"|"Vial")
+    state="floating"
+    ;;
 
-print ' '
+  "")
+    if [[ "$process" == "spotify" ]]; then
+      desktop=5
+    fi
+    ;;
+esac
+
+# Output desktop and state if set
+if [[ -n "$desktop" ]]; then
+  desktop="desktop=^$desktop"
+fi
+if [[ -n "$state" ]]; then
+  state="state=$state"
+fi
+
+# Print the result
+echo "$desktop $state" | sed 's/ $//'
