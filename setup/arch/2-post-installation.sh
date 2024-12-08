@@ -12,7 +12,6 @@ paru -S --noconfirm pet-bin
 paru -S --noconfirm librewolf-bin
 paru -S --noconfirm mise-bin
 paru -S --noconfirm lazydocker
-paru -S --noconfirm betterbird-bin
 paru -S --noconfirm eww
 
 rm -rf .config/autostart/**
