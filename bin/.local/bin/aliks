@@ -1,124 +1,153 @@
-#!/usr/bin/env ruby
+#!/bin/sh
 
-require 'thor'
-require 'json'
-require 'singleton'
+CONFIG_PATH="$HOME/.config/aliks.json"
+DEFAULT_SINK=$(pactl get-default-sink)
+SINKS_JSON=$(pactl --format=json list sinks)
+SINK_INPUTS_JSON=$(pactl --format=json list sink-inputs)
 
-class PipeWireProvider
-  include Singleton
+# Utility function to get the default sink name
+get_default_sink() {
+  echo "$DEFAULT_SINK"
+}
 
-  def default_sink
-    @default_sink ||= `pactl get-default-sink`.strip
-  end
+# Utility function to list all sinks
+list_sinks() {
+  echo "$SINKS_JSON" | jq -r '.[].name'
+}
 
-  def list_sinks
-    @list_sinks ||= JSON.parse(`pactl --format=json list sinks`)
-  end
+# Utility function to list sink inputs
+list_sink_inputs() {
+  echo "$SINK_INPUTS_JSON"
+}
 
-  def set_default_sink(sink)
-    `pactl set-default-sink "#{sink}"`
-  end
+# Get the alias name from the config file for a sink
+get_alias_for_sink() {
+  local sink_name="$1"
+  jq -r ".aliases[\"$sink_name\"] // \"$sink_name\"" < "$CONFIG_PATH"
+}
 
-  def unmute_all_sink_input
-    indexes = list_sink_inputs.map { |si| si['index'] }
-    indexes.each do |idx|
-      `pactl set-sink-input-mute #{idx} false`
-      `pactl set-sink-input-volume #{idx} 0x10000`
-    end
-  end
+# Set the default sink by its name
+set_default_sink() {
+  local sink_name="$1"
+  pactl set-default-sink "$sink_name"
+}
 
-  def move_all_sink_input(sink)
-    indexes = list_sink_inputs.map { |si| si['index'] }
-    indexes.each do |idx|
-      `pactl move-sink-input #{idx} #{sink}`
-    end
-  end
+# Move all sink inputs to a specific sink
+move_all_sink_input() {
+  local sink_name="$1"
+  local indexes=$(echo "$SINK_INPUTS_JSON" | jq -r '.[].index')
+  for idx in $indexes; do
+    pactl move-sink-input "$idx" "$sink_name"
+    done
+}
 
-  def list_sink_inputs
-    @list_sink_inputs ||= JSON.parse(`pactl --format=json list sink-inputs`)
-  end
-end
+# Unmute all sink inputs
+unmute_all_sink_input() {
+  local indexes=$(echo "$SINK_INPUTS_JSON" | jq -r '.[].index')
+  for idx in $indexes; do
+    pactl set-sink-input-mute "$idx" false
+    pactl set-sink-input-volume "$idx" 0x10000
+    done
+}
 
-class Aliks < Thor
-  include Thor::Actions
+# Get the description of the default sink
+get_description() {
+  local default_sink=$(get_default_sink)
+  local sink_info=$(echo "$SINKS_JSON" | jq -r ".[] | select(.name == \"$default_sink\")")
+  local description=$(echo "$sink_info" | jq -r '.properties["device.description"]')
 
-  def initialize(args = [], local_options = {}, config = {})
-    super
-    @config_path = File.expand_path('~/.config/aliks.json')
-    File.open(@config_path, 'r') { |file| @aliases = JSON.parse(file.read)['aliases'] } if File.exist? @config_path
-    @provider = PipeWireProvider.instance
-  end
+  local active_port=$(echo "$sink_info" | jq -r '.active_port // ""')
+  local ports=$(echo "$sink_info" | jq -r '.ports')
 
-  desc 'get', 'Prints the default sink alias'
-  def get
-    sink = @provider.list_sinks.detect { |s| s['name'] == @provider.default_sink }
-    port = if sink['ports'].size > 1
-      ': ' + sink['ports'].detect { |p| p['name'] === sink['active_port'] }['description']
-    else
-      ''
-    end
-    puts sink['properties']['device.description'] + port
-  end
+  if [ "$(echo "$ports" | jq length)" -gt 1 ]; then
+    local port_desc=$(echo "$ports" | jq -r ".[] | select(.name == \"$active_port\") | .description")
+    echo "$description: $port_desc"
+  else
+    echo "$description"
+    fi
+}
 
-  desc 'list', 'List alias of available sinks'
-  def list
-    @provider.list_sinks
-             .map { |s| s['name'] }
-             .map { |s| @aliases[s] || s }
-             .each { |s| puts "#{s == @aliases[@provider.default_sink] ? '* ' : ''}#{s}" }
-  end
+# List available sinks with aliases
+list_sinks_with_aliases() {
+  local sinks=$(list_sinks)
+  while read -r sink; do
+    local alias=$(get_alias_for_sink "$sink")
+    local prefix=""
+    if [ "$sink" == "$DEFAULT_SINK" ]; then
+      prefix="* "
+      fi
+      echo "$prefix$alias"
+      done <<< "$sinks"
+}
 
-  desc 'set', 'Set the default sink by alias'
-  def set(sink)
-    sinks = @provider.list_sinks
-                     .map { |s| s['name'] }
-                     .map { |s| [@aliases[s] || s, s] }
-                     .to_h
-    sink_name = sinks.detect { |k, _| k == sink }[1]
+# Toggle between sinks
+toggle_sink() {
+  local order="$1"
+  local current_index=$(echo "$SINKS_JSON" | jq -r ".[] | select(.name == \"$DEFAULT_SINK\") | .index")
+  local count=$(echo "$SINKS_JSON" | jq length)
+  local next_index=$((current_index + order))
 
-    @provider.set_default_sink(sink_name)
-    @provider.move_all_sink_input(sink_name)
-    @provider.unmute_all_sink_input
-  end
+  if [ "$next_index" -lt 0 ]; then
+    next_index=$((count - 1))
+    elif [ "$next_index" -ge "$count" ]; then
+    next_index=0
+    fi
 
-  desc 'setup', 'Creates the configuration file (~/.config/aliks.json) with available sinks'
-  def setup
-    if File.exist? @config_path
-      puts 'Configuration file already exists'
-      return
-    end
+    local next_sink=$(echo "$SINKS_JSON" | jq -r ".[$next_index].name")
+    set_default_sink "$next_sink"
+    move_all_sink_input "$next_sink"
+    unmute_all_sink_input
+}
 
-    aliases = @provider.list_sinks.map { |s| [s['description'], s['name']] }.to_h
+# Reset the default sink to the original one
+reset_sink() {
+  set_default_sink "$DEFAULT_SINK"
+  move_all_sink_input "$DEFAULT_SINK"
+  unmute_all_sink_input
+}
 
-    config = { aliases: aliases }
-    File.open(@config_path, 'wb') do |file|
-      file.write(JSON.pretty_generate(config))
-    end
-  end
+# Setup the configuration file
+setup_config() {
+  if [ -f "$CONFIG_PATH" ]; then
+    echo "Configuration file already exists."
+    return
+    fi
 
-  desc 'toggle', 'Toggle between available sinks'
-  method_options reverse: :boolean
-  def toggle
-    order = options.reverse? ? -1 : 1
-    current_index = @provider.list_sinks.index { |s| s['name'] == @provider.default_sink } || 0
-    next_index = current_index + order
-    count = @provider.list_sinks.count
-    unless next_index.between?(0, count - 1)
-      next_index = options.reverse? ? count - 1 : 0
-    end
-    next_sink = @provider.list_sinks[next_index]['name']
+    local aliases=$(echo "$SINKS_JSON" | jq -r '[.[] | {(.properties["device.description"]): .name}] | add')
+    echo "{\"aliases\": $aliases}" > "$CONFIG_PATH"
+}
 
-    @provider.set_default_sink(next_sink)
-    @provider.move_all_sink_input(next_sink)
-    @provider.unmute_all_sink_input
-  end
-
-  desc 'reset', 'Reset default sink'
-  def reset
-    @provider.set_default_sink(@provider.default_sink)
-    @provider.move_all_sink_input(@provider.default_sink)
-    @provider.unmute_all_sink_input
-  end
-end
-
-Aliks.start
+# Main entry point for the script
+case "$1" in
+  "get")
+  get_description
+  ;;
+  "list")
+  list_sinks_with_aliases
+  ;;
+  "set")
+  if [ -z "$2" ]; then
+    echo "Please provide a sink name."
+    exit 1
+    fi
+    set_default_sink "$2"
+    move_all_sink_input "$2"
+    unmute_all_sink_input
+    ;;
+    "toggle")
+    toggle_sink 1
+    ;;
+    "toggle_reverse")
+    toggle_sink -1
+    ;;
+    "reset")
+    reset_sink
+    ;;
+    "setup")
+    setup_config
+    ;;
+    *)
+    echo "Usage: $0 {get|list|set|toggle|toggle_reverse|reset|setup}"
+    exit 1
+    ;;
+    esac
