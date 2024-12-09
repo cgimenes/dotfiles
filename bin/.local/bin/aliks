@@ -1,153 +1,151 @@
-#!/bin/sh
+#!/usr/bin/env python
 
-CONFIG_PATH="$HOME/.config/aliks.json"
-DEFAULT_SINK=$(pactl get-default-sink)
-SINKS_JSON=$(pactl --format=json list sinks)
-SINK_INPUTS_JSON=$(pactl --format=json list sink-inputs)
+import subprocess
+import json
+import os
+import argparse
 
-# Utility function to get the default sink name
-get_default_sink() {
-  echo "$DEFAULT_SINK"
-}
+class PipeWireProvider:
+    _instance = None
 
-# Utility function to list all sinks
-list_sinks() {
-  echo "$SINKS_JSON" | jq -r '.[].name'
-}
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
 
-# Utility function to list sink inputs
-list_sink_inputs() {
-  echo "$SINK_INPUTS_JSON"
-}
+    def default_sink(self):
+        if not hasattr(self, '_default_sink'):
+            self._default_sink = subprocess.getoutput('pactl get-default-sink').strip()
+        return self._default_sink
 
-# Get the alias name from the config file for a sink
-get_alias_for_sink() {
-  local sink_name="$1"
-  jq -r ".aliases[\"$sink_name\"] // \"$sink_name\"" < "$CONFIG_PATH"
-}
+    def list_sinks(self):
+        if not hasattr(self, '_list_sinks'):
+            self._list_sinks = json.loads(subprocess.getoutput('pactl --format=json list sinks'))
+        return self._list_sinks
 
-# Set the default sink by its name
-set_default_sink() {
-  local sink_name="$1"
-  pactl set-default-sink "$sink_name"
-}
+    def set_default_sink(self, sink):
+        subprocess.run(['pactl', 'set-default-sink', sink])
 
-# Move all sink inputs to a specific sink
-move_all_sink_input() {
-  local sink_name="$1"
-  local indexes=$(echo "$SINK_INPUTS_JSON" | jq -r '.[].index')
-  for idx in $indexes; do
-    pactl move-sink-input "$idx" "$sink_name"
-    done
-}
+    def unmute_all_sink_input(self):
+        for si in self.list_sink_inputs():
+            idx = si['index']
+            subprocess.run(['pactl', 'set-sink-input-mute', str(idx), 'false'])
+            subprocess.run(['pactl', 'set-sink-input-volume', str(idx), '0x10000'])
 
-# Unmute all sink inputs
-unmute_all_sink_input() {
-  local indexes=$(echo "$SINK_INPUTS_JSON" | jq -r '.[].index')
-  for idx in $indexes; do
-    pactl set-sink-input-mute "$idx" false
-    pactl set-sink-input-volume "$idx" 0x10000
-    done
-}
+    def move_all_sink_input(self, sink):
+        for si in self.list_sink_inputs():
+            idx = si['index']
+            subprocess.run(['pactl', 'move-sink-input', str(idx), sink])
 
-# Get the description of the default sink
-get_description() {
-  local default_sink=$(get_default_sink)
-  local sink_info=$(echo "$SINKS_JSON" | jq -r ".[] | select(.name == \"$default_sink\")")
-  local description=$(echo "$sink_info" | jq -r '.properties["device.description"]')
+    def list_sink_inputs(self):
+        if not hasattr(self, '_list_sink_inputs'):
+            self._list_sink_inputs = json.loads(subprocess.getoutput('pactl --format=json list sink-inputs'))
+        return self._list_sink_inputs
 
-  local active_port=$(echo "$sink_info" | jq -r '.active_port // ""')
-  local ports=$(echo "$sink_info" | jq -r '.ports')
 
-  if [ "$(echo "$ports" | jq length)" -gt 1 ]; then
-    local port_desc=$(echo "$ports" | jq -r ".[] | select(.name == \"$active_port\") | .description")
-    echo "$description: $port_desc"
-  else
-    echo "$description"
-    fi
-}
+class Aliks:
+    def __init__(self):
+        self._config_path = os.path.expanduser('~/.config/aliks.json')
+        if os.path.exists(self._config_path):
+            with open(self._config_path, 'r') as file:
+                self._aliases = json.load(file)['aliases']
+        else:
+            self._aliases = {}
+        self._provider = PipeWireProvider()
 
-# List available sinks with aliases
-list_sinks_with_aliases() {
-  local sinks=$(list_sinks)
-  while read -r sink; do
-    local alias=$(get_alias_for_sink "$sink")
-    local prefix=""
-    if [ "$sink" == "$DEFAULT_SINK" ]; then
-      prefix="* "
-      fi
-      echo "$prefix$alias"
-      done <<< "$sinks"
-}
+    def get(self):
+        sink = next(s for s in self._provider.list_sinks() if s['name'] == self._provider.default_sink())
+        port = ''
+        if len(sink['ports']) > 1:
+            port = ': ' + next(p['description'] for p in sink['ports'] if p['name'] == sink['active_port'])
+        print(sink['properties']['device.description'] + port)
 
-# Toggle between sinks
-toggle_sink() {
-  local order="$1"
-  local current_index=$(echo "$SINKS_JSON" | jq -r ".[] | select(.name == \"$DEFAULT_SINK\") | .index")
-  local count=$(echo "$SINKS_JSON" | jq length)
-  local next_index=$((current_index + order))
+    def list(self):
+        for sink in self._provider.list_sinks():
+            sink_name = sink['name']
+            alias = self._aliases.get(sink_name, sink_name)
+            print(f"* {alias}" if alias == self._aliases.get(self._provider.default_sink(), '') else alias)
 
-  if [ "$next_index" -lt 0 ]; then
-    next_index=$((count - 1))
-    elif [ "$next_index" -ge "$count" ]; then
-    next_index=0
-    fi
+    def set(self, sink):
+        sinks = {self._aliases.get(s['name'], s['name']): s['name'] for s in self._provider.list_sinks()}
+        sink_name = sinks.get(sink)
+        if sink_name:
+            self._provider.set_default_sink(sink_name)
+            self._provider.move_all_sink_input(sink_name)
+            self._provider.unmute_all_sink_input()
 
-    local next_sink=$(echo "$SINKS_JSON" | jq -r ".[$next_index].name")
-    set_default_sink "$next_sink"
-    move_all_sink_input "$next_sink"
-    unmute_all_sink_input
-}
+    def setup(self):
+        if os.path.exists(self._config_path):
+            print('Configuration file already exists')
+            return
+        aliases = {s['description']: s['name'] for s in self._provider.list_sinks()}
+        config = {'aliases': aliases}
+        with open(self._config_path, 'w') as file:
+            json.dump(config, file, indent=4)
 
-# Reset the default sink to the original one
-reset_sink() {
-  set_default_sink "$DEFAULT_SINK"
-  move_all_sink_input "$DEFAULT_SINK"
-  unmute_all_sink_input
-}
+    def toggle(self, reverse=False):
+        sinks = self._provider.list_sinks()
+        current_index = next((i for i, s in enumerate(sinks) if s['name'] == self._provider.default_sink()), 0)
+        order = -1 if reverse else 1
+        next_index = current_index + order
+        count = len(sinks)
+        if not (0 <= next_index < count):
+            next_index = count - 1 if reverse else 0
+        next_sink = sinks[next_index]['name']
+        self._provider.set_default_sink(next_sink)
+        self._provider.move_all_sink_input(next_sink)
+        self._provider.unmute_all_sink_input()
 
-# Setup the configuration file
-setup_config() {
-  if [ -f "$CONFIG_PATH" ]; then
-    echo "Configuration file already exists."
-    return
-    fi
+    def reset(self):
+        self._provider.set_default_sink(self._provider.default_sink())
+        self._provider.move_all_sink_input(self._provider.default_sink())
+        self._provider.unmute_all_sink_input()
 
-    local aliases=$(echo "$SINKS_JSON" | jq -r '[.[] | {(.properties["device.description"]): .name}] | add')
-    echo "{\"aliases\": $aliases}" > "$CONFIG_PATH"
-}
 
-# Main entry point for the script
-case "$1" in
-  "get")
-  get_description
-  ;;
-  "list")
-  list_sinks_with_aliases
-  ;;
-  "set")
-  if [ -z "$2" ]; then
-    echo "Please provide a sink name."
-    exit 1
-    fi
-    set_default_sink "$2"
-    move_all_sink_input "$2"
-    unmute_all_sink_input
-    ;;
-    "toggle")
-    toggle_sink 1
-    ;;
-    "toggle_reverse")
-    toggle_sink -1
-    ;;
-    "reset")
-    reset_sink
-    ;;
-    "setup")
-    setup_config
-    ;;
-    *)
-    echo "Usage: $0 {get|list|set|toggle|toggle_reverse|reset|setup}"
-    exit 1
-    ;;
-    esac
+def main():
+    parser = argparse.ArgumentParser(description="Aliks: Manage PipeWire sinks")
+    subparsers = parser.add_subparsers(dest="command")
+
+    # 'get' command
+    subparsers.add_parser('get', help="Prints the default sink alias")
+
+    # 'list' command
+    subparsers.add_parser('list', help="List alias of available sinks")
+
+    # 'set' command
+    set_parser = subparsers.add_parser('set', help="Set the default sink by alias")
+    set_parser.add_argument('sink', help="The sink alias to set")
+
+    # 'setup' command
+    subparsers.add_parser('setup', help="Creates the configuration file (~/.config/aliks.json) with available sinks")
+
+    # 'toggle' command
+    toggle_parser = subparsers.add_parser('toggle', help="Toggle between available sinks")
+    toggle_parser.add_argument('--reverse', action='store_true', help="Reverse the toggle order")
+
+    # 'reset' command
+    subparsers.add_parser('reset', help="Reset default sink")
+
+    args = parser.parse_args()
+
+    aliks = Aliks()
+
+    if args.command == 'get':
+        aliks.get()
+    elif args.command == 'list':
+        aliks.list()
+    elif args.command == 'set':
+        aliks.set(args.sink)
+    elif args.command == 'setup':
+        aliks.setup()
+    elif args.command == 'toggle':
+        aliks.toggle(reverse=args.reverse)
+    elif args.command == 'reset':
+        aliks.reset()
+    else:
+        parser.print_help()
+
+
+if __name__ == "__main__":
+    main()
+

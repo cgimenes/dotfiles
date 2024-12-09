@@ -48,6 +48,10 @@ XF86Audio{Play,Stop,Next,Prev}
 super + control + q
 	dm-logout
 
+# launch mpv with link from clipboard
+super + shift + v
+	mpv $(xclip -out -selection clipboard)
+
 # restart bspwm and make sxhkd reload its configuration files
 super + control + r
 	bspc wm -r; \
@@ -183,15 +187,3 @@ super + alt + {h,j,k,l}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-#
-# dm scripts
-#
-super + shift + e
-	dm-confedit
-
-super + shift + p
-	dm-pipewire-out-switcher
-
-super + shift + v
-	mpv $(xclip -out -selection clipboard)
