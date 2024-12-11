@@ -36,6 +36,3 @@ alias lzd='lazydocker'
 
 # Python
 alias poetsh='source $(poetry env info --path)/bin/activate' # Activate poetry shell without subshell
-
-# Kubernetes
-alias k9s='k9s -c contexts' # Open k9s with contexts view
