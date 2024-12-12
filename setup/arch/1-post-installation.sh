@@ -25,6 +25,7 @@ stow dunst
 stow emacs
 stow git
 stow gsimplecal
+stow hyprland
 stow lazygit
 stow nvim
 stow pet
