@@ -16,6 +16,7 @@ git remote set-url origin git@github.com:cgimenes/dotfiles.git
 
 stow aliks
 stow autorandr
+stow awesome
 stow bat
 stow bin
 stow bspwm
