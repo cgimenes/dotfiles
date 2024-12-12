@@ -124,3 +124,10 @@
   Output = ""
   Tag = []
   command = "curl -F'file=@<file>' https://0x0.st"
+
+[[Snippets]]
+  Description = "Terminate celery task"
+  Filename = "~/.config/pet/snippet.toml"
+  Output = ""
+  Tag = []
+  command = "celery -A <path=config> control terminate SIGKILL <id>"
