@@ -1,15 +1,9 @@
 $foreground: #dcd7ba;
-$grey: #aaaaaa;
-$foreground-alt: #465059;
 $background: #1f1f28;
-$black: #000000;
-$red: #ff6565;
-$green: #b8cc52;
-$yellow: #e6c446;
-$blue: #68d4ff;
-$magenta: #ffa3aa;
-$cyan: #36a3d9;
-$white: #ffffff;
+$red: #C34043;
+$green: #98BB6C;
+$blue: #7E9CD8;
+$cyan: #7FB4CA;
 $orange: #FFA066;
 
 * {
@@ -33,6 +27,7 @@ window {
 .metric scale trough {
   all: unset;
   background-color: #4e4e4e;
+
   border-radius: 50px;
   min-height: 3px;
   min-width: 50px;
@@ -60,11 +55,11 @@ window {
     }
 
     .empty {
-      color: $foreground-alt;
+      color: #4e4e4e;
     }
 
     .occupied {
-      color: $grey;
+      color: $foreground;
     }
 
     .focused {
