@@ -25,6 +25,9 @@
 
 (defwidget right []
   (box :orientation "h" :space-evenly false :spacing 10 :halign "end" :class "right_modules"
+    (metric :label "Backlight"
+            :value backlight
+            :onchange "xbacklight -set {}")
     (metric :label "Volume"
             :value volume
             :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")
@@ -88,3 +91,6 @@
 
 (defpoll battery :interval "30s"
   "cat /sys/class/power_supply/BAT?/capacity")
+
+(defpoll backlight :interval "1s"
+  "xbacklight -get")
