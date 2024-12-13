@@ -1,7 +1,7 @@
-$foreground: #ffffff;
+$foreground: #dcd7ba;
 $grey: #aaaaaa;
 $foreground-alt: #465059;
-$background: #0e1419;
+$background: #1f1f28;
 $black: #000000;
 $red: #ff6565;
 $green: #b8cc52;
@@ -10,6 +10,7 @@ $blue: #68d4ff;
 $magenta: #ffa3aa;
 $cyan: #36a3d9;
 $white: #ffffff;
+$orange: #FFA066;
 
 * {
   all: unset; // Unsets everything so you can style everything from scratch
@@ -23,7 +24,10 @@ window {
   font-family: "Iosevka Term";
   font-size: 14px;
   color: $foreground;
-  padding: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .metric scale trough {
@@ -47,23 +51,25 @@ window {
 }
 
 .workspaces {
-  button {
-    margin-right: 3px;
-  }
+  .workspace-entry {
+    margin-right: 8px;
+    font-size: 18px;
 
-  .occupied {
-    color: $grey;
-  }
+    .urgent {
+      color: $red;
+    }
 
-  .focused {
-    color: $white;
-  }
+    .empty {
+      color: $foreground-alt;
+    }
 
-  .urgent {
-    color: $red;
-  }
+    .occupied {
+      color: $grey;
+    }
 
-  .empty {
-    color: $foreground-alt;
+    .focused {
+      color: $orange;
+      font-weight: bold;
+    }
   }
 }

@@ -34,18 +34,26 @@
     (metric :label "💾"
             :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
             :onchange "")
-    (metric :label "Battery"
-            :value {EWW_BATTERY.capacity}
-            :onchange "")
+    ;(metric :label "Battery"
+    ;        :value {EWW_BATTERY.capacity}
+    ;        :onchange "")
     (metric :label "CPU"
             :value {EWW_CPU.avg}
             :onchange "")
     (systray :prepend-new true :icon-size 20)
     time))
 
-(deflisten workspaces "scripts/workspaces.sh")
+(deflisten workspaces :initial "[]" "scripts/workspaces.sh")
 (defwidget workspaces []
-  (literal :content workspaces))
+  (box :class "workspaces"
+       :halign "center"
+       :valign "center"
+       :vexpand true
+       :hexpand true
+    (for workspace in workspaces
+      (eventbox :onclick "scripts/focus-workspace.sh ${workspace.id}"
+        (box :class "workspace-entry"
+          (label :text "${workspace.name}" :class "${workspace.state}"))))))
 
 (defwidget metric [label value onchange]
   (box :orientation "h"
