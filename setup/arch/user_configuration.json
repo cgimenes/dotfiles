@@ -193,6 +193,7 @@
         "os-prober",
         "ouch",
         "pacman-contrib",
+        "pavucontrol",
         "picom",
         "playerctl",
         "polybar",
