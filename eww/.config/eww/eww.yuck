@@ -25,13 +25,13 @@
 
 (defwidget right []
   (box :orientation "h" :space-evenly false :spacing 10 :halign "end" :class "right_modules"
-    (metric :label "🔊"
+    (metric :label "Volume"
             :value volume
-            :onchange "amixer -D pulse sset Master {}%")
-    (metric :label ""
+            :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")
+    (metric :label "RAM"
             :value {EWW_RAM.used_mem_perc}
             :onchange "")
-    (metric :label "💾"
+    (metric :label "Disk"
             :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
             :onchange "")
     (metric :label "Battery"
@@ -42,6 +42,17 @@
             :onchange "")
     (systray :prepend-new true :icon-size 20)
     time))
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
 
 (deflisten workspaces :initial "[]" "scripts/workspaces.sh")
 (defwidget workspaces []
@@ -54,17 +65,6 @@
       (eventbox :onclick "scripts/focus-workspace.sh ${workspace.id}"
         (box :class "workspace-entry"
           (label :text "${workspace.name}" :class "${workspace.state}"))))))
-
-(defwidget metric [label value onchange]
-  (box :orientation "h"
-       :class "metric"
-       :space-evenly false
-    (box :class "label" label)
-    (scale :min 0
-           :max 101
-           :active {onchange != ""}
-           :value value
-           :onchange onchange)))
 
 (deflisten music :initial ""
   "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
@@ -81,7 +81,7 @@
           :onrightclick "scripts/aliks toggle --reverse"
     {sink}))
 
-(defpoll volume :interval "1s" "pactl set-sink-volume @DEFAULT_SINK@ +5% && pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}'")
+(defpoll volume :interval "1s" "pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}'")
 
 (defpoll time :interval "10s"
   "date '+%Y-%m-%d %H:%M'")
