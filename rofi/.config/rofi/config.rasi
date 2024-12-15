@@ -1,9 +1,11 @@
 configuration {
-  modes: [ combi ];
+  modes: "combi";
   combi-modes: [ run, drun ];
-  font: "JetBrainsMonoNL NF 11";
-  combi-hide-mode-prefix: true;
-//  matching: "fuzzy";
+  font: "Iosevka Term 13";
+  combi-hide-mode-prefix: false;
+  fixed-num-lines: true;
+  drun-match-fields: "name,generic,exec,categories,keywords";
+  drun-display-format: "{name} [<span foreground='#dcd7ba'><i>({generic})</i></span>]";
 }
 
 @theme "kanagawa"

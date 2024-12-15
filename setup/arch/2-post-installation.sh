@@ -13,6 +13,7 @@ paru -S --noconfirm librewolf-bin
 paru -S --noconfirm mise-bin
 paru -S --noconfirm lazydocker
 paru -S --noconfirm eww
+paru -S --noconfirm ttf-tabler-icons
 
 rm -rf .config/autostart/**
 

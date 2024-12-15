@@ -1,161 +1,108 @@
-/**
- * ROFI Color theme
- * User: JT (adpated from lb by Qball)
- * Copyright: Dave Davenport
- */
- 
 * {
-    selected-normal-foreground:  @foreground;
-    foreground:                  #dcd7ba;
-    normal-foreground:           @foreground;
-    alternate-normal-background: #ffffff12;
-    red:                         #dc322f;
-    selected-urgent-foreground:  #333333;
-    blue:                        #268bd2;
-    urgent-foreground:           #ff9999;
-    alternate-urgent-background: #ffffff12;
-    active-foreground:           @bordercolor;
-    lightbg:                     #eee8d5;
-    selected-active-foreground:  @foreground;
-    alternate-active-background: #ffffff12;
-    background:                  #1f1f28ed;
-    bordercolor:                 #c34043;
-    alternate-normal-foreground: @foreground;
-    normal-background:           #00000000;
-    lightfg:                     #586875;
-    selected-normal-background:  @bordercolor;
-    border-color:                @bordercolor;
-    spacing:                     2;
-    separatorcolor:              @bordercolor;
-    urgent-background:           #00000000;
-    selected-urgent-background:  #ff9999;
-    alternate-urgent-foreground: @urgent-foreground;
-    background-color:            #00000000;
-    alternate-active-foreground: @active-foreground;
-    active-background:           #00000000;
-    selected-active-background:  @bordercolor;
+  background:                  #1f1f28;
+  selected-active-foreground:  var(background);
+  separatorcolor:              var(foreground);
+  urgent-foreground:           var(red);
+  alternate-urgent-background: var(lightbg);
+  background-color:            transparent;
+  border-color:                var(foreground);
+  normal-background:           var(background);
+  selected-urgent-background:  var(red);
+  alternate-active-background: var(lightbg);
+  spacing:                     10;
+  alternate-normal-foreground: var(foreground);
+  urgent-background:           var(background);
+  selected-normal-foreground:  #dcd7ba;
+  active-foreground:           #dcd7ba;
+  selected-active-background:  #2d4f67;
+  active-background:           #2d4f67;
+  selected-normal-background:  #2d4f67;
+  alternate-normal-background: #1f1f28;
+  foreground:                  #dcd7ba;
+  selected-urgent-foreground:  #dcd7ba;
+  normal-foreground:           #dcd7ba;
+  alternate-urgent-foreground: #dcd7ba;
+  alternate-active-foreground: #dcd7ba;
 }
-#window {
-    background-color: @background;
-    border:           2;
-    padding:          6;
-    width:    600;
-}
-#mainbox {
+element {
+    padding: 10px 10px 10px 25px ;
+    cursor:  pointer;
     border:  0;
-    padding: 0;
 }
-#message {
-    border:       1px dash 0px 0px ;
-    border-color: @separatorcolor;
+element normal.normal {
+    background-color: #1f1f28;
+    text-color:       #dcd7ba;
+}
+element selected.normal {
+    background-color: var(selected-normal-background);
+    text-color:       #dcd7ba;
+}
+element alternate.normal {
+    background-color: #1f1f28;
+    text-color:       #dcd7ba;
+}
+element-text {
+    highlight:        #7e9cd8;
+    text-color:       #dcd7ba;
+}
+window {
+    background-color:   #16161d;
+    border:             2;
+    border-color:       #7e9cd8;
+    border-radius:      15;
+    width: 600px;
+}
+mainbox {
+    border:  0;
+    background-color: #16161d;
+}
+message {
     padding:      1px ;
-}
-#textbox {
-    text-color: @foreground;
-}
-#listview {
-    fixed-height: 0;
-    border:       2px solid 0px 0px ;
-    border-color: @separatorcolor;
-    spacing:      2px ;
-    scrollbar:    false;
-    padding:      2px 0px 0px ;
-    lines: 12;
-}
-#element {
-    border:  0;
-    padding: 1px;
-}
-#element.normal.normal {
-    background-color: @normal-background;
-}
-#element-text.normal.normal {
-    text-color:       @normal-foreground;
-}
-#element.normal.urgent {
-    background-color: @urgent-background;
-}
-#element-text.normal.urgent {
-    text-color:       @urgent-foreground;
-}
-#element.normal.active {
-    background-color: @active-background;
-}
-#element-text.normal.active {
-    text-color:       @active-foreground;
-}
-#element.selected.normal {
-    background-color: @selected-normal-background;
-}
-#element-text.selected.normal {
-    text-color:       @selected-normal-foreground;
-}
-#element.selected.urgent {
-    background-color: @selected-urgent-background;
-}
-#element-text.selected.urgent {
-    text-color:       @selected-urgent-foreground;
-}
-#element.selected.active {
-    background-color: @selected-active-background;
-}
-#element-text.selected.active {
-    text-color:       @selected-active-foreground;
-}
-#element.alternate.normal {
-    background-color: @alternate-normal-background;
-}
-#element-text.alternate.normal {
-    text-color:       @alternate-normal-foreground;
-}
-#element.alternate.urgent {
-    background-color: @alternate-urgent-background;
-}
-#element-text.alternate.urgent {
-    text-color:       @alternate-urgent-foreground;
-}
-#element.alternate.active {
-    background-color: @alternate-active-background;
-}
-#element-text.alternate.active {
-    text-color:       @alternate-active-foreground;
-}
-#scrollbar {
-    width:        4px ;
-    border:       0;
-    handle-width: 8px ;
-    padding:      0;
-    handle-color: @bordercolor;
-}
-#sidebar {
+    border-color: var(separatorcolor);
     border:       2px dash 0px 0px ;
-    border-color: @separatorcolor;
 }
-#button.selected {
-    background-color: @selected-normal-background;
-    text-color:       @selected-normal-foreground;
+textbox {
+    background-color: #1f1f28;
+    text-color: #dcd7ba;
 }
-#inputbar {
+listview {
+    scrollbar:    false;
+    background-color: #1f1f28;
+    border-radius: 15px;
+    fixed-height: 0;
+    border:       0;
+    lines: 10;
+}
+num-filtered-rows {
+  enabled: false;
+}
+num-rows {
+  enabled: false;
+}
+textbox-num-sep {
+  enabled: false;
+}
+inputbar {
+    padding:    20px 20px 10px 25px ;
+    spacing:    0px ;
+    text-color: #dcd7ba;
+    background-color: #16161d;
+}
+case-indicator {
     spacing:    0;
-    text-color: @normal-foreground;
-    padding:    1px ;
+    text-color: var(normal-foreground);
+    enabled: false;
 }
-#case-indicator {
-    spacing:    0;
-    text-color: @normal-foreground;
+entry {
+    text-color:        #dcd7ba;
+    cursor:            text;
+    spacing:           0;
+    placeholder-color: #727169;
+    placeholder:       "Search";
 }
-#entry {
-    spacing:    0;
-    text-color: @normal-foreground;
+prompt {
+    enabled: false;
 }
-#prompt {
-    spacing:    0;
-    text-color: @normal-foreground;
-}
-#inputbar {
-    children:   [ prompt,textbox-prompt-separator,entry,case-indicator ];
-}
-#textbox-prompt-separator {
-    expand:     false;
-    str:        " ";
+textbox-prompt-colon {
+    enabled: false;
 }
