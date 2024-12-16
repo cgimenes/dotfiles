@@ -27,6 +27,7 @@ stow git
 stow gsimplecal
 stow hyprland
 stow lazygit
+stow mpv
 stow nvim
 stow pet
 stow picom
