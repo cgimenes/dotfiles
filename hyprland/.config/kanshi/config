@@ -1,7 +1,5 @@
 output eDP-1 scale 1
-output DP-3 scale 1
-output DP-4 scale 1
-output "Some Other Company GTBZ 2525" mode 1920x1200
+output "Samsung Electric Company LC34G55T HNTW400421" scale 1
 
 profile default {
         output eDP-1 enable
@@ -9,10 +7,5 @@ profile default {
 
 profile docked {
         output eDP-1 disable
-        output DP-4 enable
-}
-
-profile docked2 {
-        output eDP-1 disable
-        output DP-3 enable
+        output "Samsung Electric Company LC34G55T HNTW400421" enable
 }
