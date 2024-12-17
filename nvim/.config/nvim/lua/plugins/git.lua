@@ -90,14 +90,14 @@ return {
     end,
   },
   {
-    -- gw - open the workflow file below the cursor on GitHub
+    -- gp - open the workflow file below the cursor on GitHub
     -- gr - open the workflow run below the cursor on GitHub
     -- gj - open the job of the workflow run below the cursor on GitHub
     -- d - dispatch a new run for the workflow below the cursor on GitHub
-    'topaxi/gh-actions.nvim',
+    'topaxi/pipeline.nvim',
     config = true,
     keys = {
-      { '<leader>ga', '<cmd>GhActions<cr>', desc = 'Open Github [A]ctions' },
+      { '<leader>ga', '<cmd>Pipeline<cr>', desc = 'Open Github [A]ctions' },
     },
   },
 }
