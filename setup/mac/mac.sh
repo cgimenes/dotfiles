@@ -15,6 +15,7 @@ stow bat
 stow btop
 stow emacs
 stow git
+stow kitty
 stow lazygit
 stow nvim
 stow rg
