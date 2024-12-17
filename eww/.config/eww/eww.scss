@@ -1,70 +1,94 @@
 $foreground: #dcd7ba;
 $background: #1f1f28;
-$red: #C34043;
 $green: #98BB6C;
 $blue: #7E9CD8;
 $cyan: #7FB4CA;
-$orange: #FFA066;
+$purple: #957fb8;
 
 * {
   all: unset; // Unsets everything so you can style everything from scratch
 }
 
 window {
-  background: $background;
+  font-family: 'Iosevka Term', 'tabler-icons';
+  font-size: 13pt;
+  color: $foreground;
 }
 
 .bar {
-  font-family: "Iosevka Term";
-  font-size: 14px;
-  color: $foreground;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  margin-left: 10px;
+}
+
+.start-modules {
+  background: #16161d;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.center-modules, .end-modules {
+  background: $background;
   padding-left: 10px;
   padding-right: 10px;
 }
 
-.metric scale trough {
-  all: unset;
-  background-color: #4e4e4e;
-
-  border-radius: 50px;
-  min-height: 3px;
-  min-width: 50px;
-  margin-left: 10px;
-
-  highlight {
-    all: unset;
-    background-color: #D35D6E;
-    color: #000000;
-    border-radius: 10px;
-  }
-}
-
-.label-ram {
-  font-size: large;
+.end-modules {
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .workspaces {
+  font-size: 18pt;
+  padding-top: 20px;
+  padding-bottom: 10px;
+
   .workspace-entry {
-    margin-right: 8px;
-    font-size: 18px;
-
-    .urgent {
-      color: $red;
-    }
-
-    .empty {
-      color: #4e4e4e;
-    }
-
-    .occupied {
-      color: $foreground;
-    }
+    padding-top: 10px;
+    padding-bottom: 10px;
 
     .focused {
-      color: $orange;
-      font-weight: bold;
+      color: $blue;
     }
+
+    .urgent {
+      color: #e6c384;
+    }
+  }
+}
+
+.icon {
+  font-size: 18pt;
+}
+
+.iconed-value {
+  margin-bottom: 10px;
+
+  .icon {
+    margin-bottom: 5px;
+  }
+}
+
+.date {
+  .icon {
+    color: $purple;
+  }
+}
+
+.time {
+  .icon {
+    color: $cyan;
+  }
+}
+
+.battery {
+  .icon {
+    color: $green;
+  }
+}
+
+.volume {
+  .icon {
+    color: #c0a36e;
   }
 }
