@@ -1,7 +1,7 @@
 output eDP-1 scale 1
 output "Samsung Electric Company LC34G55T HNTW400421" scale 1
 
-profile default {
+profile undocked {
         output eDP-1 enable
 }
 
