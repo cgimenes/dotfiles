@@ -145,23 +145,15 @@ return {
         },
       }
 
-      local diagnostic_config = {
-        signs = true,
-        virtual_text = false,
-        update_in_insert = false,
+      vim.diagnostic.config({
         underline = false,
         severity_sort = true,
         float = {
           focusable = true,
-          style = 'minimal',
           border = 'rounded',
-          source = 'always',
           header = '',
-          prefix = '',
         },
-      }
-
-      vim.diagnostic.config(diagnostic_config)
+      })
 
       local signs = {
         { name = 'DiagnosticSignError', text = '' },
