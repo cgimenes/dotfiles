@@ -2,6 +2,7 @@
 bindkey -e
 
 # Better history
+export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 setopt INC_APPEND_HISTORY # History file is updated immediately after a command is entered
 setopt SHARE_HISTORY      # Allows multiple Zsh sessions to share the same command history
 setopt APPENDHISTORY      # Ensures that each command entered in the current session is appended to the history file immediately after execution

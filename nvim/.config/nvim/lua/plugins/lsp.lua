@@ -34,7 +34,7 @@ return {
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+            local highlight_augroup = vim.api.nvim_create_augroup('highlight-references', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
               group = highlight_augroup,
@@ -51,29 +51,12 @@ return {
               group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
               callback = function(event)
                 vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event.buf }
+                vim.api.nvim_clear_autocmds { group = 'highlight-references', buffer = event.buf }
               end,
             })
           end
-
-          -- The following code creates a keymap to toggle inlay hints in your
-          -- code, if the language server you are using supports them
-          --
-          -- This may be unwanted, since they displace some of your code
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-            map('<leader>oH', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-            end, 'Toggle Inlay [H]ints')
-          end
         end,
       })
-
-      -- LSP servers and clients are able to communicate to each other what features they support.
-      --  By default, Neovim doesn't support everything that is in the LSP Specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local servers = {
         cssls = {},
@@ -125,13 +108,17 @@ return {
         'sqlfmt',
         'stylua',
       })
-
       if vim.fn.executable 'composer' == 1 then
         vim.list_extend(ensure_installed, { 'pint' })
       end
-
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      -- LSP servers and clients are able to communicate to each other what features they support.
+      --  By default, Neovim doesn't support everything that is in the LSP Specification.
+      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
+      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
@@ -145,23 +132,18 @@ return {
         },
       }
 
-      local diagnostic_config = {
-        signs = true,
-        virtual_text = false,
-        update_in_insert = false,
+      vim.diagnostic.config {
         underline = false,
         severity_sort = true,
         float = {
           focusable = true,
-          style = 'minimal',
           border = 'rounded',
-          source = 'always',
           header = '',
-          prefix = '',
         },
       }
-
-      vim.diagnostic.config(diagnostic_config)
+      vim.keymap.set('n', '<leader>od', function()
+        vim.diagnostic.config { virtual_text = not vim.diagnostic.config().virtual_text }
+      end, { desc = 'Toggle [D]iagnostic virtual text' })
 
       local signs = {
         { name = 'DiagnosticSignError', text = '' },
@@ -169,7 +151,6 @@ return {
         { name = 'DiagnosticSignHint', text = '󰌶' },
         { name = 'DiagnosticSignInfo', text = '' },
       }
-
       for _, sign in ipairs(signs) do
         vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
       end

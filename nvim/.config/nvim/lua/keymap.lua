@@ -74,6 +74,7 @@ end, { desc = '[R]eplace using :cdo' })
 
 -- Execute code
 vim.keymap.set('n', '<leader>cl', '<cmd>.lua<CR>', { desc = 'Execute the current line' })
+vim.keymap.set('v', '<leader>cv', ':.lua<CR>', { desc = 'Execute the current selection' })
 vim.keymap.set('n', '<leader>cf', '<cmd>source %<CR>', { desc = 'Execute the current file' })
 
 -- Toggle relative numbers
