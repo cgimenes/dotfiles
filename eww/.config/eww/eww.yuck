@@ -10,21 +10,18 @@
 
 (defwidget start []
   (box :orientation "v" :space-evenly false :class "start-modules"
-    (workspaces)
-    (sink)))
+    (workspaces)))
 
 (defwidget center []
   (box :orientation "v" :space-evenly false :class "center-modules"
+    (sink)
     (music)))
 
 (defwidget end []
-  (box :orientation "v" :space-evenly false :class "end-modules"
+  (box :orientation "v" :space-evenly false :class "end-modules" :spacing 10
     ;(metric :label "Backlight"
             ;:value backlight
             ;:onchange "xbacklight -set {}")
-    ;(metric :label "Volume"
-            ;:value volume
-            ;:onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%")
     ;(metric :label "RAM"
             ;:value {EWW_RAM.used_mem_perc}
             ;:onchange "")
@@ -50,6 +47,7 @@
 (defwidget workspaces []
   (box :class "workspaces"
        :orientation "v"
+       :spacing 10
     (for workspace in workspaces
       (eventbox :onclick "scripts/focus-workspace.sh ${workspace.id}"
         (box :class "workspace-entry"
@@ -63,7 +61,8 @@
           :onrightclick "playerctl next"
     {music}))
 
-(deflisten sink "scripts/aliks get")
+(defpoll sink :interval "10s"
+  "scripts/aliks get")
 (defwidget sink []
   (button :onclick "scripts/aliks toggle"
           :onmiddleclick "scripts/aliks reset"
