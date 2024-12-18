@@ -12,6 +12,10 @@ gui:
       - "#2d4f67"
     defaultFgColor:
       - "#dcd7ba"
+  nerdFontsVersion: "3"
+keybinding:
+  universal:
+    filteringMenu: <disabled>
 
   # cyberdream
   # theme:
