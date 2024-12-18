@@ -14,6 +14,7 @@ paru -S --noconfirm mise-bin
 paru -S --noconfirm lazydocker
 paru -S --noconfirm eww
 paru -S --noconfirm ttf-tabler-icons
+paru -S --noconfirm yaak
 
 rm -rf .config/autostart/**
 
