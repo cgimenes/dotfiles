@@ -132,7 +132,7 @@ return {
         },
       }
 
-      vim.diagnostic.config({
+      vim.diagnostic.config {
         underline = false,
         severity_sort = true,
         float = {
@@ -140,7 +140,10 @@ return {
           border = 'rounded',
           header = '',
         },
-      })
+      }
+      vim.keymap.set('n', '<leader>od', function()
+        vim.diagnostic.config { virtual_text = not vim.diagnostic.config().virtual_text }
+      end, { desc = 'Toggle [D]iagnostic virtual text' })
 
       local signs = {
         { name = 'DiagnosticSignError', text = '' },
