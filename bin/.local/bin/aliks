@@ -54,13 +54,20 @@ class Aliks:
         self._provider = PipeWireProvider()
 
     def get(self):
+        if self._provider.default_sink() in self._aliases:
+            print(self._aliases[self._provider.default_sink()])
+            return
+
         sink = next(s for s in self._provider.list_sinks() if s['name'] == self._provider.default_sink())
         port = ''
         if len(sink['ports']) > 1:
             port = ': ' + next(p['description'] for p in sink['ports'] if p['name'] == sink['active_port'])
         print(sink['properties']['device.description'] + port)
 
-    def list(self):
+    def list(self, print_json=False):
+        if print_json:
+            print(json.dumps([self._aliases.get(sink['name'], sink['name']) for sink in self._provider.list_sinks()]))
+            return
         for sink in self._provider.list_sinks():
             sink_name = sink['name']
             alias = self._aliases.get(sink_name, sink_name)
@@ -110,7 +117,8 @@ def main():
     subparsers.add_parser('get', help="Prints the default sink alias")
 
     # 'list' command
-    subparsers.add_parser('list', help="List alias of available sinks")
+    list_parser = subparsers.add_parser('list', help="List alias of available sinks")
+    list_parser.add_argument('--json', action='store_true', help="List sinks in JSON format")
 
     # 'set' command
     set_parser = subparsers.add_parser('set', help="Set the default sink by alias")
@@ -133,7 +141,7 @@ def main():
     if args.command == 'get':
         aliks.get()
     elif args.command == 'list':
-        aliks.list()
+        aliks.list(print_json=args.json)
     elif args.command == 'set':
         aliks.set(args.sink)
     elif args.command == 'setup':

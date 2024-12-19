@@ -9,16 +9,16 @@
     (end)))
 
 (defwidget start []
-  (box :orientation "v" :space-evenly false :class "start-modules"
-    (workspaces)))
-
-(defwidget center []
-  (box :orientation "v" :space-evenly false :class "center-modules"
-    (sink)
+  (box :orientation "v" :space-evenly false :class "start-modules" :spacing 10
+    (workspaces)
     (music)))
 
+(defwidget center []
+  (box :orientation "v" :space-evenly false :class "center-modules" :spacing 10))
+    
+
 (defwidget end []
-  (box :orientation "v" :space-evenly false :class "end-modules" :spacing 10
+  (box :orientation "v" :space-evenly false :class "end-modules" :spacing 12
     ;(metric :label "Backlight"
             ;:value backlight
             ;:onchange "xbacklight -set {}")
@@ -28,17 +28,16 @@
     ;(metric :label "CPU"
             ;:value {EWW_CPU.avg}
             ;:onchange "")
-    (iconed-value :class "volume" :icon "" :value volume)
-    (iconed-value :class "battery" :icon "" :value battery)
     ;(systray :orientation "v" :prepend-new true :icon-size 20)
+    (volume)
+    (iconed-value :class "battery" :icon "７" :value battery)
     (iconed-value :class "date" :icon "" :value date)
-    (iconed-value :class "time" :icon "" :value time)
-    ))
+    (iconed-value :class "time" :icon "" :value time)))
 
 (defwidget iconed-value [class icon value]
-  (box :orientation "v" :space-evenly false :class "iconed-value ${class}"
+  (box :orientation "v" :space-evenly false :class "iconed-value ${class}" :hexpand true
     (icon :icon icon)
-    (label :text value :show-truncated false)))
+    (label :text value :show-truncated false :justify "center")))
 
 (defwidget icon [icon]
   (label :class "icon" :text icon :show-truncated false))
@@ -53,21 +52,67 @@
         (box :class "workspace-entry"
           (label :text "${workspace.name}" :class "${workspace.state}"))))))
 
-(deflisten music :initial ""
-  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+(deflisten song_name :initial ""
+  "playerctl --follow metadata title")
+(deflisten song_artist :initial ""
+  "playerctl --follow metadata artist")
+(deflisten song_status :initial ""
+  "playerctl --follow status")
+(deflisten song_position :initial ""
+  "playerctl --follow metadata --format '{{position / mpris:length * 100}}'")
+(defpoll cover_art :interval "2s"  "scripts/cover-art.sh")
 (defwidget music []
-  (button :onclick "playerctl play-pause"
-          :onmiddleclick "playerctl previous"
-          :onrightclick "playerctl next"
-    {music}))
+  (button :onclick "scripts/toggle-win.sh music_win" :visible "${song_name != ''}"
+    (label :class "music-icon" :text "" :show-truncated false)))
+(defwidget music_pop []
+  (box :class "popup"
+    (box :class "music_cover_art" :style "background-image: url('${cover_art}');")
+    (box :orientation "v" :spacing 20 :space-evenly "false"
+      (label :halign "center" :class "music" :wrap "true" :limit-width 17 :text song_name)
+      (label :halign "center" :class "music_artist" :wrap "true" :limit-width 17 :text song_artist)
+      (box :spacing 15 :halign "center" :space-evenly "false"
+        (button :class "music_btn_prev" :onclick "playerctl previous" "")
+        (button :class "music_btn_play" :onclick "playerctl play-pause" "${song_status == 'Playing' ? '' : ''}")
+        (button :class "music_btn_next" :onclick "playerctl next" ""))
+      (box :class "music_bar" :halign "center":space-evenly "false"
+        (scale :onchange "playerctl position $(playerctl metadata --format '{{mpris:length*{}/100/1000000}}')" :min 0 :max 100 :value song_position)))))
+(defwindow music_win
+  :stacking "fg"
+  :focusable "false"
+  :monitor 0
+  :geometry (geometry :x "10px" :y "40%" :width 428 :height 104 :anchor "left top")
+  (music_pop))
 
-(defpoll sink :interval "10s"
-  "scripts/aliks get")
-(defwidget sink []
-  (button :onclick "scripts/aliks toggle"
-          :onmiddleclick "scripts/aliks reset"
-          :onrightclick "scripts/aliks toggle --reverse"
-    {sink}))
+(defpoll volume :interval "1s"
+  "pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}'")
+(defpoll mute :interval "1s"
+  "pactl get-sink-mute @DEFAULT_SINK@")
+(defwidget volume []
+  (eventbox :onscroll "scripts/volume.sh {}"
+    (box :orientation "v" :space-evenly false :hexpand true
+      (button :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+              :onrightclick "scripts/toggle-win.sh sink_win"
+              :onmiddleclick "aliks reset"
+        (iconed-value :class "volume" :icon "${mute == 'Mute: yes' ? '' : ''}" :value volume)))))
+
+(defpoll default_sink :interval "2s"
+  "aliks get")
+(defpoll sinks :interval "2s" :initial "[]"
+  "aliks list --json")
+(defwidget sink_pop []
+  (box :class "popup"
+    (box :orientation "v" :spacing 20 :space-evenly "false"
+      (label :text default_sink :visible false) ; workaround for eww bug
+      (for sink in sinks
+        (button :class "sink ${sink == default_sink ? 'selected' : ''}"
+                :onclick "aliks set ${sink}; ${EWW_CMD} close sink_win"
+          (label :text sink))))))
+(defwindow sink_win
+  :stacking "fg"
+  :focusable "false"
+  :monitor 0
+  :geometry (geometry :x "10px" :y "45%" :width 428 :anchor "left top")
+  (sink_pop))
 
 (defpoll date :interval "60s"
   "date '+%a\\n%d'")
@@ -77,8 +122,6 @@
 
 (defpoll battery :interval "30s"
   "cat /sys/class/power_supply/BAT?/capacity")
-
-(defpoll volume :interval "1s" "pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}'")
 
 (defpoll backlight :interval "1s"
   "xbacklight -get")
