@@ -104,7 +104,7 @@
       (label :text default_sink :visible false) ; workaround for eww bug
       (for sink in sinks
         (button :class "sink ${sink == default_sink ? 'selected' : ''}"
-                :onclick "aliks set ${sink}; ${EWW_CMD} close sink_win"
+                :onclick "aliks set '${sink}'; ${EWW_CMD} close sink_win"
           (label :text sink))))))
 (defwindow sink_win
   :stacking "fg"
