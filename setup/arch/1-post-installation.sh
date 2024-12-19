@@ -36,6 +36,7 @@ stow polybar
 stow rg
 stow rofi
 stow starship
+stow systemd
 stow tmux
 stow wezterm
 stow yazi
