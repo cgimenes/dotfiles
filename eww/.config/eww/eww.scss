@@ -49,7 +49,6 @@ window {
   .workspace-entry {
     .focused {
       color: $blue;
-      font-weight: bold;
     }
 
     .urgent {
@@ -182,19 +181,16 @@ window {
 
 .sink {
   font-size: 14pt;
-  margin: 5px 0px 5px 0px;
-  padding: 5px;
+  padding: 10px;
   border-radius: 10px;
 }
 
 .sink:hover {
-  color: $green;
   background: #16161d;
 }
 
 .sink.selected {
   color: $blue;
-  font-weight: bold;
 }
 
 .cal {

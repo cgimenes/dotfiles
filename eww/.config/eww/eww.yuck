@@ -39,7 +39,7 @@
     (label :text value :show-truncated false :justify "center")))
 
 (defwidget icon [icon]
-  (label :class "icon" :text icon))
+  (label :class "icon" :text icon :show-truncated false))
 
 (deflisten workspaces :initial "[]" "scripts/workspaces.sh")
 (defwidget workspaces []
@@ -61,7 +61,7 @@
   "playerctl --follow metadata --format '{{position / mpris:length * 100}}'")
 (defpoll cover_art :interval "2s"  "scripts/cover-art.sh")
 (defwidget music []
-  (button :onclick "scripts/toggle-win.sh music_win" :onrightclick "playerctl next" :visible "${song_name != ''}"
+  (button :onclick "playerctl play-pause" :onmiddleclick "scripts/toggle-win.sh music_win" :onrightclick "playerctl next" :visible "${song_name != ''}"
     (label :class "music-icon" :text "" :show-truncated false)))
 (defwidget music_pop []
   (box :class "popup"
@@ -100,7 +100,7 @@
   "aliks list --json")
 (defwidget sink_pop []
   (box :class "popup"
-    (box :class "sinks" :orientation "v" :spacing 20 :space-evenly "false"
+    (box :class "sinks" :orientation "v" :spacing 5 :space-evenly "false"
       (label :text default_sink :visible false) ; workaround for eww bug
       (for sink in sinks
         (button :class "sink ${sink == default_sink ? 'selected' : ''}"
