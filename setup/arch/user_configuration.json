@@ -236,6 +236,7 @@
         "vim",
         "vulkan-intel",
         "wezterm",
+        "wl-clipboard",
         "xclip",
         "xf86-input-libinput",
         "xorg-xinput",

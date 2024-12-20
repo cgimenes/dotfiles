@@ -9,3 +9,7 @@ profile docked {
         output eDP-1 disable
         output "Samsung Electric Company LC34G55T HNTW400421" enable
 }
+
+profile fallback {
+        output "Samsung Electric Company LC34G55T HNTW400421" enable
+}
