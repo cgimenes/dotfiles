@@ -6,7 +6,7 @@ return {
       'preservim/vimux',
     },
     config = function()
-      vim.cmd "let test#strategy = 'neovim_sticky'"
+      vim.cmd "let test#strategy = 'vimux'"
       vim.cmd "let test#echo_command = 0"
       vim.g.VimuxCloseOnExit = 1
     end,
