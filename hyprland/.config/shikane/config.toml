@@ -1,33 +1,41 @@
 [[profile]]
 name = "default"
-
-[[profile.output]]
-enable = true
-search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
-mode = "1920x1080@60.008Hz"
-position = "0,0"
-scale = 1.0
-transform = "normal"
-adaptive_sync = false
+    [[profile.output]]
+    enable = true
+    search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
+    mode = "1920x1080@60.008Hz"
+    position = "0,0"
+    scale = 1.0
+    transform = "normal"
+    adaptive_sync = false
 
 [[profile]]
 name = "docked"
+    [[profile.output]]
+    enable = false
+    search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
+    mode = "1920x1080@60.008Hz"
+    position = "0,0"
+    scale = 1.0
+    transform = "normal"
+    adaptive_sync = false
+    [[profile.output]]
+    enable = true
+    search = ["m=LC34G55T", "s=HNTW400421", "v=Samsung Electric Company"]
+    mode = "3440x1440@59.973Hz"
+    position = "1920,0"
+    scale = 1.0
+    transform = "normal"
+    adaptive_sync = false
 
-[[profile.output]]
-enable = false
-search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
-mode = "1920x1080@60.008Hz"
-position = "0,0"
-scale = 1.0
-transform = "normal"
-adaptive_sync = false
-
-[[profile.output]]
-enable = true
-search = ["m=LC34G55T", "s=HNTW400421", "v=Samsung Electric Company"]
-mode = "3440x1440@59.973Hz"
-position = "1920,0"
-scale = 1.0
-transform = "normal"
-adaptive_sync = false
+[[profile]]
+name = "fallback"
+    [[profile.output]]
+    enable = true
+    search = ["m=LC34G55T", "s=HNTW400421", "v=Samsung Electric Company"]
+    mode = "3440x1440@59.973Hz"
+    position = "1920,0"
+    scale = 1.0
+    transform = "normal"
+    adaptive_sync = false
 

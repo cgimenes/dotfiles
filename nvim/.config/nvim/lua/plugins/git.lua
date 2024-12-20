@@ -23,7 +23,7 @@ return {
     config = function()
       local diffview = require 'diffview'
 
-      require('diffview').setup {
+      diffview.setup {
         keymaps = {
           file_history_panel = {
             { 'n', 'gq', diffview.close, { desc = 'Close' } },
