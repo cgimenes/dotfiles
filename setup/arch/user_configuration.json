@@ -153,6 +153,7 @@
         "dbeaver",
         "distrobox",
         "docker",
+        "docker-buildx",
         "docker-compose",
         "dunst",
         "emacs",
