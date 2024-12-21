@@ -6,6 +6,14 @@ run = 'hidden toggle'
 on  = [ "g", "m" ]
 run = 'cd /run/media/'
 
+[[manager.append_keymap]]
+on  = [ "g", "s" ]
+run = 'cd ~/dev/src/'
+
+[[manager.append_keymap]]
+on  = [ "g", "t" ]
+run = 'cd ~/Downloads/Torrents/'
+
 [[manager.prepend_keymap]]
 on  = [ "-" ]
 run = 'leave'
