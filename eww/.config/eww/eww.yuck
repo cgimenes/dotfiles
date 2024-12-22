@@ -27,7 +27,7 @@
     ;(metric :label "CPU"
             ;:value {EWW_CPU.avg}
             ;:onchange "")
-    ;(systray :orientation "v" :prepend-new true :icon-size 20)
+    (systray :orientation "v" :prepend-new true :icon-size 24 :spacing 12)
     (volume)
     (iconed-value :class "battery" :icon "７" :value battery)
     (date)
