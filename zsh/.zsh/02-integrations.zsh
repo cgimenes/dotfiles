@@ -23,4 +23,5 @@ fi
 
 if [ -d "$HOME/dev/google-cloud-sdk/" ]; then
 	export PATH=$PATH:$HOME/dev/google-cloud-sdk/bin
+	source $HOME/dev/google-cloud-sdk/completion.zsh.inc
 fi
