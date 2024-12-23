@@ -4,8 +4,9 @@ alias ta='tmux list-sessions && tmux a || tmux'
 # Git
 alias gdsn='gds --name-only'
 alias lzg='lazygit'
-alias gg='ghq get -p'
-alias ggs='ghq get -p --shallow'
+alias ggp='ghq get -p'
+alias ggps='ghq get -p --shallow'
+alias ggs='ghq get --shallow'
 
 # Vim/Nvim
 alias vim='nvim'
