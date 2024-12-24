@@ -1,6 +1,6 @@
 [[profile]]
 name = "default"
-exec = ["eww open bar"]
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\"", "eww open bar"]
     [[profile.output]]
     enable = true
     search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
@@ -12,7 +12,7 @@ exec = ["eww open bar"]
 
 [[profile]]
 name = "docked"
-exec = ["eww open bar"]
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\"", "eww open bar"]
     [[profile.output]]
     enable = false
     search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
@@ -27,7 +27,7 @@ exec = ["eww open bar"]
 
 [[profile]]
 name = "fallback"
-exec = ["eww open bar"]
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\"", "eww open bar"]
     [[profile.output]]
     enable = true
     search = ["m=LC34G55T", "s=HNTW400421", "v=Samsung Electric Company"]
@@ -39,7 +39,7 @@ exec = ["eww open bar"]
 
 [[profile]]
 name = "both"
-exec = ["eww open bar"]
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\"", "eww open bar"]
     [[profile.output]]
     enable = true
     search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
