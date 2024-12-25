@@ -12,3 +12,8 @@ setopt EXTENDED_HISTORY   # Write the history file in the ':start:elapsed;comman
 HISTFILE=~/.zsh_history
 HISTSIZE=5000000
 SAVEHIST=$HISTSIZE
+
+# Makes the delete key work
+typeset -g -A key
+key[Delete]="${terminfo[kdch1]}"
+[[ -n "${key[Delete]}"    ]] && bindkey -- "${key[Delete]}"     delete-char
