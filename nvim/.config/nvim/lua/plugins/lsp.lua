@@ -59,6 +59,7 @@ return {
       })
 
       local servers = {
+        astro = {},
         cssls = {},
         clangd = {},
         pyright = {},
