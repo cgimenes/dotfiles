@@ -24,9 +24,9 @@ return {
         default = { 'lsp', 'path', 'luasnip', 'buffer', 'dadbod', 'lazydev' },
         providers = {
           -- dont show LuaLS require statements when lazydev has items
-          lsp = { fallback_for = { "lazydev" } },
-          lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
-          dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+          lsp = { fallback_for = { 'lazydev' } },
+          lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink' },
+          dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
         },
       },
       signature = {
@@ -34,6 +34,17 @@ return {
       },
       appearance = {
         use_nvim_cmp_as_default = true,
+      },
+      completion = {
+        menu = {
+          draw = {
+            components = {
+              label_description = {
+                width = { max = 120 },
+              },
+            },
+          },
+        },
       },
     },
   },
