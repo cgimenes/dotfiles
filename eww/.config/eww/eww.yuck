@@ -61,7 +61,7 @@
   "playerctl --follow metadata --format '{{position / mpris:length * 100}}'")
 (defpoll cover_art :interval "2s"  "scripts/cover-art.sh")
 (defwidget music []
-  (button :onclick "playerctl -p spotify play-pause" :onmiddleclick "scripts/toggle-win.sh music_win" :onrightclick "playerctl -p spotify next" :visible "${song_name != ''}"
+  (button :onclick "playerctl -p spotify,%any play-pause" :onmiddleclick "scripts/toggle-win.sh music_win" :onrightclick "playerctl -p spotify,%any next" :visible "${song_name != ''}"
     (label :class "music-icon" :text "" :show-truncated false)))
 (defwidget music_pop []
   (box :class "popup"
@@ -70,11 +70,11 @@
       (label :halign "center" :class "music" :wrap "true" :limit-width 17 :text song_name)
       (label :halign "center" :class "music_artist" :wrap "true" :limit-width 17 :text song_artist)
       (box :spacing 15 :halign "center" :space-evenly "false"
-        (button :class "music_btn_prev" :onclick "playerctl previous" "")
-        (button :class "music_btn_play" :onclick "playerctl play-pause" "${song_status == 'Playing' ? '' : ''}")
-        (button :class "music_btn_next" :onclick "playerctl next" ""))
+        (button :class "music_btn_prev" :onclick "playerctl -p spotify,%any previous" "")
+        (button :class "music_btn_play" :onclick "playerctl -p spotify,%any play-pause" "${song_status == 'Playing' ? '' : ''}")
+        (button :class "music_btn_next" :onclick "playerctl -p spotify,%any next" ""))
       (box :class "music_bar" :halign "center":space-evenly "false"
-        (scale :onchange "playerctl position $(playerctl metadata --format '{{mpris:length*{}/100/1000000}}')" :min 0 :max 100 :value song_position)))))
+        (scale :onchange "playerctl -p spotify,%any position $(playerctl -p spotify,%any metadata --format '{{mpris:length*{}/100/1000000}}')" :min 0 :max 100 :value song_position)))))
 (defwindow music_win
   :stacking "fg"
   :focusable "false"
