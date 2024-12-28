@@ -61,7 +61,7 @@
   "playerctl --follow metadata --format '{{position / mpris:length * 100}}'")
 (defpoll cover_art :interval "2s"  "scripts/cover-art.sh")
 (defwidget music []
-  (button :onclick "playerctl play-pause" :onmiddleclick "scripts/toggle-win.sh music_win" :onrightclick "playerctl next" :visible "${song_name != ''}"
+  (button :onclick "playerctl -p spotify play-pause" :onmiddleclick "scripts/toggle-win.sh music_win" :onrightclick "playerctl -p spotify next" :visible "${song_name != ''}"
     (label :class "music-icon" :text "" :show-truncated false)))
 (defwidget music_pop []
   (box :class "popup"
