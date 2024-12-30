@@ -1,0 +1,9 @@
+(deflisten workspaces :initial "[]" "scripts/workspaces.sh")
+(defwidget workspaces []
+  (box :class "workspaces"
+       :orientation "v"
+       :spacing 10
+    (for workspace in workspaces
+      (eventbox :onclick "scripts/focus-workspace.sh ${workspace.id}"
+        (box :class "workspace-entry"
+          (label :text "${workspace.name}" :class "${workspace.state}"))))))

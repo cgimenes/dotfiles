@@ -1,0 +1,39 @@
+(deflisten song_name :initial ""
+  "playerctl --follow metadata title")
+(deflisten song_artist :initial ""
+  "playerctl --follow metadata artist")
+(deflisten song_status :initial ""
+  "playerctl --follow status")
+(deflisten song_position :initial ""
+  "playerctl --follow metadata --format '{{position / mpris:length * 100}}'")
+(defpoll cover_art :interval "2s"  "scripts/cover-art.sh")
+(defwidget music []
+  (button :onclick "playerctl -p spotify,%any play-pause" :onmiddleclick "scripts/toggle-win.sh music_win" :onrightclick "playerctl -p spotify,%any next" :visible "${song_name != ''}"
+    (label :class "music-icon" :text "" :show-truncated false)))
+(defwidget music_pop []
+  (box :class "popup"
+    (box :class "music_cover_art" :style "background-image: url('${cover_art}');")
+    (box :orientation "v" :spacing 20 :space-evenly "false"
+      (label :halign "center" :class "music" :wrap "true" :limit-width 17 :text song_name)
+      (label :halign "center" :class "music_artist" :wrap "true" :limit-width 17 :text song_artist)
+      (box :spacing 15 :halign "center" :space-evenly "false"
+        (button :class "music_btn_prev" :onclick "playerctl -p spotify,%any previous" "")
+        (button :class "music_btn_play" :onclick "playerctl -p spotify,%any play-pause" "${song_status == 'Playing' ? '' : ''}")
+        (button :class "music_btn_next" :onclick "playerctl -p spotify,%any next" ""))
+      (box :class "music_bar" :halign "center":space-evenly "false"
+        (scale :onchange "playerctl -p spotify,%any position $(playerctl -p spotify,%any metadata --format '{{mpris:length*{}/100/1000000}}')" :min 0 :max 100 :value song_position)))))
+(defwindow music_win
+  :stacking "fg"
+  :focusable "false"
+  :monitor 0
+  :geometry (geometry :x "10px" :y "40%" :width 428 :height 104 :anchor "left top")
+  (music_pop))
+
+(defwidget closer [window]
+  (eventbox :onclick "eww close ${window} && eww close ${window}_closer"))
+(defwindow music_win_closer
+  :monitor 0
+  :geometry (geometry :width "100%" :height "100%")
+  :stacking "fg"
+  :focusable false
+  (closer :window "music_win"))

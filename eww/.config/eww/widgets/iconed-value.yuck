@@ -1,0 +1,7 @@
+(defwidget iconed-value [class icon value]
+  (box :orientation "v" :space-evenly false :class "iconed-value ${class}" :hexpand true
+    (icon :icon icon)
+    (label :text value :show-truncated false :justify "center")))
+
+(defwidget icon [icon]
+  (label :class "icon" :text icon :show-truncated false))

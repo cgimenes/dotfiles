@@ -1,13 +1,3 @@
-(defwindow bar
-  :monitor 0
-  :geometry (geometry :x "0%" :y "0%" :anchor "left center")
-  :reserve (struts :side "left" :distance "4%")
-  :exclusive true
-  (centerbox :orientation "v"
-    (start)
-    (center)
-    (end)))
-
 (defwidget start []
   (box :orientation "v" :space-evenly false :class "start-modules" :spacing 12
     (workspaces)
@@ -33,105 +23,24 @@
     (date)
     (iconed-value :class "time" :icon "" :value time)))
 
-(defwidget iconed-value [class icon value]
-  (box :orientation "v" :space-evenly false :class "iconed-value ${class}" :hexpand true
-    (icon :icon icon)
-    (label :text value :show-truncated false :justify "center")))
-
-(defwidget icon [icon]
-  (label :class "icon" :text icon :show-truncated false))
-
-(deflisten workspaces :initial "[]" "scripts/workspaces.sh")
-(defwidget workspaces []
-  (box :class "workspaces"
-       :orientation "v"
-       :spacing 10
-    (for workspace in workspaces
-      (eventbox :onclick "scripts/focus-workspace.sh ${workspace.id}"
-        (box :class "workspace-entry"
-          (label :text "${workspace.name}" :class "${workspace.state}"))))))
-
-(deflisten song_name :initial ""
-  "playerctl --follow metadata title")
-(deflisten song_artist :initial ""
-  "playerctl --follow metadata artist")
-(deflisten song_status :initial ""
-  "playerctl --follow status")
-(deflisten song_position :initial ""
-  "playerctl --follow metadata --format '{{position / mpris:length * 100}}'")
-(defpoll cover_art :interval "2s"  "scripts/cover-art.sh")
-(defwidget music []
-  (button :onclick "playerctl -p spotify,%any play-pause" :onmiddleclick "scripts/toggle-win.sh music_win" :onrightclick "playerctl -p spotify,%any next" :visible "${song_name != ''}"
-    (label :class "music-icon" :text "" :show-truncated false)))
-(defwidget music_pop []
-  (box :class "popup"
-    (box :class "music_cover_art" :style "background-image: url('${cover_art}');")
-    (box :orientation "v" :spacing 20 :space-evenly "false"
-      (label :halign "center" :class "music" :wrap "true" :limit-width 17 :text song_name)
-      (label :halign "center" :class "music_artist" :wrap "true" :limit-width 17 :text song_artist)
-      (box :spacing 15 :halign "center" :space-evenly "false"
-        (button :class "music_btn_prev" :onclick "playerctl -p spotify,%any previous" "")
-        (button :class "music_btn_play" :onclick "playerctl -p spotify,%any play-pause" "${song_status == 'Playing' ? '' : ''}")
-        (button :class "music_btn_next" :onclick "playerctl -p spotify,%any next" ""))
-      (box :class "music_bar" :halign "center":space-evenly "false"
-        (scale :onchange "playerctl -p spotify,%any position $(playerctl -p spotify,%any metadata --format '{{mpris:length*{}/100/1000000}}')" :min 0 :max 100 :value song_position)))))
-(defwindow music_win
-  :stacking "fg"
-  :focusable "false"
+(defwindow bar
   :monitor 0
-  :geometry (geometry :x "10px" :y "40%" :width 428 :height 104 :anchor "left top")
-  (music_pop))
+  :geometry (geometry :x "0%" :y "0%" :anchor "left center")
+  :reserve (struts :side "left" :distance "4%")
+  :exclusive true
+  (centerbox :orientation "v"
+    (start)
+    (center)
+    (end)))
 
-(defpoll volume :interval "1s"
-  "pactl get-sink-volume @DEFAULT_SINK@ | head -n 1| awk '{print substr($5, 1, length($5)-1)}'")
-(defpoll mute :interval "1s"
-  "pactl get-sink-mute @DEFAULT_SINK@")
-(defwidget volume []
-  (eventbox :onscroll "scripts/volume.sh {}"
-    (box :orientation "v" :space-evenly false :hexpand true
-      (button :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-              :onrightclick "scripts/toggle-win.sh sink_win"
-              :onmiddleclick "aliks reset"
-        (iconed-value :class "volume" :icon "${mute == 'Mute: yes' ? '' : ''}" :value volume)))))
-
-(defpoll default_sink :interval "2s"
-  "aliks get")
-(defpoll sinks :interval "2s" :initial "[]"
-  "aliks list --json")
-(defwidget sink_pop []
-  (box :class "popup"
-    (box :class "sinks" :orientation "v" :spacing 5 :space-evenly "false"
-      (label :text default_sink :visible false) ; workaround for eww bug
-      (for sink in sinks
-        (button :class "sink ${sink == default_sink ? 'selected' : ''}"
-                :onclick "aliks set '${sink}'; ${EWW_CMD} close sink_win"
-          (label :text sink))))))
-(defwindow sink_win
-  :stacking "fg"
-  :focusable "false"
-  :monitor 0
-  :geometry (geometry :x "10px" :y "45%" :width 300 :anchor "left top")
-  (sink_pop))
-
-(defpoll date :interval "60s"
-  "date '+%a\\n%d'")
-(defwidget date []
-  (button :onclick "scripts/toggle-win.sh calendar_win"
-    (iconed-value :class "date" :icon "" :value date)))
-
-(defpoll time :interval "10s"
-  "date '+%H\\n%M'")
+(include "widgets/workspaces.yuck")
+(include "widgets/iconed-value.yuck")
+(include "widgets/music.yuck")
+(include "widgets/datetime.yuck")
+(include "widgets/volume.yuck")
 
 (defpoll battery :interval "30s"
   "cat /sys/class/power_supply/BAT?/capacity")
 
-(defpoll backlight :interval "1s"
-  "xbacklight -get")
-
-(defpoll calendar_day :interval "20h" "date '+%d'")
-(defpoll calendar_year :interval "20h" "date '+%Y'")
-(defwidget cal []
-  (calendar :class "cal" :day calendar_day :year calendar_year :show-week-numbers true))
-(defwindow calendar_win :monitor 0
-  :geometry (geometry :x "10px" :y "50%" :anchor "left top" :width "270px" :height "60px")
-  (cal))
+;(defpoll backlight :interval "1s"
+;  "xbacklight -get")
