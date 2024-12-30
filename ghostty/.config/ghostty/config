@@ -2,11 +2,12 @@ theme = "Kanagawa Wave"
 background-opacity = 0.92
 
 font-family = "Iosevka Term"
-font-size = 18
+font-size = 14
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
 
 confirm-close-surface = false
+window-decoration = false
 
-config-file = ?macos
+config-file = ?custom
