@@ -8,7 +8,7 @@ font-feature = -liga
 font-feature = -dlig
 
 confirm-close-surface = false
-window-decoration = false
+gtk-titlebar = false
 gtk-single-instance = true
 quit-after-last-window-closed = true
 window-padding-balance = true
