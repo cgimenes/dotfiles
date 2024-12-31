@@ -15,4 +15,6 @@ window-padding-balance = true
 window-padding-x = 0
 window-padding-y = 0
 
+macos-option-as-alt = true
+
 config-file = ?custom
