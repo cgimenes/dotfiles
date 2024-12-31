@@ -23,6 +23,7 @@ stow bspwm
 stow btop
 stow dunst
 stow emacs
+stow fonts
 stow git
 stow gsimplecal
 stow hyprland
@@ -39,5 +40,6 @@ stow starship
 stow systemd
 stow tmux
 stow wezterm
+stow xorg
 stow yazi
 stow zsh
