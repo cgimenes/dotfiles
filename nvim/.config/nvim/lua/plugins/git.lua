@@ -6,7 +6,7 @@ return {
       { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List [G]it [C]onflicts' },
       { '<leader>gd', '<cmd>Gvdiff<cr>', desc = '[G]it [D]iff' },
       { '<leader>gB', ':GBrowse<cr>', desc = '[G]it [B]rowse', mode = { 'n', 'v' } },
-      { '<leader>gg', '<cmd>vert G<cr>', desc = '[G]it Status' },
+      { '<leader>gG', '<cmd>vert G<cr>', desc = '[G]it Status' },
     },
     dependencies = {
       'tpope/vim-rhubarb',
@@ -98,6 +98,15 @@ return {
     config = true,
     keys = {
       { '<leader>ga', '<cmd>Pipeline<cr>', desc = 'Open Github [A]ctions' },
+    },
+  },
+  {
+    'kdheepak/lazygit.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- optional for floating window border decoration
+    },
+    keys = {
+      { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
     },
   },
 }
