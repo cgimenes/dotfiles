@@ -18,10 +18,10 @@ URxvt.depth: 32
 URxvt.scrollBar: false
 
 ! Fonts
-URxvt*font: xft:Terminus:pixelsize=14:style=Regular
-URxvt.boldFont: xft:Terminus:pixelsize=14:style=Regular
-URxvt.italicFont: xft:Terminus:pixelsize=14:Italic
-URxvt.boldItalicFont: xft:Terminus:pixelsize=14:Bold:Italic
+URxvt*font: xft:Iosevka Term:pixelsize=14:style=Regular
+URxvt.boldFont: xft:Iosevka Term:pixelsize=14:style=Regular
+URxvt.italicFont: xft:Iosevka Term:pixelsize=14:Italic
+URxvt.boldItalicFont: xft:Iosevka Term:pixelsize=14:Bold:Italic
 
 ! Fix font space (before Terminus it was -1)
 URxvt*letterSpace: 0
@@ -48,31 +48,30 @@ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 URxvt.iso14755: False
 
 ! colors
-! kanagawa .Xresources file
-*background: #1F1F28
-*foreground: #DCD7BA
+*.foreground:   #dcd7ba
+*.background:   #1f1f28
+*.cursorColor:  #dcd7ba
 
-*color0: #090618
-*color8: #727169
+*.color0:       #090618
+*.color8:       #727169
 
-*color1: #C34043
-*color9: #E82424
+*.color1:       #c34043
+*.color9:       #e82424
 
-*color2: #76946A
-*color10: #98BB6C
+*.color2:       #76946a
+*.color10:      #98bb6c
 
-! *color3: #FFA066
-*color3: #C0A36E
-*color11: #E6C384
+*.color3:       #c0a36e
+*.color11:      #e6c384
 
-*color4: #7E9CD8
-*color12: #7FB4CA
+*.color4:       #7e9cd8
+*.color12:      #7fb4ca
 
-*color5: #957FB8
-*color13: #938AA9
+*.color5:       #957fb8
+*.color13:      #938aa9
 
-*color6: #6A9589
-*color14: #7AA89F
+*.color6:       #6a9589
+*.color14:      #7aa89f
 
-*color7: #C8C093
-*color15: #DCD7BA
+*.color7:       #c8c093
+*.color15:      #dcd7ba
