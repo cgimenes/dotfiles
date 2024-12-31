@@ -1,0 +1,13 @@
+.workspaces {
+  font-size: 16pt;
+
+  .workspace-entry {
+    .focused {
+      color: $blue;
+    }
+
+    .urgent {
+      color: #e6c384;
+    }
+  }
+}

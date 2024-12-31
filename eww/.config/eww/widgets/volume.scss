@@ -1,0 +1,28 @@
+.sinks {
+  padding: 10px;
+}
+
+.sink {
+  font-size: 14pt;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sink:hover {
+  background: #16161d;
+}
+
+.sink.selected {
+  color: $blue;
+}
+
+.volume-config {
+  color: #d27e99;
+  font-size: 18pt;
+}
+
+.volume {
+  .icon {
+    color: #c0a36e;
+  }
+}

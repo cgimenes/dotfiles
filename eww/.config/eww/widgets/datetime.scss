@@ -1,0 +1,33 @@
+.cal {
+  background-color: $background;
+  font-size: 18px;
+  border-radius: 10px;
+  padding: 5px 5px 5px 5px;
+}
+
+.cal calendar:selected {
+  color: $green;
+  font-weight: bold;
+}
+
+calendar.header {
+  color: $purple;
+  font-weight: bold;
+}
+
+calendar.highlight {
+  color: $cyan;
+  font-weight: bold;
+}
+
+.date {
+  .icon {
+    color: $purple;
+  }
+}
+
+.time {
+  .icon {
+    color: $cyan;
+  }
+}
