@@ -9,6 +9,7 @@ font-feature = -dlig
 
 confirm-close-surface = false
 gtk-titlebar = false
+gtk-adwaita = false
 gtk-single-instance = true
 quit-after-last-window-closed = true
 window-padding-balance = true

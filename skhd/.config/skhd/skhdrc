@@ -1,1 +1,1 @@
-cmd - return : open -n "/Applications/Ghostty.app"
+cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty
