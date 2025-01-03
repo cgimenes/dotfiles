@@ -54,7 +54,7 @@ vim.keymap.set('n', '<X1Mouse>', '<C-o>')
 vim.keymap.set('n', '<X2Mouse>', '<C-i>')
 
 -- Find/replace
-vim.keymap.set('n', '<leader>rs', function()
+vim.keymap.set('n', '<leader>fs', function()
   local cword = vim.fn.expand '<cword>'
   vim.ui.input({ prompt = 'Pattern: ', default = cword }, function(pattern)
     if pattern then
@@ -64,7 +64,7 @@ vim.keymap.set('n', '<leader>rs', function()
   end)
 end, { desc = '[S]earch using :grep' })
 
-vim.keymap.set('n', '<leader>rr', function()
+vim.keymap.set('n', '<leader>fr', function()
   vim.ui.input({ prompt = 'Pattern: ', default = '\\V' }, function(pattern)
     if pattern then
       vim.cmd('cdo s/' .. pattern .. '/gc | update')

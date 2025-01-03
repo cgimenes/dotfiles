@@ -36,21 +36,9 @@ return {
     { '<leader>bl', '<cmd>FzfLua buffers<cr>', desc = '[L]ist existing buffers' },
 
     -- Files
-    { '<leader>fr', '<cmd>FzfLua oldfiles<cr>', desc = 'Search [R]ecently opened files' },
+    { '<leader>sr', '<cmd>FzfLua oldfiles<cr>', desc = '[S]earch [R]ecently opened files' },
     {
       '<leader>.',
-      function()
-        if vim.bo.filetype == 'oil' then
-          local basedir = require('oil').get_current_dir()
-          require('fzf-lua').files { cwd = basedir }
-        else
-          require('fzf-lua').files()
-        end
-      end,
-      desc = '[S]earch [F]iles',
-    },
-    {
-      '<leader>fF',
       function()
         require('fzf-lua').files()
       end,
@@ -67,12 +55,7 @@ return {
     {
       '<leader>sg',
       function()
-        if vim.bo.filetype == 'oil' then
-          local basedir = require('oil').get_current_dir()
-          require('fzf-lua').live_grep { cwd = basedir }
-        else
-          require('fzf-lua').live_grep()
-        end
+        require('fzf-lua').live_grep()
       end,
       desc = '[S]earch by [G]rep',
     },
