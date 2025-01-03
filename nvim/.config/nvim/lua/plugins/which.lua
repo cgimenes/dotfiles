@@ -19,6 +19,7 @@ return {
         { '<leader>L', group = '[L]eetCode' },
         { '<leader>o', group = '[O]ptions' },
         { '<leader>p', group = '[P]aste' },
+        { '<leader>r', group = '[R]unner' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>t', group = '[T]est' },
         { '<leader>w', group = '[W]indow' },

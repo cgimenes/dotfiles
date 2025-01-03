@@ -132,6 +132,9 @@ return {
             'b:gitsigns_head',
             icon = icons.git.Branch,
           },
+          {
+            'overseer',
+          },
         },
         lualine_c = {
           {
