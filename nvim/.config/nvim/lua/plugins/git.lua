@@ -19,18 +19,9 @@ return {
     },
     keys = {
       { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'File History' },
+      { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = '[G]it [D]iffview' },
     },
-    config = function()
-      local diffview = require 'diffview'
-
-      diffview.setup {
-        keymaps = {
-          file_history_panel = {
-            { 'n', 'gq', diffview.close, { desc = 'Close' } },
-          },
-        },
-      }
-    end,
+    config = true,
   },
   {
     'lewis6991/gitsigns.nvim',
