@@ -15,6 +15,8 @@ paru -S --noconfirm eww
 paru -S --noconfirm ttf-tabler-icons
 paru -S --noconfirm yaak
 paru -S --noconfirm shikane
+paru -S --noconfirm kanagawa-icon-theme-git 
+paru -S --noconfirm kanagawa-gtk-theme-git 
 
 rm -rf .config/autostart/**
 
