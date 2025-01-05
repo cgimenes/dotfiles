@@ -209,7 +209,7 @@
         "postgresql-libs",
         "qpwgraph",
         "ripgrep",
-        "rofi",
+        "rofi-wayland",
         "satty",
         "slurp",
         "socat",
