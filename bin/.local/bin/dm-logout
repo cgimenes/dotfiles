@@ -30,6 +30,7 @@ main() {
         "Lock screen"
         "Logout"
         "Reboot"
+        "Sleep"
         "Suspend"
     )
 
@@ -57,7 +58,7 @@ main() {
         fi
         ;;
     'Lock screen')
-        betterlockscreen -l dim
+        betterlockscreen -l dim || hyprlock
         ;;
     'Reboot')
         if [[ "$(echo -e "Yes\nNo" | ${MENU} "${choice}?")" == "Yes" ]]; then
@@ -71,6 +72,13 @@ main() {
             systemctl poweroff
         else
             output "User chose not to shutdown." && exit 0
+        fi
+        ;;
+    'Sleep')
+        if [[ "$(echo -e "Yes\nNo" | ${MENU} "${choice}?")" == "Yes" ]]; then
+            systemctl sleep
+        else
+            output "User chose not to sleep." && exit 0
         fi
         ;;
     'Suspend')
