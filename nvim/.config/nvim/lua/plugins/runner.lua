@@ -3,7 +3,11 @@ return {
     'stevearc/overseer.nvim',
     opts = {
       dap = false,
-      templates = { 'builtin', 'user.run_script' },
+      templates = {
+        'builtin',
+        'user.run_script',
+        'user.rails_dev',
+      },
       task_list = {
         bindings = {
           ['K'] = 'ScrollOutputUp',
@@ -16,6 +20,7 @@ return {
     keys = {
       { '<leader>rr', '<cmd>OverseerRun<cr>', desc = 'Overseer [R]un' },
       { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Overseer [T]oggle' },
+      { '<leader>rq', '<cmd>OverseerQuickAction<cr>', desc = 'Overseer [Q]uickAction' },
       {
         '<leader>rw',
         function()
