@@ -1,14 +1,16 @@
 theme = "Kanagawa Wave"
+background-opacity = 0.92
 
 font-family = "Iosevka Term"
 font-size = 14
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
+adjust-cell-width = -10%
 
 confirm-close-surface = false
 gtk-titlebar = false
-gtk-adwaita = false
+gtk-adwaita = true
 gtk-single-instance = true
 quit-after-last-window-closed = true
 window-padding-balance = true

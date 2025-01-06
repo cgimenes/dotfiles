@@ -14,6 +14,7 @@ git clone https://github.com/cgimenes/dotfiles.git
 cd $HOME/dotfiles
 git remote set-url origin git@github.com:cgimenes/dotfiles.git
 
+stow alacritty
 stow aliks
 stow autorandr
 stow awesome
@@ -24,6 +25,7 @@ stow btop
 stow dunst
 stow emacs
 stow fonts
+stow ghostty
 stow git
 stow gsimplecal
 stow hyprland
