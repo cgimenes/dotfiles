@@ -1,0 +1,10 @@
+[general]
+live_config_reload = true
+import = [ "kanagawa.toml" ]
+
+[window]
+opacity = 0.92
+
+[font]
+normal = { family = "Iosevka Term" }
+size = 14.0
