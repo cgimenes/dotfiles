@@ -80,6 +80,7 @@ return {
             },
           },
         },
+        toml = {},
         ruby_lsp = {},
         gopls = {},
         ruff = { autostart = false }, -- Disable ruff LSP
