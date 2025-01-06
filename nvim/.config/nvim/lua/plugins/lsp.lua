@@ -83,6 +83,7 @@ return {
         ruby_lsp = {},
         gopls = {},
         ruff = { autostart = false }, -- Disable ruff LSP
+        taplo = {}, -- TOML
         lua_ls = {
           settings = {
             Lua = {
@@ -108,7 +109,6 @@ return {
         'sqlfluff',
         'sqlfmt',
         'stylua',
-        'taplo', -- TOML
       })
       if vim.fn.executable 'composer' == 1 then
         vim.list_extend(ensure_installed, { 'pint' })
