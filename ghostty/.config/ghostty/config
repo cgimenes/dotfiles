@@ -2,7 +2,7 @@ theme = "Kanagawa Wave"
 background-opacity = 0.92
 
 font-family = "Iosevka Term"
-font-size = 14
+font-size = 16
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
