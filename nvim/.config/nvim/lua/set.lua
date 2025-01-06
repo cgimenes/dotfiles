@@ -75,5 +75,6 @@ vim.filetype.add {
   },
   filename = {
     ['Brewfile'] = 'ruby',
+    ['config'] = 'config',
   },
 }
