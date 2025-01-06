@@ -77,4 +77,5 @@ vim.filetype.add {
     ['Brewfile'] = 'ruby',
     ['config'] = 'config',
   },
+  pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
 }
