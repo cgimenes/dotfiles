@@ -11,6 +11,7 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 14
 git clone https://github.com/cgimenes/dotfiles.git
 cd dotfiles
 
+stow atuin
 stow bat
 stow btop
 stow emacs
