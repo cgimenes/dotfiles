@@ -26,9 +26,24 @@ if [ -d "$HOME/dev/google-cloud-sdk/" ]; then
 	source $HOME/dev/google-cloud-sdk/completion.zsh.inc
 fi
 
-if [ -x "$(command -v atuin)" ]; then
-	export ATUIN_NOBIND="true"
-	eval "$(atuin init zsh)"
+if [ -x "$(command -v fzf)" ]; then
+	export FZF_DEFAULT_OPTS="
+	  --cycle
+	  --bind=ctrl-u:half-page-up
+	  --bind=ctrl-d:half-page-down
+	  --color scrollbar:#dcd7ba,marker:#7fb4ca,fg:#dcd7ba,query:#dcd7ba:regular,hl+:#7fb4ca,bg+:#363646,hl:#7fb4ca,info:#54546d,prompt:#7fb4ca,separator:#dcd7ba,border:#dcd7ba,header:#dcd7ba,pointer:#7fb4ca,spinner:#7fb4ca
+	"
+	source <(fzf --zsh)
+fi
 
-	bindkey '^r' atuin-search
+if [ -x "$(command -v atuin)" ]; then
+	eval "$(atuin init zsh --disable-up-arrow)"
+fi
+
+if [ -x "$(command -v zoxide)" ]; then
+	eval "$(zoxide init zsh)"
+fi
+
+if [ -x "$(command -v starship)" ]; then
+	eval "$(starship init zsh)"
 fi
