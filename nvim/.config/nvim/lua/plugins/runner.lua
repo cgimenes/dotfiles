@@ -7,6 +7,7 @@ return {
         'builtin',
         'user.run_script',
         'user.rails_dev',
+        'user.uv_run',
       },
       task_list = {
         bindings = {

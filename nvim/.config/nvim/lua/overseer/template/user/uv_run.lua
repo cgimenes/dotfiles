@@ -1,14 +1,8 @@
 return {
-  name = 'run script',
+  name = 'uv run',
   builder = function()
     local file = vim.fn.expand '%:p'
-    local cmd = { file }
-    if vim.bo.filetype == 'go' then
-      cmd = { 'go', 'run', file }
-    end
-    if vim.bo.filetype == 'python' then
-      cmd = { 'python', file }
-    end
+    local cmd = { 'uv', 'run', file }
     return {
       cmd = cmd,
       components = {
@@ -19,6 +13,6 @@ return {
     }
   end,
   condition = {
-    filetype = { 'sh', 'python', 'go' },
+    filetype = { 'python' },
   },
 }
