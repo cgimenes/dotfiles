@@ -1,5 +1,6 @@
 tap 'railwaycat/emacsmacport'
 
+brew 'atuin'
 brew 'bat'
 brew 'btop'
 brew 'croc'

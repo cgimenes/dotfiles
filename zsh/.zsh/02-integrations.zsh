@@ -25,3 +25,10 @@ if [ -d "$HOME/dev/google-cloud-sdk/" ]; then
 	export PATH=$PATH:$HOME/dev/google-cloud-sdk/bin
 	source $HOME/dev/google-cloud-sdk/completion.zsh.inc
 fi
+
+if [ -x "$(command -v atuin)" ]; then
+	export ATUIN_NOBIND="true"
+	eval "$(atuin init zsh)"
+
+	bindkey '^r' atuin-search
+fi
