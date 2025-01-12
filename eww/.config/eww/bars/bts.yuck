@@ -8,9 +8,6 @@
 
 (defwidget end []
   (box :orientation "v" :space-evenly false :class "end-modules" :spacing 12
-    ;(metric :label "Backlight"
-            ;:value backlight
-            ;:onchange "xbacklight -set {}")
     ;(metric :label "RAM"
             ;:value {EWW_RAM.used_mem_perc}
             ;:onchange "")
@@ -20,6 +17,7 @@
     (systray :orientation "v" :prepend-new true :icon-size 24 :spacing 12)
     (volume)
     (iconed-value :class "battery" :icon "７" :value battery)
+    (iconed-value :class "backlight" :icon "" :value backlight)
     (date)
     (iconed-value :class "time" :icon "" :value time)))
 
@@ -42,5 +40,5 @@
 (defpoll battery :interval "30s"
   "cat /sys/class/power_supply/BAT?/capacity")
 
-;(defpoll backlight :interval "1s"
-;  "xbacklight -get")
+(defpoll backlight :interval "1s"
+  "xbacklight -get")

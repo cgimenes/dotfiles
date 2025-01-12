@@ -7,7 +7,7 @@
     (box :orientation "v" :space-evenly false :hexpand true
       (button :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
               :onrightclick "scripts/toggle-win.sh sink_win"
-              :onmiddleclick "aliks reset"
+              :onmiddleclick "pavucontrol &"
         (iconed-value :class "volume" :icon "${mute == 'Mute: yes' ? '' : ''}" :value volume)))))
 
 (defpoll default_sink :interval "2s"

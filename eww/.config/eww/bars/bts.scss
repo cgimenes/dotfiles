@@ -4,6 +4,7 @@ $green: #98BB6C;
 $blue: #7E9CD8;
 $cyan: #7FB4CA;
 $purple: #957fb8;
+$orange: #FFA066;
 
 * {
   all: unset; // Unsets everything so you can style everything from scratch
@@ -46,6 +47,12 @@ window {
 .battery {
   .icon {
     color: $green;
+  }
+}
+
+.backlight {
+  .icon {
+    color: $orange;
   }
 }
 
