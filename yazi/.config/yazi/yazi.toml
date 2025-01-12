@@ -1,6 +1,7 @@
 [opener]
 zathura = [{run = 'zathura "$@"', desc = "zathura", block = true, for = "unix"}]
 imv = [{run = 'imv "$@"', desc = "imv", block = true, for = "unix"}]
+edit = [{ run = 'nvim "$@"', block = true, for = "unix" }]
 
 [open]
 prepend_rules = [
