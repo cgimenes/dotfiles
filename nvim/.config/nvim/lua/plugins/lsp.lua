@@ -60,9 +60,11 @@ return {
 
       local servers = {
         astro = {},
-        cssls = {},
         clangd = {},
-        pyright = {},
+        cssls = {},
+        emmet_language_server = {},
+        gopls = {},
+        intelephense = {},
         jsonls = {
           settings = {
             json = {
@@ -71,19 +73,6 @@ return {
             },
           },
         },
-        intelephense = {},
-        ts_ls = {},
-        tailwindcss = {
-          settings = {
-            tailwindCSS = {
-              ['includeLanguages'] = { ['eruby'] = 'erb' },
-            },
-          },
-        },
-        ruby_lsp = {},
-        gopls = {},
-        ruff = { autostart = false }, -- Disable ruff LSP
-        taplo = {}, -- TOML
         lua_ls = {
           settings = {
             Lua = {
@@ -93,6 +82,18 @@ return {
             },
           },
         },
+        pyright = {},
+        ruby_lsp = {},
+        ruff = { autostart = false }, -- Disable ruff LSP
+        tailwindcss = {
+          settings = {
+            tailwindCSS = {
+              ['includeLanguages'] = { ['eruby'] = 'erb' },
+            },
+          },
+        },
+        taplo = {}, -- TOML
+        ts_ls = {},
         yamlls = {
           settings = {
             yaml = {
