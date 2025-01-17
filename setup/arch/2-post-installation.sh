@@ -15,15 +15,16 @@ paru -S --noconfirm eww
 paru -S --noconfirm ttf-tabler-icons
 paru -S --noconfirm yaak
 paru -S --noconfirm shikane
-paru -S --noconfirm kanagawa-icon-theme-git 
-paru -S --noconfirm kanagawa-gtk-theme-git 
+paru -S --noconfirm kanagawa-icon-theme-git
+paru -S --noconfirm kanagawa-gtk-theme-git
 paru -S --noconfirm ncspot-bin
 
 rm -rf .config/autostart/**
 
-gem install thor
-gem install erb
+gem install thor # for polybar
+gem install erb  # for polybar
 go install github.com/x-motemen/ghq@latest
+go install github.com/jesseduffield/lazydocker@latest
 
 fc-cache -fv
 bat cache --build
