@@ -1,5 +1,6 @@
 # Tmux
-alias ta='tmux list-sessions && tmux a || tmux'
+alias ta='tmux a || tmux'
+alias th='tmux new-session -A -c "~" -s "home"'
 
 # Git
 alias gdsn='gds --name-only'
