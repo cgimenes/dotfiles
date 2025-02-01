@@ -26,8 +26,8 @@ window {
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 15px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .center-modules,
@@ -38,8 +38,8 @@ window {
 }
 
 .end-modules {
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -58,7 +58,7 @@ window {
 
 .popup {
   background-color: $background;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 @import "../widgets/datetime.scss";

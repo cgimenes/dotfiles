@@ -18,6 +18,7 @@ paru -S --noconfirm shikane
 paru -S --noconfirm kanagawa-icon-theme-git
 paru -S --noconfirm kanagawa-gtk-theme-git
 paru -S --noconfirm ncspot-bin
+paru -S --noconfirm xidlehook
 
 rm -rf .config/autostart/**
 

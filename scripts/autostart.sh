@@ -10,6 +10,21 @@ pgrep -x udiskie > /dev/null || udiskie &
 pgrep -x blueman-applet > /dev/null || blueman-applet &
 pgrep -x enpass > /dev/null || enpass -minimize &
 pgrep -f autorandr_launcher > /dev/null || autorandr_launcher 2>&1 > ~/ar.log &
+pgrep -f xidlehook > /dev/null || xidlehook \
+  --not-when-fullscreen \
+  --not-when-audio \
+  --timer 120 \
+    'brightnessctl -s set 10' \
+    'brightnessctl -r' \
+  --timer 180 \
+    'brightnessctl -r; xset dpms force off' \
+    '' \
+  --timer 60 \
+    'betterlockscreen -l' \
+    '' \
+  --timer 540 \
+    'systemctl suspend' \
+    '' &
 nitrogen --restore &
 autorandr -c &
 
@@ -19,4 +34,4 @@ xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
 xinput set-prop "DELL0B56:00 04F3:317E Touchpad" "libinput Tapping Enabled" 1 &
 xinput set-prop "pointer:Logitech MX Ergo" "libinput Accel Speed" -1 &
 setxkbmap -layout 'us,br' -variant 'intl,thinkpad' -option 'grp:alt_space_toggle' -option 'ctrl:nocaps' &
-
+xset s off -dpms

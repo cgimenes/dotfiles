@@ -4,7 +4,9 @@
 
 # terminal emulator
 super + Return
-	wezterm start --cwd .
+	ghostty
+super + shift + Return
+	ghostty -e zsh -i -c tn
 
 # program launcher
 super + d
@@ -18,13 +20,9 @@ super + b
 Print
 	flameshot gui
 
-# neovim
-super + n
-	wezterm -e nvim
-
 # file explorer
 super + e
-	wezterm -e yazi
+	ghostty -e yazi
 
 # brightness buttons
 XF86MonBrightness{Up,Down}
