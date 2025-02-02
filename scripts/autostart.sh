@@ -25,6 +25,7 @@ pgrep -f xidlehook > /dev/null || xidlehook \
   --timer 540 \
     'systemctl suspend' \
     '' &
+pgrep -f xss-lock > /dev/null || xss-lock -- betterlockscreen -l &
 nitrogen --restore &
 autorandr -c &
 
