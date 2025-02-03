@@ -10,7 +10,7 @@ super + shift + Return
 
 # program launcher
 super + d
-	rofi -show combi -display-combi "Run:"
+	rofi -show combi
 
 # web browser
 super + b
