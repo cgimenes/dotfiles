@@ -19,6 +19,7 @@ return {
       hi = {
         fg = '#FFA066',
       },
+      symbols = { '─', '│', '╭', '╮', '╰', '╯' },
     },
     event = { 'WinLeave' },
   },
