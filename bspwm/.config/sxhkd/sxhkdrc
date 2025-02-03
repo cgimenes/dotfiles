@@ -4,9 +4,9 @@
 
 # terminal emulator
 super + Return
-	ghostty
+	alacritty
 super + shift + Return
-	ghostty -e zsh -i -c tn
+	alacritty -e zsh -i -c tn
 
 # program launcher
 super + d
@@ -22,7 +22,7 @@ Print
 
 # file explorer
 super + e
-	ghostty -e yazi
+	alacritty -e yazi
 
 # brightness buttons
 XF86MonBrightness{Up,Down}
@@ -36,7 +36,7 @@ XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86Audio{Play,Stop,Next,Prev}
-	playerctl {play-pause,stop,next,previous}
+	playerctl -p spotify,ncspot,%any {play-pause,stop,next,previous}
 
 #
 # bspwm hotkeys

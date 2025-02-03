@@ -3,8 +3,8 @@ live_config_reload = true
 import = [ "kanagawa.toml" ]
 
 [window]
-opacity = 0.92
+opacity = 1
 
 [font]
 normal = { family = "Iosevka Term" }
-size = 14.0
+size = 13.4
