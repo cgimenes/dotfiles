@@ -12,7 +12,6 @@ pgrep -x enpass >/dev/null || enpass -minimize &
 pgrep -f autorandr_launcher >/dev/null || autorandr_launcher 2>&1 >~/ar.log &
 pgrep -f xidlehook >/dev/null || xidlehook \
   --not-when-fullscreen \
-  --not-when-audio \
   --timer 120 \
   'brightnessctl -s set 10' \
   'brightnessctl -r' \
