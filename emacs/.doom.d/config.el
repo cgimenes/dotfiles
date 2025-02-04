@@ -40,7 +40,7 @@
 (setq org-directory "~/org/")
 (after! org
   (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
-        org-todo-keywords '((sequence "TODO(t!)" "WAIT(w)" "HOLD(h)" "DOING(i)" "|" "DONE(d!)" "CANC(c!)"))
+        org-todo-keywords '((sequence "TODO" "WAIT" "HOLD" "DOING" "|" "DONE"))
         org-log-into-drawer t
         org-deadline-warning-days 0
         org-agenda-span 14
