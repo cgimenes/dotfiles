@@ -40,13 +40,14 @@
 (setq org-directory "~/org/")
 (after! org
   (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
-        org-todo-keywords '((sequence "TODO" "WAIT" "HOLD" "DOING" "|" "DONE"))
+        org-todo-keywords '((sequence "TODO(t!)" "WAIT(w)" "HOLD(h)" "DOING(i)" "|" "DONE(d!)" "CANC(c!)"))
+        org-log-into-drawer t
         org-deadline-warning-days 0
         org-agenda-span 14
         org-agenda-start-day "-0d"
         org-agenda-skip-function-global '(org-agenda-skip-entry-if 'todo 'done)
         org-log-done 'date)
-  )
+  (add-to-list 'org-modules 'org-habit t))
 
 (setq-default tab-width 4)
 

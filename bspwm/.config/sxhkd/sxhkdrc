@@ -24,6 +24,10 @@ Print
 super + e
 	alacritty -e yazi
 
+# emacs
+super + n
+	emacsclient -c -a ""
+
 # brightness buttons
 XF86MonBrightness{Up,Down}
 	xbacklight -{inc,dec} 10
