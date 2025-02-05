@@ -4,9 +4,9 @@
 
 # terminal emulator
 super + Return
-	alacritty
+	ghostty
 super + shift + Return
-	alacritty -e zsh -i -c tn
+	ghostty -e zsh -i -c tn
 
 # program launcher
 super + d
@@ -22,7 +22,7 @@ Print
 
 # file explorer
 super + e
-	alacritty -e yazi
+	ghostty -e yazi
 
 # emacs
 super + n
@@ -30,14 +30,17 @@ super + n
 
 # brightness buttons
 XF86MonBrightness{Up,Down}
-	xbacklight -{inc,dec} 10
+	brightnessctl s 10%{+,-}
 
 # audio buttons
 XF86Audio{RaiseVolume,LowerVolume}
-	pactl set-sink-mute @DEFAULT_SINK@ false && pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ 0 && wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%{+,-}
 
 XF86AudioMute
-	pactl set-sink-mute @DEFAULT_SINK@ toggle
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+XF86AudioMicMute
+	wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
 XF86Audio{Play,Stop,Next,Prev}
 	playerctl -p spotify,ncspot,%any {play-pause,stop,next,previous}
