@@ -16,12 +16,9 @@ pgrep -f xidlehook >/dev/null || xidlehook \
   'brightnessctl -s set 10' \
   'brightnessctl -r' \
   --timer 180 \
-  'brightnessctl -r; xset dpms force off' \
+  'brightnessctl -r; xset dpms force off' \ # xss-lock will lock the screen after DPMS
   '' \
-  --timer 60 \
-  'betterlockscreen -l' \
-  '' \
-  --timer 540 \
+  --timer 600 \
   'systemctl suspend' \
   '' &
 pgrep -f xss-lock >/dev/null || xss-lock -- betterlockscreen -l &
