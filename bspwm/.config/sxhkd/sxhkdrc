@@ -4,9 +4,9 @@
 
 # terminal emulator
 super + Return
-	ghostty
+	kitty
 super + shift + Return
-	ghostty -e zsh -i -c tn
+	kitty -e zsh -i -c tn
 
 # program launcher
 super + d
@@ -22,7 +22,7 @@ Print
 
 # file explorer
 super + e
-	ghostty -e yazi
+	kitty -e yazi
 
 # emacs
 super + n
