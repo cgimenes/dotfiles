@@ -145,4 +145,11 @@ return {
       -- vim.cmd.colorscheme 'cyberdream'
     end,
   },
+  {
+    'lunarvim/darkplus.nvim',
+    priority = 1000,
+    init = function()
+      -- vim.cmd.colorscheme 'darkplus'
+    end,
+  }
 }
