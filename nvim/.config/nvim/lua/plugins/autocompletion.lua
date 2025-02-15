@@ -19,13 +19,23 @@ return {
       },
       signature = {
         enabled = true,
+        window = { border = 'single' },
       },
       appearance = {
         use_nvim_cmp_as_default = true,
       },
       completion = {
+        documentation = {
+          auto_show = true,
+          window = { border = 'single' },
+        },
         menu = {
           draw = {
+            columns = {
+              { 'kind_icon' },
+              { 'label', 'label_description', gap = 1 },
+              { 'source_name' },
+            },
             components = {
               label_description = {
                 width = { max = 120 },
