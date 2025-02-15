@@ -1,16 +1,15 @@
 return {
   {
-    'navarasu/onedark.nvim',
+    'olimorris/onedarkpro.nvim',
     priority = 1000,
     opts = {
-      style = 'darker',
-      transparent = true,
-    },
-    lualine = {
-      transparent = true,
+      options = {
+        transparency = true,
+        lualine_transparency = true,
+      },
     },
     init = function()
-      -- require('onedark').load()
+      -- vim.cmd.colorscheme 'onedark'
     end,
   },
   {
@@ -151,5 +150,5 @@ return {
     init = function()
       -- vim.cmd.colorscheme 'darkplus'
     end,
-  }
+  },
 }
