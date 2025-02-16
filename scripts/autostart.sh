@@ -10,7 +10,6 @@ pgrep -x udiskie >/dev/null || udiskie &
 pgrep -x blueman-applet >/dev/null || blueman-applet &
 pgrep -x enpass >/dev/null || enpass -minimize &
 pgrep -f autorandr_launcher >/dev/null || autorandr_launcher 2>&1 >~/ar.log &
-# xss-lock will lock the screen after DPMS
 pgrep -f xidlehook >/dev/null || xidlehook \
   --not-when-fullscreen \
   --timer 120 \
@@ -19,10 +18,12 @@ pgrep -f xidlehook >/dev/null || xidlehook \
   --timer 180 \
   'brightnessctl -r; xset dpms force off' \
   '' \
-  --timer 600 \
+  --timer 60 \
+  'betterlockscreen -l' \
+  '' \
+  --timer 540 \
   'systemctl suspend' \
   '' &
-pgrep -f xss-lock >/dev/null || xss-lock -- betterlockscreen -l &
 nitrogen --restore &
 autorandr -c &
 

@@ -6,6 +6,7 @@ systemctl enable docker
 systemctl enable bluetooth
 systemctl enable syncthing.service --user
 systemctl enable tailscaled
+systemctl enable betterlockscreen@$USER
 
 usermod -aG docker $USER
 usermod -aG video $USER
