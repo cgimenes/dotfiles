@@ -8,6 +8,16 @@ run = '''
   shell 'ya emit cd "$(git rev-parse --show-toplevel)"'
 '''
 
+[[manager.prepend_keymap]]
+on = "?"
+run = 'help'
+
+[[manager.prepend_keymap]]
+on = "<C-n>"
+run = '''
+	shell 'dragon-drop -x -i -T "$1"'
+'''
+
 [[manager.append_keymap]]
 on = ["g", "."]
 run = 'hidden toggle'
@@ -24,15 +34,9 @@ run = 'cd ~/dev/src/'
 on = ["g", "t"]
 run = 'cd ~/Downloads/Torrents/'
 
-[[manager.prepend_keymap]]
-on = "?"
-run = 'help'
-
-[[manager.prepend_keymap]]
-on = "<C-n>"
-run = '''
-	shell 'dragon-drop -x -i -T "$1"'
-'''
+[[manager.append_keymap]]
+on = "<C-o>"
+run = ['open', 'quit']
 
 [[help.append_keymap]]
 on = "/"
