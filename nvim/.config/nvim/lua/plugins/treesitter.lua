@@ -6,13 +6,14 @@ return {
     opts = {
       ensure_installed = {
         'bash',
-        'bash',
         'c',
         'cpp',
+        'css',
         'diff',
         'go',
         'html',
         'javascript',
+        'javascriptreact',
         'lua',
         'luadoc',
         'markdown',
@@ -25,6 +26,7 @@ return {
         'rust',
         'tsx',
         'typescript',
+        'typescriptreact',
         'sql',
         'vim',
         'vimdoc',
