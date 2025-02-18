@@ -93,7 +93,6 @@ return {
           },
         },
         taplo = {}, -- TOML
-        ts_ls = {},
         yamlls = {
           settings = {
             yaml = {
@@ -175,5 +174,10 @@ return {
         vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
       end
     end,
+  },
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {},
   },
 }

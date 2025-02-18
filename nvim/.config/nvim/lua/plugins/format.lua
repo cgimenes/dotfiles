@@ -10,6 +10,9 @@ return {
         '<leader>lf',
         function()
           require('conform').format { async = true, lsp_format = 'fallback' }
+          if vim.bo.filetype == 'typescript' or vim.bo.filetype == 'typescriptreact' then
+            vim.cmd('TSToolsOrganizeImports')
+          end
         end,
         mode = '',
         desc = '[F]ormat buffer',
