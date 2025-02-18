@@ -9,3 +9,4 @@ bin/.local/state
 __pycache__/
 Brewfile.lock.json
 btop/.config/btop/btop.log
+.uuid
