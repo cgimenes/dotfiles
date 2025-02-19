@@ -34,9 +34,11 @@ return {
         css = prettier,
         html = prettier,
         javascript = prettier,
+        javascriptreact = prettier,
         json = prettier,
         markdown = prettier,
         typescript = prettier,
+        typescriptreact = prettier,
         yaml = prettier,
       },
       formatters = {
