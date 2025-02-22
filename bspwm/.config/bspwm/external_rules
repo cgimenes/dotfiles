@@ -53,7 +53,7 @@ case "$clazz" in
     fi
     ;;
 
-  "DBeaver"|"Postman"|"Dynalist"|"Emacs")
+  "DBeaver"|"Postman"|"Dynalist"|"Emacs"|"Yaak-app")
     desktop=4
     state="tiled"
     ;;
