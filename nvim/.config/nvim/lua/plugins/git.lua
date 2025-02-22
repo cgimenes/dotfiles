@@ -91,13 +91,4 @@ return {
       { '<leader>ga', '<cmd>Pipeline<cr>', desc = 'Open Github [A]ctions' },
     },
   },
-  {
-    'kdheepak/lazygit.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim', -- optional for floating window border decoration
-    },
-    keys = {
-      { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
-    },
-  },
 }

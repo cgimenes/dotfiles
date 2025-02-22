@@ -80,7 +80,7 @@ return {
         section_separators = '',
         disabled_filetypes = {
           statusline = {
-            'dashboard',
+            'snacks_dashboard',
           },
           winbar = {
             'help',

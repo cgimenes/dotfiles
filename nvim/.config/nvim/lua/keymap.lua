@@ -39,7 +39,7 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Snippets
-vim.keymap.set('n', '<leader>os', function()
+vim.keymap.set('n', '<leader>oS', function()
   require('snippets').load_snippets()
 end, { desc = 'Reload snippets' })
 
@@ -79,3 +79,4 @@ vim.keymap.set('n', '<leader>cf', '<cmd>source %<CR>', { desc = 'Execute the cur
 
 -- Toggle relative numbers
 vim.keymap.set('n', '<leader>or', '<cmd>set relativenumber!<cr>', { desc = 'Toggle relative numbers' })
+vim.keymap.set('n', '<leader>os', '<cmd>set spell!<cr>', { desc = 'Toggle spelling' })
