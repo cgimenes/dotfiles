@@ -85,13 +85,7 @@ return {
         pyright = {},
         ruby_lsp = {},
         ruff = { autostart = false }, -- Disable ruff LSP
-        tailwindcss = {
-          settings = {
-            tailwindCSS = {
-              ['includeLanguages'] = { ['eruby'] = 'erb' },
-            },
-          },
-        },
+        tailwindcss = {},
         taplo = {}, -- TOML
         ts_ls = {},
         yamlls = {
