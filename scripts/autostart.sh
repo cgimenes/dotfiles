@@ -18,7 +18,7 @@ pgrep -f xidlehook >/dev/null || xidlehook \
   'brightnessctl -r; xset dpms force off' \
   '' \
   --timer 60 \
-  'betterlockscreen -l' \
+  'betterlockscreen -l dim' \
   '' \
   --timer 540 \
   'systemctl suspend' \
