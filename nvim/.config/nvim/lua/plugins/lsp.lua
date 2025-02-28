@@ -6,6 +6,12 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
+      -- Useful status updates for LSP.
+      {
+        'j-hui/fidget.nvim',
+        opts = { notification = { window = { winblend = 0 } } },
+      },
+
       -- JSON schemas
       'b0o/schemastore.nvim',
     },
@@ -87,7 +93,21 @@ return {
         ruff = { autostart = false }, -- Disable ruff LSP
         tailwindcss = {},
         taplo = {}, -- TOML
-        ts_ls = {},
+        ts_ls = {
+          commands = {
+            OrganizeImports = {
+              function()
+                local params = {
+                  command = '_typescript.organizeImports',
+                  arguments = { vim.api.nvim_buf_get_name(0) },
+                  title = '',
+                }
+                vim.lsp.buf.execute_command(params)
+              end,
+              description = 'Organize Imports',
+            },
+          },
+        },
         yamlls = {
           settings = {
             yaml = {
