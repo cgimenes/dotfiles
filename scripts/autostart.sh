@@ -8,7 +8,7 @@ pgrep -x copyq >/dev/null || copyq &
 pgrep -x lxsession >/dev/null || lxsession &
 pgrep -x udiskie >/dev/null || udiskie &
 pgrep -x enpass >/dev/null || enpass -minimize &
-pgrep -f autorandr_launcher >/dev/null || autorandr_launcher 2>&1 >~/ar.log &
+pgrep -f autorandr_launcher >/dev/null || autorandr_launcher &
 pgrep -f xidlehook >/dev/null || xidlehook \
   --not-when-fullscreen \
   --timer 120 \
