@@ -10,7 +10,7 @@ return {
         enabled = true,
         preset = {
           keys = {
-            { icon = ' ', key = 'n', desc = 'New File', action = ':ene | startinsert' },
+            { icon = ' ', key = 'n', desc = 'New File', action = ':ene' },
             { icon = '󰙅 ', key = 'y', desc = 'Yazi', action = ':Yazi' },
             { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
             { icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },

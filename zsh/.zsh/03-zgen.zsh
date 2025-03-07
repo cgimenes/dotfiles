@@ -24,3 +24,4 @@ fi
 
 # plugin's config
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=3'
+bindkey '^y' autosuggest-accept
