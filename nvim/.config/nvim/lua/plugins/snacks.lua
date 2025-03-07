@@ -35,6 +35,7 @@ return {
           wo = { wrap = true },
         },
       },
+      scope = { enabled = true },
     },
     keys = {
       {
