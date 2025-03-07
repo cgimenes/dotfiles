@@ -65,8 +65,10 @@ return {
     { '<leader>of', '<cmd>FzfLua filetypes<cr>', desc = 'Change [F]iletype' },
 
     -- LSP
+    { 'gd', '<cmd>FzfLua lsp_definitions<cr>', desc = '[G]oto [D]efinition' },
     { 'gr', '<cmd>FzfLua lsp_references<cr>', desc = '[G]oto [R]eferences' },
     { 'gi', '<cmd>FzfLua lsp_implementations<cr>', desc = '[G]oto [I]mplementation' },
+    { '<leader>la', '<cmd>FzfLua lsp_code_actions<cr>', desc = '[C]ode [A]ctions' },
     { '<leader>ls', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Document [S]ymbols' },
     { '<leader>lS', '<cmd>FzfLua lsp_live_workspace_symbols<cr>', desc = 'Workspace [S]ymbols' },
     { '<leader>ld', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Document [D]iagnostics' },

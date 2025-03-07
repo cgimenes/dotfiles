@@ -25,14 +25,14 @@ return {
           end
 
           map('gvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', '[G]oto [D]efinition')
-          map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+          -- map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
           map('<leader>lr', function()
             vim.lsp.buf.rename()
             vim.cmd 'silent wa'
           end, '[R]ename')
-          map('<leader>la', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          -- map('<leader>la', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
           map('<leader>lk', vim.lsp.buf.signature_help, 'Signature Documentation')
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
