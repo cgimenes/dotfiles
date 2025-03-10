@@ -24,6 +24,10 @@ Print
 super + e
 	kitty -e yazi
 
+# plain text accounting
+super + g
+	dm-ledger
+
 # emacs
 super + n
 	emacsclient -c -a ""

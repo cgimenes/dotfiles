@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Set with the flags "-e", "-u","-o pipefail" cause the script to fail
+# if certain things happen, which is a good thing.  Otherwise, we can
+# get hidden bugs that are hard to discover.
+set -euo pipefail
+
+# use notify-send if run in dumb term
+# TODO: add abillity to control from config.
+_out="echo"
+if [[ ${TERM} == 'dumb' ]]; then
+    _out="notify-send"
+fi
+
+output() {
+    ${_out} "dm-ledger" "$@"
+}
+
+main() {
+    # An array of options to choose.
+    declare -a options=(
+        "UI"
+    )
+
+    # Piping the above array into dmenu, fzf or rofi.
+    # We use "printf '%s\n'" to format the array one item to a line.
+    choice=$(printf '%s\n' "${options[@]}" | ${MENU} 'Ledger menu:')
+
+    # What to do when/if we choose one of the options.
+    case $choice in
+    'UI')
+        kitty -e hledger-ui -f ~/current.ledger
+        ;;
+    # It is a common practice to use the wildcard asterisk symbol (*) as a final
+    # pattern to define the default case. This pattern will always match.
+    *)
+        exit 0
+        ;;
+    esac
+
+}
+
+DMENU="dmenu -i -l 20 -p"
+RMENU="rofi -dmenu -i -matching fuzzy -p"
+MENU=$RMENU
+[[ "${BASH_SOURCE[0]}" == "${0}" ]] && main
+
