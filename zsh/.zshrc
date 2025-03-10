@@ -1,6 +1,7 @@
 if [[ "$ZPROF" = true ]]; then
   zmodload zsh/zprof
 fi
+source ~/.zprofile
 
 # load configs
 source ~/.zsh/00-env.zsh
