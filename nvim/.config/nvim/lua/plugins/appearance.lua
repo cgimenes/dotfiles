@@ -6,7 +6,7 @@ return {
   {
     -- Better quickfix window
     'yorickpeterse/nvim-pqf',
-    event = 'VeryLazy',
+    event = 'FileType qf',
     opts = {
       show_multiple_lines = true,
       max_filename_length = 40,
