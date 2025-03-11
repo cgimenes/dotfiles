@@ -1,15 +1,18 @@
 #!/bin/sh
 
-pgrep -x sxhkd >/dev/null || sxhkd &
+if ! pgrep -x bspwm &> /dev/null 2>&1; then
+  pgrep -x sxhkd >/dev/null || sxhkd &
+  pgrep -x polybar >/dev/null || ~/dotfiles/scripts/polybar &
+fi
+
 pgrep -x picom >/dev/null || picom &
 pgrep -x nm-applet >/dev/null || nm-applet &
-pgrep -x polybar >/dev/null || ~/dotfiles/scripts/polybar &
 pgrep -x copyq >/dev/null || copyq &
 pgrep -x lxsession >/dev/null || lxsession &
 pgrep -x udiskie >/dev/null || udiskie &
 pgrep -x enpass >/dev/null || enpass -minimize &
 pgrep -f autorandr_launcher >/dev/null || autorandr_launcher &
-pgrep -f xidlehook >/dev/null || xidlehook \
+pgrep -x xidlehook >/dev/null || xidlehook \
   --not-when-fullscreen \
   --timer 120 \
   'brightnessctl -s set 10' \

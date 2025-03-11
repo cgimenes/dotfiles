@@ -187,8 +187,6 @@ awful.screen.connect_for_each_screen(function(s)
 	-- Each screen has its own tag table.
 	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
-	-- Create a promptbox for each screen
-	s.mypromptbox = awful.widget.prompt()
 	-- Create an imagebox widget which will contain an icon indicating which layout we're using.
 	-- We need one layoutbox per screen.
 	s.mylayoutbox = awful.widget.layoutbox(s)
@@ -213,13 +211,6 @@ awful.screen.connect_for_each_screen(function(s)
 		buttons = taglist_buttons,
 	})
 
-	-- Create a tasklist widget
-	s.mytasklist = awful.widget.tasklist({
-		screen = s,
-		filter = awful.widget.tasklist.filter.currenttags,
-		buttons = tasklist_buttons,
-	})
-
 	-- Create the wibox
 	s.mywibox = awful.wibar({ position = "top", screen = s })
 
@@ -229,16 +220,14 @@ awful.screen.connect_for_each_screen(function(s)
     expand = "none",
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
-			s.mypromptbox,
+			s.mylayoutbox,
 		},
 		s.mytaglist,
-		-- s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			mykeyboardlayout,
-			wibox.widget.systray(),
 			mytextclock,
-			s.mylayoutbox,
+			wibox.widget.systray(),
 		},
 	})
 end)
@@ -587,4 +576,8 @@ end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
+-- }}}
+
+-- {{{ Autostart
+awful.spawn.with_shell("$HOME/dotfiles/scripts/autostart.sh")
 -- }}}
