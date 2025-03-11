@@ -16,12 +16,12 @@ config.initial_rows = 39
 config.initial_cols = 126
 config.window_decorations = "TITLE|RESIZE|MACOS_FORCE_DISABLE_SHADOW"
 config.font = wezterm.font_with_fallback({
-	{ family = "Iosevka Term", weight = "Medium" },
+	{ family = "Iosevka Term", weight = "Regular" },
 	{ family = "JetBrains Mono", weight = "Medium" },
 })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.window_close_confirmation = "NeverPrompt"
-config.window_background_opacity = 0.92
+config.window_background_opacity = 1
 config.macos_window_background_blur = 15
 
 config.keys = {
