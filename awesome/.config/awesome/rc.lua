@@ -51,10 +51,10 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "xresources/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "wezterm"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -110,8 +110,6 @@ mymainmenu = awful.menu({
 		{ "open terminal", terminal },
 	},
 })
-
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -228,12 +226,12 @@ awful.screen.connect_for_each_screen(function(s)
 	-- Add widgets to the wibox
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
+    expand = "none",
 		{ -- Left widgets
 			layout = wibox.layout.fixed.horizontal,
-			mylauncher,
-			s.mytaglist,
 			s.mypromptbox,
 		},
+		s.mytaglist,
 		-- s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
@@ -258,9 +256,6 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
-	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Escape", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
 	awful.key({ modkey }, "j", function()
@@ -299,7 +294,6 @@ globalkeys = gears.table.join(
 		awful.spawn(terminal)
 	end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey, "Control" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
-	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
@@ -326,17 +320,9 @@ globalkeys = gears.table.join(
 		awful.layout.inc(-1)
 	end, { description = "select previous", group = "layout" }),
 
-	awful.key({ modkey, "Control" }, "n", function()
-		local c = awful.client.restore()
-		-- Focus restored client
-		if c then
-			c:emit_signal("request::activate", "key.unminimize", { raise = true })
-		end
-	end, { description = "restore minimized", group = "client" }),
-
 	-- Prompt
-	awful.key({ modkey }, "r", function()
-		awful.screen.focused().mypromptbox:run()
+	awful.key({ modkey }, "d", function()
+		awful.spawn("rofi -show combi -terminal kitty")
 	end, { description = "run prompt", group = "launcher" }),
 
 	awful.key({ modkey }, "x", function()
@@ -347,10 +333,40 @@ globalkeys = gears.table.join(
 			history_path = awful.util.get_cache_dir() .. "/history_eval",
 		})
 	end, { description = "lua execute prompt", group = "awesome" }),
-	-- Menubar
-	awful.key({ modkey }, "p", function()
-		menubar.show()
-	end, { description = "show the menubar", group = "launcher" })
+
+	-- Multimedia keys
+	awful.key({}, "XF86AudioRaiseVolume", function()
+		awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0")
+		awful.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
+	end),
+	awful.key({}, "XF86AudioLowerVolume", function()
+		awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0")
+		awful.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
+	end),
+	awful.key({}, "XF86AudioMute", function()
+		awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
+	end),
+	awful.key({}, "XF86AudioMicMute", function()
+		awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
+	end),
+	awful.key({}, "XF86AudioPlay", function()
+		awful.spawn("playerctl -p spotify,ncspot,%any play-pause")
+	end),
+	awful.key({}, "XF86AudioStop", function()
+		awful.spawn("playerctl -p spotify,ncspot,%any stop")
+	end),
+	awful.key({}, "XF86AudioNext", function()
+		awful.spawn("playerctl -p spotify,ncspot,%any next")
+	end),
+	awful.key({}, "XF86AudioPrev", function()
+		awful.spawn("playerctl -p spotify,ncspot,%any previous")
+	end),
+	awful.key({}, "XF86MonBrightnessUp", function()
+		awful.spawn("brightnessctl s 5%+")
+	end),
+	awful.key({}, "XF86MonBrightnessDown", function()
+		awful.spawn("brightnessctl s 5%-")
+	end)
 )
 
 clientkeys = gears.table.join(
@@ -403,6 +419,14 @@ for i = 1, 9 do
 		end, { description = "toggle tag #" .. i, group = "tag" }),
 		-- Move client to tag.
 		awful.key({ modkey, "Shift" }, "#" .. i + 9, function()
+			if client.focus then
+				local tag = client.focus.screen.tags[i]
+				if tag then
+					client.focus:move_to_tag(tag)
+				end
+			end
+		end, { description = "move focused client to tag #" .. i, group = "tag" }),
+		awful.key({ "Control", "Shift" }, "#" .. i + 9, function()
 			if client.focus then
 				local tag = client.focus.screen.tags[i]
 				if tag then
