@@ -323,6 +323,15 @@ globalkeys = gears.table.join(
 		})
 	end, { description = "lua execute prompt", group = "awesome" }),
 
+	-- Apps
+	awful.key({ modkey }, "e", function()
+		awful.spawn("kitty -e yazi")
+	end, { description = "file explorer" }),
+
+	awful.key({ modkey }, "b", function()
+		awful.spawn("brave")
+	end, { description = "web browser" }),
+
 	-- Multimedia keys
 	awful.key({}, "XF86AudioRaiseVolume", function()
 		awful.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ 0")

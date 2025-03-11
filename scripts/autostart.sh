@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if ! pgrep -x bspwm &> /dev/null 2>&1; then
+if pgrep -x bspwm &> /dev/null 2>&1; then
   pgrep -x sxhkd >/dev/null || sxhkd &
   pgrep -x polybar >/dev/null || ~/dotfiles/scripts/polybar &
 fi
