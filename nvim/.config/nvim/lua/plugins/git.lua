@@ -1,6 +1,9 @@
 return {
   {
     'tpope/vim-fugitive',
+    dependencies = {
+      'tpope/vim-rhubarb',
+    },
     keys = {
       { '<leader>gb', '<cmd>G blame<cr>', desc = '[G]it [B]lame' },
       { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List [G]it [C]onflicts' },
@@ -8,12 +11,10 @@ return {
       { '<leader>gB', ':GBrowse<cr>', desc = '[G]it [B]rowse', mode = { 'n', 'v' } },
       { '<leader>gG', '<cmd>vert G<cr>', desc = '[G]it Status' },
     },
-    dependencies = {
-      'tpope/vim-rhubarb',
-    },
   },
   {
     'sindrets/diffview.nvim',
+    config = true,
     cmd = {
       'DiffviewClose',
     },
@@ -21,18 +22,10 @@ return {
       { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'File History' },
       { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = '[G]it [D]iffview' },
     },
-    config = true,
   },
   {
     'lewis6991/gitsigns.nvim',
     opts = {
-      signs = {
-        add = { text = '▎' },
-        change = { text = '▎' },
-        delete = { text = '󰐊' },
-        topdelete = { text = '󰐊' },
-        changedelete = { text = '▎' },
-      },
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
 
