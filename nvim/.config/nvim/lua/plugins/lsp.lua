@@ -25,6 +25,10 @@ return {
           end
 
           map('grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', '[G]oto [D]efinition')
+          map('grn', function()
+            vim.lsp.buf.rename()
+            vim.cmd 'silent wa'
+          end, '[R]ename')
           -- map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
           map('<leader>lk', vim.lsp.buf.signature_help, 'Signature Documentation')
           -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
