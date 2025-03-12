@@ -6,5 +6,5 @@ import = [ "kanagawa.toml" ]
 opacity = 1
 
 [font]
-normal = { family = "Iosevka Term" }
+normal = { family = "Iosevka" }
 size = 13.4
