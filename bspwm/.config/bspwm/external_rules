@@ -18,68 +18,77 @@ state=""
 
 # Determine the desktop and state based on the class, instance, role, and title
 case "$clazz" in
-  "Brave-browser")
+"Brave-browser")
+  desktop=1
+  ;;
+
+"Nightly" | "FirefoxNightly" | "LibreWolf")
+  if [[ "$instance" == "Navigator" ]]; then
     desktop=1
-    ;;
-
-  "Nightly"|"FirefoxNightly"|"LibreWolf")
-    if [[ "$instance" == "Navigator" ]]; then
-      desktop=1
-    fi
-    case "$instance" in
-      "Devtools"|"Dialog"|"GtkFileChooserDialog"|"Prompt")
-        state="floating"
-        ;;
-      *)
-        state="tiled"
-        ;;
-    esac
-    if [[ "$role" == "GtkFileChooserDialog" ]]; then
-      state="floating"
-    fi
-    ;;
-
-  "Chromium"|"Google-chrome")
-    desktop=1
-    if [[ "$role" == "pop-up" ]]; then
-      state="floating"
-    fi
-    ;;
-
-  "jetbrains-idea"|"jetbrains-phpstorm"|"VSCodium"|"code-oss")
-    desktop=2
-    if [[ "$title" == "win0" ]]; then
-      state="floating"
-    fi
-    ;;
-
-  "DBeaver"|"Postman"|"Dynalist"|"Emacs"|"Yaak-app")
-    desktop=4
-    state="tiled"
-    ;;
-
-  "Spotify")
-    desktop=5
-    ;;
-
-  "Slack"|"discord")
-    desktop=5
-    ;;
-
-  "qBittorrent"|"transmission-gtk")
-    desktop=6
-    state="tiled"
-    ;;
-
-  "Gnome-calculator"|"Orage"|"Nitrogen"|"Enpass"|"Nm-connection-editor"|"Pavucontrol"|"Vial")
+  fi
+  case "$instance" in
+  "Devtools" | "Dialog" | "GtkFileChooserDialog" | "Prompt")
     state="floating"
     ;;
-
-  "")
-    if [[ "$process" == "spotify" ]]; then
-      desktop=5
-    fi
+  *)
+    state="tiled"
     ;;
+  esac
+  if [[ "$role" == "GtkFileChooserDialog" ]]; then
+    state="floating"
+  fi
+  ;;
+
+"Chromium" | "Google-chrome")
+  desktop=1
+  if [[ "$role" == "pop-up" ]]; then
+    state="floating"
+  fi
+  ;;
+
+"jetbrains-idea" | "jetbrains-phpstorm" | "VSCodium" | "code-oss")
+  desktop=2
+  if [[ "$title" == "win0" ]]; then
+    state="floating"
+  fi
+  ;;
+
+"DBeaver" | "Postman" | "Dynalist" | "Emacs" | "Yaak-app")
+  desktop=4
+  state="tiled"
+  ;;
+
+"Java")
+  if [[ "$instance" == "java" ]]; then
+    if [[ "$title" == "DBeaver " ]]; then
+      desktop=4
+      state="floating"
+    fi
+  fi
+  ;;
+
+"Spotify")
+  desktop=5
+  ;;
+
+"Slack" | "discord")
+  desktop=5
+  ;;
+
+"qBittorrent" | "transmission-gtk")
+  desktop=6
+  state="tiled"
+  ;;
+
+"Gnome-calculator" | "Orage" | "Nitrogen" | "Enpass" | "Nm-connection-editor" | "Pavucontrol" | "Vial")
+  state="floating"
+  ;;
+
+"")
+  if [[ "$process" == "spotify" ]]; then
+    desktop=5
+  fi
+  ;;
 esac
 
 # Output desktop and state if set
