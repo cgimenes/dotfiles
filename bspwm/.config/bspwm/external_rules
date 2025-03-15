@@ -16,6 +16,10 @@ process=$(ps -p "$(xdo pid "$id")" -o comm= 2>/dev/null)
 desktop=""
 state=""
 
+if false; then
+  notify-send "Class: $clazz | Instance: $instance | Role: $role | Title: $title"
+fi
+
 # Determine the desktop and state based on the class, instance, role, and title
 case "$clazz" in
 "Brave-browser")
@@ -53,7 +57,12 @@ case "$clazz" in
   fi
   ;;
 
-"DBeaver" | "Postman" | "Dynalist" | "Emacs" | "Yaak-app")
+"DBeaver" | "Postman" | "Dynalist" | "Yaak-app")
+  desktop=3
+  state="tiled"
+  ;;
+
+"Emacs")
   desktop=4
   state="tiled"
   ;;
@@ -61,7 +70,7 @@ case "$clazz" in
 "Java")
   if [[ "$instance" == "java" ]]; then
     if [[ "$title" == "DBeaver " ]]; then
-      desktop=4
+      desktop=3
       state="floating"
     fi
   fi
