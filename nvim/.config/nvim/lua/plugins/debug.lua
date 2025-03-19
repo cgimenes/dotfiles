@@ -3,7 +3,8 @@ return {
     'mfussenegger/nvim-dap',
     dependencies = {
       'nvim-neotest/nvim-nio',
-      'rcarriga/nvim-dap-ui',
+
+      { 'igorlfs/nvim-dap-view', opts = {} },
 
       'theHamsta/nvim-dap-virtual-text',
 
@@ -16,7 +17,7 @@ return {
     },
     config = function()
       local dap = require 'dap'
-      local dapui = require 'dapui'
+      local dv = require 'dap-view'
 
       require('mason-nvim-dap').setup {
         -- Makes a best effort to setup the various debuggers with
@@ -36,33 +37,20 @@ return {
         },
       }
 
-      require("nvim-dap-virtual-text").setup()
+      require('nvim-dap-virtual-text').setup {}
 
-      -- Dap UI setup
-      -- For more information, see |:help nvim-dap-ui|
-      dapui.setup {
-        -- Set icons to characters that are more likely to work in every terminal.
-        --    Feel free to remove or use ones that you like more! :)
-        --    Don't feel like these are good choices.
-        icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
-        controls = {
-          icons = {
-            pause = '⏸',
-            play = '▶',
-            step_into = '⏎',
-            step_over = '⏭',
-            step_out = '⏮',
-            step_back = 'b',
-            run_last = '▶▶',
-            terminate = '⏹',
-            disconnect = '⏏',
-          },
-        },
-      }
-
-      dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-      dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-      dap.listeners.before.event_exited['dapui_config'] = dapui.close
+      dap.listeners.before.attach['dap-view-config'] = function()
+        dv.open()
+      end
+      dap.listeners.before.launch['dap-view-config'] = function()
+        dv.open()
+      end
+      dap.listeners.before.event_terminated['dap-view-config'] = function()
+        dv.close()
+      end
+      dap.listeners.before.event_exited['dap-view-config'] = function()
+        dv.close()
+      end
 
       dap.adapters.php = {
         type = 'executable',
@@ -116,7 +104,7 @@ return {
         },
       }
       require('dap-ruby').setup()
-      require('dap-python').setup("python")
+      require('dap-python').setup 'python'
 
       vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
       vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })
@@ -141,11 +129,41 @@ return {
       { '<leader>do', '<cmd>DapStepOut<cr>', desc = 'Step Out' },
       { '<leader>dr', '<cmd>DapToggleRepl<cr>', desc = 'Toggle Repl' },
       { '<leader>dq', '<cmd>DapTerminate<cr>', desc = 'Terminate' },
-      { '<leader>db', function() require('dap').step_back() end, desc = 'Step Back' },
-      { '<leader>dC', function() require('dap').run_to_cursor() end, desc = 'Run To Cursor' },
-      { '<leader>dp', function() require('dap').pause() end, desc = 'Pause' },
-      { '<leader>dU', function() require('dapui').toggle { reset = true } end, desc = 'Toggle UI' },
-      { '<leader>dT', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, desc = 'Debug: Set Breakpoint' },
-    }
+      {
+        '<leader>db',
+        function()
+          require('dap').step_back()
+        end,
+        desc = 'Step Back',
+      },
+      {
+        '<leader>dC',
+        function()
+          require('dap').run_to_cursor()
+        end,
+        desc = 'Run To Cursor',
+      },
+      {
+        '<leader>dp',
+        function()
+          require('dap').pause()
+        end,
+        desc = 'Pause',
+      },
+      {
+        '<leader>dU',
+        function()
+          require('dap-view').toggle()
+        end,
+        desc = 'Toggle UI',
+      },
+      {
+        '<leader>dT',
+        function()
+          require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+        end,
+        desc = 'Debug: Set Breakpoint',
+      },
+    },
   },
 }
