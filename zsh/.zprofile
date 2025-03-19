@@ -3,6 +3,10 @@ export TERM="xterm-256color"
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="brave"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	export MACOS=true
+	export BROWSER="vivaldi"
+fi
 export READER="zathura"
 export FILE="yazi"
 export VISUAL="nvim"
