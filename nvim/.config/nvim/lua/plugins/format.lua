@@ -26,7 +26,7 @@ return {
         python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
         ruby = { 'rubocop' },
         sh = { 'shfmt' },
-        sql = { 'sqlfluff', 'sqlfmt', stop_after_first = true },
+        sql = { 'sleek', 'sqlfluff', 'sqlfmt', stop_after_first = true },
         zsh = { 'shfmt' },
         css = prettier,
         html = prettier,
