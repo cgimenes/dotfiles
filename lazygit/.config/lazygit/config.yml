@@ -9,13 +9,31 @@ gui:
   # kanagawa
   theme:
     selectedLineBgColor:
-      - "#2d4f67"
+      - "#223249"
+    searchingActiveBorderColor:
+      - "#ff9e3b"
+      - "bold"
+    optionsTextColor:
+      - "#7e9cd8"
+    inactiveBorderColor:
+      - "#54546d"
     defaultFgColor:
       - "#dcd7ba"
+    cherryPickedCommitFgColor:
+      - "#7e9cd8"
+    cherryPickedCommitBgColor:
+      - "#e6c384"
+    activeBorderColor:
+      - "#ff9e3b"
+      - "bold"
+    unstagedChangesColor:
+      - "#e82424"
   nerdFontsVersion: "3"
 keybinding:
   universal:
     filteringMenu: <disabled>
+os:
+  editPreset: "nvim-remote"
 
   # cyberdream
   # theme:
