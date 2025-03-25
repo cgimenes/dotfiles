@@ -4,9 +4,7 @@ return {
   -- ds"
   -- ysiw"
   -- VISUAL: S"
-  {
-    'tpope/vim-surround',
-  },
+  { 'tpope/vim-surround', event = 'VeryLazy' },
   -- Make surround repeatable
   { 'tpope/vim-repeat', event = 'VeryLazy' },
 }
