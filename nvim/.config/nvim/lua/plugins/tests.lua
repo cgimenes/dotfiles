@@ -7,7 +7,7 @@ return {
     },
     config = function()
       vim.cmd "let test#strategy = 'vimux'"
-      vim.cmd "let test#echo_command = 0"
+      vim.cmd 'let test#echo_command = 0'
       vim.g.VimuxCloseOnExit = 1
     end,
     keys = {
@@ -25,11 +25,18 @@ return {
       'nvim-lua/plenary.nvim',
       'olimorris/neotest-phpunit',
       'nvim-neotest/neotest-python',
+      'nvim-neotest/neotest-jest',
     },
     config = function()
       require('neotest').setup {
         output = {
           open_on_run = true,
+        },
+        status = { virtual_text = true },
+        quickfix = {
+          open = function()
+            vim.cmd 'copen'
+          end,
         },
         adapters = {
           require 'neotest-phpunit' {
@@ -38,17 +45,22 @@ return {
           require 'neotest-python' {
             dap = { justMyCode = false },
           },
+          require 'neotest-jest' {
+            jestCommand = 'npm test --',
+            jestConfigFile = 'custom.jest.config.ts',
+            env = { CI = true },
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          },
         },
         summary = {
           animated = false,
         },
         icons = {
-          expanded = '',
-          child_prefix = '',
-          child_indent = '',
-          final_child_prefix = '',
+          expanded = '',
           non_collapsible = '',
-          collapsed = '',
+          collapsed = '',
 
           passed = '',
           running = '',
@@ -56,10 +68,20 @@ return {
           unknown = '',
         },
       }
+      local neotest_ns = vim.api.nvim_create_namespace 'neotest'
+      vim.diagnostic.config({
+        virtual_text = {
+          format = function(diagnostic)
+            -- Replace newline and tab characters with space for more compact diagnostics
+            local message = diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
+            return message
+          end,
+        },
+      }, neotest_ns)
     end,
     keys = {
       {
-        '<leader>tN',
+        '<leader>tdn',
         function()
           vim.api.nvim_command 'silent! wa'
           require('neotest').run.run { strategy = 'dap' }
@@ -67,7 +89,7 @@ return {
         desc = 'Debug Nearest',
       },
       {
-        '<leader>tL',
+        '<leader>tdl',
         function()
           vim.api.nvim_command 'silent! wa'
           require('neotest').run.run_last { strategy = 'dap' }
@@ -80,6 +102,13 @@ return {
           require('neotest').output.open { enter = true, auto_close = true }
         end,
         desc = 'Show Output',
+      },
+      {
+        '<leader>tu',
+        function()
+          require('neotest').summary.toggle()
+        end,
+        desc = 'Show UI',
       },
     },
   },
