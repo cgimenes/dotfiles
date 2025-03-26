@@ -135,6 +135,7 @@ return {
         'rubocop',
         'ruff',
         'shfmt',
+        'sleek',
         'sqlfluff',
         'sqlfmt',
         'stylua',
