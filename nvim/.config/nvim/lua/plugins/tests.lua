@@ -1,6 +1,7 @@
 return {
   {
     'vim-test/vim-test',
+    enabled = false,
     cmd = 'TestSuite',
     dependencies = {
       'preservim/vimux',
@@ -80,6 +81,38 @@ return {
       }, neotest_ns)
     end,
     keys = {
+      {
+        '<leader>tn',
+        function()
+          vim.api.nvim_command 'silent! wa'
+          require('neotest').run.run()
+        end,
+        desc = '[T]est [N]earest',
+      },
+      {
+        '<leader>tf',
+        function()
+          vim.api.nvim_command 'silent! wa'
+          require('neotest').run.run(vim.fn.expand '%')
+        end,
+        desc = '[T]est [F]ile',
+      },
+      {
+        '<leader>ts',
+        function()
+          vim.api.nvim_command 'silent! wa'
+          require('neotest').run.run { suite = true }
+        end,
+        desc = '[T]est [S]uite',
+      },
+      {
+        '<leader>tl',
+        function()
+          vim.api.nvim_command 'silent! wa'
+          require('neotest').run.run_last()
+        end,
+        desc = '[T]est [L]ast',
+      },
       {
         '<leader>tdn',
         function()
