@@ -1,7 +1,10 @@
 return {
   {
     -- Cool icons
-    'nvim-tree/nvim-web-devicons',
+    'echasnovski/mini.icons',
+    main = 'mini.icons',
+    version = false,
+    config = true,
   },
   {
     -- Better quickfix window
