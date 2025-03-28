@@ -69,7 +69,7 @@ return {
     { 'grr', '<cmd>FzfLua lsp_references<cr>', desc = '[G]oto [R]eferences' },
     { 'gri', '<cmd>FzfLua lsp_implementations<cr>', desc = '[G]oto [I]mplementation' },
     { 'gra', '<cmd>FzfLua lsp_code_actions<cr>', desc = '[C]ode [A]ctions' },
-    { '<leader>ls', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Document [S]ymbols' },
+    { 'gO', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Document [S]ymbols' },
     { '<leader>lS', '<cmd>FzfLua lsp_live_workspace_symbols<cr>', desc = 'Workspace [S]ymbols' },
     { '<leader>ld', '<cmd>FzfLua diagnostics_document<cr>', desc = 'Document [D]iagnostics' },
     -- Jump to the type of the word under your cursor.

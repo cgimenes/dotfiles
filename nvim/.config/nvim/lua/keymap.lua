@@ -11,6 +11,7 @@ vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>diffoff<cr><cmd>DiffviewClose<cr>
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<C-o>', '<C-o>zz')
+vim.keymap.set('n', '<C-i>', '<C-i>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
@@ -21,9 +22,6 @@ vim.keymap.set('n', '<leader>w', '<C-w>')
 
 vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', '<', '<gv')
-
-vim.keymap.set('n', '[q', '<cmd>cprev<cr>')
-vim.keymap.set('n', ']q', '<cmd>cnext<cr>')
 
 vim.keymap.set('v', '$', 'g_')
 vim.keymap.set('v', 'J', '<cmd>m +1<cr>')

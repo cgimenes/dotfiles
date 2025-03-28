@@ -74,6 +74,10 @@ vim.opt.fixendofline = false
 -- Disable splash screen
 vim.opt.shortmess:append 'I'
 
+-- Add rounded borders on floating windows
+vim.opt.winborder = 'rounded'
+
+-- Use correct filetype for each extension/filename/pattern
 vim.filetype.add {
   extension = {
     http = 'http',

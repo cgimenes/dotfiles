@@ -29,9 +29,6 @@ return {
             vim.lsp.buf.rename()
             vim.cmd 'silent wa'
           end, '[R]ename')
-          -- map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-          map('<leader>lk', vim.lsp.buf.signature_help, 'Signature Documentation')
-          -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -168,6 +165,7 @@ return {
 
       vim.diagnostic.config {
         underline = false,
+        virtual_lines = { current_line = true },
         severity_sort = true,
         float = {
           focusable = true,

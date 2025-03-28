@@ -4,7 +4,7 @@ return {
     dependencies = {
       'nvim-neotest/nvim-nio',
 
-      { 'igorlfs/nvim-dap-view', opts = {} },
+      { 'igorlfs/nvim-dap-view', config = true },
 
       'theHamsta/nvim-dap-virtual-text',
 
