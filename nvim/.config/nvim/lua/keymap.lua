@@ -5,8 +5,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set('i', 'jk', '<Esc>')
 
--- Close everything (quickfix, diffview and Diffview.nvim)
-vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>diffoff<cr><cmd>DiffviewClose<cr>')
+-- Close everything (quickfix, location list, diffview and Diffview.nvim)
+vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>lcl<cr><cmd>diffoff<cr><cmd>DiffviewClose<cr>')
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
