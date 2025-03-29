@@ -174,20 +174,18 @@ return {
           border = 'rounded',
           header = '',
         },
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN] = '',
+            [vim.diagnostic.severity.INFO] = '󰌶',
+            [vim.diagnostic.severity.HINT] = '',
+          },
+        },
       }
       vim.keymap.set('n', '<leader>od', function()
         vim.diagnostic.config { virtual_text = not vim.diagnostic.config().virtual_text }
       end, { desc = 'Toggle [D]iagnostic virtual text' })
-
-      local signs = {
-        { name = 'DiagnosticSignError', text = '' },
-        { name = 'DiagnosticSignWarn', text = '' },
-        { name = 'DiagnosticSignHint', text = '󰌶' },
-        { name = 'DiagnosticSignInfo', text = '' },
-      }
-      for _, sign in ipairs(signs) do
-        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
-      end
     end,
   },
 }
