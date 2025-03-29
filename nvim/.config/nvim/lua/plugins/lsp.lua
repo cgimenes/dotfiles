@@ -164,8 +164,10 @@ return {
       }
 
       vim.diagnostic.config {
+        virtual_text = {
+          current_line = true,
+        },
         underline = false,
-        virtual_lines = { current_line = true },
         severity_sort = true,
         float = {
           focusable = true,
