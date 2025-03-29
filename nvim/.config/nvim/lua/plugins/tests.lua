@@ -137,6 +137,13 @@ return {
         desc = 'Show Output',
       },
       {
+        '<leader>tO',
+        function()
+          require('neotest').output_panel.open()
+        end,
+        desc = 'Show Output Panel',
+      },
+      {
         '<leader>tu',
         function()
           require('neotest').summary.toggle()
