@@ -3,6 +3,7 @@ return {
     'cbochs/grapple.nvim',
     opts = {
       scope = 'git_branch',
+      icons = false,
     },
     event = { 'BufReadPost', 'BufNewFile' },
     cmd = 'Grapple',
