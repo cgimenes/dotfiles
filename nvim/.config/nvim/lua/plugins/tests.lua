@@ -39,6 +39,9 @@ return {
             vim.cmd 'copen'
           end,
         },
+        consumers = {
+          overseer = require 'neotest.consumers.overseer',
+        },
         adapters = {
           require 'neotest-phpunit' {
             filter_dirs = { '.git', 'node_modules', 'vendor' },

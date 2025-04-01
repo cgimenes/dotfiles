@@ -14,6 +14,8 @@ return {
       'leoluz/nvim-dap-go',
       'suketa/nvim-dap-ruby',
       'mfussenegger/nvim-dap-python',
+
+      'stevearc/overseer.nvim',
     },
     config = function()
       local dap = require 'dap'
@@ -38,6 +40,8 @@ return {
       }
 
       require('nvim-dap-virtual-text').setup {}
+
+      require("overseer").enable_dap()
 
       dap.listeners.before.attach['dap-view-config'] = function()
         dv.open()
