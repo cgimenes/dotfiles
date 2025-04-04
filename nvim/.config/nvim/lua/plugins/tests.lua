@@ -1,32 +1,34 @@
+local vim_test_file_types = {
+  ['php'] = true,
+}
+
+local function use_vim_test()
+  if vim_test_file_types[vim.bo.filetype] then
+    return true
+  end
+  return false
+end
+
 return {
-  {
-    'vim-test/vim-test',
-    enabled = false,
-    cmd = 'TestSuite',
-    dependencies = {
-      'preservim/vimux',
-    },
-    config = function()
-      vim.cmd "let test#strategy = 'vimux'"
-      vim.cmd 'let test#echo_command = 0'
-      vim.g.VimuxCloseOnExit = 1
-    end,
-    keys = {
-      { '<leader>tn', '<cmd>silent! wa<cr><cmd>TestNearest<cr>', desc = '[T]est [N]earest' },
-      { '<leader>tf', '<cmd>silent! wa<cr><cmd>TestFile<cr>', desc = '[T]est [F]ile' },
-      { '<leader>ts', '<cmd>silent! wa<cr><cmd>TestSuite<cr>', desc = '[T]est [S]uite' },
-      { '<leader>tl', '<cmd>silent! wa<cr><cmd>TestLast<cr>', desc = '[T]est [L]ast' },
-      { '<leader>tq', '<cmd>VimuxCloseRunner<cr>', desc = '[T]est [Q]uit' },
-    },
-  },
   {
     'nvim-neotest/neotest',
     lazy = true,
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'olimorris/neotest-phpunit',
+      'nvim-neotest/neotest-vim-test',
       'nvim-neotest/neotest-python',
       'nvim-neotest/neotest-jest',
+      {
+        'vim-test/vim-test',
+        dependencies = {
+          'preservim/vimux',
+        },
+        config = function()
+          vim.cmd "let test#strategy = 'vimux'"
+          vim.cmd 'let test#echo_command = 0'
+          vim.g.VimuxCloseOnExit = 1
+        end,
+      },
     },
     config = function()
       require('neotest').setup {
@@ -43,9 +45,6 @@ return {
           overseer = require 'neotest.consumers.overseer',
         },
         adapters = {
-          require 'neotest-phpunit' {
-            filter_dirs = { '.git', 'node_modules', 'vendor' },
-          },
           require 'neotest-python' {
             dap = { justMyCode = false },
           },
@@ -88,7 +87,11 @@ return {
         '<leader>tn',
         function()
           vim.api.nvim_command 'silent! wa'
-          require('neotest').run.run()
+          if use_vim_test() then
+            vim.api.nvim_command 'TestNearest'
+          else
+            require('neotest').run.run()
+          end
         end,
         desc = '[T]est [N]earest',
       },
@@ -96,7 +99,11 @@ return {
         '<leader>tf',
         function()
           vim.api.nvim_command 'silent! wa'
-          require('neotest').run.run(vim.fn.expand '%')
+          if use_vim_test() then
+            vim.api.nvim_command 'TestFile'
+          else
+            require('neotest').run.run(vim.fn.expand '%')
+          end
         end,
         desc = '[T]est [F]ile',
       },
@@ -104,7 +111,11 @@ return {
         '<leader>ts',
         function()
           vim.api.nvim_command 'silent! wa'
-          require('neotest').run.run { suite = true }
+          if use_vim_test() then
+            vim.api.nvim_command 'TestSuite'
+          else
+            require('neotest').run.run { suite = true }
+          end
         end,
         desc = '[T]est [S]uite',
       },
@@ -112,7 +123,11 @@ return {
         '<leader>tl',
         function()
           vim.api.nvim_command 'silent! wa'
-          require('neotest').run.run_last()
+          if use_vim_test() then
+            vim.api.nvim_command 'TestLast'
+          else
+            require('neotest').run.run_last()
+          end
         end,
         desc = '[T]est [L]ast',
       },
@@ -152,6 +167,11 @@ return {
           require('neotest').summary.toggle()
         end,
         desc = 'Show UI',
+      },
+      {
+        '<leader>tq',
+        '<cmd>VimuxCloseRunner<cr>',
+        desc = '[T]est [Q]uit',
       },
     },
   },
