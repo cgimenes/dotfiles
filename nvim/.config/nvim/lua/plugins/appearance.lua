@@ -27,16 +27,4 @@ return {
     },
     event = { 'WinLeave' },
   },
-  {
-    -- Better vim.select
-    'stevearc/dressing.nvim',
-    opts = {
-      input = {
-        enabled = false,
-      },
-      select = {
-        backend = { 'fzf_lua' },
-      },
-    },
-  },
 }

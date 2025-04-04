@@ -39,35 +39,21 @@ return {
     },
     keys = {
       {
-        '<leader>sz',
-        function()
-          Snacks.picker.zoxide()
-        end,
-        desc = '[S]earch [Z]oxide',
-      },
-      {
         '<leader>si',
         function()
           Snacks.picker.icons()
         end,
-        desc = '[S]earch [I]cons',
+        desc = 'Search Icons',
       },
       {
-        '<leader>,',
+        '<leader>sl',
         function()
-          Snacks.scratch()
+          Snacks.picker.resume()
         end,
-        desc = 'Toggle Scratch Buffer',
+        desc = 'Resume',
       },
       {
-        '<leader>S',
-        function()
-          Snacks.scratch.select()
-        end,
-        desc = 'Select Scratch Buffer',
-      },
-      {
-        '<leader>nn',
+        '<leader>n',
         function()
           Snacks.notifier.show_history()
         end,
@@ -81,18 +67,170 @@ return {
         desc = 'Lazygit',
       },
       {
-        '<leader>nd',
+        '<leader>.',
         function()
-          Snacks.notifier.hide()
+          Snacks.picker.files {
+            hidden = true,
+          }
         end,
-        desc = 'Dismiss All Notifications',
+        desc = 'Find Files',
       },
       {
-        '<leader>/',
+        '<leader><space>',
         function()
-          Snacks.terminal()
+          Snacks.picker.smart()
         end,
-        desc = 'Toggle Terminal',
+        desc = 'Smart Find Files',
+      },
+      {
+        '<leader>:',
+        function()
+          Snacks.picker.command_history()
+        end,
+        desc = 'Command History',
+      },
+      {
+        '<leader>,',
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = 'Buffers',
+      },
+      {
+        '<leader>s"',
+        function()
+          Snacks.picker.registers()
+        end,
+        desc = 'Registers',
+      },
+      {
+        '<leader>J',
+        function()
+          Snacks.picker.jumps()
+        end,
+        desc = 'Jumps',
+      },
+      {
+        '<leader>sr',
+        function()
+          Snacks.picker.recent()
+        end,
+        desc = 'Recent',
+      },
+      {
+        '<leader>sh',
+        function()
+          Snacks.picker.help()
+        end,
+        desc = 'Help Pages',
+      },
+      {
+        '<leader>sk',
+        function()
+          Snacks.picker.keymaps()
+        end,
+        desc = 'Keymaps',
+      },
+      {
+        '<leader>sw',
+        function()
+          Snacks.picker.grep_word { hidden = true }
+        end,
+        desc = 'Visual selection or word',
+        mode = { 'n', 'x' },
+      },
+      {
+        '<leader>sm',
+        function()
+          Snacks.picker.man()
+        end,
+        desc = 'Man Pages',
+      },
+      {
+        '<leader>sg',
+        function()
+          Snacks.picker.grep { hidden = true }
+        end,
+        desc = 'Grep',
+      },
+      {
+        '<leader>oc',
+        function()
+          Snacks.picker.colorschemes()
+        end,
+        desc = 'Colorschemes',
+      },
+      {
+        '<leader>su',
+        function()
+          Snacks.picker.undo()
+        end,
+        desc = 'Undo History',
+      },
+      -- LSP
+      {
+        'gd',
+        function()
+          Snacks.picker.lsp_definitions()
+        end,
+        desc = 'Goto Definition',
+      },
+      {
+        'gD',
+        function()
+          Snacks.picker.lsp_declarations()
+        end,
+        desc = 'Goto Declaration',
+      },
+      {
+        'grr',
+        function()
+          Snacks.picker.lsp_references()
+        end,
+        nowait = true,
+        desc = 'References',
+      },
+      {
+        'gri',
+        function()
+          Snacks.picker.lsp_implementations()
+        end,
+        desc = 'Goto Implementation',
+      },
+      {
+        'gy',
+        function()
+          Snacks.picker.lsp_type_definitions()
+        end,
+        desc = 'Goto T[y]pe Definition',
+      },
+      {
+        'gO',
+        function()
+          Snacks.picker.lsp_symbols()
+        end,
+        desc = 'LSP Symbols',
+      },
+      {
+        '<leader>lS',
+        function()
+          Snacks.picker.lsp_workspace_symbols()
+        end,
+        desc = 'LSP Workspace Symbols',
+      },
+      {
+        '<leader>lD',
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = 'Diagnostics',
+      },
+      {
+        '<leader>ld',
+        function()
+          Snacks.picker.diagnostics_buffer()
+        end,
+        desc = 'Buffer Diagnostics',
       },
     },
     init = function()

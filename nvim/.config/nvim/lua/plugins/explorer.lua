@@ -46,9 +46,8 @@ return {
         change_working_directory = '<c-/>',
       },
       integrations = {
-        grep_in_directory = function(directory)
-          require('fzf-lua').live_grep { cwd = directory }
-        end,
+        grep_in_directory = 'snacks.picker',
+        grep_in_selected_files = 'snacks.picker',
       },
     },
   },
