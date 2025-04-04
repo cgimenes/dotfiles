@@ -25,6 +25,7 @@ return {
           end
 
           map('grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', '[G]oto [D]efinition')
+          map('<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', 'Incoming Calls')
           map('grn', function()
             vim.lsp.buf.rename()
             vim.cmd 'silent wa'
