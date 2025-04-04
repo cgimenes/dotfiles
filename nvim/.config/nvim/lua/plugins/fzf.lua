@@ -34,7 +34,7 @@ return {
   },
   keys = {
     { '<leader>of', '<cmd>FzfLua filetypes<cr>', desc = 'Change [F]iletype' },
-    { '<leader>oC', '<cmd>FzfLua awesome_colorscheme<cr>', desc = 'Awesome Colorscheme' },
+    { '<leader>oC', '<cmd>FzfLua awesome_colorschemes<cr>', desc = 'Awesome Colorscheme' },
     { '<leader>li', '<cmd>FzfLua lsp_incoming_calls<cr>', desc = 'Incoming calls' },
     { 'gra', '<cmd>FzfLua lsp_code_actions<cr>', desc = 'Code Actions' },
   },

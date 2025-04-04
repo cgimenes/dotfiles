@@ -121,11 +121,21 @@ return {
         lualine_b = {
           {
             function()
+              return ('%s %d events'):format(Snacks.profiler.config.icons.status, #Snacks.profiler.core.events)
+            end,
+            color = 'DiagnosticError',
+            cond = function()
+              return Snacks.profiler.core.running
+            end,
+          },
+          {
+            function()
               local reg = vim.fn.reg_recording()
-              if reg == '' then
-                return ''
-              end
               return 'recording to ' .. reg
+            end,
+            color = 'DiagnosticError',
+            cond = function()
+              return vim.fn.reg_recording() ~= ''
             end,
           },
           {

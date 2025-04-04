@@ -12,10 +12,19 @@ return {
           keys = {
             { icon = ' ', key = 'n', desc = 'New File', action = ':ene' },
             { icon = '󰙅 ', key = 'y', desc = 'Yazi', action = ':Yazi' },
+            { icon = ' ', key = 'g', desc = 'LazyGit', action = ':lua Snacks.lazygit()' },
             { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-            { icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
+            { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
             { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
           },
+        },
+        sections = {
+          { section = 'header' },
+          { icon = ' ', title = 'Keymaps', section = 'keys', indent = 2, padding = 1 },
+          { icon = ' ', title = 'Project Recent Files ', file = vim.fn.fnamemodify('.', ':~') },
+          { section = 'recent_files', cwd = true, indent = 2, padding = 1 },
+          { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
+          { section = 'startup' },
         },
       },
       indent = {
@@ -231,6 +240,55 @@ return {
           Snacks.picker.diagnostics_buffer()
         end,
         desc = 'Buffer Diagnostics',
+      },
+      {
+        '<leader>oF',
+        function()
+          local icons = require 'mini.icons'
+          local entries = vim.fn.getcompletion('', 'filetype')
+          entries = vim.tbl_map(function(ft)
+            local buficon, hl = icons.get('filetype', ft)
+            if not buficon then
+              buficon = ' '
+            end
+            return ft
+          end, entries)
+          Snacks.select {
+            entries,
+            {},
+            -- format = function(item)
+            --   local ret = {}
+            --   ret[#ret + 1] = { ('%-' .. 'longest_name' .. 's'):format(item.name), 'SnacksPickerLabel' }
+            --   ret[#ret + 1] = { item.text, 'SnacksPickerComment' }
+            --   return ret
+            -- end,
+            function(item)
+              vim.cmd(('set filetype=%s'):format(item))
+            end,
+          }
+        end,
+        desc = 'Filetypes',
+      },
+      {
+        '<leader>oPt',
+        function()
+          Snacks.profiler.toggle()
+        end,
+        desc = 'Toggle Profiler',
+      },
+      {
+        '<leader>oPh',
+        function()
+          Snacks.profiler.highlight()
+        end,
+        desc = 'Toggle Profiler Highlights',
+      },
+      {
+        '<leader>oPp',
+        function()
+          Snacks.profiler.highlight()
+        end,
+        desc = 'Toggle Profiler Picker',
       },
     },
     init = function()
