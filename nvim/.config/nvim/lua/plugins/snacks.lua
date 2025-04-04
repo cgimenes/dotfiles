@@ -78,9 +78,7 @@ return {
       {
         '<leader>.',
         function()
-          Snacks.picker.files {
-            hidden = true,
-          }
+          Snacks.picker.files { hidden = true }
         end,
         desc = 'Find Files',
       },
@@ -176,6 +174,41 @@ return {
         end,
         desc = 'Undo History',
       },
+      {
+        '<leader>of',
+        function()
+          local icons = require 'mini.icons'
+          local entries = vim.fn.getcompletion('', 'filetype')
+          entries = vim.tbl_map(function(ft)
+            local buficon, hl = icons.get('filetype', ft)
+            if not buficon then
+              buficon = ' '
+            end
+            return {
+              icon = buficon,
+              name = ft,
+              text = ft,
+              hl = hl,
+            }
+          end, entries)
+          Snacks.picker {
+            items = entries,
+            format = function(item)
+              local ret = {}
+              ret[#ret + 1] = { item.icon, item.hl }
+              ret[#ret + 1] = { '  ', virtual = true }
+              ret[#ret + 1] = { item.name, 'SnacksPickerLabel' }
+              return ret
+            end,
+            confirm = function(picker, item)
+              picker:close()
+              vim.cmd(('set filetype=%s'):format(item.name))
+            end,
+            layout = 'select',
+          }
+        end,
+        desc = 'Filetypes',
+      },
       -- LSP
       {
         'gd',
@@ -241,34 +274,7 @@ return {
         end,
         desc = 'Buffer Diagnostics',
       },
-      {
-        '<leader>oF',
-        function()
-          local icons = require 'mini.icons'
-          local entries = vim.fn.getcompletion('', 'filetype')
-          entries = vim.tbl_map(function(ft)
-            local buficon, hl = icons.get('filetype', ft)
-            if not buficon then
-              buficon = ' '
-            end
-            return ft
-          end, entries)
-          Snacks.select {
-            entries,
-            {},
-            -- format = function(item)
-            --   local ret = {}
-            --   ret[#ret + 1] = { ('%-' .. 'longest_name' .. 's'):format(item.name), 'SnacksPickerLabel' }
-            --   ret[#ret + 1] = { item.text, 'SnacksPickerComment' }
-            --   return ret
-            -- end,
-            function(item)
-              vim.cmd(('set filetype=%s'):format(item))
-            end,
-          }
-        end,
-        desc = 'Filetypes',
-      },
+      -- Profiler
       {
         '<leader>oPt',
         function()
