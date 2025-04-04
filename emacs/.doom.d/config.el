@@ -37,6 +37,9 @@
 
 (setq projectile-project-search-path '("~/dev/src"))
 
+(after! ledger-mode
+  (setq ledger-default-date-format ledger-iso-date-format))
+
 (setq org-directory "~/org/")
 (after! org
   (setq org-agenda-deadline-leaders '("" "" "%2d d. ago: ")
