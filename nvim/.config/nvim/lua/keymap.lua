@@ -15,9 +15,9 @@ vim.keymap.set('n', '<C-i>', '<C-i>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
-vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>', { desc = '[N]ew Buffer' })
-vim.keymap.set('n', '<leader>bd', '<cmd>windo diffthis<cr>', { desc = '[D]iff' })
-vim.keymap.set('n', '<leader>bs', '<cmd>silent wa!<cr>', { desc = '[S]ave file' })
+vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>', { desc = 'New Buffer' })
+vim.keymap.set('n', '<leader>bd', '<cmd>windo diffthis<cr>', { desc = 'Diff' })
+vim.keymap.set('n', '<leader>bs', '<cmd>silent wa!<cr>', { desc = 'Save file' })
 vim.keymap.set('n', '<leader>w', '<C-w>')
 
 vim.keymap.set('v', '>', '>gv')
@@ -60,7 +60,7 @@ vim.keymap.set('n', '<leader>fs', function()
       vim.cmd 'copen'
     end
   end)
-end, { desc = '[S]earch using :grep' })
+end, { desc = 'Search using :grep' })
 
 vim.keymap.set('n', '<leader>fr', function()
   vim.ui.input({ prompt = 'Pattern: ', default = '\\V' }, function(pattern)
@@ -68,7 +68,7 @@ vim.keymap.set('n', '<leader>fr', function()
       vim.cmd('cdo s/' .. pattern .. '/gc | update')
     end
   end)
-end, { desc = '[R]eplace using :cdo' })
+end, { desc = 'Replace using :cdo' })
 
 -- Execute code
 vim.keymap.set('n', '<leader>cl', '<cmd>.lua<CR>', { desc = 'Execute the current line' })

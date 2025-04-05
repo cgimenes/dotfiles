@@ -12,7 +12,7 @@ return {
         function()
           require('refactoring').select_refactor()
         end,
-        desc = '[R]efactor',
+        desc = 'Refactor',
         mode = { 'n', 'v' },
       },
     },

@@ -5,11 +5,11 @@ return {
       'tpope/vim-rhubarb',
     },
     keys = {
-      { '<leader>gb', '<cmd>G blame<cr>', desc = '[G]it [B]lame' },
-      { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List [G]it [C]onflicts' },
-      { '<leader>gd', '<cmd>Gvdiff<cr>', desc = '[G]it [D]iff' },
-      { '<leader>gB', ':GBrowse<cr>', desc = '[G]it [B]rowse', mode = { 'n', 'v' } },
-      { '<leader>gG', '<cmd>vert G<cr>', desc = '[G]it Status' },
+      { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' },
+      { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' },
+      { '<leader>gd', '<cmd>Gvdiff<cr>', desc = 'Git Diff' },
+      { '<leader>gB', ':GBrowse<cr>', desc = 'Git Browse', mode = { 'n', 'v' } },
+      { '<leader>gG', '<cmd>vert G<cr>', desc = 'Git Status' },
     },
   },
   {
@@ -20,7 +20,7 @@ return {
     },
     keys = {
       { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'File History' },
-      { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = '[G]it [D]iffview' },
+      { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' },
     },
   },
   {
@@ -29,9 +29,9 @@ return {
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
 
-        vim.keymap.set('n', '<leader>gp', gs.preview_hunk, { buffer = bufnr, desc = '[G]it hunk [P]review' })
-        vim.keymap.set('n', '<leader>gR', gs.reset_hunk, { buffer = bufnr, desc = '[G]it hunk [R]eset' })
-        vim.keymap.set('n', '<leader>gl', gs.blame_line, { buffer = bufnr, desc = '[G]it Blame [L]ine' })
+        vim.keymap.set('n', '<leader>gp', gs.preview_hunk, { buffer = bufnr, desc = 'Git hunk Preview' })
+        vim.keymap.set('n', '<leader>gR', gs.reset_hunk, { buffer = bufnr, desc = 'Git hunk Reset' })
+        vim.keymap.set('n', '<leader>gl', gs.blame_line, { buffer = bufnr, desc = 'Git Blame Line' })
 
         -- don't override the built-in and fugitive keymaps
         vim.keymap.set({ 'n', 'v' }, ']c', function()
@@ -81,7 +81,7 @@ return {
     'topaxi/pipeline.nvim',
     config = true,
     keys = {
-      { '<leader>ga', '<cmd>Pipeline<cr>', desc = 'Open Github [A]ctions' },
+      { '<leader>ga', '<cmd>Pipeline<cr>', desc = 'Open Github Actions' },
     },
   },
 }

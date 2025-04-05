@@ -23,7 +23,7 @@ return {
   {
     'preservim/vimux',
     keys = {
-      { '<leader>rc', '<cmd>VimuxPromptCommand<cr>', desc = '[R]un [C]ommand on Tmux' },
+      { '<leader>rc', '<cmd>VimuxPromptCommand<cr>', desc = 'Run Command on Tmux' },
     },
   },
 }

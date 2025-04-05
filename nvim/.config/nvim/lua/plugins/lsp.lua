@@ -24,12 +24,12 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
-          map('grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', '[G]oto [D]efinition')
+          map('grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', 'Goto Definition')
           map('<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', 'Incoming Calls')
           map('grn', function()
             vim.lsp.buf.rename()
             vim.cmd 'silent wa'
-          end, '[R]ename')
+          end, 'Rename')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -186,7 +186,7 @@ return {
       }
       vim.keymap.set('n', '<leader>od', function()
         vim.diagnostic.config { virtual_text = not vim.diagnostic.config().virtual_text }
-      end, { desc = 'Toggle [D]iagnostic virtual text' })
+      end, { desc = 'Toggle Diagnostic virtual text' })
     end,
   },
 }

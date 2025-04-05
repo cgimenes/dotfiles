@@ -19,9 +19,9 @@ return {
       },
     },
     keys = {
-      { '<leader>rr', '<cmd>OverseerRun<cr>', desc = 'Overseer [R]un' },
-      { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Overseer [T]oggle' },
-      { '<leader>rq', '<cmd>OverseerQuickAction<cr>', desc = 'Overseer [Q]uickAction' },
+      { '<leader>rr', '<cmd>OverseerRun<cr>', desc = 'Overseer Run' },
+      { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Overseer Toggle' },
+      { '<leader>rq', '<cmd>OverseerQuickAction<cr>', desc = 'Overseer QuickAction' },
     },
   },
 }

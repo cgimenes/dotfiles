@@ -93,7 +93,7 @@ return {
             require('neotest').run.run()
           end
         end,
-        desc = '[T]est [N]earest',
+        desc = 'Test Nearest',
       },
       {
         '<leader>tf',
@@ -105,7 +105,7 @@ return {
             require('neotest').run.run(vim.fn.expand '%')
           end
         end,
-        desc = '[T]est [F]ile',
+        desc = 'Test File',
       },
       {
         '<leader>ts',
@@ -117,7 +117,7 @@ return {
             require('neotest').run.run { suite = true }
           end
         end,
-        desc = '[T]est [S]uite',
+        desc = 'Test Suite',
       },
       {
         '<leader>tl',
@@ -129,7 +129,7 @@ return {
             require('neotest').run.run_last()
           end
         end,
-        desc = '[T]est [L]ast',
+        desc = 'Test Last',
       },
       {
         '<leader>tdn',
@@ -171,7 +171,7 @@ return {
       {
         '<leader>tq',
         '<cmd>VimuxCloseRunner<cr>',
-        desc = '[T]est [Q]uit',
+        desc = 'Test Quit',
       },
     },
   },
