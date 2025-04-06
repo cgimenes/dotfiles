@@ -38,3 +38,7 @@ alias lzd='lazydocker'
 
 # Python
 alias poetsh='source $(poetry env info --path)/bin/activate' # Activate poetry shell without subshell
+
+# NPM
+alias supabase='npx --yes supabase'
+alias nest='npx --yes @nestjs/cli'

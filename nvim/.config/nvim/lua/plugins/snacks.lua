@@ -192,6 +192,7 @@ return {
             }
           end, entries)
           Snacks.picker {
+            title = 'Filetypes',
             items = entries,
             format = function(item)
               local ret = {}
