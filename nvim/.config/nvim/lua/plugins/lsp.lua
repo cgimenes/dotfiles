@@ -2,7 +2,15 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+      {
+        'williamboman/mason.nvim',
+        opts = {
+          registries = {
+            'github:mason-org/mason-registry',
+            'lua:my-mason-registry',
+          },
+        },
+      }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -127,6 +135,8 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'erb-formatter',
+        'kulala-fmt',
+        'kulala_ls', -- Isn't supported by mason-lspconfig yet
         'php-cs-fixer',
         'prettier',
         'prettierd',
@@ -163,6 +173,7 @@ return {
           end,
         },
       }
+      require('lspconfig')['kulala_ls'].setup {}
 
       vim.diagnostic.config {
         virtual_text = {
