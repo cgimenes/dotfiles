@@ -15,16 +15,4 @@ return {
       max_filename_length = 40,
     },
   },
-  {
-    -- Highlight for Window separator
-    'nvim-zh/colorful-winsep.nvim',
-    enabled = false, -- broke after 0.11
-    opts = {
-      hi = {
-        fg = '#FFA066',
-      },
-      symbols = { '─', '│', '╭', '╮', '╰', '╯' },
-    },
-    event = { 'WinLeave' },
-  },
 }
