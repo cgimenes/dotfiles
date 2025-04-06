@@ -49,13 +49,6 @@ return {
         desc = 'Send request <cr>',
       },
       {
-        '<leader>Rr',
-        function()
-          require('kulala').replay()
-        end,
-        desc = 'Replay the last request',
-      },
-      {
         '<leader>Rf',
         function()
           require('kulala').search()
