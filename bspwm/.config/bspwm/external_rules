@@ -89,7 +89,7 @@ case "$clazz" in
   state="tiled"
   ;;
 
-"Gnome-calculator" | "Orage" | "Nitrogen" | "Enpass" | "Nm-connection-editor" | "Pavucontrol" | "Vial")
+"Gnome-calculator" | "Orage" | "Nitrogen" | "Enpass" | "Nm-connection-editor" | "Pavucontrol" | "Vial" | "wow.exe")
   state="floating"
   ;;
 
