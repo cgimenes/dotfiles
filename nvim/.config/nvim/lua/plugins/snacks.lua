@@ -11,8 +11,8 @@ return {
         preset = {
           keys = {
             { icon = ' ', key = 'n', desc = 'New File', action = ':ene' },
-            { icon = '󰙅 ', key = 'y', desc = 'Yazi', action = ':Yazi' },
-            { icon = ' ', key = 'g', desc = 'LazyGit', action = ':lua Snacks.lazygit()' },
+            { icon = ' ', key = 'y', desc = 'Yazi', action = ':Yazi' },
+            { icon = ' ', key = 'g', desc = 'LazyGit', action = ':lua Snacks.lazygit()' },
             { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
             { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
             { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
@@ -75,7 +75,6 @@ return {
         },
       },
       quickfile = { enabled = true },
-      words = { enabled = true },
       styles = {
         notification = {
           wo = { wrap = true },
@@ -118,13 +117,6 @@ return {
           Snacks.picker.files { hidden = true }
         end,
         desc = 'Find Files',
-      },
-      {
-        '<leader><space>',
-        function()
-          Snacks.picker.smart()
-        end,
-        desc = 'Smart Find Files',
       },
       {
         '<leader>:',
