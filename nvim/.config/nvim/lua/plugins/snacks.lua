@@ -36,7 +36,44 @@ return {
         enabled = true,
         timeout = 3000,
       },
-      picker = { enabled = true },
+      picker = {
+        enabled = true,
+        layout = 'ivy',
+        layouts = {
+          ivy = {
+            layout = {
+              box = 'vertical',
+              backdrop = false,
+              row = -1,
+              width = 0,
+              height = 0.5,
+              border = 'top',
+              title = ' {title} {live} {flags}',
+              title_pos = 'left',
+              { win = 'input', height = 1, border = 'bottom' },
+              {
+                box = 'horizontal',
+                { win = 'list', border = 'none' },
+                { win = 'preview', title = '{preview}', width = 0.5, border = 'left' },
+              },
+            },
+          },
+        },
+        matcher = {
+          frecency = true,
+        },
+        win = {
+          input = {
+            keys = {
+              ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+              ['J'] = { 'preview_scroll_down', mode = { 'n', 'i' } },
+              ['K'] = { 'preview_scroll_up', mode = { 'n', 'i' } },
+              ['H'] = { 'preview_scroll_left', mode = { 'n', 'i' } },
+              ['L'] = { 'preview_scroll_right', mode = { 'n', 'i' } },
+            },
+          },
+        },
+      },
       quickfile = { enabled = true },
       words = { enabled = true },
       styles = {
@@ -99,21 +136,36 @@ return {
       {
         '<leader>,',
         function()
-          Snacks.picker.buffers()
+          Snacks.picker.buffers {
+            on_show = function()
+              vim.cmd.stopinsert()
+            end,
+            win = {
+              input = {
+                keys = {
+                  ['d'] = 'bufdelete',
+                },
+              },
+            },
+          }
         end,
         desc = 'Buffers',
       },
       {
         '<leader>s"',
         function()
-          Snacks.picker.registers()
+          Snacks.picker.registers {
+            layout = 'vertical',
+          }
         end,
         desc = 'Registers',
       },
       {
         '<leader>J',
         function()
-          Snacks.picker.jumps()
+          Snacks.picker.jumps {
+            layout = 'vertical',
+          }
         end,
         desc = 'Jumps',
       },
