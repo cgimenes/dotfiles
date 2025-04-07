@@ -94,7 +94,13 @@ return {
           },
         },
         pyright = {},
-        ruby_lsp = {},
+        solargraph = {
+          settings = {
+            solargraph = {
+              useBundler = true,
+            },
+          },
+        },
         ruff = { autostart = false }, -- Disable ruff LSP
         tailwindcss = {},
         taplo = {}, -- TOML

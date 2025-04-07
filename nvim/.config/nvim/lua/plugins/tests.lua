@@ -18,6 +18,7 @@ return {
       'nvim-neotest/neotest-vim-test',
       'nvim-neotest/neotest-python',
       'nvim-neotest/neotest-jest',
+      'zidhuss/neotest-minitest',
       {
         'vim-test/vim-test',
         dependencies = {
@@ -45,6 +46,7 @@ return {
           overseer = require 'neotest.consumers.overseer',
         },
         adapters = {
+          require 'neotest-minitest',
           require 'neotest-python' {
             dap = { justMyCode = false },
           },
