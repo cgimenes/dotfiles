@@ -69,9 +69,7 @@ return {
       },
       sections = {
         lualine_a = {
-          {
-            'mode',
-          },
+          { 'mode' },
         },
         lualine_b = {
           {
@@ -93,21 +91,12 @@ return {
               return vim.fn.reg_recording() ~= ''
             end,
           },
-          {
-            'branch',
-          },
-          {
-            'diagnostics',
-          },
-          {
-            'overseer',
-          },
+          { 'branch' },
+          { 'diagnostics' },
+          { 'overseer' },
         },
         lualine_c = {
-          {
-            'filename',
-            path = 1,
-          },
+          { 'filename', path = 1 },
         },
         lualine_x = {
           {
@@ -151,27 +140,15 @@ return {
               return icons.ui.Tab .. '  ' .. shiftwidth
             end,
           },
-          {
-            'filetype',
-          },
-          {
-            'encoding',
-            show_bomb = true,
-          },
+          { 'filetype' },
+          { 'encoding', show_bomb = true },
         },
         lualine_y = {
-          {
-            'location',
-          },
+          { 'location' },
         },
         lualine_z = {
-          {
-            'progress',
-            cond = conditions.not_hlsearch,
-          },
-          {
-            'searchcount',
-          },
+          { 'progress', cond = conditions.not_hlsearch },
+          { 'searchcount' },
         },
       },
       tabline = {
