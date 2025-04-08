@@ -14,12 +14,6 @@ return {
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-      -- Useful status updates for LSP.
-      {
-        'j-hui/fidget.nvim',
-        opts = { notification = { window = { winblend = 0 } } },
-      },
-
       -- JSON schemas
       'b0o/schemastore.nvim',
     },
