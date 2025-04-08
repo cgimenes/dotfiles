@@ -6,13 +6,13 @@ return {
     build = ':Copilot auth',
     opts = {
       suggestion = {
-        enabled = true,
+        enabled = false,
         auto_trigger = true,
         keymap = {
           accept = '<M-y>',
         },
       },
-      panel = { enabled = true },
+      panel = { enabled = false },
     },
   },
 }

@@ -1,16 +1,14 @@
 return {
   {
     'saghen/blink.cmp',
-    -- !Important! Make sure you're using the latest release of LuaSnip
-    -- `main` does not work at the moment
-    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+    dependencies = {
+      { 'rafamadriz/friendly-snippets' },
+      { 'fang2hou/blink-copilot' },
+    },
     version = '*',
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      snippets = {
-        preset = 'luasnip',
-      },
       fuzzy = {
         max_typos = function()
           return 0
@@ -18,11 +16,17 @@ return {
         use_frecency = false,
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot' },
         providers = {
           -- dont show LuaLS require statements when lazydev has items
           lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', fallbacks = { 'lsp' } },
           dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
+          copilot = {
+            name = 'Copilot',
+            module = 'blink-copilot',
+            score_offset = 100,
+            async = true,
+          },
         },
       },
       signature = {

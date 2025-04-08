@@ -36,11 +36,6 @@ vim.keymap.set('n', '<leader>pE', '$pa', { desc = 'Paste at the end of current l
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Snippets
-vim.keymap.set('n', '<leader>oS', function()
-  require('snippets').load_snippets()
-end, { desc = 'Reload snippets' })
-
 -- Yank filename
 vim.keymap.set('n', '<leader>yr', '<cmd>let @+ = expand("%:.")<cr>', { desc = 'Yank relative filename' })
 vim.keymap.set('n', '<leader>yf', '<cmd>let @+ = expand("%:p")<cr>', { desc = 'Yank full filename' })
