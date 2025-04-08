@@ -37,8 +37,17 @@ return {
         timeout = 3000,
       },
       picker = {
+        formatters = {
+          file = {
+            filename_first = true, -- display filename before the file path
+            -- truncate = 80, -- truncate the file path to (roughly) this length
+          },
+        },
         enabled = true,
-        layout = 'ivy',
+        layout = {
+          preset = 'ivy',
+          cycle = true,
+        },
         layouts = {
           ivy = {
             layout = {
