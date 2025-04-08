@@ -3,7 +3,8 @@ return {
     'folke/which-key.nvim',
     event = 'VimEnter',
     opts = {
-      delay = 50,
+      preset = "helix",
+      delay = 500,
       icons = {
         mappings = false,
       },
@@ -14,7 +15,6 @@ return {
         { '<leader>d', group = 'Debug' },
         { '<leader>f', group = 'Find and Replace' },
         { '<leader>g', group = 'Git' },
-        { '<leader>h', group = 'Grapple' },
         { '<leader>l', group = 'LSP' },
         { '<leader>ln', group = 'Node' },
         { '<leader>o', group = 'Options' },

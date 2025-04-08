@@ -1,14 +1,8 @@
 local window_width_limit = 100
 
 local conditions = {
-  buffer_not_empty = function()
-    return vim.fn.empty(vim.fn.expand '%:t') ~= 1
-  end,
   hide_in_width = function()
     return vim.o.columns > window_width_limit
-  end,
-  first_tab = function()
-    return vim.fn.tabpagenr() == 1
   end,
   more_than_one_tab = function()
     return vim.fn.tabpagenr '$' > 1
@@ -25,47 +19,6 @@ local conditions = {
   end,
 }
 
-local function grapple_files()
-  local tags, err = require('grapple').tags()
-  if not tags then
-    return vim.notify(err, vim.log.levels.ERROR)
-  end
-
-  local file_names = {}
-  for _, tag in pairs(tags) do
-    local file_name = vim.fn.fnamemodify(tag.path, ':t')
-    if not file_names[file_name] then
-      file_names[file_name] = {}
-    end
-
-    table.insert(file_names[file_name], tag)
-  end
-
-  local current_file_path = vim.fn.expand '%:p'
-  local results = {}
-  for index, tag in ipairs(tags) do
-    local file_name = vim.fn.fnamemodify(tag.path, ':t')
-    if #file_names[file_name] > 1 then
-      file_name = vim.fn.fnamemodify(tag.path, ':h:t') .. '/' .. file_name
-    end
-
-    if current_file_path == tag.path then
-      results[index] = string.format('%%#GrappleBold# %s. %%#GrappleBold#%s ', index, file_name)
-    else
-      results[index] = string.format('%%#GrappleHint# %s. %%#GrappleHint#%s ', index, file_name)
-    end
-    results[index] = string.format('%%%s@LualineSwitchGrapple@%s%%X', index, results[index])
-  end
-
-  return table.concat(results)
-end
-
-vim.cmd [[
-  function! LualineSwitchGrapple(index, mouseclicks, mousebutton, modifiers)
-    execute ":Grapple select index=" .. a:index
-  endfunction
-]]
-
 local icons = require 'icons'
 
 return {
@@ -74,6 +27,7 @@ return {
     event = 'VeryLazy',
     opts = {
       options = {
+        always_show_tabline = false,
         globalstatus = true,
         icons_enabled = true,
         theme = 'auto',
@@ -132,7 +86,7 @@ return {
           {
             function()
               local reg = vim.fn.reg_recording()
-              return 'recording to ' .. reg
+              return ' recording to ' .. reg
             end,
             color = 'DiagnosticError',
             cond = function()
@@ -140,8 +94,10 @@ return {
             end,
           },
           {
-            'b:gitsigns_head',
-            icon = icons.git.Branch,
+            'branch',
+          },
+          {
+            'diagnostics',
           },
           {
             'overseer',
@@ -150,22 +106,10 @@ return {
         lualine_c = {
           {
             'filename',
-            color = {},
             path = 1,
-            cond = nil,
           },
         },
         lualine_x = {
-          {
-            'diagnostics',
-            sources = { 'nvim_diagnostic' },
-            symbols = {
-              error = icons.diagnostics.BoldError .. ' ',
-              warn = icons.diagnostics.BoldWarning .. ' ',
-              info = icons.diagnostics.BoldInformation .. ' ',
-              hint = icons.diagnostics.BoldHint .. ' ',
-            },
-          },
           {
             function()
               local buf_clients = vim.lsp.get_clients { bufnr = 0 }
@@ -173,7 +117,6 @@ return {
                 return 'LSP Inactive'
               end
 
-              local buf_ft = vim.bo.filetype
               local buf_client_names = {}
               local copilot_active = false
 
@@ -197,7 +140,9 @@ return {
 
               return language_servers
             end,
-            color = { gui = 'bold' },
+            color = function()
+              return { fg = Snacks.util.color 'Statement' }
+            end,
             cond = conditions.hide_in_width,
           },
           {
@@ -205,11 +150,9 @@ return {
               local shiftwidth = vim.api.nvim_buf_get_option(0, 'shiftwidth')
               return icons.ui.Tab .. '  ' .. shiftwidth
             end,
-            padding = 1,
           },
           {
             'filetype',
-            padding = 1,
           },
           {
             'encoding',
@@ -232,13 +175,6 @@ return {
         },
       },
       tabline = {
-        lualine_a = {
-          {
-            grapple_files,
-            cond = conditions.first_tab,
-            padding = 0,
-          },
-        },
         lualine_z = {
           {
             'tabs',
