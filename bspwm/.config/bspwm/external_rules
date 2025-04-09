@@ -17,7 +17,7 @@ desktop=""
 state=""
 
 if false; then
-  notify-send "Class: $clazz | Instance: $instance | Role: $role | Title: $title"
+  notify-send "Class: '$clazz' | Instance: '$instance' | Role: '$role' | Title: '$title'"
 fi
 
 # Determine the desktop and state based on the class, instance, role, and title
@@ -97,6 +97,11 @@ case "$clazz" in
   if [[ "$process" == "spotify" ]]; then
     desktop=5
   fi
+  case "$title" in
+  "Picture in picture")
+    state="floating"
+    ;;
+  esac
   ;;
 esac
 
