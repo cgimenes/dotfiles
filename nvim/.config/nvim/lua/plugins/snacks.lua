@@ -279,7 +279,11 @@ return {
       {
         'grr',
         function()
-          Snacks.picker.lsp_references()
+          Snacks.picker.lsp_references {
+            on_show = function()
+              vim.cmd.stopinsert()
+            end,
+          }
         end,
         nowait = true,
         desc = 'References',

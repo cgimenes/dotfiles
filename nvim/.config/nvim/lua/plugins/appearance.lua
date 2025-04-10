@@ -4,7 +4,10 @@ return {
     'echasnovski/mini.icons',
     main = 'mini.icons',
     version = false,
-    config = true,
+    config = function()
+      require('mini.icons').setup()
+      MiniIcons.mock_nvim_web_devicons()
+    end,
   },
   {
     -- Better quickfix window
@@ -42,5 +45,16 @@ return {
       end
       require('noice').setup(opts)
     end,
+  },
+  {
+    -- Highlight for Window separator
+    'nvim-zh/colorful-winsep.nvim',
+    opts = {
+      hi = {
+        fg = '#FFA066',
+      },
+      symbols = { '─', '│', '╭', '╮', '╰', '╯' },
+    },
+    event = { 'WinLeave' },
   },
 }
