@@ -9,6 +9,12 @@ return {
     if vim.bo.filetype == 'python' then
       cmd = { 'python', file }
     end
+    if vim.bo.filetype == 'javascript' then
+      cmd = { 'node', file }
+    end
+    if vim.bo.filetype == 'typescript' then
+      cmd = { 'npx', '--yes', 'tsx', file }
+    end
     return {
       cmd = cmd,
       components = {
@@ -19,6 +25,6 @@ return {
     }
   end,
   condition = {
-    filetype = { 'sh', 'python', 'go' },
+    filetype = { 'sh', 'python', 'go', 'javascript', 'typescript' },
   },
 }

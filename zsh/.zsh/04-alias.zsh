@@ -42,3 +42,4 @@ alias poetsh='source $(poetry env info --path)/bin/activate' # Activate poetry s
 # NPM
 alias supabase='npx --yes supabase'
 alias nest='npx --yes @nestjs/cli'
+alias tsx='npx --yes tsx'
