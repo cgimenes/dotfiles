@@ -119,6 +119,17 @@ return {
         desc = 'Lazygit',
       },
       {
+        '<leader>gs',
+        function()
+          Snacks.picker.git_status {
+            on_show = function()
+              vim.cmd.stopinsert()
+            end,
+          }
+        end,
+        desc = 'Git Status',
+      },
+      {
         '<leader>.',
         function()
           Snacks.picker.files { hidden = true }
