@@ -32,6 +32,10 @@ super + g
 super + n
 	emacsclient -c -a ""
 
+# access copyq through rofi
+super + u
+	rofi-copyq
+
 # brightness buttons
 XF86MonBrightness{Up,Down}
 	brightnessctl s 5%{+,-}
