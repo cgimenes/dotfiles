@@ -130,7 +130,7 @@ return {
         desc = 'Git Status',
       },
       {
-        '<leader>.',
+        '<leader>sf',
         function()
           Snacks.picker.files { hidden = true }
         end,
