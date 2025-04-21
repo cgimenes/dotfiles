@@ -340,14 +340,22 @@ return {
       {
         '<leader>lD',
         function()
-          Snacks.picker.diagnostics()
+          Snacks.picker.diagnostics {
+            on_show = function()
+              vim.cmd.stopinsert()
+            end,
+          }
         end,
         desc = 'Diagnostics',
       },
       {
         '<leader>ld',
         function()
-          Snacks.picker.diagnostics_buffer()
+          Snacks.picker.diagnostics_buffer {
+            on_show = function()
+              vim.cmd.stopinsert()
+            end,
+          }
         end,
         desc = 'Buffer Diagnostics',
       },
