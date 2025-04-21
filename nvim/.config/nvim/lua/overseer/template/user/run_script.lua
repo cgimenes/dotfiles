@@ -2,7 +2,10 @@ return {
   name = 'run script',
   builder = function()
     local file = vim.fn.expand '%:p'
-    local cmd = { file }
+    local cmd
+    if vim.bo.filetype == 'sh' then
+      cmd = { file }
+    end
     if vim.bo.filetype == 'go' then
       cmd = { 'go', 'run', file }
     end
@@ -15,6 +18,9 @@ return {
     if vim.bo.filetype == 'typescript' then
       cmd = { 'npx', '--yes', 'tsx', file }
     end
+    if vim.bo.filetype == 'c' then
+      cmd = string.format('clang %s -o a.out && ./a.out', vim.fn.expand '%:p')
+    end
     return {
       cmd = cmd,
       components = {
@@ -25,6 +31,6 @@ return {
     }
   end,
   condition = {
-    filetype = { 'sh', 'python', 'go', 'javascript', 'typescript' },
+    filetype = { 'sh', 'python', 'go', 'javascript', 'typescript', 'c' },
   },
 }
