@@ -147,6 +147,7 @@ return {
         'sqlfluff',
         'sqlfmt',
         'stylua',
+        'vtsls',
       })
       if vim.fn.executable 'composer' == 1 then
         vim.list_extend(ensure_installed, { 'pint' })

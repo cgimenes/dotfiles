@@ -136,16 +136,16 @@ return {
         end,
         desc = 'Find Files',
       },
-      {
-        '<leader>.',
-        function()
-          Snacks.picker.explorer {
-            hidden = true,
-            auto_close = true,
-          }
-        end,
-        desc = 'Find Files',
-      },
+      -- {
+      --   '<leader>.',
+      --   function()
+      --     Snacks.picker.explorer {
+      --       hidden = true,
+      --       auto_close = true,
+      --     }
+      --   end,
+      --   desc = 'Find Files',
+      -- },
       {
         '<leader>:',
         function()
