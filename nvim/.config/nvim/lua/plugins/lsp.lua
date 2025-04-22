@@ -98,21 +98,7 @@ return {
         ruff = { autostart = false }, -- Disable ruff LSP
         tailwindcss = {},
         taplo = {}, -- TOML
-        ts_ls = {
-          commands = {
-            OrganizeImports = {
-              function()
-                local params = {
-                  command = '_typescript.organizeImports',
-                  arguments = { vim.api.nvim_buf_get_name(0) },
-                  title = '',
-                }
-                vim.lsp.buf.execute_command(params)
-              end,
-              description = 'Organize Imports',
-            },
-          },
-        },
+        vtsls = {},
         yamlls = {
           settings = {
             yaml = {
@@ -147,7 +133,6 @@ return {
         'sqlfluff',
         'sqlfmt',
         'stylua',
-        'vtsls',
       })
       if vim.fn.executable 'composer' == 1 then
         vim.list_extend(ensure_installed, { 'pint' })
