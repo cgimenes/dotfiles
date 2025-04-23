@@ -87,6 +87,7 @@ return {
             },
           },
         },
+        prismals = {},
         pyright = {},
         solargraph = {
           settings = {
@@ -98,6 +99,7 @@ return {
         ruff = { autostart = false }, -- Disable ruff LSP
         tailwindcss = {},
         taplo = {}, -- TOML
+        terraformls = {},
         vtsls = {},
         yamlls = {
           settings = {
