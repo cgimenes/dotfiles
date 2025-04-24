@@ -87,6 +87,7 @@ return {
             },
           },
         },
+        prismals = {},
         pyright = {},
         solargraph = {
           settings = {
