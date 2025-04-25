@@ -317,7 +317,7 @@ return {
         desc = 'Goto Implementation',
       },
       {
-        'gy',
+        'grt',
         function()
           Snacks.picker.lsp_type_definitions()
         end,
@@ -331,7 +331,7 @@ return {
         desc = 'LSP Symbols',
       },
       {
-        '<leader>lS',
+        'gW',
         function()
           Snacks.picker.lsp_workspace_symbols()
         end,
