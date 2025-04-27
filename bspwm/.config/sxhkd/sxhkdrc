@@ -6,7 +6,7 @@
 super + Return
 	kitty
 super + shift + Return
-	kitty -e zsh -i -c tn
+	kitty -e zsh -i -c ta
 
 # program launcher
 super + d
