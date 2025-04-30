@@ -241,7 +241,11 @@ return {
       {
         '<leader>su',
         function()
-          Snacks.picker.undo()
+          Snacks.picker.undo {
+            on_show = function()
+              vim.cmd.stopinsert()
+            end,
+          }
         end,
         desc = 'Undo History',
       },
