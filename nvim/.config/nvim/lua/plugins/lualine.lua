@@ -92,13 +92,13 @@ return {
             end,
           },
           { 'branch' },
-          { 'diagnostics' },
           { 'overseer' },
         },
         lualine_c = {
           { 'filename', path = 1 },
         },
         lualine_x = {
+          { 'diagnostics' },
           {
             function()
               local buf_clients = vim.lsp.get_clients { bufnr = 0 }
