@@ -19,7 +19,6 @@ return {
           },
         },
         sections = {
-          { section = 'header' },
           { icon = ' ', title = 'Keymaps', section = 'keys', indent = 2, padding = 1 },
           { icon = ' ', title = 'Project Recent Files ', file = vim.fn.fnamemodify('.', ':~') },
           { section = 'recent_files', cwd = true, indent = 2, padding = 1 },
