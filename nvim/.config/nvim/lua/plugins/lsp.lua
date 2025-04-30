@@ -99,7 +99,7 @@ return {
         ruff = { autostart = false }, -- Disable ruff LSP
         tailwindcss = {},
         taplo = {}, -- TOML
-        vtsls = {},
+        -- vtsls = {},
         yamlls = {
           settings = {
             yaml = {
