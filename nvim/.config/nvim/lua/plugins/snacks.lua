@@ -11,6 +11,7 @@ return {
         preset = {
           keys = {
             { icon = ' ', key = 'n', desc = 'New File', action = ':ene' },
+            { icon = ' ', key = 'f', desc = 'Find Files', action = ':lua Snacks.picker.files { hidden = true }' },
             { icon = ' ', key = 'y', desc = 'Yazi', action = ':Yazi' },
             { icon = ' ', key = 'g', desc = 'LazyGit', action = ':lua Snacks.lazygit()' },
             { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
