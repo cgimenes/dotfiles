@@ -1,24 +1,18 @@
 #!/bin/bash
 
 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -
-paru -S --noconfirm spotify
-paru -S --noconfirm brave-bin
-paru -S --noconfirm betterlockscreen
-paru -S --noconfirm enpass-bin
-paru -S --noconfirm dragon-drop
-paru -S --noconfirm slack-desktop
-paru -S --noconfirm pet-bin
-paru -S --noconfirm librewolf-bin
-paru -S --noconfirm mise-bin
-paru -S --noconfirm lazydocker
-paru -S --noconfirm eww
-paru -S --noconfirm ttf-tabler-icons
-paru -S --noconfirm yaak
-paru -S --noconfirm shikane
-paru -S --noconfirm kanagawa-icon-theme-git
-paru -S --noconfirm kanagawa-gtk-theme-git
-paru -S --noconfirm ncspot-bin
-paru -S --noconfirm xidlehook
+
+aur_packages=(
+	"spotify" "brave-bin" "betterlockscreen" "enpass-bin" "dragon-drop" "slack-desktop" "pet-bin" "librewolf-bin" "mise-bin" "lazydocker" "eww" "ttf-tabler-icons" "yaak" "shikane" "kanagawa-icon-theme-git" "kanagawa-gtk-theme-git" "ncspot-bin" "xidlehook"
+)
+echo "The following packages will be installed from the AUR: ${aur_packages[*]}"
+for package in "${aur_packages[@]}"; do
+	if ! paru -Qi "$package" &>/dev/null; then
+		paru -S --noconfirm "$package"
+	else
+		echo "$package is already installed. Skipping..."
+	fi
+done
 
 rm -rf .config/autostart/**
 
