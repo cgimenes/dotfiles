@@ -33,10 +33,10 @@ main() {
         kitty -e hledger-ui -f ~/ledger/current.ledger
         ;;
     'Neovim')
-        kitty -d ledger -e nvim current.ledger
+        kitty -d ledger -e nvim current.hledger
         ;;
     'Emacs')
-        emacs ledger/current.ledger
+        emacs ledger/current.hledger
         ;;
     # It is a common practice to use the wildcard asterisk symbol (*) as a final
     # pattern to define the default case. This pattern will always match.

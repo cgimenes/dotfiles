@@ -38,7 +38,8 @@
 (setq projectile-project-search-path '("~/dev/src"))
 
 (after! ledger-mode
-  (setq ledger-default-date-format ledger-iso-date-format))
+  (setq ledger-default-date-format ledger-iso-date-format)
+  (add-to-list 'auto-mode-alist '("\\.hledger\\'" . ledger-mode)))
 
 (setq org-directory "~/org/")
 (after! org
