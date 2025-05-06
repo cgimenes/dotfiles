@@ -8,6 +8,7 @@ alias lzg='lazygit'
 alias ggp='ghq get -p'
 alias ggps='ghq get -p --shallow'
 alias ggs='ghq get --shallow'
+alias gdnd='git -c pager.diff="less -R" diff'
 
 # Vim/Nvim
 alias vim='nvim'
