@@ -1,11 +1,13 @@
+local transparent = false
+
 return {
   {
     'olimorris/onedarkpro.nvim',
     priority = 1000,
     opts = {
       options = {
-        transparency = true,
-        lualine_transparency = true,
+        transparency = transparent,
+        lualine_transparency = transparent,
       },
     },
     init = function()
@@ -16,20 +18,20 @@ return {
     'folke/tokyonight.nvim',
     priority = 1000,
     opts = {
-      transparent = true,
-      style = 'storm',
-      -- style = 'night',
-      -- style = 'moon',
+      transparent = transparent,
     },
     init = function()
-      -- require('tokyonight').load()
+      -- vim.cmd.colorscheme 'tokyonight-night'
+      -- vim.cmd.colorscheme 'tokyonight-storm'
+      -- vim.cmd.colorscheme 'tokyonight-day'
+      -- vim.cmd.colorscheme 'tokyonight-moon'
     end,
   },
   {
     'rebelot/kanagawa.nvim',
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = transparent,
       colors = {
         theme = {
           all = {
@@ -63,9 +65,9 @@ return {
       end,
     },
     init = function()
-      require('kanagawa').load 'wave'
-      -- require('kanagawa').load("dragon")
-      -- require('kanagawa').load("lotus")
+      vim.cmd.colorscheme 'kanagawa-wave'
+      -- vim.cmd.colorscheme 'kanagawa-dragon'
+      -- vim.cmd.colorscheme 'kanagawa-lotus'
     end,
   },
   {
@@ -82,7 +84,7 @@ return {
     'sainnhe/everforest',
     priority = 1000,
     init = function()
-      -- vim.g.everforest_enable_italic = true
+      vim.g.everforest_enable_italic = true
       -- vim.cmd.colorscheme 'everforest'
     end,
   },
@@ -122,7 +124,7 @@ return {
     'AlexvZyl/nordic.nvim',
     priority = 1000,
     init = function()
-      -- require('nordic').load()
+      -- vim.cmd.colorscheme 'nordic'
     end,
   },
   {
@@ -136,7 +138,7 @@ return {
     'tiagovla/tokyodark.nvim',
     priority = 1000,
     opts = {
-      transparent_background = true,
+      transparent_background = transparent,
     },
     init = function()
       -- vim.cmd.colorscheme 'tokyodark'
@@ -153,7 +155,7 @@ return {
     'scottmckendry/cyberdream.nvim',
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = transparent,
     },
     init = function()
       -- vim.cmd.colorscheme 'cyberdream'
@@ -171,6 +173,19 @@ return {
     priority = 1000,
     init = function()
       -- vim.cmd.colorscheme 'moonfly'
+    end,
+  },
+  {
+    'webhooked/kanso.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = transparent,
+    },
+    init = function()
+      -- vim.cmd.colorscheme 'kanso-zen'
+      -- vim.cmd.colorscheme 'kanso-kage'
+      -- vim.cmd.colorscheme 'kanso-pearl'
     end,
   },
 }
