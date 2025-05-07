@@ -36,6 +36,9 @@ super + n
 super + u
 	rofi-copyq
 
+super + w
+	kitty -e $HOME/.cargo/bin/wiremix
+
 # brightness buttons
 XF86MonBrightness{Up,Down}
 	brightnessctl s 5%{+,-}
