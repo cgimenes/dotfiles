@@ -11,20 +11,6 @@ return {
     'mg979/vim-visual-multi',
   },
   {
-    '2kabhishek/exercism.nvim',
-    dependencies = {
-      '2kabhishek/utils.nvim', -- required, for utility functions
-      '2kabhishek/termim.nvim', -- optional, better UX for running tests
-    },
-    opts = {},
-    keys = {
-      { '<leader>el', '<cmd>ExercismLanguages<cr>', desc = 'List Languages' },
-      { '<leader>eS', '<cmd>ExercismSubmit<cr>', desc = 'Submit' },
-      { '<leader>et', '<cmd>ExercismTest<cr>', desc = 'Test' },
-      { '<leader>eL', '<cmd>ExercismList<cr>', desc = 'List Exercises' },
-    },
-  },
-  {
     'abecodes/tabout.nvim',
     event = 'InsertCharPre',
     config = true,
