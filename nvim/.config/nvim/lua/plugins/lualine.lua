@@ -21,6 +21,14 @@ local conditions = {
 
 local icons = require 'icons'
 
+local debug_mode_enabled = false
+vim.api.nvim_create_autocmd("User", {
+  pattern = "DebugModeChanged",
+  callback = function(args)
+    debug_mode_enabled = args.data.enabled
+  end
+})
+
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -69,7 +77,15 @@ return {
       },
       sections = {
         lualine_a = {
-          { 'mode' },
+          {
+            'mode',
+            fmt = function(str)
+              return debug_mode_enabled and 'DEBUG' or str
+            end,
+            color = function(tb)
+              return debug_mode_enabled and 'DiagnosticVirtualTextError' or tb
+            end,
+          },
         },
         lualine_b = {
           {

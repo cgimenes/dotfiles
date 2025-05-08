@@ -4,8 +4,6 @@ return {
     dependencies = {
       'nvim-neotest/nvim-nio',
 
-      { 'igorlfs/nvim-dap-view', config = true },
-
       'theHamsta/nvim-dap-virtual-text',
 
       'williamboman/mason.nvim',
@@ -19,7 +17,6 @@ return {
     },
     config = function()
       local dap = require 'dap'
-      local dv = require 'dap-view'
 
       require('mason-nvim-dap').setup {
         -- Makes a best effort to setup the various debuggers with
@@ -41,20 +38,7 @@ return {
 
       require('nvim-dap-virtual-text').setup {}
 
-      require("overseer").enable_dap()
-
-      dap.listeners.before.attach['dap-view-config'] = function()
-        dv.open()
-      end
-      dap.listeners.before.launch['dap-view-config'] = function()
-        dv.open()
-      end
-      dap.listeners.before.event_terminated['dap-view-config'] = function()
-        dv.close()
-      end
-      dap.listeners.before.event_exited['dap-view-config'] = function()
-        dv.close()
-      end
+      require('overseer').enable_dap()
 
       dap.adapters.php = {
         type = 'executable',
@@ -125,49 +109,22 @@ return {
       })
       vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
     end,
+  },
+  {
+    'miroshQa/debugmaster.nvim',
     keys = {
-      { '<leader>dt', '<cmd>DapToggleBreakpoint<cr>', desc = 'Toggle Breakpoint' },
-      { '<leader>dc', '<cmd>DapContinue<cr>', desc = 'Continue' },
-      { '<leader>di', '<cmd>DapStepInto<cr>', desc = 'Step Into' },
-      { '<leader>dn', '<cmd>DapStepOver<cr>', desc = 'Step Over/Next Line' },
-      { '<leader>do', '<cmd>DapStepOut<cr>', desc = 'Step Out' },
-      { '<leader>dr', '<cmd>DapToggleRepl<cr>', desc = 'Toggle Repl' },
-      { '<leader>dq', '<cmd>DapTerminate<cr>', desc = 'Terminate' },
       {
-        '<leader>db',
+        '<leader>d',
         function()
-          require('dap').step_back()
+          require('debugmaster').mode.toggle()
         end,
-        desc = 'Step Back',
-      },
-      {
-        '<leader>dC',
-        function()
-          require('dap').run_to_cursor()
-        end,
-        desc = 'Run To Cursor',
-      },
-      {
-        '<leader>dp',
-        function()
-          require('dap').pause()
-        end,
-        desc = 'Pause',
-      },
-      {
-        '<leader>dU',
-        function()
-          require('dap-view').toggle()
-        end,
-        desc = 'Toggle UI',
-      },
-      {
-        '<leader>dT',
-        function()
-          require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-        end,
-        desc = 'Debug: Set Breakpoint',
+        mode = { 'n', 'v' },
+        desc = 'Debug Mode',
       },
     },
+    config = function()
+      local dm = require 'debugmaster'
+      dm.plugins.cursor_hl.enabled = false
+    end,
   },
 }
