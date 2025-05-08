@@ -30,7 +30,7 @@ main() {
     # What to do when/if we choose one of the options.
     case $choice in
     'UI')
-        kitty -e hledger-ui -f ~/ledger/current.ledger
+        kitty -e hledger-ui -f ~/ledger/current.hledger
         ;;
     'Neovim')
         kitty -d ledger -e nvim current.hledger
