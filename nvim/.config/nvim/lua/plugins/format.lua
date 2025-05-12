@@ -20,6 +20,7 @@ return {
       format_on_save = false,
       formatters_by_ft = {
         css = prettier,
+        cucumber = { 'reformat-gherkin' },
         eruby = { 'erb_format' },
         go = { 'gofmt' },
         html = prettier,

@@ -127,6 +127,7 @@ return {
         'php-cs-fixer',
         'prettier',
         'prettierd',
+        'reformat-gherkin',
         'rubocop',
         'ruff',
         'shfmt',
