@@ -42,14 +42,38 @@ return {
 
       dap.adapters.php = {
         type = 'executable',
-        command = 'node',
-        args = { vim.fn.stdpath 'cache' .. '/debuggers/vscode-php-debug/out/phpDebug.js' },
+        command = vim.fn.stdpath 'data' .. '/mason/bin/php-debug-adapter',
       }
 
       dap.adapters.lldb = {
         type = 'executable',
         command = '/usr/bin/lldb-vscode',
         name = 'lldb',
+      }
+
+      dap.adapters.node = {
+        type = 'server',
+        host = 'localhost',
+        port = '${port}',
+        executable = {
+          command = vim.fn.stdpath 'data' .. '/mason/bin/js-debug-adapter',
+          args = { '${port}' },
+        },
+      }
+
+      dap.configurations.typescript = {
+        {
+          name = 'Launch Nest.js',
+          type = 'node',
+          request = 'launch',
+          program = '${workspaceFolder}/src/main.ts',
+          cwd = '${workspaceFolder}',
+          protocol = 'inspector',
+          runtimeArgs = { '--nolazy', '-r', 'ts-node/register', '-r', 'tsconfig-paths/register' },
+          sourceMaps = true,
+          envFile = '${workspaceFolder}/.env',
+          console = 'integratedTerminal',
+        },
       }
 
       dap.configurations.c = {
@@ -66,10 +90,6 @@ return {
           env = { 'LD_LIBRARY_PATH=./build/' },
         },
       }
-
-      -- git clone https://github.com/xdebug/vscode-php-debug.git ~/.cache/nvim/debuggers/vscode-php-debug
-      -- cd ~/.cache/nvim/debuggers/vscode-php-debug
-      -- npm install && npm run build
 
       dap.configurations.php = {
         {

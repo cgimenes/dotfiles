@@ -99,7 +99,6 @@ return {
         ruff = { autostart = false }, -- Disable ruff LSP
         tailwindcss = {},
         taplo = {}, -- TOML
-        -- vtsls = {},
         yamlls = {
           settings = {
             yaml = {
@@ -122,9 +121,11 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'erb-formatter',
+        'js-debug-adapter',
         'kulala-fmt',
         'kulala_ls', -- Isn't supported by mason-lspconfig yet
         'php-cs-fixer',
+        'php-debug-adapter',
         'prettier',
         'prettierd',
         'reformat-gherkin',
