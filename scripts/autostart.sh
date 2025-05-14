@@ -28,6 +28,7 @@ pgrep -x xidlehook >/dev/null || xidlehook \
   '' &
 nitrogen --restore &
 autorandr -c &
+xset dpms force on &
 
 # X configs
 xsetroot -cursor_name left_ptr
