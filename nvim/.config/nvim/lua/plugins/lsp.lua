@@ -19,51 +19,6 @@ return {
       'b0o/schemastore.nvim',
     },
     config = function()
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
-        callback = function(event)
-          local map = function(keys, func, desc, mode)
-            mode = mode or 'n'
-            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-          end
-
-          map('grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', 'Goto Definition')
-          map('<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', 'Incoming Calls')
-          map('grn', function()
-            vim.lsp.buf.rename()
-            vim.cmd 'silent wa'
-          end, 'Rename')
-
-          -- The following two autocommands are used to highlight references of the
-          -- word under your cursor when your cursor rests there for a little while.
-          --
-          -- When you move your cursor, the highlights will be cleared (the second autocommand).
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, { bufnr = event.buf }) then
-            local highlight_augroup = vim.api.nvim_create_augroup('highlight-references', { clear = false })
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-              buffer = event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.document_highlight,
-            })
-
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.clear_references,
-            })
-
-            vim.api.nvim_create_autocmd('LspDetach', {
-              group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
-              callback = function(event)
-                vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds { group = 'highlight-references', buffer = event.buf }
-              end,
-            })
-          end
-        end,
-      })
-
       local servers = {
         astro = {},
         clangd = {},
@@ -90,13 +45,6 @@ return {
         },
         prismals = {},
         pyright = {},
-        solargraph = {
-          settings = {
-            solargraph = {
-              useBundler = true,
-            },
-          },
-        },
         ruff = { autostart = false }, -- Disable ruff LSP
         tailwindcss = {},
         taplo = {}, -- TOML
@@ -118,6 +66,17 @@ return {
           },
         },
       }
+      if vim.fn.executable 'gem' == 1 then
+        vim.list_extend(servers, {
+          solargraph = {
+            settings = {
+              solargraph = {
+                useBundler = true,
+              },
+            },
+          },
+        })
+      end
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
@@ -152,6 +111,7 @@ return {
         capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
       end
       require('mason-lspconfig').setup {
+        automatic_enable = true,
         ensure_installed = {},
         automatic_installation = false,
         handlers = {
