@@ -1,5 +1,3 @@
-local M = {}
-
-M['kulala_ls'] = 'my-mason-registry.kulala_ls'
-
-return M
+return {
+  ['kulala_ls'] = 'my-mason-registry.kulala_ls',
+}
