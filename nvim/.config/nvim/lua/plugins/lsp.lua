@@ -3,7 +3,7 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       {
-        'williamboman/mason.nvim',
+        'mason-org/mason.nvim',
         opts = {
           registries = {
             'github:mason-org/mason-registry',
@@ -11,7 +11,7 @@ return {
           },
         },
       }, -- NOTE: Must be loaded before dependants
-      'williamboman/mason-lspconfig.nvim',
+      'mason-org/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- JSON schemas
