@@ -182,7 +182,6 @@ return {
         'lazy',
         'man',
         'mason',
-        'nvim-dap-ui',
         'oil',
         'quickfix',
       },
