@@ -25,8 +25,6 @@ vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', '<', '<gv')
 
 vim.keymap.set('v', '$', 'g_')
-vim.keymap.set('v', 'J', '<cmd>m +1<cr>')
-vim.keymap.set('v', 'K', '<cmd>m -2<cr>')
 
 -- Better pasting experience
 vim.keymap.set('v', '<leader>pp', '"_dP', { desc = 'Paste without yanking' })

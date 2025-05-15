@@ -20,7 +20,6 @@ return {
     },
     config = function()
       local servers = {
-        astro = {},
         clangd = {},
         cssls = {},
         emmet_language_server = {},
