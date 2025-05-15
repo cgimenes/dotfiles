@@ -51,12 +51,6 @@ return {
             command = vim.fn.stdpath 'data' .. '/mason/bin/php-debug-adapter',
           }
 
-          dap.adapters.lldb = {
-            type = 'executable',
-            command = '/usr/bin/lldb-vscode',
-            name = 'lldb',
-          }
-
           dap.adapters.node = {
             type = 'server',
             host = 'localhost',
@@ -79,21 +73,6 @@ return {
               sourceMaps = true,
               envFile = '${workspaceFolder}/.env',
               console = 'integratedTerminal',
-            },
-          }
-
-          dap.configurations.c = {
-            {
-              name = 'LLDB',
-              type = 'lldb',
-              request = 'launch',
-              program = function()
-                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-              end,
-              cwd = '${workspaceFolder}',
-              stopOnEntry = false,
-              args = {},
-              env = { 'LD_LIBRARY_PATH=./build/' },
             },
           }
 
