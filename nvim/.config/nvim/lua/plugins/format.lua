@@ -34,7 +34,7 @@ return {
         python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
         rest = { 'kulala-fmt' },
         sh = { 'shfmt' },
-        sql = { 'sleek', 'sqlfluff', 'sqlfmt', stop_after_first = true },
+        sql = { 'sleek' },
         typescript = prettier,
         typescriptreact = prettier,
         yaml = prettier,

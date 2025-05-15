@@ -65,19 +65,15 @@ return {
         },
       }
       if vim.fn.executable 'gem' == 1 then
-        vim.list_extend(servers, {
-          ruby_lsp = {},
-        })
+        vim.list_extend(servers, { ruby_lsp = {} })
       end
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'erb-formatter',
-        'js-debug-adapter',
         'kulala-fmt',
         'kulala_ls', -- Isn't supported by mason-lspconfig yet
         'php-cs-fixer',
-        'php-debug-adapter',
         'prettier',
         'prettierd',
         'reformat-gherkin',
@@ -85,8 +81,6 @@ return {
         'ruff',
         'shfmt',
         'sleek',
-        'sqlfluff',
-        'sqlfmt',
         'stylua',
       })
       if vim.fn.executable 'composer' == 1 then
