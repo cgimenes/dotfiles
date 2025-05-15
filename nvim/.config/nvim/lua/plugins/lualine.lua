@@ -66,11 +66,11 @@ vim.cmd [[
 local icons = require 'icons'
 
 local debug_mode_enabled = false
-vim.api.nvim_create_autocmd("User", {
-  pattern = "DebugModeChanged",
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'DebugModeChanged',
   callback = function(args)
     debug_mode_enabled = args.data.enabled
-  end
+  end,
 })
 
 return {
@@ -196,7 +196,7 @@ return {
           },
           {
             function()
-              local shiftwidth = vim.api.nvim_buf_get_option(0, 'shiftwidth')
+              local shiftwidth = vim.api.nvim_get_option_value('shiftwidth', { scope = 'local' })
               return icons.ui.Tab .. '  ' .. shiftwidth
             end,
           },
