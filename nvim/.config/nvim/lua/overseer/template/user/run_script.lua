@@ -19,7 +19,10 @@ return {
       cmd = { 'npx', '--yes', 'tsx', file }
     end
     if vim.bo.filetype == 'c' then
-      cmd = string.format('clang %s -o a.out && ./a.out', vim.fn.expand '%:p')
+      cmd = string.format('clang %s -o a.out -ggdb && ./a.out', vim.fn.expand '%:p')
+    end
+    if vim.bo.filetype == 'cpp' then
+      cmd = string.format('g++ -o a.out -ggdb %s && ./a.out', vim.fn.expand '%:p')
     end
     return {
       cmd = cmd,
@@ -31,6 +34,6 @@ return {
     }
   end,
   condition = {
-    filetype = { 'sh', 'python', 'go', 'javascript', 'typescript', 'c' },
+    filetype = { 'sh', 'python', 'go', 'javascript', 'typescript', 'c', 'cpp' },
   },
 }
