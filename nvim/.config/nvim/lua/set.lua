@@ -91,3 +91,25 @@ vim.filetype.add {
   },
   pattern = { ['.*/hypr/.*%.conf'] = 'hyprlang' },
 }
+
+-- Configure diagnostics
+vim.diagnostic.config {
+  virtual_text = {
+    current_line = true,
+  },
+  underline = false,
+  severity_sort = true,
+  float = {
+    focusable = true,
+    border = 'rounded',
+    header = '',
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.INFO] = '󰌶',
+      [vim.diagnostic.severity.HINT] = '',
+    },
+  },
+}
