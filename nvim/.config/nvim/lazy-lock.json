@@ -55,6 +55,7 @@
   "nvim-treesitter-context": { "branch": "master", "commit": "5c48b8ba1b0b7b25feb6e34e7eb293ea893aedc4" },
   "nvim-ts-autotag": { "branch": "main", "commit": "a1d526af391f6aebb25a8795cbc05351ed3620b5" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f" },
+  "oh-lucy.nvim": { "branch": "main", "commit": "2d94e9b03efe4c50f4653b6f2b7b200d970fe1aa" },
   "oil.nvim": { "branch": "master", "commit": "685cdb4ffa74473d75a1b97451f8654ceeab0f4a" },
   "one_monokai.nvim": { "branch": "main", "commit": "c233020488c413cd949814a788951cceb5874c8b" },
   "onedarkpro.nvim": { "branch": "main", "commit": "fd8aa7248f8b34c1f18203a3a96adcfbdab29907" },

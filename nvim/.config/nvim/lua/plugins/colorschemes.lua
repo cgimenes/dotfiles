@@ -188,4 +188,14 @@ return {
       -- vim.cmd.colorscheme 'kanso-pearl'
     end,
   },
+  {
+    'Yazeed1s/oh-lucy.nvim',
+    lazy = false,
+    priority = 1000,
+    init = function()
+      vim.g.oh_lucy_transparent_background = transparent
+      -- vim.cmd.colorscheme 'oh-lucy'
+      -- vim.cmd.colorscheme 'oh-lucy-evening'
+    end,
+  }
 }
