@@ -18,7 +18,7 @@ return {
       'DiffviewClose',
     },
     keys = {
-      { '<leader>gh', '<cmd>DiffviewFileHistory %<cr>', desc = 'File History' },
+      { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History', mode = { 'n', 'v' } },
       { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' },
     },
   },
