@@ -51,7 +51,7 @@ return {
     'nvim-zh/colorful-winsep.nvim',
     opts = {
       hi = {
-        fg = '#FFA066',
+        fg = '#e6c384',
       },
       symbols = { '─', '│', '╭', '╮', '╰', '╯' },
     },
