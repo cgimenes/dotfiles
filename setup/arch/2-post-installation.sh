@@ -3,7 +3,25 @@
 curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -
 
 aur_packages=(
-	"spotify" "brave-bin" "betterlockscreen" "enpass-bin" "dragon-drop" "slack-desktop" "pet-bin" "librewolf-bin" "mise-bin" "lazydocker" "eww" "ttf-tabler-icons" "yaak" "shikane" "kanagawa-icon-theme-git" "kanagawa-gtk-theme-git" "ncspot-bin" "xidlehook"
+	"betterlockscreen"
+	"brave-bin"
+	"bruno-bin"
+	"dragon-drop"
+	"enpass-bin"
+	"eww"
+	"kanagawa-gtk-theme-git"
+	"kanagawa-icon-theme-git"
+	"lazydocker"
+	"librewolf-bin"
+	"mise-bin"
+	"ncspot-bin"
+	"pet-bin"
+	"shikane"
+	"slack-desktop"
+	"spotify"
+	"ttf-tabler-icons"
+	"xidlehook"
+	"yaak"
 )
 echo "The following packages will be installed from the AUR: ${aur_packages[*]}"
 for package in "${aur_packages[@]}"; do
