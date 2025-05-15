@@ -1,6 +1,9 @@
 local window_width_limit = 100
 
 local conditions = {
+  first_tab = function()
+    return vim.fn.tabpagenr() == 1
+  end,
   hide_in_width = function()
     return vim.o.columns > window_width_limit
   end,
@@ -19,6 +22,47 @@ local conditions = {
   end,
 }
 
+local function grapple_files()
+  local tags, err = require('grapple').tags()
+  if not tags then
+    return vim.notify(err, vim.log.levels.ERROR)
+  end
+
+  local file_names = {}
+  for _, tag in pairs(tags) do
+    local file_name = vim.fn.fnamemodify(tag.path, ':t')
+    if not file_names[file_name] then
+      file_names[file_name] = {}
+    end
+
+    table.insert(file_names[file_name], tag)
+  end
+
+  local current_file_path = vim.fn.expand '%:p'
+  local results = {}
+  for index, tag in ipairs(tags) do
+    local file_name = vim.fn.fnamemodify(tag.path, ':t')
+    if #file_names[file_name] > 1 then
+      file_name = vim.fn.fnamemodify(tag.path, ':h:t') .. '/' .. file_name
+    end
+
+    if current_file_path == tag.path then
+      results[index] = string.format('%%#GrappleBold# %s. %%#GrappleBold#%s ', index, file_name)
+    else
+      results[index] = string.format('%%#GrappleHint# %s. %%#GrappleHint#%s ', index, file_name)
+    end
+    results[index] = string.format('%%%s@LualineSwitchGrapple@%s%%X', index, results[index])
+  end
+
+  return table.concat(results)
+end
+
+vim.cmd [[
+  function! LualineSwitchGrapple(index, mouseclicks, mousebutton, modifiers)
+    execute ":Grapple select index=" .. a:index
+  endfunction
+]]
+
 local icons = require 'icons'
 
 local debug_mode_enabled = false
@@ -35,7 +79,7 @@ return {
     event = 'VeryLazy',
     opts = {
       options = {
-        always_show_tabline = false,
+        always_show_tabline = true,
         globalstatus = true,
         icons_enabled = true,
         theme = 'auto',
@@ -168,6 +212,13 @@ return {
         },
       },
       tabline = {
+        lualine_a = {
+          {
+            grapple_files,
+            cond = conditions.first_tab,
+            padding = 0,
+          },
+        },
         lualine_z = {
           {
             'tabs',
