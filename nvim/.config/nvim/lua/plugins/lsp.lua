@@ -68,13 +68,7 @@ return {
       }
       if vim.fn.executable 'gem' == 1 then
         vim.list_extend(servers, {
-          solargraph = {
-            settings = {
-              solargraph = {
-                useBundler = true,
-              },
-            },
-          },
+          ruby_lsp = {},
         })
       end
 

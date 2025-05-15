@@ -33,7 +33,6 @@ return {
         php = { 'pint' },
         python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
         rest = { 'kulala-fmt' },
-        ruby = { 'rubocop' },
         sh = { 'shfmt' },
         sql = { 'sleek', 'sqlfluff', 'sqlfmt', stop_after_first = true },
         typescript = prettier,
