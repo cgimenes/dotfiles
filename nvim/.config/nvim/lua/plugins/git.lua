@@ -9,7 +9,6 @@ return {
       { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' },
       { '<leader>gd', '<cmd>Gvdiff<cr>', desc = 'Git Diff' },
       { '<leader>gB', ':GBrowse<cr>', desc = 'Git Browse', mode = { 'n', 'v' } },
-      { '<leader>gG', '<cmd>vert G<cr>', desc = 'Git Status' },
     },
   },
   {
@@ -82,6 +81,20 @@ return {
     config = true,
     keys = {
       { '<leader>ga', '<cmd>Pipeline<cr>', desc = 'Open Github Actions' },
+    },
+  },
+  {
+    'NeogitOrg/neogit',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'sindrets/diffview.nvim', -- optional - Diff integration
+      'folke/snacks.nvim',
+    },
+    opts = {
+      kind = 'auto',
+    },
+    keys = {
+      { '<leader>gG', '<cmd>Neogit<cr>', desc = 'Neogit' },
     },
   },
 }
