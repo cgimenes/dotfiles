@@ -11,6 +11,7 @@ return {
       spec = {
         { '<leader>b', group = 'Buffer' },
         { '<leader>c', group = 'Code' },
+        { '<leader>cs', group = 'Snippets' },
         { '<leader>cr', group = 'Rails' },
         { '<leader>f', group = 'Find and Replace' },
         { '<leader>g', group = 'Git' },

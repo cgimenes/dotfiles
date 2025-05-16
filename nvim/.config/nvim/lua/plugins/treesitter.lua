@@ -63,7 +63,10 @@ return {
   },
   {
     'nvim-treesitter/nvim-treesitter-context',
-    opts = { mode = 'cursor', max_lines = 3 },
+    opts = {
+      separator = '─',
+      multiline_threshold = 1,
+    },
     event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
   },
   {
