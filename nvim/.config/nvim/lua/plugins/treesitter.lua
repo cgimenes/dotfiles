@@ -62,14 +62,6 @@ return {
     -- Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
   {
-    'nvim-treesitter/nvim-treesitter-context',
-    opts = {
-      separator = '─',
-      multiline_threshold = 1,
-    },
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-  },
-  {
     'JoosepAlviste/nvim-ts-context-commentstring',
     opts = {
       enable_autocmd = false,
