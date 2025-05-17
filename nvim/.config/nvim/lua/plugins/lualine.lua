@@ -1,8 +1,13 @@
 local window_width_limit = 100
 
 local conditions = {
-  first_tab = function()
-    return vim.fn.tabpagenr() == 1
+  show_grapple = function()
+    local tags, err = require('grapple').tags()
+    if not tags then
+      return vim.notify(err, vim.log.levels.ERROR)
+    end
+
+    return vim.fn.tabpagenr() == 1 and #tags > 0
   end,
   hide_in_width = function()
     return vim.o.columns > window_width_limit
@@ -47,9 +52,9 @@ local function grapple_files()
     end
 
     if current_file_path == tag.path then
-      results[index] = string.format('%%#GrappleBold# %s. %%#GrappleBold#%s ', index, file_name)
+      results[index] = string.format('%%#TabLineFill# %s. %%#TabLineFill#%s ', index, file_name)
     else
-      results[index] = string.format('%%#GrappleHint# %s. %%#GrappleHint#%s ', index, file_name)
+      results[index] = string.format('%%#TabLineSel# %s. %%#TabLineSel#%s ', index, file_name)
     end
     results[index] = string.format('%%%s@LualineSwitchGrapple@%s%%X', index, results[index])
   end
@@ -215,7 +220,7 @@ return {
         lualine_a = {
           {
             grapple_files,
-            cond = conditions.first_tab,
+            cond = conditions.show_grapple,
             padding = 0,
           },
         },
