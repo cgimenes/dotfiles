@@ -7,7 +7,6 @@ return {
     keys = {
       { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' },
       { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' },
-      { '<leader>gd', '<cmd>Gvdiff<cr>', desc = 'Git Diff' },
       { '<leader>gB', ':GBrowse<cr>', desc = 'Git Browse', mode = { 'n', 'v' } },
     },
   },
@@ -19,7 +18,7 @@ return {
     },
     keys = {
       { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History', mode = { 'n', 'v' } },
-      { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' },
+      { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' },
     },
   },
   {
@@ -30,7 +29,6 @@ return {
 
         vim.keymap.set('n', '<leader>gp', gs.preview_hunk, { buffer = bufnr, desc = 'Git hunk Preview' })
         vim.keymap.set('n', '<leader>gR', gs.reset_hunk, { buffer = bufnr, desc = 'Git hunk Reset' })
-        vim.keymap.set('n', '<leader>gl', gs.blame_line, { buffer = bufnr, desc = 'Git Blame Line' })
 
         -- don't override the built-in and fugitive keymaps
         vim.keymap.set({ 'n', 'v' }, ']c', function()
