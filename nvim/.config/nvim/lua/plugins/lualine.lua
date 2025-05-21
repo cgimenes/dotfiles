@@ -225,9 +225,9 @@ return {
         },
         lualine_y = {
           { 'location' },
+          { 'progress', cond = conditions.not_hlsearch },
         },
         lualine_z = {
-          { 'progress', cond = conditions.not_hlsearch },
           { 'searchcount' },
         },
       },
