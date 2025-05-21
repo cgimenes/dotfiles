@@ -128,15 +128,25 @@ return {
         lualine_a = {
           {
             'mode',
+            fmt = function()
+              return ' '
+            end,
+            color = function(tb)
+              return debug_mode_enabled and 'lualine_a_replace' or tb
+            end,
+            padding = 0,
+          },
+        },
+        lualine_b = {
+          {
+            'mode',
             fmt = function(str)
               return debug_mode_enabled and 'DEBUG' or str
             end,
             color = function(tb)
-              return debug_mode_enabled and 'DiagnosticVirtualTextError' or tb
+              return debug_mode_enabled and 'lualine_b_replace' or tb
             end,
           },
-        },
-        lualine_b = {
           {
             function()
               return ('%s %d events'):format(Snacks.profiler.config.icons.status, #Snacks.profiler.core.events)
@@ -156,10 +166,15 @@ return {
               return vim.fn.reg_recording() ~= ''
             end,
           },
-          { 'branch' },
           { 'overseer' },
         },
         lualine_c = {
+          {
+            'branch',
+            color = function()
+              return { fg = Snacks.util.color 'Statement' }
+            end,
+          },
           { 'filename', path = 1 },
         },
         lualine_x = {
@@ -217,11 +232,10 @@ return {
         },
       },
       tabline = {
-        lualine_a = {
+        lualine_c = {
           {
             grapple_files,
             cond = conditions.show_grapple,
-            padding = 0,
           },
         },
         lualine_z = {
