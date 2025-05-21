@@ -130,6 +130,14 @@ return {
         desc = 'Git Status',
       },
       {
+        '<leader>gB',
+        function()
+          Snacks.gitbrowse()
+        end,
+        desc = 'Git Browse',
+        mode = { 'n', 'v' },
+      },
+      {
         '<leader>sf',
         function()
           Snacks.picker.files { hidden = true }

@@ -1,14 +1,5 @@
 return {
   {
-    'tpope/vim-fugitive',
-    dependencies = {
-      'tpope/vim-rhubarb',
-    },
-    keys = {
-      { '<leader>gB', ':GBrowse<cr>', desc = 'Git Browse', mode = { 'n', 'v' } },
-    },
-  },
-  {
     'sindrets/diffview.nvim',
     config = true,
     cmd = {
