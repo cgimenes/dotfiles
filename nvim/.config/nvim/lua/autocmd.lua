@@ -12,15 +12,16 @@ vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('CloseWithQ', { clear = true }),
   command = [[nnoremap <buffer> q <cmd>q<cr>]],
   pattern = {
-    'spectre_panel',
+    'fugitive',
+    'fugitiveblame',
+    'gitsigns-blame',
+    'grug-far',
+    'help',
     'neotest-output',
     'neotest-output-panel',
     'neotest-summary',
-    'help',
-    'fugitiveblame',
-    'grug-far',
     'qf',
-    'fugitive',
+    'spectre_panel',
   },
 })
 

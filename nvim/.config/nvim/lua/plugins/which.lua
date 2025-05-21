@@ -14,6 +14,7 @@ return {
         { '<leader>cs', group = 'Snippets' },
         { '<leader>cr', group = 'Rails' },
         { '<leader>f', group = 'Find and Replace' },
+        { '<leader>h', group = 'Git Hunk' },
         { '<leader>g', group = 'Git' },
         { '<leader>l', group = 'LSP' },
         { '<leader>ln', group = 'Node' },

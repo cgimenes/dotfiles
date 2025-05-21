@@ -5,8 +5,6 @@ return {
       'tpope/vim-rhubarb',
     },
     keys = {
-      { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' },
-      { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' },
       { '<leader>gB', ':GBrowse<cr>', desc = 'Git Browse', mode = { 'n', 'v' } },
     },
   },
@@ -17,7 +15,7 @@ return {
       'DiffviewClose',
     },
     keys = {
-      { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History', mode = { 'n', 'v' } },
+      { '<leader>gf', ':DiffviewFileHistory %<cr>', desc = 'File History', mode = { 'n', 'v' } },
       { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' },
     },
   },
@@ -25,18 +23,28 @@ return {
     'lewis6991/gitsigns.nvim',
     opts = {
       on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
+        local gitsigns = require 'gitsigns'
 
-        vim.keymap.set('n', '<leader>gp', gs.preview_hunk, { buffer = bufnr, desc = 'Git hunk Preview' })
-        vim.keymap.set('n', '<leader>gR', gs.reset_hunk, { buffer = bufnr, desc = 'Git hunk Reset' })
 
-        -- don't override the built-in and fugitive keymaps
+        vim.keymap.set('n', '<leader>hp', gitsigns.preview_hunk_inline, { buffer = bufnr, desc = 'Preview hunk' })
+        vim.keymap.set('n', '<leader>hS', gitsigns.stage_buffer, { buffer = bufnr, desc = 'Stage buffer' })
+        vim.keymap.set('n', '<leader>hs', gitsigns.stage_hunk, { buffer = bufnr, desc = 'Stage hunk' })
+        vim.keymap.set('n', '<leader>hr', gitsigns.reset_hunk, { buffer = bufnr, desc = 'Reset hunk' })
+        vim.keymap.set('v', '<leader>hs', function()
+          gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { buffer = bufnr, desc = 'Stage hunk' })
+        vim.keymap.set('v', '<leader>hr', function()
+          gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { buffer = bufnr, desc = 'Reset hunk' })
+
+        vim.keymap.set({ 'o', 'x' }, 'ih', '<Cmd>Gitsigns select_hunk<CR>')
+
         vim.keymap.set({ 'n', 'v' }, ']c', function()
           if vim.wo.diff then
             return ']c'
           end
           vim.schedule(function()
-            gs.next_hunk()
+            gitsigns.nav_hunk 'next'
           end)
           return '<Ignore>'
         end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
@@ -45,30 +53,12 @@ return {
             return '[c'
           end
           vim.schedule(function()
-            gs.prev_hunk()
+            gitsigns.nav_hunk 'prev'
           end)
           return '<Ignore>'
         end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
       end,
     },
-  },
-  {
-    -- ]x next-hunk
-    -- [x prev-hunk
-    -- ct select-themselves
-    -- co select-ourselves
-    -- cn select-none
-    -- cb select-both
-    -- cB select-both-rev
-    'rhysd/conflict-marker.vim',
-    config = function()
-      vim.g.conflict_marker_highlight_group = ''
-      vim.api.nvim_set_hl(0, 'ConflictMarkerBegin', { bg = '#2f7366' })
-      vim.api.nvim_set_hl(0, 'ConflictMarkerOurs', { bg = '#2e5049' })
-      vim.api.nvim_set_hl(0, 'ConflictMarkerTheirs', { bg = '#344f69' })
-      vim.api.nvim_set_hl(0, 'ConflictMarkerEnd', { bg = '#2f628e' })
-      vim.api.nvim_set_hl(0, 'ConflictMarkerCommonAncestorsHunk', { bg = '#754a81' })
-    end,
   },
   {
     -- gp - open the workflow file below the cursor on GitHub
