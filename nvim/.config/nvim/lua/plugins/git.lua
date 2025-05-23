@@ -62,18 +62,4 @@ return {
       { '<leader>ga', '<cmd>Pipeline<cr>', desc = 'Open Github Actions' },
     },
   },
-  {
-    'NeogitOrg/neogit',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'sindrets/diffview.nvim', -- optional - Diff integration
-      'folke/snacks.nvim',
-    },
-    opts = {
-      kind = 'auto',
-    },
-    keys = {
-      { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Neogit' },
-    },
-  },
 }
