@@ -3,6 +3,7 @@ local trigger_text = ';'
 return {
   {
     'saghen/blink.cmp',
+    event = "VeryLazy",
     dependencies = {
       { 'rafamadriz/friendly-snippets' },
       { 'fang2hou/blink-copilot' },
