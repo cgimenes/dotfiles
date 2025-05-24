@@ -12,9 +12,13 @@ super + shift + Return
 super + d
 	rofi -show combi -terminal kitty
 
-# web browser
+# bluetui
 super + b
-	brave
+	kitty -e bluetui
+
+# rofi-calc
+super + c
+	rofi -show calc -modi calc -no-show-match -no-sort
 
 # screenshots
 Print
