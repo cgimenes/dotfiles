@@ -17,6 +17,7 @@ aur_packages=(
 	"ncspot-bin"
 	"pet-bin"
 	"shikane"
+	"simple-mtpfs"
 	"slack-desktop"
 	"spotify"
 	"ttf-tabler-icons"
