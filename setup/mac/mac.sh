@@ -4,10 +4,13 @@
 # - switch caps lock to control
 # - change "Click wallpaper to reveal desktop" to "Stage Manager"
 # - reduce motion on accessibility settings
+# - enable switch desktop keyboard shortcut
 # - Bluesnooze launch at login
 # - Ice launch at login
-# - Rectangle launch at login
+# - Rectangle launch at login and gaps
 # - Configure Syncthing and launch at login
+# - Disable hot corners
+# - Disable mouse button binding to show mission control
 
 # configure key repetition speeds
 defaults write NSGlobalDomain KeyRepeat -int 1
