@@ -6,6 +6,9 @@ return {
     ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
+      gitbrowse = {
+        what = "file"
+      },
       dashboard = {
         enabled = true,
         preset = {
