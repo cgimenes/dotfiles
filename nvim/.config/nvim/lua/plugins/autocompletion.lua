@@ -3,7 +3,7 @@ local trigger_text = ';'
 return {
   {
     'saghen/blink.cmp',
-    event = "VeryLazy",
+    lazy = false, -- blink gets buggy if lazy loaded
     dependencies = {
       { 'rafamadriz/friendly-snippets' },
       { 'fang2hou/blink-copilot' },
