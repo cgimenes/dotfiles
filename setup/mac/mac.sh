@@ -11,6 +11,7 @@
 # - Configure Syncthing and launch at login
 # - Disable hot corners
 # - Disable mouse button binding to show mission control
+# - Disable input source keybindings (Ctrl + Space)
 
 # configure key repetition speeds
 defaults write NSGlobalDomain KeyRepeat -int 1
