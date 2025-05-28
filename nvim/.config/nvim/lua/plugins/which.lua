@@ -17,7 +17,6 @@ return {
         { '<leader>h', group = 'Git Hunk' },
         { '<leader>g', group = 'Git' },
         { '<leader>l', group = 'LSP' },
-        { '<leader>ln', group = 'Node' },
         { '<leader>o', group = 'Options' },
         { '<leader>oP', group = 'Profiler' },
         { '<leader>p', group = 'Paste' },
