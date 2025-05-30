@@ -141,6 +141,13 @@ return {
         mode = { 'n', 'v' },
       },
       {
+        '<leader>/',
+        function()
+          Snacks.picker.pick()
+        end,
+        desc = 'Pick Picker',
+      },
+      {
         '<leader>sf',
         function()
           Snacks.picker.files { hidden = true }

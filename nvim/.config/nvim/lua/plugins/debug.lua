@@ -23,18 +23,9 @@ return {
           local dap = require 'dap'
 
           require('mason-nvim-dap').setup {
-            -- Makes a best effort to setup the various debuggers with
-            -- reasonable debug configurations
             automatic_installation = true,
-
-            -- You can provide additional configuration to the handlers,
-            -- see mason-nvim-dap README for more information
             handlers = {},
-
-            -- You'll need to check that you have the required things installed
-            -- online, please don't ask me how to install them :)
             ensure_installed = {
-              -- Update this to ensure that you have the debuggers for the langs you want
               'delve',
               'codelldb',
               'js-debug-adapter',
@@ -45,11 +36,6 @@ return {
           require('nvim-dap-virtual-text').setup {}
 
           require('overseer').enable_dap()
-
-          dap.adapters.php = {
-            type = 'executable',
-            command = vim.fn.stdpath 'data' .. '/mason/bin/php-debug-adapter',
-          }
 
           dap.adapters.node = {
             type = 'server',
@@ -73,6 +59,15 @@ return {
               sourceMaps = true,
               envFile = '${workspaceFolder}/.env',
               console = 'integratedTerminal',
+            },
+            {
+              name = 'Attach to node process',
+              type = 'node',
+              request = 'attach',
+              -- rootPath = '${workspaceFolder}',
+              processId = require('dap.utils').pick_process,
+              cwd = vim.fn.getcwd(),
+              sourceMaps = true,
             },
           }
 
