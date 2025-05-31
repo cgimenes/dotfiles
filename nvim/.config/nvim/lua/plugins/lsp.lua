@@ -1,7 +1,7 @@
 return {
   {
     'neovim/nvim-lspconfig',
-    event = 'VeryLazy',
+    lazy = false, -- mason-tool-installer isn't working when lazy loaded
     dependencies = {
       {
         'mason-org/mason.nvim',
@@ -71,21 +71,21 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'erb-formatter',
         'kulala-fmt',
         'kulala_ls', -- Isn't supported by mason-lspconfig yet
-        'php-cs-fixer',
         'prettier',
         'prettierd',
         'reformat-gherkin',
-        'rubocop',
         'ruff',
         'shfmt',
         'sleek',
         'stylua',
       })
       if vim.fn.executable 'composer' == 1 then
-        vim.list_extend(ensure_installed, { 'pint' })
+        vim.list_extend(ensure_installed, { 'pint', 'php-cs-fixer' })
+      end
+      if vim.fn.executable 'gem' == 1 then
+        vim.list_extend(ensure_installed, { 'rubocop', 'erb-formatter' })
       end
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -114,5 +114,32 @@ return {
       }
       require('lspconfig')['kulala_ls'].setup {}
     end,
+  },
+  {
+    'Bekaboo/dropbar.nvim',
+    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
+    keys = {
+      {
+        '<leader>;',
+        function()
+          require('dropbar.api').pick()
+        end,
+        desc = 'Pick symbols in winbar',
+      },
+      {
+        '[;',
+        function()
+          require('dropbar.api').goto_context_start()
+        end,
+        desc = 'Go to start of current context',
+      },
+      {
+        '];',
+        function()
+          require('dropbar.api').select_next_context()
+        end,
+        desc = 'Select next context',
+      },
+    },
   },
 }

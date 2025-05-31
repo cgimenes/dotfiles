@@ -6,6 +6,9 @@ return {
     ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
+      gitbrowse = {
+        what = "file"
+      },
       dashboard = {
         enabled = true,
         preset = {
@@ -136,6 +139,13 @@ return {
         end,
         desc = 'Git Browse',
         mode = { 'n', 'v' },
+      },
+      {
+        '<leader>/',
+        function()
+          Snacks.picker.pick()
+        end,
+        desc = 'Pick Picker',
       },
       {
         '<leader>sf',

@@ -15,4 +15,24 @@ return {
       panel = { enabled = false },
     },
   },
+  {
+    'yetone/avante.nvim',
+    event = 'VeryLazy',
+    version = false,
+    build = 'make',
+    dependencies = {
+      'zbirenbaum/copilot.lua',
+    },
+    opts = {
+      provider = 'copilot',
+      vendors = {
+        ['copilot/claude-opus-4'] = {
+          __inherited_from = 'copilot',
+          model = 'claude-opus-4',
+          display_name = 'copilot/claude-opus-4',
+          max_tokens = 80000,
+        },
+      },
+    },
+  },
 }
