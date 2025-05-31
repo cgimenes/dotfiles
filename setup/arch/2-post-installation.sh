@@ -22,7 +22,6 @@ aur_packages=(
 	"spotify"
 	"ttf-tabler-icons"
 	"xidlehook"
-	"yaak"
 )
 echo "The following packages will be installed from the AUR: ${aur_packages[*]}"
 for package in "${aur_packages[@]}"; do
