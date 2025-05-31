@@ -93,6 +93,14 @@ case "$clazz" in
   state="floating"
   ;;
 
+"steam_app_0")
+  case "$title" in
+  "World of Warcraft")
+    state="floating"
+    ;;
+  esac
+  ;;
+
 "")
   if [[ "$process" == "spotify" ]]; then
     desktop=5
