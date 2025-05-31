@@ -197,5 +197,16 @@ return {
       -- vim.cmd.colorscheme 'oh-lucy'
       -- vim.cmd.colorscheme 'oh-lucy-evening'
     end,
-  }
+  },
+  {
+    'vague2k/vague.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = transparent,
+    },
+    init = function()
+      -- vim.cmd.colorscheme 'vague'
+    end,
+  },
 }
