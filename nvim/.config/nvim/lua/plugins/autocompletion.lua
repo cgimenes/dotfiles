@@ -7,6 +7,7 @@ return {
     dependencies = {
       { 'rafamadriz/friendly-snippets' },
       { 'fang2hou/blink-copilot' },
+      { 'huijiro/blink-cmp-supermaven' },
     },
     version = '*',
     ---@module 'blink.cmp'
@@ -19,11 +20,24 @@ return {
         use_frecency = false,
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot', 'supermaven' },
         providers = {
           -- dont show LuaLS require statements when lazydev has items
-          lazydev = { name = 'LazyDev', module = 'lazydev.integrations.blink', fallbacks = { 'lsp' } },
-          dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
+          lazydev = {
+            name = 'LazyDev',
+            module = 'lazydev.integrations.blink',
+            fallbacks = { 'lsp' },
+          },
+          dadbod = {
+            name = 'Dadbod',
+            module = 'vim_dadbod_completion.blink',
+          },
+          supermaven = {
+            name = 'Supermaven',
+            module = 'blink-cmp-supermaven',
+            score_offset = 90,
+            async = true,
+          },
           copilot = {
             name = 'Copilot',
             module = 'blink-copilot',
