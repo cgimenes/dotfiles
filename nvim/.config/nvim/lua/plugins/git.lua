@@ -1,5 +1,11 @@
 return {
   {
+    'tpope/vim-fugitive',
+    keys = {
+      { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' },
+    },
+  },
+  {
     'sindrets/diffview.nvim',
     config = true,
     cmd = {
