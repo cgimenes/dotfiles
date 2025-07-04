@@ -12,6 +12,7 @@
 # - Disable hot corners
 # - Disable mouse button binding to show mission control
 # - Disable input source keybindings (Ctrl + Space)
+# - Disable show contextual menu keybinding (Ctrl + Enter)
 
 # configure key repetition speeds
 defaults write NSGlobalDomain KeyRepeat -int 1
