@@ -84,6 +84,7 @@ vim.opt.shortmess:append 'I'
 vim.filetype.add {
   extension = {
     http = 'http',
+    hledger = 'ledger',
   },
   filename = {
     ['Brewfile'] = 'ruby',
