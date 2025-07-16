@@ -14,7 +14,9 @@ return {
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
-    config = true,
+    opts = {
+      completions = { blink = { enabled = true } },
+    },
   },
   {
     'mechatroner/rainbow_csv',
