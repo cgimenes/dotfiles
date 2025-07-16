@@ -7,7 +7,7 @@ return {
     opts = {
       bigfile = { enabled = true },
       gitbrowse = {
-        what = "file"
+        what = 'file',
       },
       dashboard = {
         enabled = true,
@@ -80,6 +80,7 @@ return {
               ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
               ['<C-d>'] = { 'preview_scroll_down', mode = { 'n', 'i' } },
               ['<C-u>'] = { 'preview_scroll_up', mode = { 'n', 'i' } },
+              ['<C-y>'] = { 'confirm', mode = { 'n', 'i' } },
             },
           },
         },
