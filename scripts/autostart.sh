@@ -26,6 +26,7 @@ pgrep -x xidlehook >/dev/null || xidlehook \
   --timer 540 \
   'systemctl suspend' \
   '' &
+pgrep -x emacs >/dev/null || emacs --daemon &
 nitrogen --restore &
 autorandr -c &
 xset dpms force on &
@@ -33,8 +34,8 @@ xset dpms force on &
 # X configs
 xsetroot -cursor_name left_ptr
 xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1 &
-xinput set-prop "DELL0B56:00 04F3:317E Touchpad" "libinput Tapping Enabled" 1 &
-xinput set-prop "pointer:Logitech MX Ergo" "libinput Accel Speed" -1 &
+# xinput set-prop "Logitech MX Ergo" "libinput Accel Speed" -1 &
+# xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -1 &
 setxkbmap -layout 'us,br' -variant 'intl,thinkpad' -option 'grp:alt_space_toggle' -option 'ctrl:nocaps'
 xset s off -dpms
 xset r rate 250 50 # repeat rate
