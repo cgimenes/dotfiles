@@ -62,7 +62,7 @@ case "$clazz" in
   state="tiled"
   ;;
 
-"Emacs")
+"Emacs" | "obsidian")
   desktop=4
   state="tiled"
   ;;
