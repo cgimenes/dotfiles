@@ -155,16 +155,22 @@ return {
         end,
         desc = 'Find Files',
       },
-      -- {
-      --   '<leader>.',
-      --   function()
-      --     Snacks.picker.explorer {
-      --       hidden = true,
-      --       auto_close = true,
-      --     }
-      --   end,
-      --   desc = 'Find Files',
-      -- },
+      {
+        '<leader>.',
+        function()
+          Snacks.picker.explorer {
+            hidden = true,
+            win = {
+              list = {
+                keys = {
+                  ['<Esc>'] = { '', mode = { 'n', 'i' } },
+                },
+              },
+            },
+          }
+        end,
+        desc = 'Explorer',
+      },
       {
         '<leader>:',
         function()
