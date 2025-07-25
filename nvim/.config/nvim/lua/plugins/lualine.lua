@@ -176,6 +176,7 @@ return {
             end,
           },
           { 'filename', path = 1 },
+          { require('dr-lsp').lspCount },
         },
         lualine_x = {
           { 'diagnostics' },
@@ -183,7 +184,7 @@ return {
             function()
               local buf_clients = vim.lsp.get_clients { bufnr = 0 }
               if #buf_clients == 0 then
-                return 'LSP Inactive'
+                return 'No LSP'
               end
 
               local buf_client_names = {}
