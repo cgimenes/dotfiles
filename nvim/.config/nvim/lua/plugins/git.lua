@@ -12,7 +12,7 @@ return {
       'DiffviewClose',
     },
     keys = {
-      { '<leader>gf', ':DiffviewFileHistory %<cr>', desc = 'File History', mode = { 'n', 'v' } },
+      { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History', mode = { 'n', 'v' } },
       { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' },
     },
   },
