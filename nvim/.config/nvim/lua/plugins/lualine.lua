@@ -176,9 +176,34 @@ return {
             end,
           },
           { 'filename', path = 1 },
-          { require('dr-lsp').lspCount },
         },
         lualine_x = {
+          {
+            function()
+              local count = require('dr-lsp').lspCountTable()
+              if count == nil then
+                return ''
+              end
+
+              local defs, refs = '', ''
+              if count.workspace.definitions then
+                defs = '󰳽 ' .. tostring(count.file.definitions)
+                if count.file.definitions ~= count.workspace.definitions then
+                  defs = defs .. '(' .. tostring(count.workspace.definitions) .. ')'
+                end
+              end
+              if count.workspace.references then
+                refs = '󰌹 ' .. tostring(count.file.references)
+                if count.file.references ~= count.workspace.references then
+                  refs = refs .. '(' .. tostring(count.workspace.references) .. ')'
+                end
+              end
+              return ('%s %s'):format(defs, refs)
+            end,
+            color = function()
+              return { fg = Snacks.util.color 'Comment' }
+            end,
+          },
           { 'diagnostics' },
           {
             function()
