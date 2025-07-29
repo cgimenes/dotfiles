@@ -109,6 +109,8 @@ return {
   },
   {
     'stevearc/aerial.nvim',
+    priority = 998,
+    lazy = false,
     opts = {},
     keys = {
       { 'gO', '<cmd>AerialToggle<cr>', desc = 'LSP Symbols' },
