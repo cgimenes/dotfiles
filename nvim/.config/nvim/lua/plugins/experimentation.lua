@@ -37,4 +37,26 @@ return {
   {
     'machakann/vim-swap',
   },
+  {
+    'stevearc/aerial.nvim',
+    opts = {},
+    keys = {
+      { 'gO', '<cmd>AerialToggle<cr>', desc = 'LSP Symbols' },
+    },
+  },
+  {
+    'folke/edgy.nvim',
+    opts = {
+      animate = { enabled = false },
+      -- exit_when_last = true,
+      right = {
+        {
+          title = 'Outline',
+          ft = 'aerial',
+          open = 'AerialToggle',
+          size = { width = 0.13 },
+        },
+      },
+    },
+  },
 }
