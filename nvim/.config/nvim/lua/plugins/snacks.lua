@@ -40,11 +40,11 @@ return {
         timeout = 3000,
       },
       picker = {
-        formatters = {
-          file = {
-            -- filename_first = true, -- display filename before the file path
-          },
-        },
+        -- formatters = {
+        --   file = {
+        --     filename_first = true, -- display filename before the file path
+        --   },
+        -- },
         enabled = true,
         layout = {
           preset = 'ivy',
