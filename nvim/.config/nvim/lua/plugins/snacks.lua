@@ -14,9 +14,9 @@ return {
         preset = {
           keys = {
             { icon = ' ', key = 'n', desc = 'New File', action = ':ene' },
-            { icon = ' ', key = 'f', desc = 'Find Files', action = ':lua Snacks.picker.files { hidden = true }' },
-            { icon = ' ', key = 'y', desc = 'Yazi', action = ':Yazi' },
-            { icon = ' ', key = 'g', desc = 'LazyGit', action = ':lua Snacks.lazygit()' },
+            { icon = ' ', key = 'f', desc = 'Find Files', action = '<leader>sf' },
+            { icon = ' ', key = 'y', desc = 'Yazi', action = '-' },
+            { icon = ' ', key = 'g', desc = 'LazyGit', action = '<leader>gg' },
             { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
             { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
             { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
@@ -42,35 +42,52 @@ return {
       picker = {
         formatters = {
           file = {
-            filename_first = true, -- display filename before the file path
-            -- truncate = 80, -- truncate the file path to (roughly) this length
+            -- filename_first = true, -- display filename before the file path
           },
         },
         enabled = true,
-        -- layout = {
-        --   preset = 'ivy',
-        --   cycle = true,
-        -- },
-        -- layouts = {
-        --   ivy = {
-        --     layout = {
-        --       box = 'vertical',
-        --       backdrop = false,
-        --       row = -1,
-        --       width = 0,
-        --       height = 0.5,
-        --       border = 'top',
-        --       title = ' {title} {live} {flags}',
-        --       title_pos = 'left',
-        --       { win = 'input', height = 1, border = 'bottom' },
-        --       {
-        --         box = 'horizontal',
-        --         { win = 'list', border = 'none' },
-        --         { win = 'preview', title = '{preview}', width = 0.5, border = 'left' },
-        --       },
-        --     },
-        --   },
-        -- },
+        layout = {
+          preset = 'ivy',
+          cycle = true,
+        },
+        layouts = {
+          default = {
+            hidden = { 'preview' },
+            layout = {
+              box = 'horizontal',
+              width = 0.8,
+              min_width = 120,
+              height = 0.8,
+              {
+                box = 'vertical',
+                border = 'rounded',
+                title = '{title} {live} {flags}',
+                { win = 'input', height = 1, border = 'bottom' },
+                { win = 'list', border = 'none' },
+              },
+              { win = 'preview', title = '{preview}', border = 'rounded', width = 0.5 },
+            },
+          },
+          ivy = {
+            hidden = { 'preview' },
+            layout = {
+              box = 'vertical',
+              backdrop = false,
+              row = -1,
+              width = 0,
+              height = 0.5,
+              border = 'top',
+              title = ' {title} {live} {flags}',
+              title_pos = 'left',
+              { win = 'input', height = 1, border = 'bottom' },
+              {
+                box = 'horizontal',
+                { win = 'list', border = 'none' },
+                { win = 'preview', title = '{preview}', width = 0.5, border = 'left' },
+              },
+            },
+          },
+        },
         matcher = {
           frecency = true,
         },
@@ -88,6 +105,7 @@ return {
       quickfile = { enabled = true },
       styles = {
         notification = {
+          relative = 'editor',
           wo = { wrap = true },
         },
       },
@@ -151,7 +169,15 @@ return {
       {
         '<leader>sf',
         function()
-          Snacks.picker.files { hidden = true }
+          local truncate_width = vim.api.nvim_win_get_width(0) * 0.8
+          Snacks.picker.files {
+            hidden = true,
+            formatters = {
+              file = {
+                truncate = truncate_width,
+              },
+            },
+          }
         end,
         desc = 'Find Files',
       },

@@ -2,6 +2,7 @@ return {
   'ibhagwan/fzf-lua',
   priority = 999,
   lazy = false,
+  enabled = false,
   cmd = 'FzfLua',
   opts = {
     'default-title',
