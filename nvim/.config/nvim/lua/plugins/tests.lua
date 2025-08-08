@@ -37,13 +37,11 @@ return {
           open_on_run = true,
         },
         status = { virtual_text = true },
+        diagnostic = { enabled = false },
         quickfix = {
           open = function()
             vim.cmd 'copen'
           end,
-        },
-        consumers = {
-          overseer = require 'neotest.consumers.overseer',
         },
         adapters = {
           require 'neotest-minitest',
@@ -63,14 +61,9 @@ return {
           animated = false,
         },
         icons = {
-          expanded = '',
+          expanded = ' ',
           non_collapsible = '',
-          collapsed = '',
-
-          passed = '',
-          running = '',
-          failed = '',
-          unknown = '',
+          collapsed = ' ',
         },
       }
       local neotest_ns = vim.api.nvim_create_namespace 'neotest'
