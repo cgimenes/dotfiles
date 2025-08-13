@@ -227,6 +227,9 @@ return {
         function()
           Snacks.picker.registers {
             layout = 'vertical',
+            on_show = function()
+              vim.cmd.stopinsert()
+            end,
           }
         end,
         desc = 'Registers',
