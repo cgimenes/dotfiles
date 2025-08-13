@@ -24,6 +24,9 @@ return {
     if vim.bo.filetype == 'cpp' then
       cmd = string.format('g++ -o a.out -ggdb %s && ./a.out', vim.fn.expand '%:p')
     end
+    if vim.bo.filetype == 'ruby' then
+      cmd = { 'ruby', file }
+    end
     return {
       cmd = cmd,
       components = {
@@ -37,6 +40,6 @@ return {
     }
   end,
   condition = {
-    filetype = { 'sh', 'python', 'go', 'javascript', 'typescript', 'c', 'cpp' },
+    filetype = { 'sh', 'python', 'go', 'javascript', 'typescript', 'c', 'cpp', 'ruby' },
   },
 }
