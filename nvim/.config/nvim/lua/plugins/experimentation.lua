@@ -131,4 +131,21 @@ return {
       },
     },
   },
+  {
+    'pwntester/octo.nvim',
+    cmd = { 'Octo' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'folke/snacks.nvim',
+      'echasnovski/mini.icons',
+    },
+    opts = {
+      enable_builtin = true,
+      picker = 'snacks',
+      use_local_fs = true,
+    },
+    keys = {
+      { '<leader>gp', '<cmd>Octo pr list<cr>', desc = 'List GitHub PRs' },
+    },
+  },
 }

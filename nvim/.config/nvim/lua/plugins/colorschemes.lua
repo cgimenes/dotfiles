@@ -210,4 +210,15 @@ return {
       -- vim.cmd.colorscheme 'vague'
     end,
   },
+  {
+    'craftzdog/solarized-osaka.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = transparent,
+    },
+    init = function()
+      -- vim.cmd.colorscheme 'solarized-osaka'
+    end,
+  },
 }
