@@ -22,4 +22,7 @@ macos-option-as-alt = true
 
 shell-integration = none
 
-config-file = ?custom
+# MacOS only
+window-decoration = true
+font-size = 21
+adjust-cell-height = 2
