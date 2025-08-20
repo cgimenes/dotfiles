@@ -45,6 +45,10 @@ vim.keymap.set('n', '<C-LeftMouse>', '<LeftMouse>gd')
 vim.keymap.set('n', '<X1Mouse>', '<C-o>')
 vim.keymap.set('n', '<X2Mouse>', '<C-i>')
 
+-- Tabs
+vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', { desc = 'New tab' })
+vim.keymap.set('n', 'tc', '<cmd>tabclose<cr>', { desc = 'Next tab' })
+
 -- Find/replace
 vim.keymap.set('n', '<leader>fs', function()
   local cword = vim.fn.expand '<cword>'
