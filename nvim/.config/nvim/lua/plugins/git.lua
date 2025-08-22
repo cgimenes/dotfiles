@@ -8,9 +8,7 @@ return {
   {
     'sindrets/diffview.nvim',
     config = true,
-    cmd = {
-      'DiffviewClose',
-    },
+    cmd = { 'DiffviewClose' },
     keys = {
       { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History', mode = { 'n', 'v' } },
       { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' },
@@ -67,6 +65,24 @@ return {
     config = true,
     keys = {
       { '<leader>ga', '<cmd>Pipeline<cr>', desc = 'Open Github Actions' },
+    },
+  },
+  {
+    'pwntester/octo.nvim',
+    cmd = { 'Octo' },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'folke/snacks.nvim',
+      'echasnovski/mini.icons',
+    },
+    opts = {
+      enable_builtin = true,
+      picker = 'snacks',
+      use_local_fs = true,
+      file_panel = { size = 5 },
+    },
+    keys = {
+      { '<leader>gp', '<cmd>Octo pr list<cr>', desc = 'List GitHub PRs' },
     },
   },
 }
