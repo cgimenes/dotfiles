@@ -13,6 +13,10 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+      keymap = {
+        preset = 'default',
+        ['<C-x>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      },
       fuzzy = {
         max_typos = function()
           return 0
