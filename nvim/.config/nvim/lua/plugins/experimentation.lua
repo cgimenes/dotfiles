@@ -105,6 +105,7 @@ return {
     opts = {},
   },
   {
+    -- gs to enter swap mode
     'machakann/vim-swap',
   },
   {
@@ -121,6 +122,14 @@ return {
     opts = {
       animate = { enabled = false },
       -- exit_when_last = true,
+      left = {
+        {
+          title = 'Find and Replace',
+          ft = 'grug-far',
+          open = 'GrugFar',
+          size = { width = 0.20 },
+        },
+      },
       right = {
         {
           title = 'Outline',
