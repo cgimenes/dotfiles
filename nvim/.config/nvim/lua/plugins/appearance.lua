@@ -57,4 +57,30 @@ return {
     },
     event = { 'WinLeave' },
   },
+  {
+    'folke/edgy.nvim',
+    opts = {
+      animate = { enabled = false },
+      -- exit_when_last = true,
+      left = {
+        {
+          title = 'Find and Replace',
+          ft = 'grug-far',
+          size = { width = 0.20 },
+        },
+        {
+          title = 'DBUI',
+          ft = 'dbui',
+          size = { width = 0.20 },
+        },
+      },
+      right = {
+        {
+          title = 'Outline',
+          ft = 'aerial',
+          size = { width = 0.13 },
+        },
+      },
+    },
+  },
 }

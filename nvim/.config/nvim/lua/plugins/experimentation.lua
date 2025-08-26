@@ -117,27 +117,4 @@ return {
       { 'gO', '<cmd>AerialToggle<cr>', desc = 'LSP Symbols' },
     },
   },
-  {
-    'folke/edgy.nvim',
-    opts = {
-      animate = { enabled = false },
-      -- exit_when_last = true,
-      left = {
-        {
-          title = 'Find and Replace',
-          ft = 'grug-far',
-          open = 'GrugFar',
-          size = { width = 0.20 },
-        },
-      },
-      right = {
-        {
-          title = 'Outline',
-          ft = 'aerial',
-          open = 'AerialToggle',
-          size = { width = 0.13 },
-        },
-      },
-    },
-  },
 }
