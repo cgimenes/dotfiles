@@ -74,13 +74,6 @@ return {
           size = { width = 0.20 },
         },
       },
-      right = {
-        {
-          title = 'Outline',
-          ft = 'aerial',
-          size = { width = 0.13 },
-        },
-      },
     },
   },
 }
