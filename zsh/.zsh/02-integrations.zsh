@@ -26,6 +26,11 @@ if [ -d "$HOME/dev/google-cloud-sdk/" ]; then
 	source $HOME/dev/google-cloud-sdk/completion.zsh.inc
 fi
 
+if [ -d "/opt/homebrew/share/google-cloud-sdk/" ]; then
+	export PATH=$PATH:/opt/homebrew/share/google-cloud-sdk/bin
+	source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+fi
+
 if [ -x "$(command -v fzf)" ]; then
 	export FZF_DEFAULT_OPTS="
 	  --cycle
