@@ -1,40 +1,40 @@
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "-"
 run = 'leave'
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = ["g", "r"]
 run = '''
   shell 'ya emit cd "$(git rev-parse --show-toplevel)"'
 '''
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "?"
 run = 'help'
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = "<C-n>"
 run = '''
 	shell 'dragon-drop -x -a -T "$@"'
 '''
 
-[[manager.append_keymap]]
+[[mgr.append_keymap]]
 on = ["g", "."]
 run = 'hidden toggle'
 
-[[manager.append_keymap]]
+[[mgr.append_keymap]]
 on = ["g", "m"]
 run = 'cd /run/media/'
 
-[[manager.append_keymap]]
+[[mgr.append_keymap]]
 on = ["g", "s"]
 run = 'cd ~/dev/src/'
 
-[[manager.append_keymap]]
+[[mgr.append_keymap]]
 on = ["g", "t"]
 run = 'cd ~/Downloads/Torrents/'
 
-[[manager.append_keymap]]
+[[mgr.append_keymap]]
 on = "<C-o>"
 run = ['open', 'quit']
 
