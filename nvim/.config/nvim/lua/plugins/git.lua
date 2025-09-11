@@ -73,7 +73,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'folke/snacks.nvim',
-      'echasnovski/mini.icons',
+      'nvim-mini/mini.icons',
     },
     opts = {
       enable_builtin = true,

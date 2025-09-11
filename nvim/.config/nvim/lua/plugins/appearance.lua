@@ -1,7 +1,7 @@
 return {
   {
     -- Cool icons
-    'echasnovski/mini.icons',
+    'nvim-mini/mini.icons',
     main = 'mini.icons',
     version = false,
     config = function()

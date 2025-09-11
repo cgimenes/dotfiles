@@ -6,7 +6,7 @@ return {
   --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
   --  - ci'  - [C]hange [I]nside [']quote
   {
-    'echasnovski/mini.ai',
+    'nvim-mini/mini.ai',
     event = 'VeryLazy',
     config = true,
   },
