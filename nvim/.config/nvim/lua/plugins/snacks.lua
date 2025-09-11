@@ -283,7 +283,13 @@ return {
       {
         '<leader>sg',
         function()
-          Snacks.picker.grep { hidden = true }
+          Snacks.picker.grep {
+            hidden = true,
+            exclude = {
+              'package-lock.json',
+              'pnpm-lock.yaml',
+            },
+          }
         end,
         desc = 'Grep',
       },
