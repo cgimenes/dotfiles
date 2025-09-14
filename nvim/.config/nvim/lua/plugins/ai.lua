@@ -11,6 +11,7 @@ return {
   },
   {
     'supermaven-inc/supermaven-nvim',
+    enabled = false,
     event = 'InsertEnter',
     opts = {
       disable_inline_completion = true,

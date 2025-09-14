@@ -7,7 +7,7 @@ return {
     dependencies = {
       { 'rafamadriz/friendly-snippets' },
       { 'fang2hou/blink-copilot' },
-      { 'huijiro/blink-cmp-supermaven' },
+      -- { 'huijiro/blink-cmp-supermaven' },
     },
     version = '*',
     ---@module 'blink.cmp'
@@ -24,7 +24,7 @@ return {
         use_frecency = false,
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot', 'supermaven' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot' },
         providers = {
           -- dont show LuaLS require statements when lazydev has items
           lazydev = {
