@@ -58,6 +58,7 @@
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "nvim-ts-autotag": { "branch": "main", "commit": "c4ca798ab95b316a768d51eaaaee48f64a4a46bc" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f" },
+  "obsidian.nvim": { "branch": "main", "commit": "705cc9b4f66eca1e54040ac819102e80a32896d3" },
   "octo.nvim": { "branch": "master", "commit": "6dabe62fb6678804ad38fb0f060854a5d1d4a7ef" },
   "oh-lucy.nvim": { "branch": "main", "commit": "2d94e9b03efe4c50f4653b6f2b7b200d970fe1aa" },
   "oil.nvim": { "branch": "master", "commit": "07f80ad645895af849a597d1cac897059d89b686" },

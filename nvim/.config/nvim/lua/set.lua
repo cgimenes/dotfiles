@@ -80,6 +80,9 @@ vim.o.fixendofline = false
 -- Disable splash screen
 vim.opt.shortmess:append 'I'
 
+-- Enable conceal (mostly for obsidian.nvim)
+vim.opt.conceallevel = 1
+
 -- Use correct filetype for each extension/filename/pattern
 vim.filetype.add {
   extension = {
