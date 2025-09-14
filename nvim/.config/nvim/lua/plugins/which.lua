@@ -18,6 +18,7 @@ return {
         { '<leader>g', group = 'Git' },
         { '<leader>l', group = 'LSP' },
         { '<leader>o', group = 'Options' },
+        { '<leader>O', group = 'Obsidian' },
         { '<leader>oP', group = 'Profiler' },
         { '<leader>p', group = 'Paste' },
         { '<leader>r', group = 'Runner' },
