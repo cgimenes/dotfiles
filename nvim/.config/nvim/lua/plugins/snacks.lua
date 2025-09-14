@@ -18,6 +18,7 @@ return {
             { icon = ' ', key = 'y', desc = 'Yazi', action = '-' },
             { icon = ' ', key = 'g', desc = 'LazyGit', action = '<leader>gg' },
             { icon = ' ', key = 'p', desc = 'Octo', action = '<leader>gp' },
+            { icon = ' ', key = 'o', desc = 'Obsidian', action = ':Obsidian' },
             { icon = ' ', key = 'c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
             { icon = '󰒲 ', key = 'l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
             { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
