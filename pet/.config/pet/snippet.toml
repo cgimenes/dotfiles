@@ -124,3 +124,9 @@
   Output = ""
   Tag = []
   command = "trash-list | awk -F' ' '{ print $3 }' | fzf | xargs trash-rm"
+
+[[Snippets]]
+  Description = "Copy a random 32-digit hexadecimal"
+  Output = ""
+  Tag = []
+  command = "openssl rand -hex 32 | clipcopy"
