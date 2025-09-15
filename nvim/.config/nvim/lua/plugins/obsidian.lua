@@ -1,3 +1,24 @@
+local workspaces = {
+  {
+    name = 'public',
+    path = '~/Public/Obsidian',
+  },
+}
+
+if vim.fn.isdirectory(vim.fn.expand '~/Obsidian') == 1 then
+  table.insert(workspaces, {
+    name = 'personal',
+    path = '~/Obsidian',
+  })
+end
+
+if vim.fn.isdirectory(vim.fn.expand '~/Documents/Obsidian') == 1 then
+  table.insert(workspaces, {
+    name = 'work',
+    path = '~/Documents/Obsidian',
+  })
+end
+
 return {
   {
     'obsidian-nvim/obsidian.nvim',
@@ -19,16 +40,7 @@ return {
       ui = {
         enable = false,
       },
-      workspaces = {
-        {
-          name = 'personal',
-          path = '~/Obsidian',
-        },
-        {
-          name = 'work',
-          path = '~/Public/Obsidian',
-        },
-      },
+      workspaces = workspaces,
     },
     keys = {
       { '<leader>Of', '<cmd>Obsidian quick_switch<cr>', desc = 'Open Note' },
