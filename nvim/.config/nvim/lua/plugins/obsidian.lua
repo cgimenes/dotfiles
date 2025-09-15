@@ -38,4 +38,9 @@ return {
       { '<leader>Oo', '<cmd>Obsidian open<cr>', desc = 'Open in Obsidian' },
     },
   },
+  {
+    'gaoDean/autolist.nvim',
+    ft = { 'markdown' },
+    opts = {},
+  },
 }
