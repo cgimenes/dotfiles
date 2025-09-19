@@ -7,7 +7,7 @@ vim.keymap.set('i', 'jk', '<Esc>')
 vim.keymap.set('t', '<C-/>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Close everything (quickfix, location list, diffview and Diffview.nvim)
-vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>lcl<cr><cmd>diffoff<cr><cmd>DiffviewClose<cr><cmd>AerialClose<cr>')
+vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>lcl<cr><cmd>diffoff<cr><cmd>DiffviewClose<cr>')
 
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
