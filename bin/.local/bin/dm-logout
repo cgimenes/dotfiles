@@ -30,7 +30,7 @@ main() {
         "Lock screen"
         "Logout"
         "Reboot"
-        "Sleep"
+        "Sleep*"
         "Suspend"
     )
 
@@ -74,7 +74,7 @@ main() {
             output "User chose not to shutdown." && exit 0
         fi
         ;;
-    'Sleep')
+    'Sleep*')
         if [[ "$(echo -e "Yes\nNo" | ${MENU} "${choice}?")" == "Yes" ]]; then
             systemctl sleep
         else
