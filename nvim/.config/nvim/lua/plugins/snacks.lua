@@ -184,7 +184,7 @@ return {
         desc = 'Find Files',
       },
       {
-        '<leader>.',
+        '<leader>e',
         function()
           Snacks.picker.explorer {
             hidden = true,
@@ -198,6 +198,13 @@ return {
           }
         end,
         desc = 'Explorer',
+      },
+      {
+        '<leader>.',
+        function()
+          Snacks.terminal.toggle()
+        end,
+        desc = 'Terminal',
       },
       {
         '<leader>:',

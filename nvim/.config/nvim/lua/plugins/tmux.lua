@@ -1,12 +1,25 @@
 return {
   {
     'christoomey/vim-tmux-navigator',
-    keys = {
-      { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
-      { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
-      { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
-      { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
+    cmd = {
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
     },
+    keys = {
+      { '<C-h>', '<cmd>TmuxNavigateLeft<cr>', mode = { 'n', 'v' } },
+      { '<C-j>', '<cmd>TmuxNavigateDown<cr>', mode = { 'n', 'v' } },
+      { '<C-k>', '<cmd>TmuxNavigateUp<cr>', mode = { 'n', 'v' } },
+      { '<C-l>', '<cmd>TmuxNavigateRight<cr>', mode = { 'n', 'v' } },
+      { '<C-h>', [[<C-\><C-n><cmd>TmuxNavigateLeft<cr>]], mode = 't' },
+      { '<C-j>', [[<C-\><C-n><cmd>TmuxNavigateDown<cr>]], mode = 't' },
+      { '<C-k>', [[<C-\><C-n><cmd>TmuxNavigateUp<cr>]], mode = 't' },
+      { '<C-l>', [[<C-\><C-n><cmd>TmuxNavigateRight<cr>]], mode = 't' },
+    },
+    init = function()
+      vim.g.tmux_navigator_no_mappings = 1
+    end,
   },
   {
     'cgimenes/tmux-files.nvim',
