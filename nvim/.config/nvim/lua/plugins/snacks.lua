@@ -206,13 +206,6 @@ return {
         desc = 'Explorer',
       },
       {
-        '<leader>.',
-        function()
-          Snacks.terminal.toggle()
-        end,
-        desc = 'Terminal',
-      },
-      {
         '<leader>:',
         function()
           Snacks.picker.command_history()

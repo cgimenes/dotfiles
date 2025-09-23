@@ -2,6 +2,7 @@
   "apidocs.nvim": { "branch": "main", "commit": "61f35a32220e41b7b290bf607d3658c91eb3cd60" },
   "autolist.nvim": { "branch": "main", "commit": "5f70a5f99e96c8fe3069de042abd2a8ed2deb855" },
   "avante.nvim": { "branch": "main", "commit": "44db8eba870f6c123da5efa70384b2889f3e3495" },
+  "betterTerm.nvim": { "branch": "main", "commit": "f7bc801a8094330a4bf8b53f81e77615bad39116" },
   "blink-copilot": { "branch": "main", "commit": "424cc953a4fd52f4e141b5845bed7095be811501" },
   "blink.cmp": { "branch": "main", "commit": "327fff91fe6af358e990be7be1ec8b78037d2138" },
   "catppuccin": { "branch": "main", "commit": "f19cab18ec4dc86d415512c7a572863b2adbcc18" },
