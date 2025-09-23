@@ -9,16 +9,6 @@ return {
     ft = 'kitty',
   },
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    ft = 'markdown',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-    },
-    opts = {
-      completions = { blink = { enabled = true } },
-    },
-  },
-  {
     'mechatroner/rainbow_csv',
     ft = { 'csv', 'tsv' },
   },
