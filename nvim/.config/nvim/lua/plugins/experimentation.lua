@@ -31,4 +31,11 @@ return {
     -- gs to enter swap mode
     'machakann/vim-swap',
   },
+  {
+    'jinh0/eyeliner.nvim',
+    opts = {
+      dim = true,
+      highlight_on_key = true,
+    },
+  },
 }

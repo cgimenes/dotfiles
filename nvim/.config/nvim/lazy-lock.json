@@ -16,6 +16,7 @@
   "dropbar.nvim": { "branch": "master", "commit": "3460930700ca67b4590a69ac3f1d65d5f9658fb6" },
   "edgy.nvim": { "branch": "main", "commit": "7e8dedc39abebe40c289b8012cc89b11c69aa7a0" },
   "everforest": { "branch": "master", "commit": "bc796ccfb2179887593f4a33d4a6376081afa3b1" },
+  "eyeliner.nvim": { "branch": "main", "commit": "8f197eb30cecdf4c2cc9988a5eecc6bc34c0c7d6" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "fzf-lua": { "branch": "main", "commit": "f22460450543aa773638135d6aa46c60ab92da99" },
