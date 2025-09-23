@@ -41,6 +41,12 @@ return {
         enabled = true,
         timeout = 3000,
       },
+      statuscolumn = {
+        folds = {
+          open = true,
+          git_hl = true,
+        }
+      },
       picker = {
         -- formatters = {
         --   file = {
