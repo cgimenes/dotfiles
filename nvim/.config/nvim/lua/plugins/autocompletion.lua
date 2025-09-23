@@ -21,7 +21,9 @@ return {
         max_typos = function()
           return 0
         end,
-        use_frecency = false,
+        frecency = {
+          enabled = false,
+        },
       },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot' },
