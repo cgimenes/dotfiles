@@ -76,7 +76,6 @@ return {
     'akinsho/toggleterm.nvim',
     version = '*',
     opts = {
-      shade_terminals = false,
       size = function(term)
         if term.direction == 'horizontal' then
           return 10
@@ -91,7 +90,6 @@ return {
     keys = {
       { '<leader>.', '<cmd>ToggleTerm<cr>', desc = 'Toggle Terminal' },
       { '<leader>>', '<cmd>ToggleTerm direction=vertical<cr>', desc = 'Toggle Vertical Terminal' },
-      { '<leader>?', '<cmd>ToggleTerm direction=float<cr>', desc = 'Toggle Float Terminal' },
     },
   },
 }
