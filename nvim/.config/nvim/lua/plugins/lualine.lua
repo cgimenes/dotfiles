@@ -109,6 +109,7 @@ return {
             'spectre_panel',
             'toggleterm',
             'DressingSelect',
+            'better_term',
             'Jaq',
             'harpoon',
             'grapple',
