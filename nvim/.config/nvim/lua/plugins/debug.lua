@@ -7,16 +7,12 @@ return {
         lazy = true,
         dependencies = {
           'nvim-neotest/nvim-nio',
-
           'theHamsta/nvim-dap-virtual-text',
-
           'mason-org/mason.nvim',
           'jay-babu/mason-nvim-dap.nvim',
-
           'leoluz/nvim-dap-go',
           'suketa/nvim-dap-ruby',
           { 'mfussenegger/nvim-dap-python', lazy = true },
-
           'stevearc/overseer.nvim',
         },
         config = function()
@@ -37,20 +33,23 @@ return {
 
           require('overseer').enable_dap()
 
-          dap.adapters.node = {
+          dap.adapters['pwa-node'] = {
             type = 'server',
             host = 'localhost',
             port = '${port}',
             executable = {
-              command = vim.fn.stdpath 'data' .. '/mason/bin/js-debug-adapter',
-              args = { '${port}' },
+              command = 'node',
+              args = {
+                vim.fn.stdpath 'data' .. '/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js',
+                '${port}',
+              },
             },
           }
 
           dap.configurations.typescript = {
             {
               name = 'Launch Nest.js',
-              type = 'node',
+              type = 'pwa-node',
               request = 'launch',
               program = '${workspaceFolder}/src/main.ts',
               cwd = '${workspaceFolder}',
@@ -62,9 +61,8 @@ return {
             },
             {
               name = 'Attach to node process',
-              type = 'node',
+              type = 'pwa-node',
               request = 'attach',
-              -- rootPath = '${workspaceFolder}',
               processId = require('dap.utils').pick_process,
               cwd = vim.fn.getcwd(),
               sourceMaps = true,
@@ -115,6 +113,7 @@ return {
       {
         '<leader>d',
         function()
+          vim.cmd 'EyelinerToggle'
           require('debugmaster').mode.toggle()
         end,
         mode = { 'n', 'v' },
@@ -124,6 +123,14 @@ return {
     config = function()
       local dm = require 'debugmaster'
       dm.plugins.cursor_hl.enabled = false
+      dm.keys.add {
+        key = 'q',
+        action = function()
+          dm.mode.toggle()
+        end,
+        desc = 'Quit debug mode',
+        nowait = true,
+      }
     end,
   },
 }
