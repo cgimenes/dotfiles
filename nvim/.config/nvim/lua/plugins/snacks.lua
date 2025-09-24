@@ -63,23 +63,6 @@ return {
           cycle = true,
         },
         layouts = {
-          default = {
-            hidden = { 'preview' },
-            layout = {
-              box = 'horizontal',
-              width = 0.8,
-              min_width = 120,
-              height = 0.8,
-              {
-                box = 'vertical',
-                border = 'rounded',
-                title = '{title} {live} {flags}',
-                { win = 'input', height = 1, border = 'bottom' },
-                { win = 'list', border = 'none' },
-              },
-              { win = 'preview', title = '{preview}', border = 'rounded', width = 0.5 },
-            },
-          },
           ivy = {
             hidden = { 'preview' },
             layout = {
@@ -294,11 +277,17 @@ return {
       {
         '<leader>sg',
         function()
+          local truncate_width = vim.api.nvim_win_get_width(0) * 0.8
           Snacks.picker.grep {
             hidden = true,
             exclude = {
               'package-lock.json',
               'pnpm-lock.yaml',
+            },
+            formatters = {
+              file = {
+                truncate = truncate_width,
+              },
             },
           }
         end,
