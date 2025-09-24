@@ -5,7 +5,11 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-      bigfile = { enabled = true },
+      bigfile = {
+        enabled = true,
+        size = 4 * 1024 * 1024, -- 4.0MB
+        line_length = 1000, -- average line length (useful for minified files)
+      },
       gitbrowse = {
         what = 'file',
       },
@@ -45,7 +49,7 @@ return {
         folds = {
           open = true,
           git_hl = true,
-        }
+        },
       },
       picker = {
         -- formatters = {
