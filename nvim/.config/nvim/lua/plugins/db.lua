@@ -10,7 +10,7 @@ return {
       'DBUIToggle',
     },
     keys = {
-      { '<leader>D', '<cmd>tabnew<cr><cmd>Dotenv<cr><cmd>DBUI<cr>', desc = 'Open DBUI in a new tab' },
+      { '<leader>D', '<cmd>tabnew<cr><cmd>silent Dotenv<cr><cmd>DBUI<cr>', desc = 'Open DBUI in a new tab' },
     },
     init = function()
       vim.g.db_ui_use_nerd_fonts = 1

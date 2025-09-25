@@ -76,6 +76,7 @@ vim.keymap.set('n', '<leader>cf', '<cmd>source %<CR>', { desc = 'Execute the cur
 -- Toggle relative numbers
 vim.keymap.set('n', '<leader>or', '<cmd>set relativenumber!<cr>', { desc = 'Toggle relative numbers' })
 vim.keymap.set('n', '<leader>os', '<cmd>set spell!<cr>', { desc = 'Toggle spelling' })
+vim.keymap.set('n', '<leader>ow', '<cmd>set wrap!<cr>', { desc = 'Toggle word wrap' })
 
 -- Toggle diagnostic virtual text
 vim.keymap.set('n', '<leader>od', function()
