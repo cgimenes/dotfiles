@@ -1,17 +1,10 @@
 return {
   {
     'igorlfs/nvim-dap-view',
+    lazy = false,
     ---@module 'dap-view'
     ---@type dapview.Config
-    opts = {
-      auto_toggle = true,
-      windows = {
-        terminal = {
-          position = 'right',
-        },
-      },
-    },
-    -- stylua: ignore
+    cmd = { 'DapViewToggle' },
     keys = {
       { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
       { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
@@ -32,6 +25,15 @@ return {
       { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
       { "<leader>du", '<cmd>DapViewToggle!<cr>', desc = "Dap UI" },
     },
+    opts = {
+      auto_toggle = true,
+      windows = {
+        terminal = {
+          position = 'right',
+        },
+      },
+    },
+    -- stylua: ignore
     dependencies = {
       'theHamsta/nvim-dap-virtual-text',
       {
@@ -137,5 +139,58 @@ return {
         end,
       },
     },
+  },
+  {
+    'nvimtools/hydra.nvim',
+    config = function()
+      local Hydra = require 'hydra'
+      local dap = require 'dap'
+
+      Hydra {
+        hint = [[
+ _n_: Step Over   _c_: Continue/Start   _b_: Breakpoint
+ _i_: Step Into   _A_: Start with Args  _B_: Breakpoint Condition
+ _o_: Step Out    _L_: Run last         ^ ^
+ _C_: To Cursor   ^ ^                   _K_: Eval
+ ^
+ _U_: Toggle UI
+ _T_: Terminate
+ _q_: Exit
+]],
+        config = {
+          color = 'pink',
+          invoke_on_body = true,
+          hint = {
+            position = 'top-right',
+            offset = 1,
+          },
+        },
+        name = 'DAP mode',
+        mode = { 'n', 'x' },
+        body = '<leader>dm',
+        -- stylua: ignore
+        heads = {
+          { 'A', function() dap.continue { before = get_args } end, { silent = true } },
+          { 'n', dap.step_over, { silent = true } },
+          { 'L', dap.run_last, { silent = true } },
+          { 'i', dap.step_into, { silent = true } },
+          { 'o', dap.step_out, { silent = true } },
+          { 'C', dap.run_to_cursor, { silent = true } },
+          { 'c', dap.continue, { silent = true } },
+          -- { 'j', dap.down, { silent = true } },
+          -- { 'k', dap.up, { silent = true } },
+          { 'T', dap.terminate, { exit = true, silent = true } },
+          { 'b', dap.toggle_breakpoint, { silent = true } },
+          { 'B', function() dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, { silent = true } },
+          { 'K', function() require('dap.ui.widgets').hover() end, { silent = true } },
+          { 'U', "<cmd>DapViewToggle!<CR>", { silent = true } },
+          { 'q', nil, { exit = true, nowait = true } },
+        },
+      }
+      -- { "<leader>dg", function() require("dap").goto_() end, desc = "Go to Line (No Execute)" },
+      -- { "<leader>dP", function() require("dap").pause() end, desc = "Pause" },
+      -- { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
+      -- { "<leader>ds", function() require("dap").session() end, desc = "Session" },
+    end,
   },
 }
