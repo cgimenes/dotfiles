@@ -31,6 +31,10 @@ if [ -d "/opt/homebrew/share/google-cloud-sdk/" ]; then
 	source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
 fi
 
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+	export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+fi
+
 if [ -x "$(command -v fzf)" ]; then
 	export FZF_DEFAULT_OPTS="
 	  --cycle
