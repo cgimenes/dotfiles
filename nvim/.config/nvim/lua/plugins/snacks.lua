@@ -459,6 +459,11 @@ return {
             Snacks.debug.backtrace()
           end
           vim.print = _G.dd -- Override print to use snacks for `:=` command
+
+          -- Toggle
+          Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>os'
+          Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>ow'
+          Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>ol'
         end,
       })
     end,
