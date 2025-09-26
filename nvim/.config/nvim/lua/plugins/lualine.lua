@@ -70,14 +70,6 @@ vim.cmd [[
 
 local icons = require 'icons'
 
-local debug_mode_enabled = false
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'DebugModeChanged',
-  callback = function(args)
-    debug_mode_enabled = args.data.enabled
-  end,
-})
-
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -133,22 +125,11 @@ return {
             fmt = function()
               return ' '
             end,
-            color = function(tb)
-              return debug_mode_enabled and 'lualine_a_replace' or tb
-            end,
             padding = 0,
           },
         },
         lualine_b = {
-          {
-            'mode',
-            fmt = function(str)
-              return debug_mode_enabled and 'DEBUG' or str
-            end,
-            color = function(tb)
-              return debug_mode_enabled and 'lualine_b_replace' or tb
-            end,
-          },
+          { 'mode' },
           {
             function()
               return ('%s %d events'):format(Snacks.profiler.config.icons.status, #Snacks.profiler.core.events)

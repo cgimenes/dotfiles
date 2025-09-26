@@ -13,8 +13,10 @@ return {
         bindings = {
           ['K'] = 'ScrollOutputUp',
           ['J'] = 'ScrollOutputDown',
-          ['<C-k>'] = false,
+          ['<C-h>'] = false,
           ['<C-j>'] = false,
+          ['<C-k>'] = false,
+          ['<C-l>'] = false,
         },
       },
     },

@@ -22,6 +22,13 @@ local ensure_installed = {
   'tailwindcss',
   'taplo',
   'yamlls',
+
+  -- Debug
+  'codelldb',
+  'debugpy',
+  'delve',
+  'js-debug-adapter',
+  'php-debug-adapter',
 }
 if vim.fn.executable 'composer' == 1 then
   vim.list_extend(ensure_installed, { 'pint', 'php-cs-fixer' })

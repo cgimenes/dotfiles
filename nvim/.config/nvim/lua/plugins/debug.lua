@@ -1,37 +1,65 @@
 return {
   {
-    'miroshQa/debugmaster.nvim',
+    'igorlfs/nvim-dap-view',
+    ---@module 'dap-view'
+    ---@type dapview.Config
+    opts = {
+      auto_toggle = true,
+      windows = {
+        terminal = {
+          position = 'right',
+        },
+      },
+    },
+    -- stylua: ignore
+    keys = {
+      { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
+      { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+      { "<leader>dc", function() require("dap").continue() end, desc = "Run/Continue" },
+      { "<leader>da", function() require("dap").continue({ before = get_args }) end, desc = "Run with Args" },
+      { "<leader>dC", function() require("dap").run_to_cursor() end, desc = "Run to Cursor" },
+      -- { "<leader>dg", function() require("dap").goto_() end, desc = "Go to Line (No Execute)" },
+      { "<leader>di", function() require("dap").step_into() end, desc = "Step Into" },
+      { "<leader>dj", function() require("dap").down() end, desc = "Down" },
+      { "<leader>dk", function() require("dap").up() end, desc = "Up" },
+      { "<leader>dl", function() require("dap").run_last() end, desc = "Run Last" },
+      { "<leader>dO", function() require("dap").step_out() end, desc = "Step Out" },
+      { "<leader>do", function() require("dap").step_over() end, desc = "Step Over" },
+      -- { "<leader>dP", function() require("dap").pause() end, desc = "Pause" },
+      -- { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
+      -- { "<leader>ds", function() require("dap").session() end, desc = "Session" },
+      { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
+      { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
+      { "<leader>du", '<cmd>DapViewToggle!<cr>', desc = "Dap UI" },
+    },
     dependencies = {
+      'theHamsta/nvim-dap-virtual-text',
       {
         'mfussenegger/nvim-dap',
         lazy = true,
         dependencies = {
-          'nvim-neotest/nvim-nio',
-          'theHamsta/nvim-dap-virtual-text',
           'mason-org/mason.nvim',
-          'jay-babu/mason-nvim-dap.nvim',
+          'stevearc/overseer.nvim',
+
           'leoluz/nvim-dap-go',
           'suketa/nvim-dap-ruby',
-          { 'mfussenegger/nvim-dap-python', lazy = true },
-          'stevearc/overseer.nvim',
+          'mfussenegger/nvim-dap-python',
         },
         config = function()
           local dap = require 'dap'
 
-          require('mason-nvim-dap').setup {
-            automatic_installation = true,
-            handlers = {},
-            ensure_installed = {
-              'delve',
-              'codelldb',
-              'js-debug-adapter',
-              'php-debug-adapter',
-            },
-          }
-
           require('nvim-dap-virtual-text').setup {}
 
           require('overseer').enable_dap()
+
+          dap.adapters['codelldb'] = {
+            type = 'server',
+            port = '${port}',
+            executable = {
+              command = vim.fn.stdpath 'data' .. '/mason/bin/codelldb',
+              args = { '--port', '${port}' },
+            },
+          }
 
           dap.adapters['pwa-node'] = {
             type = 'server',
@@ -46,19 +74,19 @@ return {
             },
           }
 
-          dap.configurations.typescript = {
-            {
-              name = 'Launch Nest.js',
-              type = 'pwa-node',
-              request = 'launch',
-              program = '${workspaceFolder}/src/main.ts',
-              cwd = '${workspaceFolder}',
-              protocol = 'inspector',
-              runtimeArgs = { '--nolazy', '-r', 'ts-node/register', '-r', 'tsconfig-paths/register' },
-              sourceMaps = true,
-              envFile = '${workspaceFolder}/.env',
-              console = 'integratedTerminal',
-            },
+          dap.configurations['typescript'] = {
+            -- {
+            --   name = 'Launch Nest.js',
+            --   type = 'pwa-node',
+            --   request = 'launch',
+            --   program = '${workspaceFolder}/src/main.ts',
+            --   cwd = '${workspaceFolder}',
+            --   protocol = 'inspector',
+            --   runtimeArgs = { '--nolazy', '-r', 'ts-node/register', '-r', 'tsconfig-paths/register' },
+            --   sourceMaps = true,
+            --   envFile = '${workspaceFolder}/.env',
+            --   console = 'integratedTerminal',
+            -- },
             {
               name = 'Attach to node process',
               type = 'pwa-node',
@@ -69,7 +97,7 @@ return {
             },
           }
 
-          dap.configurations.php = {
+          dap.configurations['php'] = {
             {
               type = 'php',
               request = 'launch',
@@ -90,7 +118,7 @@ return {
             },
           }
           require('dap-ruby').setup()
-          require('dap-python').setup 'python'
+          require('dap-python').setup 'uv'
 
           vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
           vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })
@@ -109,28 +137,5 @@ return {
         end,
       },
     },
-    keys = {
-      {
-        '<leader>d',
-        function()
-          vim.cmd 'EyelinerToggle'
-          require('debugmaster').mode.toggle()
-        end,
-        mode = { 'n', 'v' },
-        desc = 'Debug Mode',
-      },
-    },
-    config = function()
-      local dm = require 'debugmaster'
-      dm.plugins.cursor_hl.enabled = false
-      dm.keys.add {
-        key = 'q',
-        action = function()
-          dm.mode.toggle()
-        end,
-        desc = 'Quit debug mode',
-        nowait = true,
-      }
-    end,
   },
 }
