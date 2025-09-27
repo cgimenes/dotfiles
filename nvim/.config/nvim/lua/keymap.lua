@@ -73,10 +73,6 @@ vim.keymap.set('n', '<leader>cl', '<cmd>.lua<CR>', { desc = 'Execute the current
 vim.keymap.set('v', '<leader>cv', ':.lua<CR>', { desc = 'Execute the current selection' })
 vim.keymap.set('n', '<leader>cf', '<cmd>source %<CR>', { desc = 'Execute the current file' })
 
--- Toggle relative numbers
-vim.keymap.set('n', '<leader>or', '<cmd>set relativenumber!<cr>', { desc = 'Toggle relative numbers' })
-vim.keymap.set('n', '<leader>os', '<cmd>set spell!<cr>', { desc = 'Toggle spelling' })
-
 -- Toggle diagnostic virtual text
 vim.keymap.set('n', '<leader>od', function()
   vim.diagnostic.config { virtual_text = not vim.diagnostic.config().virtual_text }

@@ -3,10 +3,9 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
 
--- Make line numbers default
-vim.o.number = false
+-- Make relative line numbers default
+vim.o.number = true
 vim.o.relativenumber = true
-vim.o.statuscolumn = '%s %{v:lnum} %l '
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'

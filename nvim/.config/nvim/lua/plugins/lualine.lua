@@ -52,9 +52,9 @@ local function grapple_files()
     end
 
     if current_file_path == tag.path then
-      results[index] = string.format('%%#TabLineFill# %s. %%#TabLineFill#%s ', index, file_name)
+      results[index] = string.format('%%#lualine_a_normal# %s. %%#lualine_a_normal#%s ', index, file_name)
     else
-      results[index] = string.format('%%#TabLineSel# %s. %%#TabLineSel#%s ', index, file_name)
+      results[index] = string.format('%%#lualine_c_normal# %s. %%#lualine_c_normal#%s ', index, file_name)
     end
     results[index] = string.format('%%%s@LualineSwitchGrapple@%s%%X', index, results[index])
   end
@@ -69,14 +69,6 @@ vim.cmd [[
 ]]
 
 local icons = require 'icons'
-
-local debug_mode_enabled = false
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'DebugModeChanged',
-  callback = function(args)
-    debug_mode_enabled = args.data.enabled
-  end,
-})
 
 return {
   {
@@ -95,31 +87,33 @@ return {
             'snacks_dashboard',
           },
           winbar = {
-            'help',
-            'startify',
-            'dashboard',
-            'lazy',
-            'neo-tree',
-            'neogitstatus',
-            'NvimTree',
-            'Trouble',
-            'alpha',
-            'lir',
-            'Outline',
-            'spectre_panel',
-            'toggleterm',
             'DressingSelect',
             'Jaq',
-            'harpoon',
-            'grapple',
+            'NvimTree',
+            'Outline',
+            'Trouble',
+            'alpha',
+            'better_term',
             'dap-repl',
             'dap-terminal',
             'dapui_console',
             'dapui_hover',
+            'dashboard',
+            'dbui',
+            'grapple',
+            'harpoon',
+            'help',
             'lab',
-            'notify',
-            'noice',
+            'lazy',
+            'lir',
+            'neo-tree',
+            'neogitstatus',
             'neotest-summary',
+            'noice',
+            'notify',
+            'spectre_panel',
+            'startify',
+            'toggleterm',
             '',
           },
         },
@@ -131,22 +125,11 @@ return {
             fmt = function()
               return ' '
             end,
-            color = function(tb)
-              return debug_mode_enabled and 'lualine_a_replace' or tb
-            end,
             padding = 0,
           },
         },
         lualine_b = {
-          {
-            'mode',
-            fmt = function(str)
-              return debug_mode_enabled and 'DEBUG' or str
-            end,
-            color = function(tb)
-              return debug_mode_enabled and 'lualine_b_replace' or tb
-            end,
-          },
+          { 'mode' },
           {
             function()
               return ('%s %d events'):format(Snacks.profiler.config.icons.status, #Snacks.profiler.core.events)
@@ -246,6 +229,31 @@ return {
             'tabs',
             show_modified_status = false,
             cond = conditions.more_than_one_tab,
+            mode = 1,
+            tabs_color = { active = 'lualine_a_normal', inactive = 'lualine_c_normal' },
+            fmt = function(label, tab)
+              local ok, w = pcall(vim.api.nvim_tabpage_get_win, tab.tabId)
+              if ok then
+                local b = vim.api.nvim_win_get_buf(w)
+                local ft = vim.api.nvim_buf_get_option(b, 'ft')
+                if label == '[No Name]' then
+                  label = ft
+                end
+                if ft == 'sql' or ft == 'dbui' or ft == 'dbout' then
+                  label = ' ' .. label
+                elseif ft == 'DiffviewFilePanel' or ft == 'DiffviewFiles' or ft == 'NeogitStatus' then
+                  label = '󰊢 ' .. label
+                else
+                  label = require('nvim-web-devicons').get_icon_by_filetype(ft, { default = true }) .. ' ' .. label
+                end
+              end
+              local Str = require 'plenary.strings'
+              if Str.strdisplaywidth(label) > 25 then
+                -- tab_max_length is supposed to allow that but it didn't seem to work
+                label = Str.truncate(label, 25)
+              end
+              return label
+            end,
           },
         },
       },

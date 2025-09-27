@@ -5,7 +5,11 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-      bigfile = { enabled = true },
+      bigfile = {
+        enabled = true,
+        size = 4 * 1024 * 1024, -- 4.0MB
+        line_length = 1000, -- average line length (useful for minified files)
+      },
       gitbrowse = {
         what = 'file',
       },
@@ -45,7 +49,7 @@ return {
         folds = {
           open = true,
           git_hl = true,
-        }
+        },
       },
       picker = {
         -- formatters = {
@@ -273,11 +277,17 @@ return {
       {
         '<leader>sg',
         function()
+          local truncate_width = vim.api.nvim_win_get_width(0) * 0.8
           Snacks.picker.grep {
             hidden = true,
             exclude = {
               'package-lock.json',
               'pnpm-lock.yaml',
+            },
+            formatters = {
+              file = {
+                truncate = truncate_width,
+              },
             },
           }
         end,
@@ -449,6 +459,11 @@ return {
             Snacks.debug.backtrace()
           end
           vim.print = _G.dd -- Override print to use snacks for `:=` command
+
+          -- Toggle
+          Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>os'
+          Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>ow'
+          Snacks.toggle.option('relativenumber', { name = 'Relative Number' }):map '<leader>ol'
         end,
       })
     end,
