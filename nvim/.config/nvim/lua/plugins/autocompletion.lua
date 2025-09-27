@@ -26,7 +26,12 @@ return {
         },
       },
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'lazydev', 'copilot' },
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'copilot' },
+        per_filetype = {
+          lua = { inherit_defaults = true, 'lazydev' },
+          sql = { 'dadbod' },
+          markdown = { inherit_defaults = true },
+        },
         providers = {
           -- dont show LuaLS require statements when lazydev has items
           lazydev = {

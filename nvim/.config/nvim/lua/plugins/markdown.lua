@@ -24,6 +24,7 @@ return {
     'obsidian-nvim/obsidian.nvim',
     version = '*', -- recommended, use latest release instead of latest commit
     ft = 'markdown',
+    enabled = false,
     cmd = 'Obsidian',
     -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
     -- event = {
@@ -37,10 +38,13 @@ return {
     ---@type obsidian.config
     opts = {
       legacy_commands = false,
-      ui = {
-        enable = false,
-      },
+      ui = { enable = false }, -- using render-markdown.nvim instead
       workspaces = workspaces,
+      daily_notes = {
+        folder = 'Dailies',
+        default_tags = {},
+        workdays_only = false,
+      },
     },
     keys = {
       { '<leader>Of', '<cmd>Obsidian quick_switch<cr>', desc = 'Open Note' },
