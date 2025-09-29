@@ -8,7 +8,7 @@ if vim.env.PROF then
   }
 end
 
-require 'set'
+require 'options'
 require 'keymap'
 require 'autocmd'
 require 'lazy-init'
