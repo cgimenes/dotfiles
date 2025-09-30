@@ -26,7 +26,7 @@ return {
             { icon = ' ', key = ',c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
             { icon = '󰒲 ', key = ',l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
             { icon = '󰬔 ', key = ',m', desc = 'Mason', action = ':Mason' },
-            { icon = ' ', key = ',q', desc = 'Quit', action = ':qa' },
+            { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
           },
         },
         sections = {
