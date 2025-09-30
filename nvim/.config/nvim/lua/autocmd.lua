@@ -78,12 +78,11 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'qf' },
 })
 
--- Better terminal
+-- Terminal keymap
 vim.api.nvim_create_autocmd('TermOpen', {
   group = vim.api.nvim_create_augroup('custom-terminal', { clear = true }),
-  callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
+  callback = function(event)
+    vim.keymap.set('n', 'gf', '<c-w>sgF<c-w>k<c-w>L<c-w>h', { buffer = event.buf })
   end,
 })
 
