@@ -39,40 +39,6 @@ return {
     },
   },
   {
-    'CRAG666/betterTerm.nvim',
-    enabled = false,
-    opts = {
-      size = 10,
-      index_base = 1,
-      prefix = 'Terminal',
-      new_tab_mapping = '<A-t>',
-      jump_tab_mapping = '<A-$tab>',
-    },
-    keys = {
-      {
-        '<leader>.',
-        function()
-          require('betterTerm').open()
-        end,
-        desc = 'Toggle Terminal',
-      },
-      {
-        '<leader>Tt',
-        function()
-          require('betterTerm').select()
-        end,
-        desc = 'Select Terminal',
-      },
-      {
-        '<leader>Tr',
-        function()
-          require('betterTerm').rename()
-        end,
-        desc = 'Rename Terminal',
-      },
-    },
-  },
-  {
     'akinsho/toggleterm.nvim',
     version = '*',
     opts = {
