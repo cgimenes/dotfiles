@@ -13,25 +13,6 @@ return {
     'mg979/vim-visual-multi',
   },
   {
-    'abecodes/tabout.nvim',
-    event = 'InsertCharPre',
-    config = true,
-  },
-  {
-    'emmanueltouzery/apidocs.nvim',
-    cmd = { 'ApidocsUninstall' },
-    config = true,
-    keys = {
-      { '<leader>sao', '<cmd>ApidocsOpen<cr>', desc = 'Open Api Doc' },
-      { '<leader>sag', '<cmd>ApidocsSearch<cr>', desc = 'Grep Api Doc' },
-      { '<leader>sai', '<cmd>ApidocsInstall<cr>', desc = 'Install Api Doc' },
-    },
-  },
-  {
-    -- gs to enter swap mode
-    'machakann/vim-swap',
-  },
-  {
     'jinh0/eyeliner.nvim',
     opts = {
       dim = true,
