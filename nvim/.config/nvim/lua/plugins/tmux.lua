@@ -37,6 +37,7 @@ return {
     'preservim/vimux',
     keys = {
       { '<leader>rc', '<cmd>VimuxPromptCommand<cr>', desc = 'Run Command on Tmux' },
+      { '<leader>rC', '<cmd>VimuxCloseRunner<cr>', desc = 'Close Tmux pane' },
       { '<leader>rl', '<cmd>VimuxRunLastCommand<cr>', desc = 'Run Last Command on Tmux' },
     },
   },

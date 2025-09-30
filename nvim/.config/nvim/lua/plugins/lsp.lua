@@ -7,12 +7,21 @@ return {
       'b0o/schemastore.nvim',
     },
     config = function()
-      local servers = {
-        clangd = {},
-        cssls = {},
-        emmet_language_server = {},
-        gopls = {},
-        intelephense = {},
+      require('mason-lspconfig').setup()
+      vim.lsp.enable {
+        'clangd',
+        'cssls',
+        'emmet_language_server',
+        'gopls',
+        'intelephense',
+        'kulala_ls',
+        'prismals',
+        'pyright',
+        'ruby_lsp',
+        'tailwindcss',
+        'taplo', -- TOML
+      }
+      vim.lsp.config('jsonls', {
         jsonls = {
           settings = {
             json = {
@@ -21,64 +30,36 @@ return {
             },
           },
         },
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = 'Replace',
-              },
+      })
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = 'Replace',
             },
           },
         },
-        prismals = {},
-        pyright = {},
-        ruff = { autostart = false }, -- Disable ruff LSP
-        ruby_lsp = {},
-        tailwindcss = {},
-        taplo = {}, -- TOML
-        yamlls = {
-          settings = {
-            yaml = {
-              schemaStore = {
-                enable = false,
-                url = '',
-              },
-              schemas = require('schemastore').yaml.schemas {
-                select = {
-                  'docker-compose.yml',
-                  'GitHub Workflow',
-                },
-              },
-              validate = true,
+      })
+      vim.lsp.config('ruff', {
+        autostart = false, -- Disable ruff LSP
+      })
+      vim.lsp.config('yamlls', {
+        settings = {
+          yaml = {
+            schemaStore = {
+              enable = false,
+              url = '',
             },
+            schemas = require('schemastore').yaml.schemas {
+              select = {
+                'docker-compose.yml',
+                'GitHub Workflow',
+              },
+            },
+            validate = true,
           },
         },
-      }
-
-      -- LSP servers and clients are able to communicate to each other what features they support.
-      --  By default, Neovim doesn't support everything that is in the LSP Specification.
-      --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
-      --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      if package.loaded['blink.cmp'] then
-        capabilities = vim.tbl_deep_extend('force', capabilities, require('blink.cmp').get_lsp_capabilities())
-      end
-      require('mason-lspconfig').setup {
-        automatic_enable = true,
-        ensure_installed = {},
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            vim.lsp.config(server_name, server)
-          end,
-        },
-      }
-      vim.lsp.config('kulala_ls', {})
+      })
     end,
   },
   {
