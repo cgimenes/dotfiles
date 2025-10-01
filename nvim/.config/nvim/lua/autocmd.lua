@@ -82,7 +82,7 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('TermOpen', {
   group = vim.api.nvim_create_augroup('custom-terminal', { clear = true }),
   callback = function(event)
-    vim.keymap.set('n', 'gf', '<c-w>sgF<c-w>k<c-w>L<c-w>h', { buffer = event.buf })
+    vim.keymap.set('n', 'gf', '<c-w>sgF<c-w>H<c-w>l<c-w>q', { buffer = event.buf })
   end,
 })
 
