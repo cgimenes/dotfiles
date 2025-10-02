@@ -12,6 +12,10 @@ return {
     'mechatroner/rainbow_csv',
     ft = { 'csv', 'tsv' },
   },
+  {
+    'kyoh86/vim-jsonl',
+    ft = 'jsonl',
+  },
   -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
   -- used for completion, annotations and signatures of Neovim apis
   {
@@ -24,9 +28,5 @@ return {
         { path = 'snacks.nvim', words = { 'Snacks' } },
       },
     },
-  },
-  {
-    'kyoh86/vim-jsonl',
-    ft = 'jsonl',
   },
 }

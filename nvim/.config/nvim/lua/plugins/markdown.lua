@@ -53,11 +53,17 @@ return {
       { '<leader>Ow', '<cmd>Obsidian workspace<cr>', desc = 'Change Workspace' },
       { '<leader>Oo', '<cmd>Obsidian open<cr>', desc = 'Open in Obsidian' },
     },
+    init = function()
+      -- Enable conceal
+      vim.opt.conceallevel = 1
+    end,
   },
   {
-    'gaoDean/autolist.nvim',
+    'bullets-vim/bullets.vim',
     ft = { 'markdown' },
-    opts = {},
+    init = function()
+      vim.g.bullets_enabled_file_types = { 'markdown' }
+    end,
   },
   {
     'MeanderingProgrammer/render-markdown.nvim',
