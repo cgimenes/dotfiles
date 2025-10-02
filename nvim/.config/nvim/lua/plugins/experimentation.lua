@@ -13,13 +13,6 @@ return {
     'mg979/vim-visual-multi',
   },
   {
-    'jinh0/eyeliner.nvim',
-    opts = {
-      dim = true,
-      highlight_on_key = true,
-    },
-  },
-  {
     'akinsho/toggleterm.nvim',
     version = '*',
     opts = {
