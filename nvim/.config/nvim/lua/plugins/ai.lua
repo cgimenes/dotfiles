@@ -22,7 +22,6 @@ return {
     'yetone/avante.nvim',
     enabled = false,
     event = 'VeryLazy',
-    version = false,
     build = 'make',
     dependencies = {
       'zbirenbaum/copilot.lua',

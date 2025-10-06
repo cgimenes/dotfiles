@@ -3,7 +3,6 @@ return {
     -- Cool icons
     'nvim-mini/mini.icons',
     main = 'mini.icons',
-    version = false,
     config = function()
       require('mini.icons').setup()
       MiniIcons.mock_nvim_web_devicons()
