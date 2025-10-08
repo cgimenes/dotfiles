@@ -21,6 +21,21 @@ end
 
 return {
   {
+    'zk-org/zk-nvim',
+    enabled = false,
+    name = 'zk',
+    opts = {
+      picker = 'snacks_picker',
+      picker_options = {
+        snacks_picker = {
+          layout = {
+            preset = 'default',
+          },
+        },
+      },
+    },
+  },
+  {
     'obsidian-nvim/obsidian.nvim',
     version = '*', -- recommended, use latest release instead of latest commit
     ft = 'markdown',
