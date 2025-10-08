@@ -1,6 +1,4 @@
-vim.pack.add {
-  { src = 'https://github.com/folke/lazy.nvim.git' },
-}
+vim.pack.add { 'https://github.com/folke/lazy.nvim.git' }
 
 require('lazy').setup({
   { import = 'plugins' },
