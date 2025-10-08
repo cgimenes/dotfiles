@@ -242,7 +242,14 @@ return {
       {
         '<leader>sr',
         function()
-          Snacks.picker.recent()
+          local truncate_width = vim.api.nvim_win_get_width(0) * 0.8
+          Snacks.picker.recent {
+            formatters = {
+              file = {
+                truncate = truncate_width,
+              },
+            },
+          }
         end,
         desc = 'Recent',
       },
