@@ -35,6 +35,13 @@ return {
         desc = 'Goto/Apply Next Edit Suggestion',
       },
       {
+        '<leader>on',
+        function()
+          require('sidekick.nes').toggle()
+        end,
+        desc = 'Toggle Sidekick NES',
+      },
+      {
         '<leader>aa',
         function()
           require('sidekick.cli').toggle { name = 'copilot' }
