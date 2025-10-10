@@ -32,4 +32,12 @@ return {
       { '<leader>>', '<cmd>ToggleTerm direction=vertical<cr>', desc = 'Toggle Vertical Terminal' },
     },
   },
+  -- {
+  --   'alex-popov-tech/store.nvim',
+  --   branch = '3.1-customizable-plugin-manager-support', -- <<<<<<< look here
+  --   opts = {
+  --     plugin_manager = 'lazy.nvim',
+  --   },
+  --   cmd = { 'Store' },
+  -- },
 }

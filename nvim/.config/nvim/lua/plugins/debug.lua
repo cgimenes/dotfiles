@@ -2,9 +2,8 @@ return {
   {
     'igorlfs/nvim-dap-view',
     lazy = false,
-    ---@module 'dap-view'
-    ---@type dapview.Config
     cmd = { 'DapViewToggle' },
+    -- stylua: ignore
     keys = {
       { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
       { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
@@ -25,6 +24,8 @@ return {
       { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
       { "<leader>du", '<cmd>DapViewToggle!<cr>', desc = "Dap UI" },
     },
+    ---@module 'dap-view'
+    ---@type dapview.Config
     opts = {
       auto_toggle = true,
       windows = {
