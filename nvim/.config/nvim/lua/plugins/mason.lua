@@ -5,8 +5,6 @@ local ensure_installed = {
   'gopls',
   'intelephense',
   'jsonls',
-  'kulala-fmt',
-  'kulala_ls',
   'lua_ls',
   'prettier',
   'prettierd',
