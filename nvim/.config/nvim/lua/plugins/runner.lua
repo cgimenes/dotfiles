@@ -41,6 +41,7 @@ return {
       },
       { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Overseer Toggle' },
       { '<leader>rq', '<cmd>OverseerQuickAction<cr>', desc = 'Overseer QuickAction' },
+      { '<leader>rv', '<cmd>OverseerQuickAction open vsplit<cr>', desc = 'Overseer Open vsplit' },
     },
   },
 }

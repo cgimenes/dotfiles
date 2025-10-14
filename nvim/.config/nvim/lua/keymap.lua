@@ -48,6 +48,8 @@ vim.keymap.set('n', '<X2Mouse>', '<C-i>')
 -- Tabs
 vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', { desc = 'New tab' })
 vim.keymap.set('n', 'tc', '<cmd>tabclose<cr>', { desc = 'Next tab' })
+vim.keymap.set('n', 'th', '<cmd>-tabmove<cr>', { desc = 'Move tab to the left' })
+vim.keymap.set('n', 'tl', '<cmd>+tabmove<cr>', { desc = 'Move tab to the right' })
 
 -- Find/replace
 vim.keymap.set('n', '<leader>fs', function()

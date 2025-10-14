@@ -14,7 +14,6 @@ return {
         'emmet_language_server',
         'gopls',
         'intelephense',
-        'kulala_ls',
         'prismals',
         'pyright',
         'ruby_lsp',

@@ -21,7 +21,17 @@ return {
   {
     'folke/sidekick.nvim',
     ---@type sidekick.Config
-    opts = {},
+    opts = {
+      nes = {
+        enabled = false,
+      },
+      cli = {
+        mux = {
+          backend = 'tmux',
+          enabled = true,
+        },
+      },
+    },
     keys = {
       {
         '<tab>',
