@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'neotest-summary',
     'qf',
     'spectre_panel',
+    'dap-float',
   },
 })
 
