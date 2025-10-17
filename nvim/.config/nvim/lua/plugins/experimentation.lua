@@ -39,12 +39,4 @@ return {
     },
     cmd = 'Store',
   },
-  {
-    'lewis6991/satellite.nvim',
-    opts = {
-      marks = {
-        enable = false,
-      },
-    },
-  },
 }
