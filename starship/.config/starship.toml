@@ -23,7 +23,7 @@ style = "purple"
 
 [git_branch]
 format = '\[[git $branch]($style)\]'
-style = "bright-yellow"
+style = "italic bright-yellow"
 
 [git_status]
 format = '(\[[$all_status$ahead_behind]($style)\])'
@@ -40,6 +40,8 @@ style = "green"
 
 [directory]
 style = "purple"
+truncation_length = 2
+truncation_symbol = "…/"
 
 [character]
 success_symbol = "[❯](bright-green)"
