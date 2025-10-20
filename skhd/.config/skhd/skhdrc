@@ -14,6 +14,6 @@ cmd - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 cmd + shift - v : yabai -m window --insert south
 
-cmd - f : yabai -m window --toggle zoom-fullscreen
+cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 
 cmd - e : yabai -m window --toggle split
