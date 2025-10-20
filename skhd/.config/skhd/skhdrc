@@ -10,4 +10,10 @@ cmd + shift - j : yabai -m window --swap south
 cmd + shift - k : yabai -m window --swap north
 cmd + shift - l : yabai -m window --swap east
 
-cmd - space : yabai -m window --toggle float
+cmd - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+cmd + shift - v : yabai -m window --insert south
+
+cmd - f : yabai -m window --toggle zoom-fullscreen
+
+cmd - e : yabai -m window --toggle split
