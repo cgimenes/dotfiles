@@ -1,3 +1,4 @@
+---@type overseer.TemplateFileDefinition
 return {
   name = 'run script',
   builder = function()
@@ -8,9 +9,6 @@ return {
     end
     if vim.bo.filetype == 'go' then
       cmd = { 'go', 'run', file }
-    end
-    if vim.bo.filetype == 'python' then
-      cmd = { 'python', file }
     end
     if vim.bo.filetype == 'javascript' then
       cmd = { 'node', file }
@@ -32,7 +30,7 @@ return {
       components = {
         { 'on_output_quickfix', set_diagnostics = true, open = true },
         'on_result_diagnostics',
-        { 'display_duration', detail_level = 2 },
+        -- { 'display_duration', detail_level = 2 },
         'on_exit_set_status',
         { 'on_complete_dispose', require_view = { 'SUCCESS', 'FAILURE' } },
         'unique',
@@ -40,6 +38,6 @@ return {
     }
   end,
   condition = {
-    filetype = { 'sh', 'python', 'go', 'javascript', 'typescript', 'c', 'cpp', 'ruby' },
+    filetype = { 'sh', 'go', 'javascript', 'typescript', 'c', 'cpp', 'ruby' },
   },
 }
