@@ -148,6 +148,13 @@ return {
         desc = 'Git Status',
       },
       {
+        '<leader>gl',
+        function()
+          Snacks.picker.git_log()
+        end,
+        desc = 'Git Log',
+      },
+      {
         '<leader>gB',
         function()
           Snacks.gitbrowse()
