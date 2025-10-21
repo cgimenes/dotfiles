@@ -1,3 +1,7 @@
+local function stop_insert()
+  vim.cmd.stopinsert()
+end
+
 return {
   {
     'folke/snacks.nvim',
@@ -10,9 +14,7 @@ return {
         size = 4 * 1024 * 1024, -- 4.0MB
         line_length = 1000, -- average line length (useful for minified files)
       },
-      gitbrowse = {
-        what = 'file',
-      },
+      gitbrowse = { what = 'file' },
       dashboard = {
         enabled = true,
         preset = {
@@ -37,56 +39,18 @@ return {
           { section = 'startup' },
         },
       },
-      indent = {
-        enabled = true,
-        animate = { enabled = false },
-      },
+      indent = { enabled = true, animate = { enabled = false } },
       input = { enabled = true },
-      notifier = {
-        enabled = true,
-        timeout = 3000,
-      },
-      statuscolumn = {
-        folds = {
-          open = true,
-          git_hl = true,
-        },
-      },
+      notifier = { enabled = true, timeout = 3000 },
+      statuscolumn = { folds = { open = true, git_hl = true } },
       picker = {
-        -- formatters = {
-        --   file = {
-        --     filename_first = true, -- display filename before the file path
-        --   },
-        -- },
         enabled = true,
         layout = {
           preset = 'ivy',
           cycle = true,
+          hidden = { 'preview' },
         },
-        layouts = {
-          ivy = {
-            hidden = { 'preview' },
-            layout = {
-              box = 'vertical',
-              backdrop = false,
-              row = -1,
-              width = 0,
-              height = 0.5,
-              border = 'top',
-              title = ' {title} {live} {flags}',
-              title_pos = 'left',
-              { win = 'input', height = 1, border = 'bottom' },
-              {
-                box = 'horizontal',
-                { win = 'list', border = 'none' },
-                { win = 'preview', title = '{preview}', width = 0.5, border = 'left' },
-              },
-            },
-          },
-        },
-        matcher = {
-          frecency = true,
-        },
+        matcher = { frecency = true },
         win = {
           input = {
             keys = {
@@ -139,11 +103,7 @@ return {
       {
         '<leader>gs',
         function()
-          Snacks.picker.git_status {
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
-          }
+          Snacks.picker.git_status { on_show = stop_insert }
         end,
         desc = 'Git Status',
       },
@@ -211,9 +171,7 @@ return {
         '<leader>,',
         function()
           Snacks.picker.buffers {
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
+            on_show = stop_insert,
             win = {
               input = {
                 keys = {
@@ -228,21 +186,14 @@ return {
       {
         '<leader>s"',
         function()
-          Snacks.picker.registers {
-            layout = 'vertical',
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
-          }
+          Snacks.picker.registers { layout = 'vertical', on_show = stop_insert }
         end,
         desc = 'Registers',
       },
       {
         '<leader>J',
         function()
-          Snacks.picker.jumps {
-            layout = 'vertical',
-          }
+          Snacks.picker.jumps { layout = 'vertical' }
         end,
         desc = 'Jumps',
       },
@@ -318,11 +269,7 @@ return {
       {
         '<leader>su',
         function()
-          Snacks.picker.undo {
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
-          }
+          Snacks.picker.undo { on_show = stop_insert }
         end,
         desc = 'Undo History',
       },
@@ -380,11 +327,7 @@ return {
       {
         'grr',
         function()
-          Snacks.picker.lsp_references {
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
-          }
+          Snacks.picker.lsp_references { on_show = stop_insert }
         end,
         nowait = true,
         desc = 'References',
@@ -420,22 +363,14 @@ return {
       {
         '<leader>lD',
         function()
-          Snacks.picker.diagnostics {
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
-          }
+          Snacks.picker.diagnostics { on_show = stop_insert }
         end,
         desc = 'Diagnostics',
       },
       {
         '<leader>ld',
         function()
-          Snacks.picker.diagnostics_buffer {
-            on_show = function()
-              vim.cmd.stopinsert()
-            end,
-          }
+          Snacks.picker.diagnostics_buffer { on_show = stop_insert }
         end,
         desc = 'Buffer Diagnostics',
       },
