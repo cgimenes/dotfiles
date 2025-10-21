@@ -24,13 +24,6 @@ return {
         end,
         desc = 'Todo',
       },
-      {
-        '<leader>sT',
-        function()
-          Snacks.picker.todo_comments { keywords = { 'TODO', 'FIX', 'FIXME' } }
-        end,
-        desc = 'Todo/Fix/Fixme',
-      },
     },
   },
 }

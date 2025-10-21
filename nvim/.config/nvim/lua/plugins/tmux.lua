@@ -21,24 +21,4 @@ return {
       vim.g.tmux_navigator_no_mappings = 1
     end,
   },
-  {
-    'cgimenes/tmux-files.nvim',
-    keys = {
-      {
-        '<leader>sx',
-        function()
-          require('tmux-files').select()
-        end,
-        desc = 'Edit file from TMUX panes',
-      },
-    },
-  },
-  {
-    'preservim/vimux',
-    keys = {
-      { '<leader>rc', '<cmd>VimuxPromptCommand<cr>', desc = 'Run Command on Tmux' },
-      { '<leader>rC', '<cmd>VimuxCloseRunner<cr>', desc = 'Close Tmux pane' },
-      { '<leader>rl', '<cmd>VimuxRunLastCommand<cr>', desc = 'Run Last Command on Tmux' },
-    },
-  },
 }

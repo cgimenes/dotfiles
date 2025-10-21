@@ -4,6 +4,7 @@ return {
     dependencies = {
       { 'tpope/vim-dadbod', lazy = true },
       { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+      { 'tpope/vim-dotenv', lazy = true },
     },
     cmd = {
       'DBUI',
@@ -31,8 +32,5 @@ return {
         },
       }
     end,
-  },
-  {
-    'tpope/vim-dotenv',
   },
 }

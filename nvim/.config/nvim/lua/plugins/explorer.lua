@@ -25,7 +25,7 @@ return {
     },
     cmd = 'Oil',
     keys = {
-      { '<leader>-', '<cmd>Oil --float<cr>', desc = 'Oil Explorer' },
+      { '<leader>-', '<cmd>vertical Oil<cr>', desc = 'Oil Explorer' },
     },
   },
   {

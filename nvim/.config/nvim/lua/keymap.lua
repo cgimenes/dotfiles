@@ -36,9 +36,9 @@ vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = tr
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- Yank filename
-vim.keymap.set('n', '<leader>yr', '<cmd>let @+ = expand("%:.")<cr>', { desc = 'Yank relative filename' })
-vim.keymap.set('n', '<leader>yf', '<cmd>let @+ = expand("%:p")<cr>', { desc = 'Yank full filename' })
-vim.keymap.set('n', '<leader>yn', '<cmd>let @+ = expand("%:t")<cr>', { desc = 'Yank filename' })
+vim.keymap.set('n', 'yfr', '<cmd>let @+ = expand("%:.")<cr>', { desc = 'Yank relative filename' })
+vim.keymap.set('n', 'yfF', '<cmd>let @+ = expand("%:p")<cr>', { desc = 'Yank full filename' })
+vim.keymap.set('n', 'yff', '<cmd>let @+ = expand("%:t")<cr>', { desc = 'Yank filename' })
 
 -- Mouse support
 vim.keymap.set('n', '<C-LeftMouse>', '<LeftMouse>gd')
