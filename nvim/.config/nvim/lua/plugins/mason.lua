@@ -38,12 +38,7 @@ end
 return {
   {
     'mason-org/mason.nvim',
-    opts = {
-      registries = {
-        'github:mason-org/mason-registry',
-        'lua:my-mason-registry',
-      },
-    },
+    opts = {},
   },
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
