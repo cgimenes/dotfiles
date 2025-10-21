@@ -10,6 +10,7 @@ return {
       -- { 'huijiro/blink-cmp-supermaven' },
     },
     version = '*',
+    ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
       keymap = {
