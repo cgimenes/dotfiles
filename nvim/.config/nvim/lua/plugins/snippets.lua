@@ -1,7 +1,7 @@
 return {
   {
     'chrisgrieser/nvim-scissors',
-    lazy = false,
+    event = 'VeryLazy',
     opts = {
       snippetDir = vim.fn.stdpath 'config' .. '/snippets',
     },
