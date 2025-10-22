@@ -12,8 +12,8 @@ end
 return {
   {
     'nvim-neotest/neotest',
-    lazy = true,
     dependencies = {
+      'nvim-neotest/nvim-nio',
       'nvim-lua/plenary.nvim',
       'nvim-neotest/neotest-vim-test',
       'nvim-neotest/neotest-python',
