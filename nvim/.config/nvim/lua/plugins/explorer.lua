@@ -33,6 +33,7 @@ return {
     keys = {
       { '-', '<cmd>Yazi<cr>', desc = 'Yazi Explorer' },
     },
+    ---@type YaziConfig
     opts = {
       open_for_directories = true,
       keymaps = {

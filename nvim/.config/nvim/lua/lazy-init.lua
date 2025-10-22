@@ -3,6 +3,12 @@ vim.pack.add { 'https://github.com/folke/lazy.nvim.git' }
 require('lazy').setup({
   { import = 'plugins' },
 }, {
+  rocks = {
+    enabled = false,
+  },
+  install = {
+    missing = false,
+  },
   change_detection = {
     notify = false,
   },
