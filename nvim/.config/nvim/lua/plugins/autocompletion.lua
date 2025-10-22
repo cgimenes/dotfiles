@@ -18,6 +18,7 @@ return {
         ['<C-x>'] = { 'show', 'show_documentation', 'hide_documentation' },
       },
       fuzzy = {
+        implementation = 'lua',
         max_typos = function()
           return 0
         end,
