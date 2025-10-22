@@ -229,12 +229,23 @@ return {
       vim.g.gruvbox_material_enable_italic = true
       vim.g.gruvbox_material_enable_bold = true
       vim.g.gruvbox_material_transparent_background = transparent
-      vim.g.gruvbox_material_foreground = "original"
-      vim.g.gruvbox_material_background = "hard"
-      vim.g.gruvbox_material_float_style = "dim"
+      vim.g.gruvbox_material_foreground = 'original'
+      vim.g.gruvbox_material_background = 'hard'
+      vim.g.gruvbox_material_float_style = 'dim'
       vim.g.gruvbox_material_better_performance = 1
 
       -- vim.cmd.colorscheme 'gruvbox-material'
+    end,
+  },
+  {
+    'xeind/nightingale.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent = transparent,
+    },
+    init = function()
+      -- vim.cmd.colorscheme 'nightingale'
     end,
   },
 }
