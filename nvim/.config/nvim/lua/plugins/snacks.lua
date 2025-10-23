@@ -262,7 +262,18 @@ return {
       {
         '<leader>oc',
         function()
-          Snacks.picker.colorschemes()
+          Snacks.picker.colorschemes {
+            layout = {
+              config = function(layout)
+                layout.hidden = {}
+              end,
+            },
+            win = {
+              preview = {
+                max_width = 0,
+              },
+            },
+          }
         end,
         desc = 'Colorschemes',
       },
@@ -304,7 +315,6 @@ return {
               picker:close()
               vim.cmd(('set filetype=%s'):format(item.name))
             end,
-            layout = 'select',
           }
         end,
         desc = 'Filetypes',
@@ -338,6 +348,20 @@ return {
           Snacks.picker.lsp_implementations()
         end,
         desc = 'Goto Implementation',
+      },
+      {
+        'grI',
+        function()
+          Snacks.picker.lsp_incoming_calls()
+        end,
+        desc = 'Incoming Calls',
+      },
+      {
+        'grO',
+        function()
+          Snacks.picker.lsp_outgoing_calls()
+        end,
+        desc = 'Outgoing Calls',
       },
       {
         'grt',
@@ -408,7 +432,14 @@ return {
           _G.bt = function()
             Snacks.debug.backtrace()
           end
-          vim.print = _G.dd -- Override print to use snacks for `:=` command
+          -- Override print to use snacks for `:=` command
+          if vim.fn.has 'nvim-0.11' == 1 then
+            vim._print = function(_, ...)
+              dd(...)
+            end
+          else
+            vim.print = _G.dd
+          end
 
           -- Toggle
           Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>os'

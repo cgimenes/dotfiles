@@ -6,9 +6,6 @@ require('lazy').setup({
   rocks = {
     enabled = false,
   },
-  install = {
-    missing = false,
-  },
   change_detection = {
     notify = false,
   },
