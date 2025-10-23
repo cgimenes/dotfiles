@@ -95,9 +95,7 @@ vim.filetype.add {
 -- Configure diagnostics
 vim.diagnostic.config {
   virtual_text = false,
-  --   {
-  --   current_line = true,
-  -- },
+  -- virtual_text = { current_line = true },
   underline = false,
   severity_sort = true,
   float = {

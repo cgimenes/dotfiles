@@ -143,7 +143,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 -- Keep at least `scrolloff` lines below the cursor when at the end of the file
 vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', 'BufEnter' }, {
-  group = vim.api.nvim_create_augroup('ScrollOffEOF', {}),
+  group = vim.api.nvim_create_augroup('ScrollOffEOF', { clear = true }),
   callback = function()
     local win_h = vim.api.nvim_win_get_height(0)
     local off = math.min(vim.o.scrolloff, math.floor(win_h / 2))
@@ -155,4 +155,17 @@ vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', 'BufEnter' }, {
       vim.fn.winrestview(view)
     end
   end,
+})
+
+-- Keep cursor centered when in diff mode (help with Octo.nvim sending the cursor some lines back after comments)
+vim.api.nvim_create_autocmd('OptionSet', {
+  group = vim.api.nvim_create_augroup('DiffScrollOff', { clear = true }),
+  callback = function()
+    if vim.opt.diff:get() then
+      vim.opt_local.scrolloff = 100
+    else
+      vim.opt_local.scrolloff = 4
+    end
+  end,
+  pattern = 'diff',
 })
