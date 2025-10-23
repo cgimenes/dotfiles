@@ -1,25 +1,11 @@
-return {
-  {
-    'windwp/nvim-autopairs',
-    enabled = false,
-    event = 'InsertEnter',
-    config = true,
-  },
-  {
-    'nvim-mini/mini.pairs',
-    enabled = false,
-    event = 'InsertEnter',
-    config = true,
-  },
-  {
-    'm4xshen/autoclose.nvim',
-    enabled = false,
-    event = 'InsertEnter',
-    config = true,
-  },
-  {
-    'altermo/ultimate-autopair.nvim',
-    event = 'InsertEnter',
-    config = true,
-  },
-}
+vim.pack.add { 'https://github.com/altermo/ultimate-autopair.nvim' }
+require('ultimate-autopair').setup {}
+
+-- vim.pack.add { 'https://github.com/m4xshen/autoclose.nvim' }
+-- require('autoclose').setup {}
+--
+-- vim.pack.add { 'https://github.com/nvim-mini/mini.pairs' }
+-- require('mini.pairs').setup {}
+--
+-- vim.pack.add { 'https://github.com/windwp/nvim-autopairs' }
+-- require('nvim-autopairs').setup {}

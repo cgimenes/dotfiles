@@ -1,9 +1,2 @@
-return {
-  {
-    -- Detect tabstop and shiftwidth automatically
-    {
-      'tpope/vim-sleuth',
-      event = 'VeryLazy',
-    },
-  },
-}
+-- Detect tabstop and shiftwidth automatically
+vim.pack.add { 'https://github.com/tpope/vim-sleuth' }

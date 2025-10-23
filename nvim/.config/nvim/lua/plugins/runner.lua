@@ -63,55 +63,60 @@ vim.api.nvim_create_user_command('Grep', function(params)
   task:start()
 end, { nargs = '*', bang = true, complete = 'file' })
 
-vim.cmd.cnoreabbrev("OS OverseerShell")
+vim.cmd.cnoreabbrev 'OS OverseerShell'
 
-return {
-  {
-    'stevearc/overseer.nvim',
-    branch = 'stevearc-rewrite',
-    ---@type overseer.SetupOpts
-    opts = {
-      dap = false,
-      templates = {
-        'builtin',
-        'user.run_script',
-        'user.rails_dev',
-        'user.uv_run',
-      },
-      task_list = {
-        keymaps = {
-          ['K'] = { 'keymap.scroll_output_up', desc = 'Scroll Output Up' },
-          ['J'] = { 'keymap.scroll_output_down', desc = 'Scroll Output Down' },
-          ['<C-h>'] = false,
-          ['<C-j>'] = false,
-          ['<C-k>'] = false,
-          ['<C-l>'] = false,
-        },
-      },
-    },
-    -- stylua: ignore
-    keys = {
-      { '<leader>rr', '<cmd>OverseerRun<cr>', desc = 'Overseer Run' },
-      { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Overseer Toggle' },
-      { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Overseer Task Action' },
-      { '<leader>rv', function() action_on_last_task 'open vsplit' end, desc = 'Overseer Open vsplit' },
-      { '<leader>rd', function() action_on_last_task 'dispose' end, desc = 'Overseer Dispose' },
-      {
-        '<leader>rR',
-        function()
-          local overseer = require 'overseer'
-          overseer.run_task({ autostart = false }, function(task)
-            if task then
-              task:add_component { 'restart_on_save', delay = 1 }
-              task:start()
-              task:open_output 'vertical'
-            else
-              vim.notify('Run and Watch not supported for filetype ' .. vim.bo.filetype, vim.log.levels.ERROR)
-            end
-          end)
-        end,
-        desc = 'Overseer Run and Watch',
-      },
+vim.pack.add {
+  { src = 'https://github.com/stevearc/overseer.nvim', version = 'stevearc-rewrite' },
+}
+require('overseer').setup {
+  dap = false,
+  templates = {
+    'builtin',
+    'user.run_script',
+    'user.rails_dev',
+    'user.uv_run',
+  },
+  task_list = {
+    keymaps = {
+      ['K'] = { 'keymap.scroll_output_up', desc = 'Scroll Output Up' },
+      ['J'] = { 'keymap.scroll_output_down', desc = 'Scroll Output Down' },
+      ['<C-h>'] = false,
+      ['<C-j>'] = false,
+      ['<C-k>'] = false,
+      ['<C-l>'] = false,
     },
   },
+}
+Map { '<leader>rr', '<cmd>OverseerRun<cr>', desc = 'Overseer Run' }
+Map { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Overseer Toggle' }
+Map { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Overseer Task Action' }
+Map {
+  '<leader>rv',
+  function()
+    action_on_last_task 'open vsplit'
+  end,
+  desc = 'Overseer Open vsplit',
+}
+Map {
+  '<leader>rd',
+  function()
+    action_on_last_task 'dispose'
+  end,
+  desc = 'Overseer Dispose',
+}
+Map {
+  '<leader>rR',
+  function()
+    local overseer = require 'overseer'
+    overseer.run_task({ autostart = false }, function(task)
+      if task then
+        task:add_component { 'restart_on_save', delay = 1 }
+        task:start()
+        task:open_output 'vertical'
+      else
+        vim.notify('Run and Watch not supported for filetype ' .. vim.bo.filetype, vim.log.levels.ERROR)
+      end
+    end)
+  end,
+  desc = 'Overseer Run and Watch',
 }

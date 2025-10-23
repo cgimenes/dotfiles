@@ -1,3 +1,11 @@
+function Map(opts)
+  local mode = opts.mode or 'n'
+  local key = opts[1]
+  local cmd = opts[2]
+  local desc = opts.desc
+  vim.keymap.set(mode, key, cmd, { desc = desc })
+end
+
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 

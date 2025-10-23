@@ -1,56 +1,43 @@
-return {
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      'mason-org/mason-lspconfig.nvim',
-      -- JSON schemas
-      'b0o/schemastore.nvim',
-    },
-    config = function()
-      require('mason-lspconfig').setup()
-      vim.lsp.enable {
-        'clangd',
-        'cssls',
-        'emmet_language_server',
-        'gopls',
-        'intelephense',
-        'jsonls',
-        'lua_ls',
-        'prismals',
-        'pyright',
-        'ruby_lsp',
-        'ruff',
-        'tailwindcss',
-        'taplo', -- TOML
-        'yamlls',
-      }
-    end,
-  },
-  {
-    'Bekaboo/dropbar.nvim',
-    event = { 'BufReadPost', 'BufNewFile', 'BufWritePre' },
-  },
-  {
-    'pmizio/typescript-tools.nvim',
-    ft = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-    keys = {
-      { '<leader>lg', '<cmd>TSToolsGoToSourceDefinition<cr>', desc = 'TS: Go to Source Definition' },
-      { '<leader>lo', '<cmd>TSToolsOrganizeImports<cr>', desc = 'TS: Organize Imports' },
-    },
-  },
-  -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-  -- used for completion, annotations and signatures of Neovim apis
-  {
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {
-      library = {
-        -- Load luvit types when the `vim.uv` word is found
-        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-        { path = 'snacks.nvim', words = { 'Snacks' } },
-      },
-    },
+vim.pack.add { 'https://github.com/neovim/nvim-lspconfig' }
+vim.lsp.enable {
+  'clangd',
+  'cssls',
+  'emmet_language_server',
+  'gopls',
+  'intelephense',
+  'jsonls',
+  'lua_ls',
+  'prismals',
+  'pyright',
+  'ruby_lsp',
+  'ruff',
+  'tailwindcss',
+  'taplo', -- TOML
+  'yamlls',
+}
+
+-- JSON schemas
+vim.pack.add { 'https://github.com/b0o/schemastore.nvim' }
+
+-- Typescript LSP
+vim.pack.add {
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/pmizio/typescript-tools.nvim',
+}
+require('typescript-tools').setup {}
+Map { '<leader>lg', '<cmd>TSToolsGoToSourceDefinition<cr>', desc = 'TS: Go to Source Definition' }
+Map { '<leader>lo', '<cmd>TSToolsOrganizeImports<cr>', desc = 'TS: Organize Imports' }
+
+-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+-- used for completion, annotations and signatures of Neovim apis
+vim.pack.add { 'https://github.com/folke/lazydev.nvim' }
+require('lazydev').setup {
+  library = {
+    -- Load luvit types when the `vim.uv` word is found
+    { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+    { path = 'snacks.nvim', words = { 'Snacks' } },
   },
 }
+
+-- Breadcrumbs
+vim.pack.add { 'https://github.com/Bekaboo/dropbar.nvim' }

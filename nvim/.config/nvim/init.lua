@@ -11,7 +11,7 @@ end
 require 'options'
 require 'keymap'
 require 'autocmd'
-require 'lazy-init'
+require 'plugins'
 require 'usercmd'
 require 'mouse'
 require 'macros'

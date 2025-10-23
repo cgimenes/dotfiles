@@ -70,172 +70,167 @@ vim.cmd [[
 
 local icons = require 'icons'
 
-return {
-  {
-    'nvim-lualine/lualine.nvim',
-    event = 'VeryLazy',
-    opts = {
-      options = {
-        always_show_tabline = true,
-        globalstatus = true,
-        icons_enabled = true,
-        theme = 'auto',
-        component_separators = '',
-        section_separators = '',
-        disabled_filetypes = {
-          statusline = {
-            'snacks_dashboard',
-          },
-        },
-      },
-      sections = {
-        lualine_a = {
-          {
-            'mode',
-            fmt = function()
-              return ' '
-            end,
-            padding = 0,
-          },
-        },
-        lualine_b = {
-          { 'mode' },
-          {
-            function()
-              return ('%s %d events'):format(Snacks.profiler.config.icons.status, #Snacks.profiler.core.events)
-            end,
-            color = 'DiagnosticError',
-            cond = function()
-              return Snacks.profiler.core.running
-            end,
-          },
-          {
-            function()
-              local reg = vim.fn.reg_recording()
-              return ' recording to ' .. reg
-            end,
-            color = 'DiagnosticError',
-            cond = function()
-              return vim.fn.reg_recording() ~= ''
-            end,
-          },
-          { 'overseer' },
-        },
-        lualine_c = {
-          {
-            'branch',
-            color = function()
-              return { fg = Snacks.util.color 'Statement' }
-            end,
-          },
-          { 'filename', path = 1 },
-        },
-        lualine_x = {
-          { 'diagnostics' },
-          {
-            function()
-              local buf_clients = vim.lsp.get_clients { bufnr = 0 }
-              if #buf_clients == 0 then
-                return 'No LSP'
-              end
-
-              local buf_client_names = {}
-              local copilot_active = false
-
-              -- add client
-              for _, client in pairs(buf_clients) do
-                if client.name ~= 'null-ls' and client.name ~= 'copilot' then
-                  table.insert(buf_client_names, client.name)
-                end
-
-                if client.name == 'copilot' then
-                  copilot_active = true
-                end
-              end
-
-              local unique_client_names = table.concat(buf_client_names, ', ')
-              local language_servers = 'LSP Inactive'
-              if #unique_client_names > 0 then
-                language_servers = string.format('[%s]', unique_client_names)
-              end
-
-              if copilot_active then
-                language_servers = language_servers .. ' ' .. icons.git.Octoface .. ' '
-              end
-
-              return language_servers
-            end,
-            color = function()
-              return { fg = Snacks.util.color 'Statement' }
-            end,
-            cond = conditions.hide_in_width,
-          },
-          {
-            function()
-              local shiftwidth = vim.api.nvim_get_option_value('shiftwidth', { scope = 'local' })
-              return icons.ui.Tab .. '  ' .. shiftwidth
-            end,
-          },
-          { 'filetype' },
-          { 'encoding', show_bomb = true },
-        },
-        lualine_y = {
-          { 'location' },
-          { 'progress', cond = conditions.not_hlsearch },
-        },
-        lualine_z = {
-          { 'searchcount' },
-        },
-      },
-      tabline = {
-        lualine_c = {
-          {
-            grapple_files,
-            cond = conditions.show_grapple,
-          },
-        },
-        lualine_z = {
-          {
-            'tabs',
-            show_modified_status = false,
-            cond = conditions.more_than_one_tab,
-            mode = 1,
-            tabs_color = { active = 'lualine_a_normal', inactive = 'lualine_c_normal' },
-            fmt = function(label, tab)
-              local ok, w = pcall(vim.api.nvim_tabpage_get_win, tab.tabId)
-              if ok then
-                local b = vim.api.nvim_win_get_buf(w)
-                local ft = vim.api.nvim_buf_get_option(b, 'ft')
-                if label == '[No Name]' then
-                  label = ft
-                end
-                if ft == 'sql' or ft == 'dbui' or ft == 'dbout' then
-                  label = ' ' .. label
-                elseif ft == 'DiffviewFilePanel' or ft == 'DiffviewFiles' or ft == 'NeogitStatus' then
-                  label = '󰊢 ' .. label
-                else
-                  label = require('nvim-web-devicons').get_icon_by_filetype(ft, { default = true }) .. ' ' .. label
-                end
-              end
-              local Str = require 'plenary.strings'
-              if Str.strdisplaywidth(label) > 25 then
-                -- tab_max_length is supposed to allow that but it didn't seem to work
-                label = Str.truncate(label, 25)
-              end
-              return label
-            end,
-          },
-        },
-      },
-      extensions = {
-        'fugitive',
-        'fzf',
-        'lazy',
-        'man',
-        'mason',
-        'oil',
-        'quickfix',
+vim.pack.add { 'https://github.com/nvim-lualine/lualine.nvim' }
+require('lualine').setup {
+  options = {
+    always_show_tabline = true,
+    globalstatus = true,
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = '',
+    section_separators = '',
+    disabled_filetypes = {
+      statusline = {
+        'snacks_dashboard',
       },
     },
+  },
+  sections = {
+    lualine_a = {
+      {
+        'mode',
+        fmt = function()
+          return ' '
+        end,
+        padding = 0,
+      },
+    },
+    lualine_b = {
+      { 'mode' },
+      {
+        function()
+          return ('%s %d events'):format(Snacks.profiler.config.icons.status, #Snacks.profiler.core.events)
+        end,
+        color = 'DiagnosticError',
+        cond = function()
+          return Snacks.profiler.core.running
+        end,
+      },
+      {
+        function()
+          local reg = vim.fn.reg_recording()
+          return ' recording to ' .. reg
+        end,
+        color = 'DiagnosticError',
+        cond = function()
+          return vim.fn.reg_recording() ~= ''
+        end,
+      },
+      { 'overseer' },
+    },
+    lualine_c = {
+      {
+        'branch',
+        color = function()
+          return { fg = Snacks.util.color 'Statement' }
+        end,
+      },
+      { 'filename', path = 1 },
+    },
+    lualine_x = {
+      { 'diagnostics' },
+      {
+        function()
+          local buf_clients = vim.lsp.get_clients { bufnr = 0 }
+          if #buf_clients == 0 then
+            return 'No LSP'
+          end
+
+          local buf_client_names = {}
+          local copilot_active = false
+
+          -- add client
+          for _, client in pairs(buf_clients) do
+            if client.name ~= 'null-ls' and client.name ~= 'copilot' then
+              table.insert(buf_client_names, client.name)
+            end
+
+            if client.name == 'copilot' then
+              copilot_active = true
+            end
+          end
+
+          local unique_client_names = table.concat(buf_client_names, ', ')
+          local language_servers = 'LSP Inactive'
+          if #unique_client_names > 0 then
+            language_servers = string.format('[%s]', unique_client_names)
+          end
+
+          if copilot_active then
+            language_servers = language_servers .. ' ' .. icons.git.Octoface .. ' '
+          end
+
+          return language_servers
+        end,
+        color = function()
+          return { fg = Snacks.util.color 'Statement' }
+        end,
+        cond = conditions.hide_in_width,
+      },
+      {
+        function()
+          local shiftwidth = vim.api.nvim_get_option_value('shiftwidth', { scope = 'local' })
+          return icons.ui.Tab .. '  ' .. shiftwidth
+        end,
+      },
+      { 'filetype' },
+      { 'encoding', show_bomb = true },
+    },
+    lualine_y = {
+      { 'location' },
+      { 'progress', cond = conditions.not_hlsearch },
+    },
+    lualine_z = {
+      { 'searchcount' },
+    },
+  },
+  tabline = {
+    lualine_c = {
+      {
+        grapple_files,
+        cond = conditions.show_grapple,
+      },
+    },
+    lualine_z = {
+      {
+        'tabs',
+        show_modified_status = false,
+        cond = conditions.more_than_one_tab,
+        mode = 1,
+        tabs_color = { active = 'lualine_a_normal', inactive = 'lualine_c_normal' },
+        fmt = function(label, tab)
+          local ok, w = pcall(vim.api.nvim_tabpage_get_win, tab.tabId)
+          if ok then
+            local b = vim.api.nvim_win_get_buf(w)
+            local ft = vim.api.nvim_buf_get_option(b, 'ft')
+            if label == '[No Name]' then
+              label = ft
+            end
+            if ft == 'sql' or ft == 'dbui' or ft == 'dbout' then
+              label = ' ' .. label
+            elseif ft == 'DiffviewFilePanel' or ft == 'DiffviewFiles' or ft == 'NeogitStatus' then
+              label = '󰊢 ' .. label
+            else
+              label = require('nvim-web-devicons').get_icon_by_filetype(ft, { default = true }) .. ' ' .. label
+            end
+          end
+          local Str = require 'plenary.strings'
+          if Str.strdisplaywidth(label) > 25 then
+            -- tab_max_length is supposed to allow that but it didn't seem to work
+            label = Str.truncate(label, 25)
+          end
+          return label
+        end,
+      },
+    },
+  },
+  extensions = {
+    'fugitive',
+    'fzf',
+    'lazy',
+    'man',
+    'mason',
+    'oil',
+    'quickfix',
   },
 }

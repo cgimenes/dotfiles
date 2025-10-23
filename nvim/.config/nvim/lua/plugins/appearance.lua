@@ -1,90 +1,69 @@
-return {
-  {
-    -- Cool icons
-    'nvim-mini/mini.icons',
-    main = 'mini.icons',
-    config = function()
-      require('mini.icons').setup()
-      MiniIcons.mock_nvim_web_devicons()
-    end,
+-- Cool icons
+vim.pack.add { 'https://github.com/nvim-mini/mini.icons' }
+require('mini.icons').setup()
+MiniIcons.mock_nvim_web_devicons()
+
+-- Better quickfix window
+vim.pack.add { 'https://github.com/yorickpeterse/nvim-pqf' }
+require('pqf').setup {
+  show_multiple_lines = true,
+  max_filename_length = 40,
+}
+
+-- Better inline diagnostics
+vim.pack.add { 'https://github.com/rachartier/tiny-inline-diagnostic.nvim' }
+require('tiny-inline-diagnostic').setup {
+  preset = 'classic',
+  options = {
+    show_all_diags_on_cursorline = true,
   },
-  {
-    -- Better quickfix window
-    'yorickpeterse/nvim-pqf',
-    event = 'VeryLazy',
-    opts = {
-      show_multiple_lines = true,
-      max_filename_length = 40,
+}
+
+-- Improve notifications, command palette and more
+vim.pack.add {
+  'https://github.com/MunifTanjim/nui.nvim',
+  'https://github.com/folke/noice.nvim',
+}
+require('noice').setup {
+  messages = {
+    enabled = true,
+    view_search = false,
+  },
+  popupmenu = {
+    enabled = false,
+  },
+  notify = {
+    enabled = false,
+  },
+  presets = {
+    command_palette = true,
+  },
+}
+
+-- Highlight for Window separator
+vim.pack.add { 'https://github.com/nvim-zh/colorful-winsep.nvim' }
+require('colorful-winsep').setup {
+  hi = {
+    fg = '#e6c384',
+  },
+  symbols = { '─', '│', '╭', '╮', '╰', '╯' },
+}
+
+-- Auto arrange windows
+vim.pack.add { 'https://github.com/folke/edgy.nvim' }
+require('edgy').setup {
+  animate = { enabled = false },
+  -- exit_when_last = true,
+  left = {
+    {
+      title = 'Find and Replace',
+      ft = 'grug-far',
+      size = { width = 0.20 },
     },
-  },
-  {
-    'rachartier/tiny-inline-diagnostic.nvim',
-    event = 'VeryLazy',
-    priority = 1000,
-    opts = {
-      preset = 'classic',
-      options = {
-        show_all_diags_on_cursorline = true,
-      },
-    },
-  },
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    opts = {
-      messages = {
-        enabled = true,
-        view_search = false,
-      },
-      popupmenu = {
-        enabled = false,
-      },
-      notify = {
-        enabled = false,
-      },
-      presets = {
-        command_palette = true,
-      },
-    },
-    config = function(_, opts)
-      -- HACK: noice shows messages from before it was enabled,
-      -- but this is not ideal when Lazy is installing plugins,
-      -- so clear the messages in this case.
-      if vim.o.filetype == 'lazy' then
-        vim.cmd [[messages clear]]
-      end
-      require('noice').setup(opts)
-    end,
-  },
-  {
-    -- Highlight for Window separator
-    'nvim-zh/colorful-winsep.nvim',
-    opts = {
-      hi = {
-        fg = '#e6c384',
-      },
-      symbols = { '─', '│', '╭', '╮', '╰', '╯' },
-    },
-    event = { 'WinLeave' },
-  },
-  {
-    'folke/edgy.nvim',
-    event = 'VeryLazy',
-    opts = {
-      animate = { enabled = false },
-      -- exit_when_last = true,
-      left = {
-        {
-          title = 'Find and Replace',
-          ft = 'grug-far',
-          size = { width = 0.20 },
-        },
-        {
-          title = 'DBUI',
-          ft = 'dbui',
-          size = { width = 0.20 },
-        },
-      },
+    {
+      title = 'DBUI',
+      ft = 'dbui',
+      size = { width = 0.20 },
     },
   },
 }
