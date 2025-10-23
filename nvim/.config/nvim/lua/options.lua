@@ -1,8 +1,3 @@
--- Set <space> as the leader key
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ','
-
 -- Make relative line numbers default
 vim.o.number = true
 vim.o.relativenumber = true
