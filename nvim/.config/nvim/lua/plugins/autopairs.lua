@@ -1,5 +1,7 @@
 vim.pack.add { 'https://github.com/altermo/ultimate-autopair.nvim' }
-require('ultimate-autopair').setup {}
+require('ultimate-autopair').setup {
+  bs = { delete_from_end = false },
+}
 
 -- vim.pack.add { 'https://github.com/m4xshen/autoclose.nvim' }
 -- require('autoclose').setup {}
