@@ -17,7 +17,7 @@ vim.g.db_ui_execute_on_save = 0
 vim.g.db_ui_hide_schemas = { 'pg_catalog', 'pg_toast' }
 vim.g.db_ui_table_helpers = {
   postgresql = {
-    Count = 'select count(*) from {optional_schema}{table}',
+    Count = 'SELECT COUNT(*) FROM {optional_schema}{table}',
     Explain = 'EXPLAIN ANALYZE {last_query}',
   },
 }

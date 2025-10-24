@@ -1,12 +1,13 @@
 -- Fugitive
 vim.pack.add { 'https://github.com/tpope/vim-fugitive' }
 Map { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' }
+Map { '<leader>gd', '<cmd>vertical G diff<cr>', desc = 'Git Diff' }
 
 -- Diffview
 vim.pack.add { 'https://github.com/sindrets/diffview.nvim' }
 require('diffview').setup {}
 Map { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History', mode = { 'n', 'v' } }
-Map { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' }
+Map { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' }
 
 -- Gitsigns
 vim.pack.add { 'https://github.com/lewis6991/gitsigns.nvim' }
