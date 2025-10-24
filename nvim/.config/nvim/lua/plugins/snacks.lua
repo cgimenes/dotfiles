@@ -68,7 +68,7 @@ require('snacks').setup {
 }
 
 Map {
-  'leader>si',
+  '<leader>si',
   function()
     Snacks.picker.icons()
   end,
