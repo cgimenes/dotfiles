@@ -70,12 +70,6 @@ vim.pack.add {
 }
 require('overseer').setup {
   dap = false,
-  templates = {
-    'builtin',
-    'user.run_script',
-    'user.rails_dev',
-    'user.uv_run',
-  },
   task_list = {
     keymaps = {
       ['K'] = { 'keymap.scroll_output_up', desc = 'Scroll Output Up' },
@@ -87,7 +81,19 @@ require('overseer').setup {
     },
   },
 }
-Map { '<leader>rr', '<cmd>OverseerRun<cr>', desc = 'Overseer Run' }
+Map {
+  '<leader>rr',
+  function()
+    local overseer = require 'overseer'
+    overseer.run_task({ autostart = false }, function(task)
+      if task then
+        task:add_component { 'options' }
+        task:start()
+      end
+    end)
+  end,
+  desc = 'Overseer Run',
+}
 Map { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Overseer Toggle' }
 Map { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Overseer Task Action' }
 Map {
