@@ -15,7 +15,7 @@ Map {
   desc = 'Flash',
 }
 Map {
-  'Zk',
+  'zK',
   mode = { 'n', 'x', 'o' },
   function()
     require('flash').treesitter()
