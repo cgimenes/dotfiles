@@ -20,3 +20,14 @@ Map { '<leader>>', '<cmd>ToggleTerm direction=vertical<cr>', desc = 'Toggle Vert
 -- store
 vim.pack.add { 'https://github.com/alex-popov-tech/store.nvim' }
 require('store').setup { plugin_manager = 'vim.pack' }
+
+-- <M-h> <M-j> <M-k> <M-l> to move lines and blocks
+vim.pack.add { 'https://github.com/nvim-mini/mini.move' }
+require('mini.move').setup {}
+
+-- Yank selection replacing latest put region [Y [y ]y ]Y
+-- File on disk [F [f ]f ]F
+-- Comment block [C [c ]c ]C
+-- Conflict marker [X [x ]x ]X
+vim.pack.add { 'https://github.com/nvim-mini/mini.bracketed' }
+require('mini.bracketed').setup {}
