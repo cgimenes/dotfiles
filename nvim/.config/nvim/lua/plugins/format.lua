@@ -35,9 +35,11 @@ require('conform').setup {
 }
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 Map {
-  '<leader>lf',
+  'Q',
   function()
-    vim.cmd 'TSToolsOrganizeImports'
+    if vim.bo.filetype == 'typescript' or vim.bo.filetype == 'typescriptreact' then
+      vim.cmd 'TSToolsOrganizeImports'
+    end
     require('conform').format { async = true, lsp_format = 'fallback' }
   end,
   mode = '',
