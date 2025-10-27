@@ -108,6 +108,9 @@ vim.pack.add { 'https://github.com/sainnhe/gruvbox-material' }
 vim.pack.add { 'https://github.com/xeind/nightingale.nvim' }
 require('nightingale').setup { transparent = transparent }
 
+vim.pack.add {'https://github.com/NTBBloodbath/sweetie.nvim'}
+vim.o.background = 'dark'
+
 -- vim.cmd.colorscheme 'onedark'
 -- vim.cmd.colorscheme 'tokyonight-night'
 -- vim.cmd.colorscheme 'tokyonight-storm'
@@ -145,3 +148,4 @@ vim.cmd.colorscheme 'kanagawa-wave'
 -- vim.cmd.colorscheme 'solarized-osaka'
 -- vim.cmd.colorscheme 'gruvbox-material'
 -- vim.cmd.colorscheme 'nightingale'
+-- vim.cmd.colorscheme 'sweetie'
