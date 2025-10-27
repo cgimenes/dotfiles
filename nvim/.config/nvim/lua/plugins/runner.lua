@@ -89,6 +89,7 @@ Map {
       if task then
         task:add_component { 'options' }
         task:start()
+        task:open_output 'vertical'
       end
     end)
   end,
