@@ -26,7 +26,6 @@ vim.pack.add {
 }
 require('typescript-tools').setup {}
 Map { '<leader>lg', '<cmd>TSToolsGoToSourceDefinition<cr>', desc = 'TS: Go to Source Definition' }
-Map { '<leader>lo', '<cmd>TSToolsOrganizeImports<cr>', desc = 'TS: Organize Imports' }
 
 -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
 -- used for completion, annotations and signatures of Neovim apis

@@ -3,7 +3,7 @@ local prettier = { 'prettierd', 'prettier', stop_after_first = true }
 vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
 require('conform').setup {
   notify_on_error = true,
-  format_on_save = false,
+  format_on_save = nil,
   formatters_by_ft = {
     css = prettier,
     cucumber = { 'reformat-gherkin' },
@@ -37,6 +37,7 @@ vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 Map {
   '<leader>lf',
   function()
+    vim.cmd 'TSToolsOrganizeImports'
     require('conform').format { async = true, lsp_format = 'fallback' }
   end,
   mode = '',
