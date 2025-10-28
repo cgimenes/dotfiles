@@ -30,4 +30,6 @@ require('mini.move').setup {}
 -- Comment block [C [c ]c ]C
 -- Conflict marker [X [x ]x ]X
 vim.pack.add { 'https://github.com/nvim-mini/mini.bracketed' }
-require('mini.bracketed').setup {}
+require('mini.bracketed').setup {
+  quickfix = { suffix = '' },
+}
