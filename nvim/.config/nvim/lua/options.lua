@@ -23,6 +23,10 @@ vim.o.swapfile = false
 -- Save undo history
 vim.o.undofile = true
 
+-- Don't store backup while overwriting the file
+vim.o.backup = false
+vim.o.writebackup = false
+
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
@@ -70,6 +74,9 @@ vim.o.confirm = true
 vim.o.endofline = false
 vim.o.endoffile = false
 vim.o.fixendofline = false
+
+-- Don't show `~` outside of buffer
+vim.o.fillchars = 'eob: '
 
 -- Disable splash screen
 vim.opt.shortmess:append 'I'
