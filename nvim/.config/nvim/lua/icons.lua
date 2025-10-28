@@ -1,8 +1,7 @@
 return {
-  git = {
-    Octoface = "",
-  },
-  ui = {
-    Tab = "󰌒",
-  },
+  db = '',
+  git = '󰊢',
+  octoface = '',
+  record = '',
+  tab = '󰌒',
 }

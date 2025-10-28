@@ -109,7 +109,7 @@ require('lualine').setup {
       {
         function()
           local reg = vim.fn.reg_recording()
-          return ' recording to ' .. reg
+          return icons.record .. '  recording to ' .. reg
         end,
         color = 'DiagnosticError',
         cond = function()
@@ -207,9 +207,9 @@ require('lualine').setup {
               label = ft
             end
             if ft == 'sql' or ft == 'dbui' or ft == 'dbout' then
-              label = ' ' .. label
+              label = icons.db .. ' ' .. label
             elseif ft == 'DiffviewFilePanel' or ft == 'DiffviewFiles' or ft == 'NeogitStatus' then
-              label = '󰊢 ' .. label
+              label = icons.git .. ' ' .. label
             else
               label = require('nvim-web-devicons').get_icon_by_filetype(ft, { default = true }) .. ' ' .. label
             end
