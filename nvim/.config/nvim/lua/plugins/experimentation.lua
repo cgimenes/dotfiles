@@ -17,10 +17,6 @@ require('toggleterm').setup {
 Map { '<leader>.', '<cmd>ToggleTerm<cr>', desc = 'Toggle Terminal' }
 Map { '<leader>>', '<cmd>ToggleTerm direction=vertical<cr>', desc = 'Toggle Vertical Terminal' }
 
--- store
-vim.pack.add { 'https://github.com/alex-popov-tech/store.nvim' }
-require('store').setup { plugin_manager = 'vim.pack' }
-
 -- <M-h> <M-j> <M-k> <M-l> to move lines and blocks
 vim.pack.add { 'https://github.com/nvim-mini/mini.move' }
 require('mini.move').setup {}
