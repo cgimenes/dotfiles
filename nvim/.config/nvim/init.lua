@@ -1,5 +1,5 @@
 if vim.env.PROF then
-  local snacks = vim.fn.stdpath 'data' .. '/lazy/snacks.nvim'
+  local snacks = vim.fn.stdpath 'data' .. '/site/pack/core/opt/snacks.nvim'
   vim.opt.rtp:append(snacks)
   require('snacks.profiler').startup {
     startup = {
