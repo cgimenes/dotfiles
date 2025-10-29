@@ -47,7 +47,9 @@ require('kanagawa').setup {
   end,
 }
 
-vim.pack.add { 'https://github.com/catppuccin/nvim' }
+vim.pack.add {
+  { src = 'https://github.com/catppuccin/nvim', name = 'catppuccin' },
+}
 
 vim.pack.add { 'https://github.com/sainnhe/everforest' }
 vim.g.everforest_enable_italic = true
@@ -108,7 +110,7 @@ vim.pack.add { 'https://github.com/sainnhe/gruvbox-material' }
 vim.pack.add { 'https://github.com/xeind/nightingale.nvim' }
 require('nightingale').setup { transparent = transparent }
 
-vim.pack.add {'https://github.com/NTBBloodbath/sweetie.nvim'}
+vim.pack.add { 'https://github.com/NTBBloodbath/sweetie.nvim' }
 vim.o.background = 'dark'
 
 -- vim.cmd.colorscheme 'onedark'

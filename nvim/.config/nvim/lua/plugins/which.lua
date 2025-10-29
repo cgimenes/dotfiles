@@ -21,6 +21,7 @@ require('which-key').setup {
     { '<leader>oP', group = 'Profiler' },
     { '<leader>p', group = 'Paste' },
     { '<leader>r', group = 'Runner' },
+    { '<leader>rl', group = 'Last Task' },
     { '<leader>R', group = 'REST Client' },
     { '<leader>s', group = 'Search' },
     { '<leader>t', group = 'Test' },

@@ -98,18 +98,25 @@ Map {
 Map { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Overseer Toggle' }
 Map { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Overseer Task Action' }
 Map {
-  '<leader>rv',
+  '<leader>rlv',
   function()
     action_on_last_task 'open vsplit'
   end,
   desc = 'Overseer Open vsplit',
 }
 Map {
-  '<leader>rd',
+  '<leader>rld',
   function()
     action_on_last_task 'dispose'
   end,
   desc = 'Overseer Dispose',
+}
+Map {
+  '<leader>rlr',
+  function()
+    action_on_last_task 'restart'
+  end,
+  desc = 'Overseer Restart',
 }
 Map {
   '<leader>rR',
@@ -117,6 +124,7 @@ Map {
     local overseer = require 'overseer'
     overseer.run_task({ autostart = false }, function(task)
       if task then
+        task:add_component { 'options' }
         task:add_component { 'restart_on_save', delay = 1 }
         task:start()
         task:open_output 'vertical'
