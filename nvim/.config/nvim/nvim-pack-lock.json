@@ -298,6 +298,10 @@
       "rev": "f796014",
       "src": "https://github.com/craftzdog/solarized-osaka.nvim"
     },
+    "styler.nvim": {
+      "rev": "d73d868",
+      "src": "https://github.com/folke/styler.nvim"
+    },
     "sweetie.nvim": {
       "rev": "d4b3d94",
       "src": "https://github.com/NTBBloodbath/sweetie.nvim"

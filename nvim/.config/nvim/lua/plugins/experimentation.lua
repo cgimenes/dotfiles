@@ -29,3 +29,12 @@ vim.pack.add { 'https://github.com/nvim-mini/mini.bracketed' }
 require('mini.bracketed').setup {
   quickfix = { suffix = '' },
 }
+
+-- Set a different colorscheme per filetype
+vim.pack.add { 'https://github.com/folke/styler.nvim' }
+require('styler').setup {
+  themes = {
+    markdown = { colorscheme = 'tokyonight', background = 'dark' },
+    help = { colorscheme = 'tokyonight', background = 'dark' },
+  },
+}

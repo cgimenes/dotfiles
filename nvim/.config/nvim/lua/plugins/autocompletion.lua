@@ -83,6 +83,9 @@ require('blink.cmp').setup {
           return items
         end,
       },
+      buffer = {
+        max_items = 7,
+      },
     },
   },
   signature = {
