@@ -113,6 +113,10 @@
       "rev": "3946f01",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
+    "lz.n": {
+      "rev": "fd9ff1c",
+      "src": "https://github.com/lumen-oss/lz.n"
+    },
     "mason-lspconfig.nvim": {
       "rev": "d7b5feb",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"

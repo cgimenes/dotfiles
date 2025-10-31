@@ -19,6 +19,7 @@ function BuildAfterUpdate(plugin_name, build)
 end
 
 -- Order matters
+require 'plugins/lazy'
 require 'plugins/colorschemes'
 require 'plugins/snacks'
 require 'plugins/appearance'
