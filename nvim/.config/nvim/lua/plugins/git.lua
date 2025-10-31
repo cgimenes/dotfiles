@@ -71,3 +71,36 @@ require('octo').setup {
   file_panel = { size = 5 },
 }
 Map { '<leader>gp', '<cmd>Octo pr list<cr>', desc = 'List GitHub PRs' }
+
+-- Conflicts
+vim.pack.add { {
+  src = 'https://github.com/akinsho/git-conflict.nvim',
+  version = vim.version.range '*',
+} }
+require('git-conflict').setup { default_mappings = false, default_commands = false }
+local group = vim.api.nvim_create_augroup('GitConflictKeymap', { clear = true })
+vim.api.nvim_create_autocmd('User', {
+  group = group,
+  pattern = 'GitConflictDetected',
+  callback = function(event)
+    vim.diagnostic.enable(false, { bufnr = event.buf })
+
+    vim.keymap.set('n', ',o', '<Plug>(git-conflict-ours)', { buffer = event.buf, desc = 'Choose ours', silent = true })
+    vim.keymap.set('n', ',t', '<Plug>(git-conflict-theirs)', { buffer = event.buf, desc = 'Choose theirs', silent = true })
+    vim.keymap.set('n', ',b', '<Plug>(git-conflict-both)', { buffer = event.buf, desc = 'Choose both', silent = true })
+    vim.keymap.set('n', ',n', '<Plug>(git-conflict-none)', { buffer = event.buf, desc = 'Choose none', silent = true })
+  end,
+})
+vim.api.nvim_create_autocmd('User', {
+  group = group,
+  pattern = 'GitConflictResolved',
+  callback = function(event)
+    vim.diagnostic.enable(true, { bufnr = event.buf })
+
+    for _, mapping in ipairs { ',o', ',t', ',b', ',n' } do
+      if vim.fn.hasmapto(mapping, 'n') > 0 then
+        vim.api.nvim_buf_del_keymap(event.buf, 'n', mapping)
+      end
+    end
+  end,
+})
