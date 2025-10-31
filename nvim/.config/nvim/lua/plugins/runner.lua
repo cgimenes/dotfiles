@@ -87,7 +87,7 @@ Map {
     local overseer = require 'overseer'
     overseer.run_task({ autostart = false }, function(task)
       if task then
-        task:add_component { 'options' }
+        task:add_component { 'keymaps' }
         task:start()
         task:open_output 'vertical'
       end
@@ -117,21 +117,4 @@ Map {
     action_on_last_task 'restart'
   end,
   desc = 'Overseer Restart',
-}
-Map {
-  '<leader>rR',
-  function()
-    local overseer = require 'overseer'
-    overseer.run_task({ autostart = false }, function(task)
-      if task then
-        task:add_component { 'options' }
-        task:add_component { 'restart_on_save', delay = 1 }
-        task:start()
-        task:open_output 'vertical'
-      else
-        vim.notify('Run and Watch not supported for filetype ' .. vim.bo.filetype, vim.log.levels.ERROR)
-      end
-    end)
-  end,
-  desc = 'Overseer Run and Watch',
 }
