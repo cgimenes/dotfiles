@@ -15,7 +15,7 @@ require('mini.bracketed').setup {
 vim.pack.add { 'https://github.com/folke/styler.nvim' }
 require('styler').setup {
   themes = {
-    markdown = { colorscheme = 'tokyonight', background = 'dark' },
-    help = { colorscheme = 'tokyonight', background = 'dark' },
+    markdown = { colorscheme = 'sweetie', background = 'dark' },
+    help = { colorscheme = 'sweetie', background = 'dark' },
   },
 }
