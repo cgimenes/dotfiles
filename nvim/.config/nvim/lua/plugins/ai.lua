@@ -6,13 +6,6 @@ require('copilot').setup {
   panel = { enabled = false },
 }
 
--- Supermaven
--- vim.pack.add { 'https://github.com/supermaven-inc/supermaven-nvim' }
--- require('supermaven-nvim').setup {
---   disable_inline_completion = true,
---   disable_keymaps = true,
--- }
-
 -- Sidekick
 vim.pack.add { 'https://github.com/folke/sidekick.nvim' }
 require('sidekick').setup {
