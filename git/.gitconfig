@@ -9,10 +9,13 @@
   tags = tag --list
 
 [diff]
-  tool = meld
+  tool = nvimdiff
+
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 [difftool]
-  prompt = false
+  prompt = true
 
 [core]
   autocrlf = input
