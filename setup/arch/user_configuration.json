@@ -1,291 +1,278 @@
 {
-    "additional-repositories": [],
-    "archinstall-language": "English",
-    "audio_config": {
-        "audio": "pipewire"
-    },
-    "bootloader": "Systemd-boot",
-    "config_version": "3.0.1",
-    "disk_config": {
-        "config_type": "default_layout",
-        "device_modifications": [
-            {
-                "device": "/dev/nvme0n1",
-                "partitions": [
-                    {
-                        "btrfs": [],
-                        "dev_path": null,
-                        "flags": [
-                            "boot",
-                            "esp"
-                        ],
-                        "fs_type": "fat32",
-                        "mount_options": [],
-                        "mountpoint": "/boot",
-                        "obj_id": "71c56136-5e78-4993-87c7-71aa791c46e7",
-                        "size": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "GiB",
-                            "value": 1
-                        },
-                        "start": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "MiB",
-                            "value": 1
-                        },
-                        "status": "create",
-                        "type": "primary"
-                    },
-                    {
-                        "btrfs": [],
-                        "dev_path": null,
-                        "flags": [],
-                        "fs_type": "btrfs",
-                        "mount_options": [
-                            "compress=zstd"
-                        ],
-                        "mountpoint": "/",
-                        "obj_id": "aca3e65e-2b3e-455b-84cc-37a727e10e50",
-                        "size": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "GiB",
-                            "value": 50
-                        },
-                        "start": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "B",
-                            "value": 1074790400
-                        },
-                        "status": "create",
-                        "type": "primary"
-                    },
-                    {
-                        "btrfs": [],
-                        "dev_path": null,
-                        "flags": [
-                            "linux-home"
-                        ],
-                        "fs_type": "btrfs",
-                        "mount_options": [
-                            "compress=zstd"
-                        ],
-                        "mountpoint": "/home",
-                        "obj_id": "8f166a45-96e2-4b82-97ec-051604c1d9ca",
-                        "size": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "B",
-                            "value": 945441955840
-                        },
-                        "start": {
-                            "sector_size": {
-                                "unit": "B",
-                                "value": 512
-                            },
-                            "unit": "B",
-                            "value": 54761881600
-                        },
-                        "status": "create",
-                        "type": "primary"
-                    }
-                ],
-                "wipe": true
-            }
-        ]
-    },
-    "disk_encryption": null,
-    "hostname": "archlinux",
-    "kernels": [
-        "linux"
-    ],
-    "locale_config": {
-        "kb_layout": "us",
-        "sys_enc": "UTF-8",
-        "sys_lang": "en_US"
-    },
-    "mirror_config": {
-        "custom_mirrors": [],
-        "mirror_regions": {
-            "Brazil": [
-                "{\"url\":\"http://archlinux.c3sl.ufpr.br/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/c3sl.ufpr.br/129/\",\"delay\":885,\"last_sync\":\"2024-12-01T13:59:49Z\",\"duration_avg\":0.7613531852310355,\"duration_stddev\":0.7747936562880418,\"completion_pct\":1.0,\"score\":2}",
-                "{\"url\":\"https://archlinux.c3sl.ufpr.br/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/c3sl.ufpr.br/2078/\",\"delay\":918,\"last_sync\":\"2024-12-01T13:59:49Z\",\"duration_avg\":1.1420014134862206,\"duration_stddev\":0.72952540016686,\"completion_pct\":1.0,\"score\":2}",
-                "{\"url\":\"http://br.mirrors.cicku.me/archlinux/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/cicku.me/2118/\",\"delay\":724,\"last_sync\":\"2024-12-01T13:56:48Z\",\"duration_avg\":0.8620805753902956,\"duration_stddev\":0.3466340944996994,\"completion_pct\":1.0,\"score\":1}",
-                "{\"url\":\"https://br.mirrors.cicku.me/archlinux/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/cicku.me/2119/\",\"delay\":750,\"last_sync\":\"2024-12-01T13:56:48Z\",\"duration_avg\":1.058873475952582,\"duration_stddev\":0.38436553840963733,\"completion_pct\":1.0,\"score\":2}",
-                "{\"url\":\"http://mirror.ufam.edu.br/archlinux/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/ufam.edu.br/1094/\",\"delay\":4224,\"last_sync\":\"2024-12-01T12:55:29Z\",\"duration_avg\":1.977062183356135,\"duration_stddev\":2.275660278808169,\"completion_pct\":0.9034090909090909,\"score\":6}",
-                "{\"url\":\"http://mirror.ufscar.br/archlinux/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/ufscar.br/1171/\",\"delay\":66,\"last_sync\":\"2024-12-01T14:06:01Z\",\"duration_avg\":0.5744196000424299,\"duration_stddev\":0.4133113143294997,\"completion_pct\":1.0,\"score\":1}",
-                "{\"url\":\"https://mirror.ufscar.br/archlinux/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/ufscar.br/1840/\",\"delay\":78,\"last_sync\":\"2024-12-01T14:06:01Z\",\"duration_avg\":0.7491046434099023,\"duration_stddev\":0.28792237421700695,\"completion_pct\":1.0,\"score\":1}"
-            ]
-        }
-    },
-    "network_config": {
-        "type": "nm"
-    },
-    "ntp": true,
-    "packages": [
-        "7zip",
-        "acpilight",
-        "arc-gtk-theme",
-        "atuin",
-        "autorandr",
-        "baobab",
-        "base-devel",
-        "bat",
-        "blueman",
-        "bluetui",
-        "bluez",
-        "bolt",
-        "brightnessctl",
-        "btop",
-        "clang",
-        "code",
-        "copyq",
-        "croc",
-        "cups-pdf",
-        "dbeaver",
-        "distrobox",
-        "docker",
-        "docker-buildx",
-        "docker-compose",
-        "dunst",
-        "emacs",
-        "eza",
-        "fastfetch",
-        "fd",
-        "flameshot",
-        "fwupd",
-        "fzf",
-        "git",
-        "git-delta",
-        "go",
-        "go-yq",
-        "grim",
-        "gsimplecal",
-        "hledger",
-        "hledger-ui",
-        "hledger-web",
-        "hypridle",
-        "hyprland",
-        "hyprlock",
-        "i3-wm",
-        "i3status",
-        "ijq",
-        "imv",
-        "inotify-tools",
-        "intel-media-driver",
-        "inter-font",
-        "jq",
-        "k9s",
-        "kitty",
-        "lazygit",
-        "ledger",
-        "less",
-        "lib32-pipewire",
-        "libva-intel-driver",
-        "lxappearance",
-        "lxsession",
-        "man-db",
-        "man-pages",
-        "mesa",
-        "mpv",
-        "neovim",
-        "network-manager-applet",
-        "nitrogen",
-        "noto-fonts",
-        "noto-fonts-emoji",
-        "npm",
-        "nwg-look",
-        "obsidian",
-        "os-prober",
-        "ouch",
-        "p7zip",
-        "pacman-contrib",
-        "pavucontrol",
-        "picom",
-        "playerctl",
-        "polybar",
-        "postgresql-libs",
-        "qpwgraph",
-        "ripgrep",
-        "rofi-calc",
-        "rofi-wayland",
-        "satty",
-        "slurp",
-        "socat",
-        "starship",
-        "steam",
-        "stow",
-        "sxiv",
-        "syncthing",
-        "tailscale",
-        "terminus-font",
-        "tldr",
-        "tmux",
-        "translate-shell",
-        "transmission-gtk",
-        "trash-cli",
-        "ttc-iosevka",
-        "ttf-dejavu",
-        "ttf-font-awesome",
-        "ttf-inconsolata",
-        "ttf-inconsolata-nerd",
-        "ttf-iosevka-nerd",
-        "ttf-jetbrains-mono",
-        "ttf-jetbrains-mono-nerd",
-        "ttf-nerd-fonts-symbols",
-        "ttf-nerd-fonts-symbols-mono",
-        "ttf-noto-nerd",
-        "ttf-roboto",
-        "ttf-roboto-mono-nerd",
-        "ttf-ubuntu-font-family",
-        "udiskie",
-        "ueberzugpp",
-        "unzip",
-        "uv",
-        "vim",
-        "vulkan-intel",
-        "wl-clipboard",
-        "xclip",
-        "xf86-input-libinput",
-        "xorg-xinput",
-        "xorg-xkill",
-        "xorg-xprop",
-        "xorg-xsetroot",
-        "yazi",
-        "yq",
-        "yt-dlp",
-        "zoxide",
-        "zsh"
-    ],
-    "parallel downloads": 5,
-    "profile_config": {
-        "greeter": "lightdm-gtk-greeter",
-        "profile": {
-            "custom_settings": {
-                "Bspwm": {}
+  "additional-repositories": [],
+  "archinstall-language": "English",
+  "audio_config": {
+    "audio": "pipewire"
+  },
+  "bootloader": "Systemd-boot",
+  "config_version": "3.0.1",
+  "disk_config": {
+    "config_type": "default_layout",
+    "device_modifications": [
+      {
+        "device": "/dev/nvme0n1",
+        "partitions": [
+          {
+            "btrfs": [],
+            "dev_path": null,
+            "flags": ["boot", "esp"],
+            "fs_type": "fat32",
+            "mount_options": [],
+            "mountpoint": "/boot",
+            "obj_id": "71c56136-5e78-4993-87c7-71aa791c46e7",
+            "size": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "GiB",
+              "value": 1
             },
-            "details": [
-                "Bspwm"
-            ],
-            "main": "Desktop"
-        }
-    },
-    "save_config": null,
-    "swap": true,
-    "timezone": "UTC",
-    "uki": false,
-    "version": "3.0.1"
+            "start": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "MiB",
+              "value": 1
+            },
+            "status": "create",
+            "type": "primary"
+          },
+          {
+            "btrfs": [],
+            "dev_path": null,
+            "flags": [],
+            "fs_type": "btrfs",
+            "mount_options": ["compress=zstd"],
+            "mountpoint": "/",
+            "obj_id": "aca3e65e-2b3e-455b-84cc-37a727e10e50",
+            "size": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "GiB",
+              "value": 50
+            },
+            "start": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "B",
+              "value": 1074790400
+            },
+            "status": "create",
+            "type": "primary"
+          },
+          {
+            "btrfs": [],
+            "dev_path": null,
+            "flags": ["linux-home"],
+            "fs_type": "btrfs",
+            "mount_options": ["compress=zstd"],
+            "mountpoint": "/home",
+            "obj_id": "8f166a45-96e2-4b82-97ec-051604c1d9ca",
+            "size": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "B",
+              "value": 945441955840
+            },
+            "start": {
+              "sector_size": {
+                "unit": "B",
+                "value": 512
+              },
+              "unit": "B",
+              "value": 54761881600
+            },
+            "status": "create",
+            "type": "primary"
+          }
+        ],
+        "wipe": true
+      }
+    ]
+  },
+  "disk_encryption": null,
+  "hostname": "archlinux",
+  "kernels": ["linux"],
+  "locale_config": {
+    "kb_layout": "us",
+    "sys_enc": "UTF-8",
+    "sys_lang": "en_US"
+  },
+  "mirror_config": {
+    "custom_mirrors": [],
+    "mirror_regions": {
+      "Brazil": [
+        "{\"url\":\"http://archlinux.c3sl.ufpr.br/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/c3sl.ufpr.br/129/\",\"delay\":885,\"last_sync\":\"2024-12-01T13:59:49Z\",\"duration_avg\":0.7613531852310355,\"duration_stddev\":0.7747936562880418,\"completion_pct\":1.0,\"score\":2}",
+        "{\"url\":\"https://archlinux.c3sl.ufpr.br/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/c3sl.ufpr.br/2078/\",\"delay\":918,\"last_sync\":\"2024-12-01T13:59:49Z\",\"duration_avg\":1.1420014134862206,\"duration_stddev\":0.72952540016686,\"completion_pct\":1.0,\"score\":2}",
+        "{\"url\":\"http://br.mirrors.cicku.me/archlinux/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/cicku.me/2118/\",\"delay\":724,\"last_sync\":\"2024-12-01T13:56:48Z\",\"duration_avg\":0.8620805753902956,\"duration_stddev\":0.3466340944996994,\"completion_pct\":1.0,\"score\":1}",
+        "{\"url\":\"https://br.mirrors.cicku.me/archlinux/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/cicku.me/2119/\",\"delay\":750,\"last_sync\":\"2024-12-01T13:56:48Z\",\"duration_avg\":1.058873475952582,\"duration_stddev\":0.38436553840963733,\"completion_pct\":1.0,\"score\":2}",
+        "{\"url\":\"http://mirror.ufam.edu.br/archlinux/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/ufam.edu.br/1094/\",\"delay\":4224,\"last_sync\":\"2024-12-01T12:55:29Z\",\"duration_avg\":1.977062183356135,\"duration_stddev\":2.275660278808169,\"completion_pct\":0.9034090909090909,\"score\":6}",
+        "{\"url\":\"http://mirror.ufscar.br/archlinux/\",\"protocol\":\"http\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/ufscar.br/1171/\",\"delay\":66,\"last_sync\":\"2024-12-01T14:06:01Z\",\"duration_avg\":0.5744196000424299,\"duration_stddev\":0.4133113143294997,\"completion_pct\":1.0,\"score\":1}",
+        "{\"url\":\"https://mirror.ufscar.br/archlinux/\",\"protocol\":\"https\",\"active\":true,\"country\":\"Brazil\",\"country_code\":\"BR\",\"isos\":true,\"ipv4\":true,\"ipv6\":true,\"details\":\"https://archlinux.org/mirrors/ufscar.br/1840/\",\"delay\":78,\"last_sync\":\"2024-12-01T14:06:01Z\",\"duration_avg\":0.7491046434099023,\"duration_stddev\":0.28792237421700695,\"completion_pct\":1.0,\"score\":1}"
+      ]
+    }
+  },
+  "network_config": {
+    "type": "nm"
+  },
+  "ntp": true,
+  "packages": [
+    "7zip",
+    "acpilight",
+    "arc-gtk-theme",
+    "atuin",
+    "autorandr",
+    "baobab",
+    "base-devel",
+    "bat",
+    "blueman",
+    "bluetui",
+    "bluez",
+    "bolt",
+    "brightnessctl",
+    "btop",
+    "clang",
+    "code",
+    "copyq",
+    "croc",
+    "cups-pdf",
+    "dbeaver",
+    "distrobox",
+    "docker",
+    "docker-buildx",
+    "docker-compose",
+    "dunst",
+    "emacs",
+    "eza",
+    "fastfetch",
+    "fd",
+    "flameshot",
+    "fwupd",
+    "fzf",
+    "git",
+    "git-delta",
+    "go",
+    "go-yq",
+    "grim",
+    "gsimplecal",
+    "hledger",
+    "hledger-ui",
+    "hledger-web",
+    "hypridle",
+    "hyprland",
+    "hyprlock",
+    "i3-wm",
+    "i3status",
+    "ijq",
+    "imv",
+    "inotify-tools",
+    "intel-media-driver",
+    "inter-font",
+    "jq",
+    "k9s",
+    "kitty",
+    "lazygit",
+    "ledger",
+    "less",
+    "lib32-pipewire",
+    "libva-intel-driver",
+    "lxappearance",
+    "lxsession",
+    "man-db",
+    "man-pages",
+    "mesa",
+    "mpv",
+    "neovim",
+    "network-manager-applet",
+    "nitrogen",
+    "noto-fonts",
+    "noto-fonts-emoji",
+    "nwg-look",
+    "obsidian",
+    "os-prober",
+    "ouch",
+    "p7zip",
+    "pacman-contrib",
+    "pavucontrol",
+    "picom",
+    "playerctl",
+    "pnpm",
+    "polybar",
+    "postgresql-libs",
+    "qpwgraph",
+    "ripgrep",
+    "rofi-calc",
+    "rofi-wayland",
+    "satty",
+    "slurp",
+    "socat",
+    "starship",
+    "steam",
+    "stow",
+    "sxiv",
+    "syncthing",
+    "tailscale",
+    "terminus-font",
+    "tldr",
+    "tmux",
+    "translate-shell",
+    "transmission-gtk",
+    "trash-cli",
+    "ttc-iosevka",
+    "ttf-dejavu",
+    "ttf-font-awesome",
+    "ttf-inconsolata",
+    "ttf-inconsolata-nerd",
+    "ttf-iosevka-nerd",
+    "ttf-jetbrains-mono",
+    "ttf-jetbrains-mono-nerd",
+    "ttf-nerd-fonts-symbols",
+    "ttf-nerd-fonts-symbols-mono",
+    "ttf-noto-nerd",
+    "ttf-roboto",
+    "ttf-roboto-mono-nerd",
+    "ttf-ubuntu-font-family",
+    "udiskie",
+    "ueberzugpp",
+    "unzip",
+    "uv",
+    "vim",
+    "vulkan-intel",
+    "wl-clipboard",
+    "xclip",
+    "xf86-input-libinput",
+    "xorg-xinput",
+    "xorg-xkill",
+    "xorg-xprop",
+    "xorg-xsetroot",
+    "yazi",
+    "yq",
+    "yt-dlp",
+    "zoxide",
+    "zsh"
+  ],
+  "parallel downloads": 5,
+  "profile_config": {
+    "greeter": "lightdm-gtk-greeter",
+    "profile": {
+      "custom_settings": {
+        "Bspwm": {}
+      },
+      "details": ["Bspwm"],
+      "main": "Desktop"
+    }
+  },
+  "save_config": null,
+  "swap": true,
+  "timezone": "UTC",
+  "uki": false,
+  "version": "3.0.1"
 }
