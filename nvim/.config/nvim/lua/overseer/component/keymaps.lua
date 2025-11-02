@@ -9,16 +9,16 @@ return {
 
         vim.keymap.set('n', 'q', '<c-w>q', { buffer = task:get_bufnr() })
 
-        vim.keymap.set('n', 'd', function()
+        vim.keymap.set('n', 'D', function()
           task:dispose(true)
           vim.cmd 'q'
         end, { buffer = task:get_bufnr() })
 
-        vim.keymap.set('n', 'r', function()
+        vim.keymap.set('n', 'R', function()
           task:restart(true)
         end, { buffer = task:get_bufnr() })
 
-        vim.keymap.set('n', 'w', function()
+        vim.keymap.set('n', 'W', function()
           if task:get_component 'restart_on_save' then
             task:remove_component 'restart_on_save'
             vim.notify('Auto Restart Disabled', vim.log.levels.INFO, { title = 'Overseer' })

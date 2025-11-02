@@ -26,7 +26,7 @@ require('snacks').setup {
       { icon = ' ', title = 'Project Recent Files ', file = vim.fn.fnamemodify('.', ':~') },
       { section = 'recent_files', cwd = true, indent = 2, padding = 1 },
       { icon = ' ', title = 'Recent Files', section = 'recent_files', indent = 2, padding = 1 },
-      -- { section = 'startup' },
+      { section = 'startup', enabled = package.loaded.lazy ~= nil },
     },
   },
   indent = { enabled = true, animate = { enabled = false } },
