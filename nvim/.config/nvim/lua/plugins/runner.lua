@@ -63,7 +63,25 @@ vim.api.nvim_create_user_command('Grep', function(params)
   task:start()
 end, { nargs = '*', bang = true, complete = 'file' })
 
-vim.cmd.cnoreabbrev 'OS OverseerShell'
+vim.api.nvim_create_user_command('OS', function(params)
+  if params.args and params.args ~= '' then
+    local task = require('overseer.task').new { cmd = params.args }
+    task:add_component { 'keymaps' }
+    if not params.bang then
+      task:start()
+    end
+  else
+    vim.ui.input({ prompt = 'command', completion = 'shellcmdline' }, function(cmd)
+      if cmd then
+        local task = require('overseer.task').new { cmd = cmd }
+        task:add_component { 'keymaps' }
+        if not params.bang then
+          task:start()
+        end
+      end
+    end)
+  end
+end, { nargs = '*', bang = true, complete = 'shellcmdline' })
 
 vim.pack.add {
   { src = 'https://github.com/stevearc/overseer.nvim', version = 'stevearc-rewrite' },
@@ -84,8 +102,7 @@ require('overseer').setup {
 Map {
   '<leader>rr',
   function()
-    local overseer = require 'overseer'
-    overseer.run_task({ autostart = false }, function(task)
+    require('overseer').run_task({ autostart = false }, function(task)
       if task then
         task:add_component { 'keymaps' }
         task:start()
@@ -95,26 +112,12 @@ Map {
   end,
   desc = 'Overseer Run',
 }
-Map { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Overseer Toggle' }
-Map { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Overseer Task Action' }
+Map { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Toggle Task List' }
+Map { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Task Action' }
 Map {
-  '<leader>rlv',
+  '<leader>rv',
   function()
     action_on_last_task 'open vsplit'
   end,
-  desc = 'Overseer Open vsplit',
-}
-Map {
-  '<leader>rld',
-  function()
-    action_on_last_task 'dispose'
-  end,
-  desc = 'Overseer Dispose',
-}
-Map {
-  '<leader>rlr',
-  function()
-    action_on_last_task 'restart'
-  end,
-  desc = 'Overseer Restart',
+  desc = "Open last task's output in vsplit",
 }
