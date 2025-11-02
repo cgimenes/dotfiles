@@ -26,7 +26,7 @@
       "src": "https://github.com/nvim-zh/colorful-winsep.nvim"
     },
     "conform.nvim": {
-      "rev": "9fd3d5e",
+      "rev": "02736cf",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
@@ -107,7 +107,7 @@
       "src": "https://github.com/webhooked/kanso.nvim"
     },
     "kulala.nvim": {
-      "rev": "9a9308b",
+      "rev": "fec6cf1",
       "src": "https://github.com/mistweaverco/kulala.nvim"
     },
     "lazydev.nvim": {
@@ -243,7 +243,7 @@
       "src": "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
     },
     "octo.nvim": {
-      "rev": "1fabe29",
+      "rev": "267743a",
       "src": "https://github.com/pwntester/octo.nvim"
     },
     "oh-lucy.nvim": {
@@ -300,7 +300,7 @@
       "src": "https://github.com/folke/sidekick.nvim"
     },
     "snacks.nvim": {
-      "rev": "7e2d710",
+      "rev": "bd3c1a0",
       "src": "https://github.com/folke/snacks.nvim"
     },
     "solarized-osaka.nvim": {
