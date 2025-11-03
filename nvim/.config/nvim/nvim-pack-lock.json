@@ -26,7 +26,7 @@
       "src": "https://github.com/nvim-zh/colorful-winsep.nvim"
     },
     "conform.nvim": {
-      "rev": "02736cf",
+      "rev": "26c02e1",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "copilot.lua": {
@@ -107,7 +107,7 @@
       "src": "https://github.com/webhooked/kanso.nvim"
     },
     "kulala.nvim": {
-      "rev": "fec6cf1",
+      "rev": "c328aeb",
       "src": "https://github.com/mistweaverco/kulala.nvim"
     },
     "lazydev.nvim": {
@@ -207,7 +207,7 @@
       "src": "https://github.com/suketa/nvim-dap-ruby"
     },
     "nvim-dap-view": {
-      "rev": "8f50aca",
+      "rev": "8972e4f",
       "src": "https://github.com/igorlfs/nvim-dap-view"
     },
     "nvim-dap-virtual-text": {
@@ -243,7 +243,7 @@
       "src": "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
     },
     "octo.nvim": {
-      "rev": "267743a",
+      "rev": "5c39f65",
       "src": "https://github.com/pwntester/octo.nvim"
     },
     "oh-lucy.nvim": {
@@ -292,7 +292,7 @@
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "schemastore.nvim": {
-      "rev": "8d37e8e",
+      "rev": "1b894a4",
       "src": "https://github.com/b0o/schemastore.nvim"
     },
     "sidekick.nvim": {
@@ -300,7 +300,7 @@
       "src": "https://github.com/folke/sidekick.nvim"
     },
     "snacks.nvim": {
-      "rev": "bd3c1a0",
+      "rev": "3893cca",
       "src": "https://github.com/folke/snacks.nvim"
     },
     "solarized-osaka.nvim": {
@@ -353,7 +353,7 @@
       "src": "https://github.com/altermo/ultimate-autopair.nvim"
     },
     "vague.nvim": {
-      "rev": "5689afd",
+      "rev": "dba2805",
       "src": "https://github.com/vague2k/vague.nvim"
     },
     "vim-abolish": {
@@ -433,7 +433,7 @@
       "src": "https://github.com/folke/which-key.nvim"
     },
     "yazi.nvim": {
-      "rev": "2538c67",
+      "rev": "025824a",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
