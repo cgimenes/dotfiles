@@ -21,4 +21,4 @@ vim.g.db_ui_table_helpers = {
     Explain = 'EXPLAIN ANALYZE {last_query}',
   },
 }
-Map { '<leader>D', '<cmd>tabnew<cr><cmd>silent Dotenv<cr><cmd>DBUI<cr>', desc = 'Open DBUI in a new tab' }
+Map { '<leader>D', '<cmd>tabnew<cr><cmd>silent Dotenv<cr><cmd>DBUI<cr>', desc = 'Open DBUI' }

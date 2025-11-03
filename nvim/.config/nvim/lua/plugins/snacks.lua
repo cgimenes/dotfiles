@@ -148,7 +148,7 @@ Map {
       },
     }
   end,
-  desc = 'Explorer',
+  desc = 'Toggle Explorer',
 }
 Map {
   '<leader>:',

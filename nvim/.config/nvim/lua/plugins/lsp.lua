@@ -43,19 +43,26 @@ vim.pack.add { 'https://github.com/Bekaboo/dropbar.nvim' }
 
 -- Setup some LSP features
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+  group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
-    local map = function(keys, func, desc, mode)
-      mode = mode or 'n'
-      vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+    local map = function(opts)
+      local mode = opts.mode or 'n'
+      local keys = opts[1]
+      local func = opts[2]
+      local desc = opts.desc or nil
+      vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
     end
 
-    map('grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', 'Goto Definition')
-    map('<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', 'Incoming Calls')
-    map('grn', function()
-      vim.lsp.buf.rename()
-      vim.cmd 'silent wa'
-    end, 'Rename')
+    map { 'grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', desc = 'Goto Definition' }
+    map { '<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', desc = 'Incoming Calls' }
+    map {
+      'grn',
+      function()
+        vim.lsp.buf.rename()
+        vim.cmd 'silent wa'
+      end,
+      desc = 'Rename',
+    }
 
     -- The following two autocommands are used to highlight references of the
     -- word under your cursor when your cursor rests there for a little while.
@@ -77,7 +84,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
 
       vim.api.nvim_create_autocmd('LspDetach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+        group = vim.api.nvim_create_augroup('lsp-detach', { clear = true }),
         callback = function(event)
           vim.lsp.buf.clear_references()
           vim.api.nvim_clear_autocmds { group = 'highlight-references', buffer = event.buf }

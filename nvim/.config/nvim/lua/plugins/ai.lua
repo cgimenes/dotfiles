@@ -50,14 +50,14 @@ Map {
     require('sidekick.cli').send { msg = '{this}' }
   end,
   mode = { 'x', 'n' },
-  desc = 'Send This',
+  desc = 'Sidekick Send This',
 }
 Map {
   '<leader>af',
   function()
     require('sidekick.cli').send { msg = '{file}' }
   end,
-  desc = 'Send File',
+  desc = 'Sidekick Send File',
 }
 Map {
   '<leader>av',
@@ -65,7 +65,7 @@ Map {
     require('sidekick.cli').send { msg = '{selection}' }
   end,
   mode = { 'x' },
-  desc = 'Send Visual Selection',
+  desc = 'Sidekick Send Visual Selection',
 }
 Map {
   '<leader>ap',

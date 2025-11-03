@@ -18,6 +18,7 @@ require('which-key').setup {
     { '<leader>l', group = 'LSP' },
     { '<leader>o', group = 'Options' },
     { '<leader>O', group = 'Obsidian' },
+    { '<leader>oa', group = 'Autoformatting' },
     { '<leader>oP', group = 'Profiler' },
     { '<leader>p', group = 'Paste' },
     { '<leader>r', group = 'Runner' },

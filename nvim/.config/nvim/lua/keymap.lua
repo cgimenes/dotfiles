@@ -32,7 +32,6 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>', { desc = 'New Buffer' })
 vim.keymap.set('n', '<leader>bd', '<cmd>windo diffthis<cr>', { desc = 'Diff' })
 vim.keymap.set('n', '<leader>bs', '<cmd>silent wa!<cr>', { desc = 'Save file' })
-vim.keymap.set('n', '<leader>w', '<C-w>')
 
 vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', '<', '<gv')
@@ -40,9 +39,9 @@ vim.keymap.set('v', '<', '<gv')
 vim.keymap.set('v', '$', 'g_')
 
 -- Better pasting experience
-vim.keymap.set('v', '<leader>pp', '"_dP', { desc = 'Paste without yanking' })
-vim.keymap.set('n', '<leader>pe', '$p', { desc = 'Paste at the end of current line' })
-vim.keymap.set('n', '<leader>pE', '$pa', { desc = 'Paste at the end of current line and enter insert mode' })
+vim.keymap.set('v', '<leader>pp', '"_dP', { desc = 'Without yanking' })
+vim.keymap.set('n', '<leader>pe', '$p', { desc = 'End of current line' })
+vim.keymap.set('n', '<leader>pE', '$pa', { desc = 'End of current line and enter insert mode' })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
