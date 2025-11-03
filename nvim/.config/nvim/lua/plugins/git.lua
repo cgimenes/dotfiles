@@ -69,8 +69,11 @@ require('octo').setup {
   picker = 'snacks',
   use_local_fs = true,
   file_panel = { size = 5 },
+  reviews = { auto_show_threads = false },
 }
-Map { '<leader>gp', '<cmd>Octo pr list<cr>', desc = 'List GitHub PRs' }
+Map { '<leader>gpl', '<cmd>Octo pr list<cr>', desc = 'List' }
+Map { '<leader>gpr', '<cmd>Octo review<cr>', desc = 'Review' }
+Map { '<leader>gpt', '<cmd>Octo review thread<cr>', desc = 'Show Thread' }
 
 -- Conflicts
 vim.pack.add { {
