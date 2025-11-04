@@ -65,16 +65,3 @@ vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', 'BufEnter' }, {
     end
   end,
 })
-
--- Keep cursor centered when in diff mode (help with Octo.nvim sending the cursor some lines back after comments)
-vim.api.nvim_create_autocmd('OptionSet', {
-  group = vim.api.nvim_create_augroup('DiffScrollOff', { clear = true }),
-  callback = function()
-    if vim.opt.diff:get() then
-      vim.opt_local.scrolloff = 100
-    else
-      vim.opt_local.scrolloff = 4
-    end
-  end,
-  pattern = 'diff',
-})
