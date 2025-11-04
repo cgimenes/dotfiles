@@ -53,7 +53,6 @@ require('colorful-winsep').setup {
 vim.pack.add { 'https://github.com/folke/edgy.nvim' }
 require('edgy').setup {
   animate = { enabled = false },
-  -- exit_when_last = true,
   left = {
     {
       title = 'Find and Replace',
@@ -64,6 +63,11 @@ require('edgy').setup {
       title = 'DBUI',
       ft = 'dbui',
       size = { width = 0.20 },
+    },
+    {
+      title = 'UndoTree',
+      ft = 'nvim-undotree',
+      size = { width = 0.30 },
     },
   },
 }
