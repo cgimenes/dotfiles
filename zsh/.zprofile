@@ -5,7 +5,6 @@ export TERMINAL="kitty"
 export BROWSER="brave"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export MACOS=true
-	export BROWSER="vivaldi"
 fi
 export READER="zathura"
 export FILE="yazi"

@@ -23,12 +23,10 @@ fi
 
 if [ -d "$HOME/dev/google-cloud-sdk/" ]; then
 	export PATH=$PATH:$HOME/dev/google-cloud-sdk/bin
-	source $HOME/dev/google-cloud-sdk/completion.zsh.inc
 fi
 
 if [ -d "/opt/homebrew/share/google-cloud-sdk/" ]; then
 	export PATH=$PATH:/opt/homebrew/share/google-cloud-sdk/bin
-	source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
 fi
 
 if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
