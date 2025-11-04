@@ -9,73 +9,12 @@ local dap = require 'dap'
 
 require('overseer').enable_dap()
 
-dap.adapters['codelldb'] = {
-  type = 'server',
-  port = '${port}',
-  executable = {
-    command = vim.fn.stdpath 'data' .. '/mason/bin/codelldb',
-    args = { '--port', '${port}' },
-  },
-}
-
-dap.adapters['pwa-node'] = {
-  type = 'server',
-  host = 'localhost',
-  port = '${port}',
-  executable = {
-    command = 'node',
-    args = {
-      vim.fn.stdpath 'data' .. '/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js',
-      '${port}',
-    },
-  },
-}
-
-dap.configurations['typescript'] = {
-  -- {
-  --   name = 'Launch Nest.js',
-  --   type = 'pwa-node',
-  --   request = 'launch',
-  --   program = '${workspaceFolder}/src/main.ts',
-  --   cwd = '${workspaceFolder}',
-  --   protocol = 'inspector',
-  --   runtimeArgs = { '--nolazy', '-r', 'ts-node/register', '-r', 'tsconfig-paths/register' },
-  --   sourceMaps = true,
-  --   envFile = '${workspaceFolder}/.env',
-  --   console = 'integratedTerminal',
-  -- },
-  {
-    name = 'Attach to node process',
-    type = 'pwa-node',
-    request = 'attach',
-    processId = require('dap.utils').pick_process,
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-  },
-}
-
-dap.configurations['php'] = {
-  {
-    type = 'php',
-    request = 'launch',
-    name = 'Listen for Xdebug',
-    log = true,
-    port = 9003,
-    pathMappings = {
-      ['/application'] = '${workspaceFolder}',
-    },
-  },
-}
-
-require('dap-go').setup {
-  delve = {
-    -- On Windows delve must be run attached or it crashes.
-    -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
-    detached = vim.fn.has 'win32' == 0,
-  },
-}
+require('dap-go').setup()
 require('dap-ruby').setup()
 require('dap-python').setup 'uv'
+require('debugger.php').setup()
+require('debugger.javascript').setup()
+require('debugger.c').setup()
 
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
 vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })
@@ -125,13 +64,6 @@ Map {
     require('dap').terminate()
   end,
   desc = 'Terminate',
-}
-Map {
-  '<leader>da',
-  function()
-    require('dap').continue { before = get_args }
-  end,
-  desc = 'Run with Args',
 }
 Map {
   '<leader>db',
