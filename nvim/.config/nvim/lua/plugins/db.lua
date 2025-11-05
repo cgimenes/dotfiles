@@ -19,6 +19,7 @@ vim.g.db_ui_table_helpers = {
   postgresql = {
     Count = 'SELECT COUNT(*) FROM {optional_schema}{table}',
     Explain = 'EXPLAIN ANALYZE {last_query}',
+    ['Drop Table'] = 'DROP TABLE {table}',
   },
 }
 Map { '<leader>D', '<cmd>tabnew<cr><cmd>silent Dotenv<cr><cmd>DBUI<cr>', desc = 'Open DBUI' }
