@@ -113,7 +113,7 @@ Map {
   mode = { 'n', 'v' },
 }
 Map {
-  '<leader>/',
+  '<leader>?',
   function()
     Snacks.picker.pick()
   end,
@@ -308,6 +308,13 @@ Map {
     }
   end,
   desc = 'Filetypes',
+}
+Map {
+  '<leader>/',
+  function()
+    Snacks.scratch()
+  end,
+  desc = 'Toggle Scratch',
 }
 -- LSP
 Map {
