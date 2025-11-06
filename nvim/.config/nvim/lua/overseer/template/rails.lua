@@ -3,15 +3,17 @@ return {
   generator = function()
     local scripts = {
       'bin/dev',
+      'bin/bundle install',
+      'bin/rails db:migrate',
     }
     local ret = {}
-    for _, filename in ipairs(scripts) do
+    for _, script in ipairs(scripts) do
       if vim.fn.filereadable 'bin/dev' == 1 then
         table.insert(ret, {
-          name = 'rails: ' .. filename,
+          name = 'rails: ' .. script,
           builder = function()
             return {
-              cmd = { filename },
+              cmd = { script },
             }
           end,
         })
