@@ -6,7 +6,7 @@ vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 require('snacks').setup {
   bigfile = {
     enabled = true,
-    size = 4 * 1024 * 1024, -- 4.0MB
+    size = 5 * 1024 * 1024, -- 4.0MB
     line_length = 1000, -- average line length (useful for minified files)
   },
   gitbrowse = { what = 'file' },
