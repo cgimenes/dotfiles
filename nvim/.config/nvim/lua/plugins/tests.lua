@@ -15,14 +15,12 @@ vim.pack.add {
   'https://github.com/nvim-neotest/neotest-python',
   'https://github.com/nvim-neotest/neotest-jest',
   'https://github.com/zidhuss/neotest-minitest',
-  'https://github.com/preservim/vimux',
   'https://github.com/vim-test/vim-test',
   'https://github.com/nvim-neotest/neotest',
 }
 
-vim.cmd "let test#strategy = 'vimux'"
+vim.cmd "let test#strategy = 'toggleterm'"
 vim.cmd 'let test#echo_command = 0'
-vim.g.VimuxCloseOnExit = 1
 
 local lazyMap = LazyMap {
   'neotest',
@@ -157,9 +155,4 @@ lazyMap {
     require('neotest').summary.toggle()
   end,
   desc = 'Show UI',
-}
-lazyMap {
-  '<leader>tq',
-  '<cmd>VimuxCloseRunner<cr>',
-  desc = 'Test Quit',
 }
