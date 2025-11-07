@@ -6,11 +6,6 @@ alias tn='tmux new-session'
 alias gdsn='gds --name-only'
 alias lzg='lazygit'
 alias gdnd='git -c pager.diff="less -R" diff'
-# Git clone and add to zoxide:
-alias ggp='ghq get -p'
-alias ggps='ghq get -p --shallow'
-alias ggs='ghq get --shallow'
-alias gz='ghq list | xargs -I {} zoxide add -s 0 $(ghq root)/{}'
 
 # Vim/Nvim
 alias vim='nvim'
