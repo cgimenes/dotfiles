@@ -112,12 +112,19 @@ Map {
   end,
   desc = 'Overseer Run',
 }
-Map { '<leader>rt', '<cmd>OverseerToggle<cr>', desc = 'Toggle Task List' }
+Map { '<leader>rl', '<cmd>OverseerToggle<cr>', desc = 'Toggle Task List' }
 Map { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Task Action' }
 Map {
   '<leader>rv',
   function()
     action_on_last_task 'open vsplit'
   end,
-  desc = "Open last task's output in vsplit",
+  desc = "Open last task's output in a vsplit",
+}
+Map {
+  '<leader>rt',
+  function()
+    action_on_last_task 'open tab'
+  end,
+  desc = "Open last task's output in a tab",
 }
