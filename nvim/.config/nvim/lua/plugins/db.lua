@@ -15,11 +15,13 @@ vim.g.db_ui_disable_mappings_sql = 1
 vim.g.db_ui_disable_mappings_javascript = 1
 vim.g.db_ui_execute_on_save = 0
 vim.g.db_ui_hide_schemas = { 'pg_catalog', 'pg_toast' }
+local common_helpers = {
+  Count = 'SELECT COUNT(*) FROM {optional_schema}{table}',
+  Explain = 'EXPLAIN ANALYZE {last_query}',
+  ['Drop Table'] = 'DROP TABLE {table}',
+}
 vim.g.db_ui_table_helpers = {
-  postgresql = {
-    Count = 'SELECT COUNT(*) FROM {optional_schema}{table}',
-    Explain = 'EXPLAIN ANALYZE {last_query}',
-    ['Drop Table'] = 'DROP TABLE {table}',
-  },
+  postgresql = common_helpers,
+  mysql = common_helpers,
 }
 Map { '<leader>D', '<cmd>tabnew<cr><cmd>silent Dotenv<cr><cmd>DBUI<cr>', desc = 'Open DBUI' }

@@ -1,4 +1,4 @@
-local function action_on_last_task(name)
+vim.api.nvim_create_user_command('OverseerLastTaskAction', function(params)
   local overseer = require 'overseer'
   local task_list = require 'overseer.task_list'
   local tasks = overseer.list_tasks {
@@ -15,9 +15,12 @@ local function action_on_last_task(name)
     vim.notify('No tasks found', vim.log.levels.WARN)
   else
     local most_recent = tasks[1]
-    overseer.run_action(most_recent, name)
+    overseer.run_action(most_recent, params.args)
   end
-end
+end, {
+  desc = 'Run action on last Overseer task',
+  nargs = '*',
+})
 
 vim.api.nvim_create_user_command('Make', function(params)
   -- Insert args at the '$*' in the makeprg
@@ -114,17 +117,5 @@ Map {
 }
 Map { '<leader>rl', '<cmd>OverseerToggle<cr>', desc = 'Toggle Task List' }
 Map { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Task Action' }
-Map {
-  '<leader>rv',
-  function()
-    action_on_last_task 'open vsplit'
-  end,
-  desc = "Open last task's output in a vsplit",
-}
-Map {
-  '<leader>rt',
-  function()
-    action_on_last_task 'open tab'
-  end,
-  desc = "Open last task's output in a tab",
-}
+Map { '<leader>rv', '<cmd>OverseerLastTaskAction open vsplit<cr>', desc = "Open last task's output in a vsplit" }
+Map { '<leader>rt', '<cmd>OverseerLastTaskAction open tab<cr>', desc = "Open last task's output in a tab" }
