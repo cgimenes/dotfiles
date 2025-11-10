@@ -17,10 +17,7 @@ vim.api.nvim_create_user_command('OverseerLastTaskAction', function(params)
     local most_recent = tasks[1]
     overseer.run_action(most_recent, params.args)
   end
-end, {
-  desc = 'Run action on last Overseer task',
-  nargs = '*',
-})
+end, { desc = 'Run action on last Overseer task', nargs = '*' })
 
 vim.api.nvim_create_user_command('Make', function(params)
   -- Insert args at the '$*' in the makeprg
@@ -36,11 +33,7 @@ vim.api.nvim_create_user_command('Make', function(params)
     },
   }
   task:start()
-end, {
-  desc = 'Run your makeprg as an Overseer task',
-  nargs = '*',
-  bang = true,
-})
+end, { desc = 'Run your makeprg as an Overseer task', nargs = '*', bang = true })
 
 vim.api.nvim_create_user_command('Grep', function(params)
   -- Insert args at the '$*' in the grepprg

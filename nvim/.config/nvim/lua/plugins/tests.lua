@@ -1,158 +1,51 @@
-local vim_test_file_types = {
-  ['php'] = true,
-}
-local function use_vim_test()
-  if vim_test_file_types[vim.bo.filetype] then
-    return true
-  end
-  return false
+vim.pack.add { 'https://github.com/vim-test/vim-test' }
+
+local function OverseerStrategy(cmd)
+  local task = require('overseer.task').new {
+    cmd = cmd,
+    components = {
+      'keymaps',
+      'on_exit_set_status',
+      { 'on_output_quickfix', open_on_exit = 'failure' },
+      'unique',
+    },
+  }
+  task:start()
 end
 
-vim.pack.add {
-  'https://github.com/nvim-neotest/nvim-nio',
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/nvim-neotest/neotest-vim-test',
-  'https://github.com/nvim-neotest/neotest-python',
-  'https://github.com/nvim-neotest/neotest-jest',
-  'https://github.com/zidhuss/neotest-minitest',
-  'https://github.com/vim-test/vim-test',
-  'https://github.com/nvim-neotest/neotest',
-}
+vim.g['test#custom_strategies'] = { overseer = OverseerStrategy }
+vim.g['test#strategy'] = 'overseer'
+vim.g['test#echo_command'] = 0
 
-vim.cmd "let test#strategy = 'toggleterm'"
-vim.cmd 'let test#echo_command = 0'
-
-local lazyMap = LazyMap {
-  'neotest',
-  after = function()
-    require('neotest').setup {
-      output = {
-        open_on_run = true,
-      },
-      status = { virtual_text = true },
-      diagnostic = { enabled = false },
-      quickfix = {
-        open = function()
-          vim.cmd 'copen'
-        end,
-      },
-      adapters = {
-        require 'neotest-minitest',
-        require 'neotest-python' {
-          dap = { justMyCode = false },
-        },
-        require 'neotest-jest' {
-          jestCommand = 'npm test --',
-          jestConfigFile = 'custom.jest.config.ts',
-          env = { CI = true },
-          cwd = function(path)
-            return vim.fn.getcwd()
-          end,
-        },
-      },
-      summary = {
-        animated = false,
-      },
-      icons = {
-        expanded = ' ',
-        non_collapsible = '',
-        collapsed = ' ',
-      },
-    }
-    local neotest_ns = vim.api.nvim_create_namespace 'neotest'
-    vim.diagnostic.config({
-      virtual_text = {
-        format = function(diagnostic)
-          -- Replace newline and tab characters with space for more compact diagnostics
-          local message = diagnostic.message:gsub('\n', ' '):gsub('\t', ' '):gsub('%s+', ' '):gsub('^%s+', '')
-          return message
-        end,
-      },
-    }, neotest_ns)
-  end,
-}
-lazyMap {
+Map {
   '<leader>tn',
   function()
     vim.api.nvim_command 'silent! wa'
-    if use_vim_test() then
-      vim.api.nvim_command 'TestNearest'
-    else
-      require('neotest').run.run()
-    end
+    vim.api.nvim_command 'TestNearest'
   end,
   desc = 'Test Nearest',
 }
-lazyMap {
+Map {
   '<leader>tf',
   function()
     vim.api.nvim_command 'silent! wa'
-    if use_vim_test() then
-      vim.api.nvim_command 'TestFile'
-    else
-      require('neotest').run.run(vim.fn.expand '%')
-    end
+    vim.api.nvim_command 'TestFile'
   end,
   desc = 'Test File',
 }
-lazyMap {
+Map {
   '<leader>ts',
   function()
     vim.api.nvim_command 'silent! wa'
-    if use_vim_test() then
-      vim.api.nvim_command 'TestSuite'
-    else
-      require('neotest').run.run { suite = true }
-    end
+    vim.api.nvim_command 'TestSuite'
   end,
   desc = 'Test Suite',
 }
-lazyMap {
+Map {
   '<leader>tl',
   function()
     vim.api.nvim_command 'silent! wa'
-    if use_vim_test() then
-      vim.api.nvim_command 'TestLast'
-    else
-      require('neotest').run.run_last()
-    end
+    vim.api.nvim_command 'TestLast'
   end,
   desc = 'Test Last',
-}
-lazyMap {
-  '<leader>tdn',
-  function()
-    vim.api.nvim_command 'silent! wa'
-    require('neotest').run.run { strategy = 'dap' }
-  end,
-  desc = 'Debug Nearest',
-}
-lazyMap {
-  '<leader>tdl',
-  function()
-    vim.api.nvim_command 'silent! wa'
-    require('neotest').run.run_last { strategy = 'dap' }
-  end,
-  desc = 'Debug Last',
-}
-lazyMap {
-  '<leader>to',
-  function()
-    require('neotest').output.open { enter = true, auto_close = true }
-  end,
-  desc = 'Show Output',
-}
-lazyMap {
-  '<leader>tO',
-  function()
-    require('neotest').output_panel.open()
-  end,
-  desc = 'Show Output Panel',
-}
-lazyMap {
-  '<leader>tu',
-  function()
-    require('neotest').summary.toggle()
-  end,
-  desc = 'Show UI',
 }
