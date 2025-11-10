@@ -18,6 +18,23 @@ require('gitsigns').setup {
 
     vim.keymap.set('n', '<leader>gb', gitsigns.blame, { buffer = bufnr, desc = 'Git Blame' })
     vim.keymap.set('n', '<leader>hp', gitsigns.preview_hunk_inline, { buffer = bufnr, desc = 'Preview hunk' })
+    vim.keymap.set('n', '<leader>hy', function()
+      local cache = require('gitsigns.cache').cache
+      local Hunks = require 'gitsigns.hunks'
+
+      local bcache = cache[bufnr]
+      if not bcache then
+        return
+      end
+
+      local hunk, _ = bcache:get_cursor_hunk()
+      if not hunk then
+        return
+      end
+
+      local patch = Hunks.patch_lines(hunk, vim.bo[bufnr].fileformat)
+      vim.fn.setreg('+', patch)
+    end, { buffer = bufnr, desc = 'Yank hunk' })
     vim.keymap.set('n', '<leader>hS', gitsigns.stage_buffer, { buffer = bufnr, desc = 'Stage buffer' })
     vim.keymap.set('n', '<leader>hs', gitsigns.stage_hunk, { buffer = bufnr, desc = 'Stage hunk' })
     vim.keymap.set('n', '<leader>hr', gitsigns.reset_hunk, { buffer = bufnr, desc = 'Reset hunk' })
