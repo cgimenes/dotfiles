@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- Use q to close certain windows
 vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Use q to close certain windows',
   group = vim.api.nvim_create_augroup('CloseWithQ', { clear = true }),
   command = [[nnoremap <buffer> q <cmd>q<cr>]],
   pattern = {
@@ -17,41 +18,24 @@ vim.api.nvim_create_autocmd('FileType', {
     'gitsigns-blame',
     'grug-far',
     'help',
-    'neotest-output',
-    'neotest-output-panel',
-    'neotest-summary',
     'qf',
-    'spectre_panel',
     'dap-float',
     'nvim-undotree',
   },
 })
 
--- Close quickfix menu after selecting choice
-vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('quickfix-close-with-g<CR>', { clear = true }),
-  command = [[nnoremap <buffer> g<CR> <CR>:cclose<CR>]],
-  pattern = { 'qf' },
-})
-
 -- Terminal keymap
 vim.api.nvim_create_autocmd('TermOpen', {
+  desc = 'Terminal keymap',
   group = vim.api.nvim_create_augroup('custom-terminal', { clear = true }),
   callback = function(event)
     vim.keymap.set('n', 'gf', '<c-w>sgF<c-w>H<c-w>l<c-w>q', { buffer = event.buf })
   end,
 })
 
--- Disable automatic comment insertion on new lines
-vim.api.nvim_create_autocmd('BufWinEnter', {
-  group = vim.api.nvim_create_augroup('no-comment', { clear = true }),
-  callback = function()
-    vim.opt_local.formatoptions:remove { 'o' }
-  end,
-})
-
 -- Keep at least `scrolloff` lines below the cursor when at the end of the file
 vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', 'BufEnter' }, {
+  desc = 'Keep at least `scrolloff` lines below the cursor when at the end of the file',
   group = vim.api.nvim_create_augroup('ScrollOffEOF', { clear = true }),
   callback = function()
     local win_h = vim.api.nvim_win_get_height(0)
@@ -63,5 +47,22 @@ vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI', 'BufEnter' }, {
       view.topline = view.topline + off - (win_h - rem + dist)
       vim.fn.winrestview(view)
     end
+  end,
+})
+
+-- Highlight cursor line only in active window
+local group = vim.api.nvim_create_augroup('cursor-line', { clear = true })
+vim.api.nvim_create_autocmd('WinEnter', {
+  group = group,
+  desc = 'Highlight cursor line only in active window',
+  callback = function()
+    vim.opt_local.cursorlineopt = 'both'
+  end,
+})
+vim.api.nvim_create_autocmd('WinLeave', {
+  group = group,
+  desc = 'Remove cursor line highlight in inactive window',
+  callback = function()
+    vim.opt_local.cursorlineopt = 'number'
   end,
 })
