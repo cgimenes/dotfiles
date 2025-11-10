@@ -57,6 +57,10 @@
       "rev": "0909c23",
       "src": "https://github.com/sainnhe/everforest"
     },
+    "fidget.nvim": {
+      "rev": "e32b672",
+      "src": "https://github.com/j-hui/fidget.nvim"
+    },
     "flash.nvim": {
       "rev": "fcea7ff",
       "src": "https://github.com/folke/flash.nvim"

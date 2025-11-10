@@ -72,7 +72,10 @@ require('gitsigns').setup {
 -- gr - open the workflow run below the cursor on GitHub
 -- gj - open the job of the workflow run below the cursor on GitHub
 -- d - dispatch a new run for the workflow below the cursor on GitHub
-vim.pack.add { 'https://github.com/topaxi/pipeline.nvim' }
+vim.pack.add {
+  'https://github.com/MunifTanjim/nui.nvim',
+  'https://github.com/topaxi/pipeline.nvim',
+}
 require('pipeline').setup {}
 Map { '<leader>ga', '<cmd>Pipeline<cr>', desc = 'Open Github Actions' }
 
