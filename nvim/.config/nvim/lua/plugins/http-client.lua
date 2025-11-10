@@ -9,6 +9,7 @@ require('kulala').setup {
     default_winbar_panes = { 'body', 'headers', 'verbose', 'script_output', 'stats', 'report' },
     show_variable_info_text = 'float',
   },
+  debug = 0,
 }
 Map {
   '<leader>Rb',
