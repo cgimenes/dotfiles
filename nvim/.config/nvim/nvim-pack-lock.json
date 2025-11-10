@@ -98,6 +98,10 @@
       "rev": "8c4a9f6",
       "src": "https://github.com/nvimtools/hydra.nvim"
     },
+    "kanagawa-paper.nvim": {
+      "rev": "8423e16",
+      "src": "https://github.com/thesimonho/kanagawa-paper.nvim"
+    },
     "kanagawa.nvim": {
       "rev": "aef7f5c",
       "src": "https://github.com/rebelot/kanagawa.nvim"

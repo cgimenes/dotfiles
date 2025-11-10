@@ -113,6 +113,9 @@ require('nightingale').setup { transparent = transparent }
 vim.pack.add { 'https://github.com/NTBBloodbath/sweetie.nvim' }
 vim.o.background = 'dark'
 
+vim.pack.add { 'https://github.com/thesimonho/kanagawa-paper.nvim' }
+require('kanagawa-paper').setup { transparent = transparent }
+
 -- vim.cmd.colorscheme 'onedark'
 -- vim.cmd.colorscheme 'tokyonight-night'
 -- vim.cmd.colorscheme 'tokyonight-storm'
@@ -121,6 +124,8 @@ vim.o.background = 'dark'
 vim.cmd.colorscheme 'kanagawa-wave'
 -- vim.cmd.colorscheme 'kanagawa-dragon'
 -- vim.cmd.colorscheme 'kanagawa-lotus'
+-- vim.cmd.colorscheme 'kanagawa-paper-ink'
+-- vim.cmd.colorscheme 'kanagawa-paper-canvas'
 -- vim.cmd.colorscheme 'catppuccin-macchiato'
 -- vim.cmd.colorscheme 'catppuccin-mocha'
 -- vim.cmd.colorscheme 'catppuccin-frappe'
