@@ -19,6 +19,20 @@ require('tiny-inline-diagnostic').setup {
   },
 }
 
+-- Improve notifications, command palette and more
+vim.pack.add {
+  'https://github.com/MunifTanjim/nui.nvim',
+  'https://github.com/folke/noice.nvim',
+}
+require('noice').setup {
+  cmdline = { view = 'cmdline' },
+  messages = { enabled = true, view_search = false },
+  popupmenu = { enabled = false },
+  notify = { enabled = false },
+  presets = { command_palette = true },
+  lsp = { progress = { enabled = false } },
+}
+
 -- Highlight for Window separator
 vim.pack.add { 'https://github.com/nvim-zh/colorful-winsep.nvim' }
 require('colorful-winsep').setup {

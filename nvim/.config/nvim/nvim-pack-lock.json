@@ -166,6 +166,10 @@
       "rev": "1df27b0",
       "src": "https://github.com/xeind/nightingale.nvim"
     },
+    "noice.nvim": {
+      "rev": "7bfd942",
+      "src": "https://github.com/folke/noice.nvim"
+    },
     "nordic.nvim": {
       "rev": "6afe957",
       "src": "https://github.com/AlexvZyl/nordic.nvim"
