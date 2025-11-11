@@ -1,13 +1,13 @@
 vim.pack.add { 'https://github.com/cbochs/grapple.nvim' }
 require('grapple').setup { scope = 'git_branch' }
-Map { '<leader>bm', '<cmd>Grapple toggle<cr>', desc = 'Toggle Grapple tag' }
-Map { '<leader><cr>', '<cmd>Grapple toggle_tags<cr>', desc = 'Open Grapple' }
-Map { '<leader>1', '<cmd>Grapple select index=1<cr>', desc = 'which_key_ignore' }
-Map { '<leader>2', '<cmd>Grapple select index=2<cr>', desc = 'which_key_ignore' }
-Map { '<leader>3', '<cmd>Grapple select index=3<cr>', desc = 'which_key_ignore' }
-Map { '<leader>4', '<cmd>Grapple select index=4<cr>', desc = 'which_key_ignore' }
-Map { '<leader>5', '<cmd>Grapple select index=5<cr>', desc = 'which_key_ignore' }
-Map { '<leader>6', '<cmd>Grapple select index=6<cr>', desc = 'which_key_ignore' }
-Map { '<leader>7', '<cmd>Grapple select index=7<cr>', desc = 'which_key_ignore' }
-Map { '<leader>8', '<cmd>Grapple select index=8<cr>', desc = 'which_key_ignore' }
-Map { '<leader>9', '<cmd>Grapple select index=9<cr>', desc = 'which_key_ignore' }
+Map { 'gm', '<cmd>Grapple toggle<cr>', desc = 'Toggle Grapple tag' }
+Map { 'gl', '<cmd>Grapple toggle_tags<cr>', desc = 'Open Grapple' }
+Map { 'g1', '<cmd>Grapple select index=1<cr>', desc = 'which_key_ignore' }
+Map { 'g2', '<cmd>Grapple select index=2<cr>', desc = 'which_key_ignore' }
+Map { 'g3', '<cmd>Grapple select index=3<cr>', desc = 'which_key_ignore' }
+Map { 'g4', '<cmd>Grapple select index=4<cr>', desc = 'which_key_ignore' }
+Map { 'g5', '<cmd>Grapple select index=5<cr>', desc = 'which_key_ignore' }
+Map { 'g6', '<cmd>Grapple select index=6<cr>', desc = 'which_key_ignore' }
+Map { 'g7', '<cmd>Grapple select index=7<cr>', desc = 'which_key_ignore' }
+Map { 'g8', '<cmd>Grapple select index=8<cr>', desc = 'which_key_ignore' }
+Map { 'g9', '<cmd>Grapple select index=9<cr>', desc = 'which_key_ignore' }

@@ -4,7 +4,7 @@ vim.pack.add {
 }
 require('kulala').setup {
   global_keymaps = true,
-  global_keymaps_prefix = '<leader>R',
+  global_keymaps_prefix = '<leader>H',
   ui = {
     default_winbar_panes = { 'body', 'headers', 'verbose', 'script_output', 'stats', 'report' },
     show_variable_info_text = 'float',
@@ -12,7 +12,7 @@ require('kulala').setup {
   debug = 0,
 }
 Map {
-  '<leader>Rb',
+  '<leader>Hb',
   function()
     require('kulala').scratchpad()
   end,
