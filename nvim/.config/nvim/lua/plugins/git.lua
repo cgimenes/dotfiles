@@ -108,10 +108,18 @@ vim.api.nvim_create_autocmd('User', {
   callback = function(event)
     vim.diagnostic.enable(false, { bufnr = event.buf })
 
-    vim.keymap.set('n', ',o', '<Plug>(git-conflict-ours)', { buffer = event.buf, desc = 'Choose ours', silent = true })
-    vim.keymap.set('n', ',t', '<Plug>(git-conflict-theirs)', { buffer = event.buf, desc = 'Choose theirs', silent = true })
-    vim.keymap.set('n', ',b', '<Plug>(git-conflict-both)', { buffer = event.buf, desc = 'Choose both', silent = true })
-    vim.keymap.set('n', ',n', '<Plug>(git-conflict-none)', { buffer = event.buf, desc = 'Choose none', silent = true })
+    vim.keymap.set('n', ',o', function()
+      require('git-conflict').choose 'ours'
+    end, { buffer = event.buf, desc = 'Choose ours', silent = true })
+    vim.keymap.set('n', ',t', function()
+      require('git-conflict').choose 'theirs'
+    end, { buffer = event.buf, desc = 'Choose theirs', silent = true })
+    vim.keymap.set('n', ',b', function()
+      require('git-conflict').choose 'both'
+    end, { buffer = event.buf, desc = 'Choose both', silent = true })
+    vim.keymap.set('n', ',n', function()
+      require('git-conflict').choose 'none'
+    end, { buffer = event.buf, desc = 'Choose none', silent = true })
   end,
 })
 vim.api.nvim_create_autocmd('User', {
