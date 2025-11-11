@@ -34,7 +34,7 @@
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
     "cyberdream.nvim": {
-      "rev": "eba11f5",
+      "rev": "8aa1c7f",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "darkplus.nvim": {
@@ -70,7 +70,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "b19dabe",
+      "rev": "996b236",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "git-conflict.nvim": {
@@ -87,7 +87,7 @@
       "src": "https://github.com/cbochs/grapple.nvim"
     },
     "grug-far.nvim": {
-      "rev": "3e72397",
+      "rev": "b58b2d6",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "gruvbox-baby": {
@@ -231,7 +231,7 @@
       "src": "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
     },
     "octo.nvim": {
-      "rev": "aeee82d",
+      "rev": "11646ce",
       "src": "https://github.com/pwntester/octo.nvim"
     },
     "oh-lucy.nvim": {
@@ -417,7 +417,7 @@
       "src": "https://github.com/folke/which-key.nvim"
     },
     "yazi.nvim": {
-      "rev": "733277c",
+      "rev": "38b2cea",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
