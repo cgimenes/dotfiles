@@ -112,3 +112,4 @@ Map { '<leader>rl', '<cmd>OverseerToggle<cr>', desc = 'Toggle Task List' }
 Map { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Task Action' }
 Map { '<leader>rv', '<cmd>OverseerLastTaskAction open vsplit<cr>', desc = "Open last task's output in a vsplit" }
 Map { '<leader>rt', '<cmd>OverseerLastTaskAction open tab<cr>', desc = "Open last task's output in a tab" }
+Map { '<leader>rD', '<cmd>OverseerLastTaskAction dispose<cr>', desc = 'Dispose last task' }
