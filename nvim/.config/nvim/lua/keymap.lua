@@ -17,7 +17,7 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set('i', 'jk', '<Esc>')
-vim.keymap.set('t', '<C-o>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('t', 'JK', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- Close everything (quickfix, location list, diffview and Diffview.nvim)
 vim.keymap.set('n', '<C-q>', '<cmd>ccl<cr><cmd>lcl<cr><cmd>diffoff<cr><cmd>DiffviewClose<cr>')

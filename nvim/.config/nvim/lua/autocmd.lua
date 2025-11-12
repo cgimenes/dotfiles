@@ -13,24 +13,16 @@ vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('CloseWithQ', { clear = true }),
   command = [[nnoremap <buffer> q <cmd>q<cr>]],
   pattern = {
+    'dap-float',
     'fugitive',
     'fugitiveblame',
     'gitsigns-blame',
     'grug-far',
     'help',
-    'qf',
-    'dap-float',
     'nvim-undotree',
+    'qf',
+    'toggleterm',
   },
-})
-
--- Terminal keymap
-vim.api.nvim_create_autocmd('TermOpen', {
-  desc = 'Terminal keymap',
-  group = vim.api.nvim_create_augroup('custom-terminal', { clear = true }),
-  callback = function(event)
-    vim.keymap.set('n', 'gf', '<c-w>sgF<c-w>H<c-w>l<c-w>q', { buffer = event.buf })
-  end,
 })
 
 -- Keep at least `scrolloff` lines below the cursor when at the end of the file

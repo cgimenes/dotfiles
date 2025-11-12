@@ -5,8 +5,6 @@ return {
     return {
       --- @param task overseer.Task
       on_start = function(_, task)
-        vim.keymap.set('n', 'gf', '<c-w>sgF<c-w>H<c-w>l<c-w>q', { buffer = task:get_bufnr() })
-
         vim.keymap.set('n', 'q', '<c-w>q', { buffer = task:get_bufnr() })
 
         vim.keymap.set('n', ',d', function()
