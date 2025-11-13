@@ -47,20 +47,9 @@ vim.pack.add { 'https://github.com/folke/edgy.nvim' }
 require('edgy').setup {
   animate = { enabled = false },
   left = {
-    {
-      title = 'Find and Replace',
-      ft = 'grug-far',
-      size = { width = 0.20 },
-    },
-    {
-      title = 'DBUI',
-      ft = 'dbui',
-      size = { width = 0.20 },
-    },
-    {
-      title = 'UndoTree',
-      ft = 'nvim-undotree',
-      size = { width = 0.30 },
-    },
+    { title = 'Find and Replace', ft = 'grug-far', size = { width = 0.20 } },
+    { title = 'DBUI', ft = 'dbui', size = { width = 0.20 } },
+    { title = 'UndoTree', ft = 'nvim-undotree', size = { width = 0.30 } },
+    { title = 'Outline', ft = 'Outline', size = { width = 0.30 } },
   },
 }

@@ -206,6 +206,14 @@
       "rev": "2010fc6",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
+    "nvim-navbuddy": {
+      "rev": "18802ef",
+      "src": "https://github.com/hasansujon786/nvim-navbuddy"
+    },
+    "nvim-navic": {
+      "rev": "099b4c8",
+      "src": "https://github.com/SmiteshP/nvim-navic"
+    },
     "nvim-nio": {
       "rev": "21f5324",
       "src": "https://github.com/nvim-neotest/nvim-nio"
@@ -249,6 +257,10 @@
     "onedarkpro.nvim": {
       "rev": "eeac884",
       "src": "https://github.com/olimorris/onedarkpro.nvim"
+    },
+    "outline.nvim": {
+      "rev": "6b62f73",
+      "src": "https://github.com/hedyhli/outline.nvim"
     },
     "overseer.nvim": {
       "rev": "4859497",

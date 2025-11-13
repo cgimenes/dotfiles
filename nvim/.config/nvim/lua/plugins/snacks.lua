@@ -310,7 +310,7 @@ Map {
   desc = 'Filetypes',
 }
 Map {
-  '<leader>/',
+  '<leader><cr>',
   function()
     Snacks.scratch()
   end,
