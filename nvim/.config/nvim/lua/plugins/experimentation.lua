@@ -31,6 +31,5 @@ vim.pack.add {
 require('nvim-navbuddy').setup {
   lsp = { auto_attach = true },
   window = { size = '90%' },
-  integrations = { snacks = true },
 }
 Map { '<leader>lo', '<cmd>Navbuddy root<cr>', desc = 'Outline' }
