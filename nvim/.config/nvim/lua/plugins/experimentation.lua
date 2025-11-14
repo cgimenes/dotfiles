@@ -28,7 +28,9 @@ vim.pack.add {
   'https://github.com/MunifTanjim/nui.nvim',
   'https://github.com/hasansujon786/nvim-navbuddy',
 }
-require('nvim-navbuddy').setup { lsp = { auto_attach = true } }
-
-vim.pack.add { 'https://github.com/hedyhli/outline.nvim' }
-require('outline').setup { outline_window = { position = 'left' } }
+require('nvim-navbuddy').setup {
+  lsp = { auto_attach = true },
+  window = { size = '90%' },
+  integrations = { snacks = true },
+}
+Map { '<leader>lo', '<cmd>Navbuddy root<cr>', desc = 'Outline' }

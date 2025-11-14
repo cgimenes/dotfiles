@@ -258,10 +258,6 @@
       "rev": "eeac884",
       "src": "https://github.com/olimorris/onedarkpro.nvim"
     },
-    "outline.nvim": {
-      "rev": "6b62f73",
-      "src": "https://github.com/hedyhli/outline.nvim"
-    },
     "overseer.nvim": {
       "rev": "4859497",
       "src": "https://github.com/stevearc/overseer.nvim",
