@@ -22,10 +22,11 @@ vim.pack.add { 'https://github.com/bullets-vim/bullets.vim' }
 vim.g.bullets_enabled_file_types = { 'markdown' }
 
 -- Render Markdown
-vim.pack.add { 'https://github.com/MeanderingProgrammer/render-markdown.nvim' }
-require('render-markdown').setup {
-  completions = { blink = { enabled = true } },
-}
+vim.pack.add { 'https://github.com/OXY2DEV/markview.nvim' }
+-- vim.pack.add { 'https://github.com/MeanderingProgrammer/render-markdown.nvim' }
+-- require('render-markdown').setup {
+--   completions = { blink = { enabled = true } },
+-- }
 
 -- Zk
 -- vim.pack.add { 'https://github.com/zk-org/zk-nvim' }

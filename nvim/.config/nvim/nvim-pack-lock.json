@@ -130,6 +130,10 @@
       "rev": "399916a",
       "src": "https://github.com/lumen-oss/lz.n"
     },
+    "markview.nvim": {
+      "rev": "86fcabc",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
+    },
     "mason-lspconfig.nvim": {
       "rev": "b1d9a91",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"

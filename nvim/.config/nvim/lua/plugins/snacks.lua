@@ -29,7 +29,11 @@ require('snacks').setup {
       { section = 'startup', enabled = package.loaded.lazy ~= nil },
     },
   },
-  indent = { enabled = true, animate = { enabled = false } },
+  indent = {
+    indent = { enabled = false },
+    animate = { enabled = false },
+    chunk = { enabled = true },
+  },
   input = { enabled = true },
   notifier = { enabled = true, timeout = 3000 },
   statuscolumn = { folds = { open = true, git_hl = true } },
