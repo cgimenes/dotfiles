@@ -23,6 +23,9 @@ vim.g.bullets_enabled_file_types = { 'markdown' }
 
 -- Render Markdown
 vim.pack.add { 'https://github.com/OXY2DEV/markview.nvim' }
+require('markview.extras.checkboxes').setup {
+  default = 'x',
+}
 -- vim.pack.add { 'https://github.com/MeanderingProgrammer/render-markdown.nvim' }
 -- require('render-markdown').setup {
 --   completions = { blink = { enabled = true } },

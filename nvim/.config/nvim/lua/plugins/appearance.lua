@@ -58,7 +58,7 @@ require('edgy').setup {
 vim.pack.add { 'https://github.com/folke/styler.nvim' }
 require('styler').setup {
   themes = {
-    markdown = { colorscheme = 'sweetie', background = 'dark' },
-    help = { colorscheme = 'sweetie', background = 'dark' },
+    markdown = { colorscheme = 'catppuccin-mocha' },
+    help = { colorscheme = 'catppuccin-mocha' },
   },
 }
