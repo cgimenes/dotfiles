@@ -53,12 +53,3 @@ require('edgy').setup {
     { title = 'Outline', ft = 'Outline', size = { width = 0.30 } },
   },
 }
-
--- Set a different colorscheme per filetype
-vim.pack.add { 'https://github.com/folke/styler.nvim' }
-require('styler').setup {
-  themes = {
-    markdown = { colorscheme = 'catppuccin-mocha' },
-    help = { colorscheme = 'catppuccin-mocha' },
-  },
-}
