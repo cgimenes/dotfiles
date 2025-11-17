@@ -30,9 +30,7 @@ require('snacks').setup {
     },
   },
   indent = {
-    indent = { enabled = false },
     animate = { enabled = false },
-    chunk = { enabled = true },
   },
   input = { enabled = true },
   notifier = { enabled = true, timeout = 3000 },
