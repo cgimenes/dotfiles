@@ -35,6 +35,13 @@ return {
             vim.notify('Dispose on Complete Enabled', vim.log.levels.INFO, { title = 'Overseer' })
           end
         end, { buffer = task:get_bufnr(), desc = 'Toggle dispose on complete' })
+
+        vim.keymap.set('n', '<CR>', '<cmd>OpenPathOnWindow<cr>', {
+          buffer = task:get_bufnr(),
+          desc = 'Open file on line number (pick window)',
+          noremap = true,
+          silent = true,
+        })
       end,
     }
   end,

@@ -86,8 +86,7 @@ vim.keymap.set('n', '<leader>fr', function()
 end, { desc = 'Replace using :cdo' })
 
 -- Execute code
-vim.keymap.set('n', '<leader>cl', '<cmd>.lua<CR>', { desc = 'Execute the current line' })
-vim.keymap.set('v', '<leader>cv', ':.lua<CR>', { desc = 'Execute the current selection' })
+vim.keymap.set({ 'n', 'v' }, '<leader>ce', ':.lua<CR>', { desc = 'Execute the current line or selection' })
 vim.keymap.set('n', '<leader>cf', '<cmd>source %<CR>', { desc = 'Execute the current file' })
 
 -- Toggle diagnostic virtual text

@@ -49,8 +49,6 @@ require('snacks').setup {
       input = {
         keys = {
           ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
-          ['<C-d>'] = { 'preview_scroll_down', mode = { 'n', 'i' } },
-          ['<C-u>'] = { 'preview_scroll_up', mode = { 'n', 'i' } },
           ['<C-y>'] = { 'confirm', mode = { 'n', 'i' } },
         },
       },
@@ -106,7 +104,7 @@ Map {
   function()
     Snacks.picker.git_log()
   end,
-  desc = 'Git Log',
+  desc = 'Git Log (Pickaxe)',
 }
 Map {
   '<leader>gB',
@@ -314,7 +312,7 @@ Map {
   desc = 'Filetypes',
 }
 Map {
-  '<leader>/',
+  '<leader><cr>',
   function()
     Snacks.scratch()
   end,

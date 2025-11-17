@@ -210,6 +210,14 @@
       "rev": "2010fc6",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
+    "nvim-navbuddy": {
+      "rev": "18802ef",
+      "src": "https://github.com/hasansujon786/nvim-navbuddy"
+    },
+    "nvim-navic": {
+      "rev": "099b4c8",
+      "src": "https://github.com/SmiteshP/nvim-navic"
+    },
     "nvim-nio": {
       "rev": "21f5324",
       "src": "https://github.com/nvim-neotest/nvim-nio"

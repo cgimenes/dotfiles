@@ -1,5 +1,6 @@
 -- Fugitive
 vim.pack.add { 'https://github.com/tpope/vim-fugitive' }
+Map { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' }
 Map { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' }
 Map { '<leader>gd', '<cmd>vertical G diff<cr>', desc = 'Git Diff' }
 
@@ -16,7 +17,6 @@ require('gitsigns').setup {
   on_attach = function(bufnr)
     local gitsigns = require 'gitsigns'
 
-    vim.keymap.set('n', '<leader>gb', gitsigns.blame, { buffer = bufnr, desc = 'Git Blame' })
     vim.keymap.set('n', '<leader>hp', gitsigns.preview_hunk_inline, { buffer = bufnr, desc = 'Preview hunk' })
     vim.keymap.set('n', '<leader>hy', function()
       local cache = require('gitsigns.cache').cache

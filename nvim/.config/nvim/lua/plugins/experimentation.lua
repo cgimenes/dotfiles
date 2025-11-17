@@ -22,11 +22,14 @@ require('mini.bracketed').setup {
   window = { suffix = '' },
 }
 
--- Set a different colorscheme per filetype
-vim.pack.add { 'https://github.com/folke/styler.nvim' }
-require('styler').setup {
-  themes = {
-    markdown = { colorscheme = 'sweetie', background = 'dark' },
-    help = { colorscheme = 'sweetie', background = 'dark' },
-  },
+-- Outline
+vim.pack.add {
+  'https://github.com/SmiteshP/nvim-navic',
+  'https://github.com/MunifTanjim/nui.nvim',
+  'https://github.com/hasansujon786/nvim-navbuddy',
 }
+require('nvim-navbuddy').setup {
+  lsp = { auto_attach = true },
+  window = { size = '90%' },
+}
+Map { '<leader>lo', '<cmd>Navbuddy root<cr>', desc = 'Outline' }

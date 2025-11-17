@@ -1,7 +1,7 @@
 vim.pack.add { 'https://github.com/cbochs/grapple.nvim' }
 require('grapple').setup { scope = 'git_branch' }
-Map { 'gm', '<cmd>Grapple toggle<cr>', desc = 'Toggle Grapple tag' }
-Map { 'gl', '<cmd>Grapple toggle_tags<cr>', desc = 'Open Grapple' }
+Map { 'gm', '<cmd>Grapple toggle<cr>', desc = 'Toggle bookmark' }
+Map { 'gl', '<cmd>Grapple toggle_tags<cr>', desc = 'Open bookmark list' }
 Map { 'g1', '<cmd>Grapple select index=1<cr>', desc = 'which_key_ignore' }
 Map { 'g2', '<cmd>Grapple select index=2<cr>', desc = 'which_key_ignore' }
 Map { 'g3', '<cmd>Grapple select index=3<cr>', desc = 'which_key_ignore' }

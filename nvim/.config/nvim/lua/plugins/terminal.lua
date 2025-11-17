@@ -12,6 +12,15 @@ require('toggleterm').setup {
     end
   end,
   auto_scroll = false,
+  persist_size = false,
+  on_create = function(term)
+    vim.keymap.set('n', '<CR>', '<cmd>OpenPathOnWindow<cr>', {
+      buffer = term.bufnr,
+      desc = 'Open file on line number (pick window)',
+      noremap = true,
+      silent = true,
+    })
+  end,
 }
 Map { '<leader>.', '<cmd>ToggleTerm<cr>', desc = 'Toggle Terminal' }
 Map { '<leader>>', '<cmd>ToggleTerm direction=vertical<cr>', desc = 'Toggle Vertical Terminal' }
