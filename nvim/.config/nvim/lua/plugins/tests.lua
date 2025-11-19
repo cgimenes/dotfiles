@@ -20,32 +20,32 @@ vim.g['test#echo_command'] = 0
 Map {
   '<leader>tn',
   function()
-    vim.api.nvim_command 'silent! wa'
-    vim.api.nvim_command 'TestNearest'
+    vim.cmd 'silent! wa'
+    vim.cmd 'TestNearest'
   end,
   desc = 'Test Nearest',
 }
 Map {
   '<leader>tf',
   function()
-    vim.api.nvim_command 'silent! wa'
-    vim.api.nvim_command 'TestFile'
+    vim.cmd 'silent! wa'
+    vim.cmd 'TestFile'
   end,
   desc = 'Test File',
 }
 Map {
   '<leader>ts',
   function()
-    vim.api.nvim_command 'silent! wa'
-    vim.api.nvim_command 'TestSuite'
+    vim.cmd 'silent! wa'
+    vim.cmd 'TestSuite'
   end,
   desc = 'Test Suite',
 }
 Map {
   '<leader>tl',
   function()
-    vim.api.nvim_command 'silent! wa'
-    vim.api.nvim_command 'TestLast'
+    vim.cmd 'silent! wa'
+    vim.cmd 'TestLast'
   end,
   desc = 'Test Last',
 }
