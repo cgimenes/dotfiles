@@ -4,9 +4,10 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = {
     'bash',
     'c',
-    'cpp',
     'css',
+    'csv',
     'diff',
+    'dockerfile',
     'go',
     'html',
     'javascript',
@@ -16,15 +17,17 @@ require('nvim-treesitter.configs').setup {
     'markdown_inline',
     'php',
     'python',
-    'query',
     'rasi',
     'ruby',
-    'rust',
+    'sql',
+    'sxhkdrc',
+    'tmux',
+    'toml',
     'tsx',
     'typescript',
-    'sql',
     'vim',
     'vimdoc',
+    'yaml',
   },
   auto_install = true,
   highlight = {
@@ -36,17 +39,18 @@ require('nvim-treesitter.configs').setup {
   },
   indent = { enable = true, disable = { 'ruby' } },
   -- Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-  -- keymaps:
-  --   - init_selection: in normal mode, start incremental selection.
-  --     Defaults to `gnn`.
-  --   - node_incremental: in visual mode, increment to the upper named parent.
-  --     Defaults to `grn`.
-  --   - scope_incremental: in visual mode, increment to the upper scope
-  --     (as defined in `locals.scm`). Defaults to `grc`.
-  --   - node_decremental: in visual mode, decrement to the previous named node.
-  --     Defaults to `grm`.
+  -- - init_selection: in normal mode, start incremental selection.
+  -- - node_incremental: in visual mode, increment to the upper named parent.
+  -- - scope_incremental: in visual mode, increment to the upper scope
+  -- - node_decremental: in visual mode, decrement to the previous named node.
   incremental_selection = {
     enable = true,
+    keymaps = {
+      init_selection = 'gii',
+      node_incremental = 'gin',
+      scope_incremental = 'gis',
+      node_decremental = 'gid',
+    },
   },
 }
 BuildAfterUpdate('nvim-treesitter', ':TSUpdate')
