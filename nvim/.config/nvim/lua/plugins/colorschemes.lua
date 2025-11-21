@@ -116,6 +116,8 @@ vim.o.background = 'dark'
 vim.pack.add { 'https://github.com/thesimonho/kanagawa-paper.nvim' }
 require('kanagawa-paper').setup { transparent = transparent }
 
+vim.pack.add { 'https://github.com/adibhanna/yukinord.nvim' }
+
 -- vim.cmd.colorscheme 'onedark'
 -- vim.cmd.colorscheme 'tokyonight-night'
 -- vim.cmd.colorscheme 'tokyonight-storm'
@@ -156,3 +158,4 @@ vim.cmd.colorscheme 'kanagawa-wave'
 -- vim.cmd.colorscheme 'gruvbox-material'
 -- vim.cmd.colorscheme 'nightingale'
 -- vim.cmd.colorscheme 'sweetie'
+-- vim.cmd.colorscheme 'yukinord'

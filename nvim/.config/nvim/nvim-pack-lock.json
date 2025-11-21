@@ -422,6 +422,10 @@
     "yazi.nvim": {
       "rev": "e1b123e",
       "src": "https://github.com/mikavilpas/yazi.nvim"
+    },
+    "yukinord.nvim": {
+      "rev": "5be6c81",
+      "src": "https://github.com/adibhanna/yukinord.nvim"
     }
   }
 }
