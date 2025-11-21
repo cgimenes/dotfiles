@@ -49,23 +49,22 @@ require('fidget').setup { progress = { display = { done_icon = '' } } }
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
-    local map = function(opts)
-      local mode = opts.mode or 'n'
-      local keys = opts[1]
-      local func = opts[2]
-      local desc = opts.desc or nil
-      vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
-    end
-
-    map { 'grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', desc = 'Goto Definition' }
-    map { '<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', desc = 'Incoming Calls' }
-    map {
+    Map { 'grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', desc = 'Goto Definition' }
+    Map { '<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', desc = 'Incoming Calls' }
+    Map {
       'grn',
       function()
         vim.lsp.buf.rename()
         vim.cmd 'silent wa'
       end,
       desc = 'Rename',
+    }
+    Map {
+      '<leader>oh',
+      function()
+        vim.lsp.document_color.enable(vim.lsp.document_color.is_enabled())
+      end,
+      desc = 'Toggle color highlight',
     }
 
     -- The following two autocommands are used to highlight references of the
