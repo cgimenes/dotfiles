@@ -40,13 +40,7 @@ Map {
   function()
     local client = vim.lsp.get_clients({ name = 'typescript-tools' })[1]
     if client then
-      local request_result = client:request_sync('workspace/executeCommand', {
-        command = '_typescript.organizeImports',
-      })
-      if request_result and request_result.err then
-        vim.notify(request_result.err.message, vim.log.levels.ERROR)
-        return
-      end
+      vim.cmd 'TSToolsOrganizeImports'
     end
     require('conform').format {}
   end,
