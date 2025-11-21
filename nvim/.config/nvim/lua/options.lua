@@ -86,6 +86,11 @@ vim.o.fillchars = 'eob: '
 -- Disable splash screen
 vim.opt.shortmess:append 'I'
 
+-- Folding settings
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldlevel = 20
+
 -- Use correct filetype for each extension/filename/pattern
 vim.filetype.add {
   extension = {
