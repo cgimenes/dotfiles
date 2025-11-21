@@ -36,51 +36,19 @@ require('conform').setup {
 }
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 Map {
-  '<leader>oad',
+  'gQ',
   function()
-    vim.g.disable_autoformat = true
-  end,
-  desc = 'Disable autoformatting globally',
-}
-Map {
-  '<leader>oaD',
-  function()
-    vim.b.disable_autoformat = true
-  end,
-  desc = 'Disable autoformatting for this buffer',
-}
-Map {
-  '<leader>oae',
-  function()
-    vim.g.disable_autoformat = false
-    vim.b.disable_autoformat = false
-  end,
-  desc = 'Re-enable autoformatting',
-}
-vim.api.nvim_create_autocmd('BufWritePre', {
-  desc = 'Format before save',
-  pattern = '*',
-  group = vim.api.nvim_create_augroup('FormatConfig', { clear = true }),
-  callback = function(ev)
-    if vim.g.disable_autoformat or vim.b[ev.buf].disable_autoformat then
-      return
+    local client = vim.lsp.get_clients({ name = 'typescript-tools' })[1]
+    if client then
+      local request_result = client:request_sync('workspace/executeCommand', {
+        command = '_typescript.organizeImports',
+      })
+      if request_result and request_result.err then
+        vim.notify(request_result.err.message, vim.log.levels.ERROR)
+        return
+      end
     end
-    local conform_opts = { bufnr = ev.buf, lsp_format = 'fallback', timeout_ms = 500 }
-    local client = vim.lsp.get_clients({ name = 'typescript-tools', bufnr = ev.buf })[1]
-    if not client then
-      require('conform').format(conform_opts)
-      return
-    end
-
-    local request_result = client:request_sync('workspace/executeCommand', {
-      command = '_typescript.organizeImports',
-      arguments = { vim.api.nvim_buf_get_name(ev.buf) },
-    })
-    if request_result and request_result.err then
-      vim.notify(request_result.err.message, vim.log.levels.ERROR)
-      return
-    end
-
-    require('conform').format(conform_opts)
+    require('conform').format {}
   end,
-})
+  desc = 'Format entire buffer',
+}
