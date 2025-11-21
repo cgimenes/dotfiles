@@ -49,28 +49,7 @@ require('fidget').setup { progress = { display = { done_icon = '' } } }
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
-    Map { 'grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', desc = 'Goto Definition' }
-    Map { '<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', desc = 'Incoming Calls' }
-    Map {
-      'grn',
-      function()
-        vim.lsp.buf.rename()
-        vim.cmd 'silent wa'
-      end,
-      desc = 'Rename',
-    }
-    Map {
-      '<leader>oh',
-      function()
-        vim.lsp.document_color.enable(vim.lsp.document_color.is_enabled())
-      end,
-      desc = 'Toggle color highlight',
-    }
-
-    -- The following two autocommands are used to highlight references of the
-    -- word under your cursor when your cursor rests there for a little while.
-    --
-    -- When you move your cursor, the highlights will be cleared (the second autocommand).
+    -- Highlight all references to the symbol under your cursor
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, { bufnr = event.buf }) then
       local highlight_augroup = vim.api.nvim_create_augroup('highlight-references', { clear = false })
