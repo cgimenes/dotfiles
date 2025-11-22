@@ -49,29 +49,7 @@ require('fidget').setup { progress = { display = { done_icon = '' } } }
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
-    local map = function(opts)
-      local mode = opts.mode or 'n'
-      local keys = opts[1]
-      local func = opts[2]
-      local desc = opts.desc or nil
-      vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
-    end
-
-    map { 'grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', desc = 'Goto Definition' }
-    map { '<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', desc = 'Incoming Calls' }
-    map {
-      'grn',
-      function()
-        vim.lsp.buf.rename()
-        vim.cmd 'silent wa'
-      end,
-      desc = 'Rename',
-    }
-
-    -- The following two autocommands are used to highlight references of the
-    -- word under your cursor when your cursor rests there for a little while.
-    --
-    -- When you move your cursor, the highlights will be cleared (the second autocommand).
+    -- Highlight all references to the symbol under your cursor
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, { bufnr = event.buf }) then
       local highlight_augroup = vim.api.nvim_create_augroup('highlight-references', { clear = false })
@@ -94,6 +72,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
           vim.api.nvim_clear_autocmds { group = 'highlight-references', buffer = event.buf }
         end,
       })
+    end
+
+    -- Enable folding with LSP
+    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_foldingRange) then
+      local win = vim.api.nvim_get_current_win()
+      vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
     end
   end,
 })

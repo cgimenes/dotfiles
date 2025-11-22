@@ -93,3 +93,23 @@ vim.keymap.set('n', '<leader>cf', '<cmd>source %<CR>', { desc = 'Execute the cur
 vim.keymap.set('n', '<leader>od', function()
   vim.diagnostic.config { virtual_text = not vim.diagnostic.config().virtual_text }
 end, { desc = 'Toggle Diagnostic virtual text' })
+
+-- LSP
+Map { 'grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', desc = 'Goto Definition in a vsplit' }
+Map { '<leader>li', '<cmd>lua vim.lsp.buf.incoming_calls()<cr>', desc = 'Incoming Calls' }
+Map {
+  'grn',
+  function()
+    vim.lsp.buf.rename()
+    vim.cmd 'silent wa'
+  end,
+  desc = 'Rename',
+}
+Map {
+  '<leader>oh',
+  function()
+    vim.lsp.document_color.enable(not vim.lsp.document_color.is_enabled())
+  end,
+  desc = 'Toggle color highlight',
+}
+

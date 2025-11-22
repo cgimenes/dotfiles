@@ -55,22 +55,6 @@ require('nvim-treesitter.configs').setup {
 }
 BuildAfterUpdate('nvim-treesitter', ':TSUpdate')
 
--- Enable folding with treesitter
-vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('treesitter-folding', { clear = true }),
-  callback = function()
-    if package.loaded['nvim-treesitter.parsers'] then
-      if require('nvim-treesitter.parsers').has_parser() then
-        vim.opt.foldmethod = 'expr'
-        vim.opt.foldlevel = 20
-        vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      else
-        vim.opt.foldmethod = 'manual'
-      end
-    end
-  end,
-})
-
 -- setting the commentstring option based on the cursor location in the file.
 vim.pack.add { 'https://github.com/JoosepAlviste/nvim-ts-context-commentstring' }
 require('ts_context_commentstring').setup { enable_autocmd = false }
