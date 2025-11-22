@@ -33,14 +33,9 @@ require('noice').setup {
   lsp = { progress = { enabled = false } },
 }
 
--- Highlight for Window separator
+-- Highlight for window separator
 vim.pack.add { 'https://github.com/nvim-zh/colorful-winsep.nvim' }
-require('colorful-winsep').setup {
-  hi = {
-    fg = '#e6c384',
-  },
-  symbols = { '─', '│', '╭', '╮', '╰', '╯' },
-}
+require('colorful-winsep').setup { highlight = '#e6c384' }
 
 -- Auto arrange windows
 vim.pack.add { 'https://github.com/folke/edgy.nvim' }
