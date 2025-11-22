@@ -40,7 +40,7 @@ Map {
   function()
     local client = vim.lsp.get_clients({ name = 'typescript-tools' })[1]
     if client then
-      vim.cmd 'TSToolsOrganizeImports'
+      require('typescript-tools.api').organize_imports(true)
     end
     require('conform').format {}
   end,
