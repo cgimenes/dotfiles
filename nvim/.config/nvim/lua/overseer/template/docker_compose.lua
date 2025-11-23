@@ -2,20 +2,19 @@
 return {
   generator = function()
     local scripts = {
-      'bin/dev',
-      'bin/bundle install',
-      'bin/rails db:migrate',
+      'up -d',
+      'down',
     }
     local ret = {}
-    if vim.fn.filereadable 'bin/dev' ~= 1 then
+    if vim.fn.filereadable 'docker-compose.yaml' ~= 1 then
       return ret
     end
     for _, script in ipairs(scripts) do
       table.insert(ret, {
-        name = 'rails: ' .. script,
+        name = 'docker compose: ' .. script,
         builder = function()
           return {
-            cmd = { script },
+            cmd = { 'docker compose ' .. script },
           }
         end,
       })
