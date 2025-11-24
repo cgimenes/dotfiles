@@ -1,6 +1,4 @@
 vim.pack.add {
-  'https://github.com/leoluz/nvim-dap-go',
-  'https://github.com/suketa/nvim-dap-ruby',
   'https://github.com/mfussenegger/nvim-dap-python',
   'https://github.com/mfussenegger/nvim-dap',
 }
@@ -9,12 +7,11 @@ local dap = require 'dap'
 
 require('overseer').enable_dap()
 
-require('dap-go').setup()
-require('dap-ruby').setup()
 require('dap-python').setup 'uv'
 require('debugger.php').setup()
 require('debugger.javascript').setup()
 require('debugger.c').setup()
+require('debugger.ruby').setup()
 
 vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#993939', bg = '#31353f' })
 vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#31353f' })
