@@ -6,7 +6,7 @@ local function OverseerStrategy(cmd)
     components = {
       'keymaps',
       'on_exit_set_status',
-      { 'on_output_quickfix', open_on_exit = 'failure' },
+      { 'open_output', direction = 'vertical', on_start = 'never', on_complete = 'failure' },
       'unique',
     },
   }

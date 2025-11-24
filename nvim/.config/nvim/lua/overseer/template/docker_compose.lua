@@ -2,8 +2,8 @@
 return {
   generator = function()
     local scripts = {
-      'up -d',
-      'down',
+      { 'up', '-d' },
+      { 'down' },
     }
     local ret = {}
     if vim.fn.filereadable 'docker-compose.yaml' ~= 1 then
@@ -11,10 +11,10 @@ return {
     end
     for _, script in ipairs(scripts) do
       table.insert(ret, {
-        name = 'docker compose: ' .. script,
+        name = 'docker compose: ' .. table.concat(script, ' '),
         builder = function()
           return {
-            cmd = { 'docker compose ' .. script },
+            cmd = { 'docker', 'compose', table.unpack(script) },
           }
         end,
       })
