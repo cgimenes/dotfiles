@@ -58,3 +58,11 @@ vim.api.nvim_create_autocmd('WinLeave', {
     vim.opt_local.cursorlineopt = 'number'
   end,
 })
+
+-- Disable automatic comment insertion on new lines
+vim.api.nvim_create_autocmd('BufWinEnter', {
+  group = vim.api.nvim_create_augroup('no-comment', { clear = true }),
+  callback = function()
+    vim.opt_local.formatoptions:remove { 'o' }
+  end,
+})
