@@ -9,3 +9,4 @@ __pycache__/
 Brewfile.lock.json
 btop/.config/btop/btop.log
 .uuid
+nvim-pack-lock.json
