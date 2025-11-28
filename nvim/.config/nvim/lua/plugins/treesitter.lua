@@ -11,6 +11,7 @@ require('nvim-treesitter.configs').setup {
     'go',
     'html',
     'javascript',
+    'json',
     'lua',
     'luadoc',
     'markdown',

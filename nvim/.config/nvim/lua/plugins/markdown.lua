@@ -17,15 +17,13 @@ if vim.fn.isdirectory(vim.fn.expand '~/Documents/Obsidian') == 1 then
   })
 end
 
--- Bullets
-vim.pack.add { 'https://github.com/bullets-vim/bullets.vim' }
-vim.g.bullets_enabled_file_types = { 'markdown' }
+-- Better markdown editing
+vim.pack.add { 'https://github.com/YousefHadder/markdown-plus.nvim' }
 
 -- Render Markdown
 vim.pack.add { 'https://github.com/OXY2DEV/markview.nvim' }
-require('markview.extras.checkboxes').setup {
-  default = 'x',
-}
+require('markview.extras.checkboxes').setup { default = 'x' }
+
 -- vim.pack.add { 'https://github.com/MeanderingProgrammer/render-markdown.nvim' }
 -- require('render-markdown').setup {
 --   completions = { blink = { enabled = true } },
