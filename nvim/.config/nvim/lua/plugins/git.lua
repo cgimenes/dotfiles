@@ -74,6 +74,7 @@ require('gitsigns').setup {
 -- d - dispatch a new run for the workflow below the cursor on GitHub
 vim.pack.add {
   'https://github.com/MunifTanjim/nui.nvim',
+  'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/topaxi/pipeline.nvim',
 }
 require('pipeline').setup {}

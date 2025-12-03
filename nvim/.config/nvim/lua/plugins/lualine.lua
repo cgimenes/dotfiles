@@ -141,7 +141,7 @@ require('lualine').setup {
 
           -- add client
           for _, client in pairs(buf_clients) do
-            if client.name ~= 'null-ls' and client.name ~= 'copilot' then
+            if client.name ~= 'copilot' then
               table.insert(buf_client_names, client.name)
             end
 
@@ -157,7 +157,7 @@ require('lualine').setup {
           end
 
           if copilot_active then
-            language_servers = language_servers .. ' ' .. icons.git.Octoface .. ' '
+            language_servers = language_servers .. ' ' .. icons.octoface .. ' '
           end
 
           return language_servers
@@ -202,7 +202,7 @@ require('lualine').setup {
           local ok, w = pcall(vim.api.nvim_tabpage_get_win, tab.tabId)
           if ok then
             local b = vim.api.nvim_win_get_buf(w)
-            local ft = vim.api.nvim_buf_get_option(b, 'ft')
+            local ft = vim.api.nvim_get_option_value('ft', { buf = b })
             if label == '[No Name]' then
               label = ft
             end

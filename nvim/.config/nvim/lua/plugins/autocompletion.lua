@@ -3,7 +3,6 @@ local trigger_text = ';'
 vim.pack.add {
   'https://github.com/rafamadriz/friendly-snippets',
   'https://github.com/fang2hou/blink-copilot',
-  -- 'https://github.com/huijiro/blink-cmp-supermaven',
   { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '*' },
 }
 require('blink.cmp').setup {
@@ -37,12 +36,6 @@ require('blink.cmp').setup {
       dadbod = {
         name = 'Dadbod',
         module = 'vim_dadbod_completion.blink',
-      },
-      supermaven = {
-        name = 'Supermaven',
-        module = 'blink-cmp-supermaven',
-        score_offset = 90,
-        async = true,
       },
       copilot = {
         name = 'Copilot',
