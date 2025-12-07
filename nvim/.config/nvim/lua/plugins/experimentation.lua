@@ -23,7 +23,7 @@ require('mini.bracketed').setup {
 }
 
 -- Outline
-require('lz.n').load {
+LazyLoad {
   'nvim-navbuddy',
   after = function()
     vim.pack.add {
