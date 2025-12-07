@@ -30,14 +30,14 @@ vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl =
 Map {
   '<leader>dB',
   function()
-    require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+    dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
   end,
   desc = 'Breakpoint Condition',
 }
 Map {
   '<leader>dC',
   function()
-    require('dap').run_to_cursor()
+    dap.run_to_cursor()
   end,
   desc = 'Run to Cursor',
 }
@@ -51,91 +51,92 @@ Map {
 Map {
   '<leader>dP',
   function()
-    require('dap').pause()
+    dap.pause()
   end,
   desc = 'Pause',
 }
 Map {
   '<leader>dT',
   function()
-    require('dap').terminate()
+    dap.terminate { all = true, hierarchy = true }
+    vim.cmd 'DapViewClose!'
   end,
   desc = 'Terminate',
 }
 Map {
   '<leader>db',
   function()
-    require('dap').toggle_breakpoint()
+    dap.toggle_breakpoint()
   end,
   desc = 'Toggle Breakpoint',
 }
 Map {
   '<leader>dc',
   function()
-    require('dap').continue()
+    dap.continue()
   end,
   desc = 'Run/Continue',
 }
 Map {
   '<leader>dd',
   function()
-    require('dap').down()
+    dap.down()
   end,
   desc = 'Down in stacktrace',
 }
 Map {
   '<leader>dg',
   function()
-    require('dap').goto_()
+    dap.goto_()
   end,
   desc = 'Go to Line (No Execute)',
 }
 Map {
   '<leader>di',
   function()
-    require('dap').step_into()
+    dap.step_into()
   end,
   desc = 'Step Into',
 }
 Map {
   '<leader>dj',
   function()
-    require('dap').down()
+    dap.down()
   end,
   desc = 'Down',
 }
 Map {
   '<leader>dk',
   function()
-    require('dap').up()
+    dap.up()
   end,
   desc = 'Up',
 }
 Map {
   '<leader>dl',
   function()
-    require('dap').run_last()
+    dap.run_last()
   end,
   desc = 'Run Last',
 }
 Map {
   '<leader>dn',
   function()
-    require('dap').step_over()
+    dap.step_over()
   end,
   desc = 'Step Over',
 }
 Map {
   '<leader>do',
   function()
-    require('dap').step_out()
+    dap.step_out()
   end,
   desc = 'Step Out',
 }
 Map {
   '<leader>du',
   function()
-    require('dap').up()
+    dap.up()
   end,
   desc = 'Up in stacktrace',
 }
@@ -182,7 +183,14 @@ require 'hydra' {
     { 'o', dap.step_out, { silent = true } },
     { 'C', dap.run_to_cursor, { silent = true } },
     { 'c', dap.continue, { silent = true } },
-    { 'T', dap.terminate, { exit = true, silent = true } },
+    {
+      'T',
+      function()
+        dap.terminate { all = true, hierarchy = true }
+        vim.cmd 'DapViewClose!'
+      end,
+      { exit = true, silent = true },
+    },
     {
       'K',
       function()
