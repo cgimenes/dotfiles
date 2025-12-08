@@ -153,9 +153,6 @@ require('dap-view').setup {
 }
 Map { '<leader>dU', '<cmd>DapViewToggle!<cr>', desc = 'Dap UI' }
 
-vim.pack.add { 'https://github.com/theHamsta/nvim-dap-virtual-text' }
-require('nvim-dap-virtual-text').setup {}
-
 -- Hydra
 vim.pack.add { 'https://github.com/nvimtools/hydra.nvim' }
 require 'hydra' {
