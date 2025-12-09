@@ -51,7 +51,7 @@ Map { '<leader>-', '<cmd>vertical Oil<cr>', desc = 'Oil Explorer' }
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('oil-quickfix', { clear = true }),
   callback = function(args)
-    vim.keymap.set({ 'n', 'v' }, '<C-q>', function()
+    vim.keymap.set({ 'n', 'x' }, '<C-q>', function()
       local oil = require 'oil'
 
       local line_number_start = vim.fn.line 'v'

@@ -110,7 +110,7 @@ Map {
     Snacks.gitbrowse()
   end,
   desc = 'Git Browse',
-  mode = { 'n', 'v' },
+  mode = { 'n', 'x' },
 }
 Map {
   '<leader>?',

@@ -33,13 +33,13 @@ vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>', { desc = 'New Buffer' })
 vim.keymap.set('n', '<leader>bd', '<cmd>windo diffthis<cr>', { desc = 'Diff' })
 vim.keymap.set('n', '<leader>bs', '<cmd>silent wa!<cr>', { desc = 'Save file' })
 
-vim.keymap.set('v', '>', '>gv')
-vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('x', '>', '>gv')
+vim.keymap.set('x', '<', '<gv')
 
-vim.keymap.set('v', '$', 'g_')
+vim.keymap.set('x', '$', 'g_')
 
 -- Better pasting experience
-vim.keymap.set('v', '<leader>pp', '"_dP', { desc = 'Without yanking' })
+vim.keymap.set('x', '<leader>pp', '"_dP', { desc = 'Without yanking' })
 vim.keymap.set('n', '<leader>pe', '$p', { desc = 'End of current line' })
 vim.keymap.set('n', '<leader>pE', '$pa', { desc = 'End of current line and enter insert mode' })
 
@@ -86,7 +86,7 @@ vim.keymap.set('n', '<leader>fr', function()
 end, { desc = 'Replace using :cdo' })
 
 -- Execute code
-vim.keymap.set({ 'n', 'v' }, '<leader>ce', ':.lua<CR>', { desc = 'Execute the current line or selection' })
+vim.keymap.set({ 'n', 'x' }, '<leader>ce', ':.lua<CR>', { desc = 'Execute the current line or selection' })
 vim.keymap.set('n', '<leader>cf', '<cmd>source %<CR>', { desc = 'Execute the current file' })
 
 -- Toggle diagnostic virtual text

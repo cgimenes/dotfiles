@@ -52,7 +52,7 @@ require('fzf-lua').setup {
 -- Map { '<leader>sk', '<cmd>FzfLua keymaps<cr>', desc = '[S]earch [K]eymaps' }
 -- Map { '<leader>sw', '<cmd>FzfLua grep_cword<cr>', desc = '[S]earch current [W]ord' }
 -- Map { '<leader>sm', '<cmd>FzfLua manpages<cr>', desc = '[S]earch [M]anpages' }
--- Map { '<leader>sv', '<cmd>FzfLua grep_visual<cr>', desc = '[S]earch current selection', mode = 'v' }
+-- Map { '<leader>sv', '<cmd>FzfLua grep_visual<cr>', desc = '[S]earch current selection', mode = 'x' }
 -- Map {
 --   '<leader>sg',
 --   function()
