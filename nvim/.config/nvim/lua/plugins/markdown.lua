@@ -1,3 +1,11 @@
+-- Better markdown editing
+vim.pack.add { 'https://github.com/YousefHadder/markdown-plus.nvim' }
+require('markdown-plus').setup {
+  keymaps = {
+    enabled = false,
+  },
+}
+
 local workspaces = {
   {
     name = 'public',
@@ -16,31 +24,6 @@ if vim.fn.isdirectory(vim.fn.expand '~/Documents/Obsidian') == 1 then
     path = '~/Documents/Obsidian',
   })
 end
-
--- Better markdown editing
-vim.pack.add { 'https://github.com/YousefHadder/markdown-plus.nvim' }
-
--- Render Markdown
-vim.pack.add { 'https://github.com/OXY2DEV/markview.nvim' }
-require('markview.extras.checkboxes').setup { default = 'x' }
-
--- vim.pack.add { 'https://github.com/MeanderingProgrammer/render-markdown.nvim' }
--- require('render-markdown').setup {
---   completions = { blink = { enabled = true } },
--- }
-
--- Zk
--- vim.pack.add { 'https://github.com/zk-org/zk-nvim' }
--- require('zk').setup {
---   picker = 'snacks_picker',
---   picker_options = {
---     snacks_picker = {
---       layout = {
---         preset = 'default',
---       },
---     },
---   },
--- }
 
 -- Obsidian
 -- vim.pack.add {
@@ -62,3 +45,16 @@ require('markview.extras.checkboxes').setup { default = 'x' }
 -- Map { '<leader>Ow', '<cmd>Obsidian workspace<cr>', desc = 'Change Workspace' }
 -- Map { '<leader>Oo', '<cmd>Obsidian open<cr>', desc = 'Open in Obsidian' }
 -- vim.opt.conceallevel = 1 -- Enable conceal
+
+-- Zk
+-- vim.pack.add { 'https://github.com/zk-org/zk-nvim' }
+-- require('zk').setup {
+--   picker = 'snacks_picker',
+--   picker_options = {
+--     snacks_picker = {
+--       layout = {
+--         preset = 'default',
+--       },
+--     },
+--   },
+-- }
