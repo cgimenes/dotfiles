@@ -6,29 +6,28 @@ require('markdown-plus').setup {
   },
 }
 
-local workspaces = {
-  {
-    name = 'public',
-    path = '~/Public/Obsidian',
-  },
-}
-if vim.fn.isdirectory(vim.fn.expand '~/Obsidian') == 1 then
-  table.insert(workspaces, {
-    name = 'personal',
-    path = '~/Obsidian',
-  })
-end
-if vim.fn.isdirectory(vim.fn.expand '~/Documents/Obsidian') == 1 then
-  table.insert(workspaces, {
-    name = 'work',
-    path = '~/Documents/Obsidian',
-  })
-end
-
 -- Obsidian
 -- vim.pack.add {
 --   { src = 'https://github.com/obsidian-nvim/obsidian.nvim', version = vim.version.range '*' },
 -- }
+-- local workspaces = {
+--   {
+--     name = 'public',
+--     path = '~/Public/Obsidian',
+--   },
+-- }
+-- if vim.fn.isdirectory(vim.fn.expand '~/Obsidian') == 1 then
+--   table.insert(workspaces, {
+--     name = 'personal',
+--     path = '~/Obsidian',
+--   })
+-- end
+-- if vim.fn.isdirectory(vim.fn.expand '~/Documents/Obsidian') == 1 then
+--   table.insert(workspaces, {
+--     name = 'work',
+--     path = '~/Documents/Obsidian',
+--   })
+-- end
 -- require('obsidian').setup {
 --   legacy_commands = false,
 --   ui = { enable = false }, -- using render-markdown.nvim instead
