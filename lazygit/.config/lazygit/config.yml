@@ -1,7 +1,7 @@
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never
 gui:
   border: single
   showCommandLog: false
@@ -35,23 +35,23 @@ keybinding:
 os:
   editPreset: "nvim-remote"
 
-  # cyberdream
-  # theme:
-  #   activeBorderColor:
-  #     - "#5ef1ff"
-  #   inactiveBorderColor:
-  #     - "#7b8496"
-  #   searchingActiveBorderColor:
-  #     - "#ff5ef1"
-  #   optionsTextColor:
-  #     - "#3c4048"
-  #   selectedLineBgColor:
-  #     - "#3c4048"
-  #   cherryPickedCommitBgColor:
-  #     - "#3c4048"
-  #   cherryPickedCommitFgColor:
-  #     - "#ff5ea0"
-  #   unstagedChangesColor:
-  #     - "#ffbd5e"
-  #   defaultFgColor:
-  #     - "#ffffff"
+# cyberdream
+# theme:
+#   activeBorderColor:
+#     - "#5ef1ff"
+#   inactiveBorderColor:
+#     - "#7b8496"
+#   searchingActiveBorderColor:
+#     - "#ff5ef1"
+#   optionsTextColor:
+#     - "#3c4048"
+#   selectedLineBgColor:
+#     - "#3c4048"
+#   cherryPickedCommitBgColor:
+#     - "#3c4048"
+#   cherryPickedCommitFgColor:
+#     - "#ff5ea0"
+#   unstagedChangesColor:
+#     - "#ffbd5e"
+#   defaultFgColor:
+#     - "#ffffff"
