@@ -2,7 +2,7 @@
 vim.pack.add { 'https://github.com/tpope/vim-fugitive' }
 Map { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' }
 Map { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' }
-Map { '<leader>gd', '<cmd>vertical G diff %<cr>', desc = 'Git Diff Current File' }
+Map { '<leader>gd', '<cmd>vertical G diff HEAD %<cr>', desc = 'Git Diff Current File' }
 
 -- Diffview
 vim.pack.add { 'https://github.com/sindrets/diffview.nvim' }

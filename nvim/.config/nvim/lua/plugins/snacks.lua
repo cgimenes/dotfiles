@@ -91,13 +91,6 @@ Map {
   desc = 'Lazygit',
 }
 Map {
-  '<leader>gs',
-  function()
-    Snacks.picker.git_status { on_show = stop_insert }
-  end,
-  desc = 'Git Status',
-}
-Map {
   '<leader>gl',
   function()
     Snacks.picker.git_log()
