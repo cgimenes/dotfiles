@@ -1,6 +1,10 @@
 -- Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-vim.pack.add { 'https://github.com/nvim-treesitter/nvim-treesitter' }
-require('nvim-treesitter.configs').setup {
+vim.pack.add {
+  'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/MeanderingProgrammer/treesitter-modules.nvim',
+}
+require('nvim-treesitter').setup {}
+require('treesitter-modules').setup {
   ensure_installed = {
     'bash',
     'c',
@@ -39,20 +43,6 @@ require('nvim-treesitter.configs').setup {
     additional_vim_regex_highlighting = { 'ruby' },
   },
   indent = { enable = true, disable = { 'ruby' } },
-  -- Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-  -- - init_selection: in normal mode, start incremental selection.
-  -- - node_incremental: in visual mode, increment to the upper named parent.
-  -- - scope_incremental: in visual mode, increment to the upper scope
-  -- - node_decremental: in visual mode, decrement to the previous named node.
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = 'gii',
-      node_incremental = 'gin',
-      scope_incremental = 'gis',
-      node_decremental = 'gid',
-    },
-  },
 }
 BuildAfterUpdate('nvim-treesitter', ':TSUpdate')
 
