@@ -1,10 +1,11 @@
 vim.api.nvim_create_user_command('FixJson', function()
-  vim.opt.filetype = 'json'
+  vim.opt_local.filetype = 'json'
 
   vim.cmd 'silent! %s/\\\\"/"/g<cr>'
   vim.cmd 'silent! %s/^"//<cr>'
   vim.cmd 'silent! %s/"$//<cr>'
   vim.cmd 'silent! %s/"$//<cr>'
+  require('conform').format {}
 end, {})
 
 vim.api.nvim_create_user_command('OpenPathOnWindow', function()
