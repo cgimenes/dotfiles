@@ -101,6 +101,11 @@ Map {
     require('overseer').run_task({ autostart = false }, function(task)
       if task then
         task:add_component { 'keymaps' }
+        if task:get_component 'on_complete_dispose' then
+          task:remove_component 'on_complete_dispose'
+        end
+        task:add_component { 'on_complete_dispose', statuses = { 'SUCCESS' }, timeout = 5 }
+
         task:start()
         task:open_output 'vertical'
       end
