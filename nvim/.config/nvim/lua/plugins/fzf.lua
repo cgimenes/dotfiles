@@ -33,6 +33,9 @@ require('fzf-lua').setup {
     },
   },
 }
+-- Git
+Map { '<leader>gs', '<cmd>FzfLua git_status<cr>', desc = 'Git Status' }
+
 -- -- Buffers
 -- Map { '<leader>bl', '<cmd>FzfLua buffers<cr>', desc = '[L]ist existing buffers' }
 --
