@@ -18,8 +18,6 @@ vim.g.db_ui_hide_schemas = { 'pg_catalog', 'pg_toast' }
 local common_helpers = {
   Count = 'SELECT COUNT(*) FROM {optional_schema}{table}',
   Explain = 'EXPLAIN ANALYZE {last_query}',
-  Truncate = 'TRUNCATE {optional_schema}{table}',
-  ['Drop Table'] = 'DROP TABLE {optional_schema}{table}',
 }
 vim.g.db_ui_table_helpers = {
   postgresql = common_helpers,
