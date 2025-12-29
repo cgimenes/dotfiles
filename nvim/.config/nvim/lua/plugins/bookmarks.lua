@@ -11,3 +11,12 @@ Map { 'g6', '<cmd>Grapple select index=6<cr>', desc = 'which_key_ignore' }
 Map { 'g7', '<cmd>Grapple select index=7<cr>', desc = 'which_key_ignore' }
 Map { 'g8', '<cmd>Grapple select index=8<cr>', desc = 'which_key_ignore' }
 Map { 'g9', '<cmd>Grapple select index=9<cr>', desc = 'which_key_ignore' }
+Map { '<c-w>g1', '<c-w>v<cmd>Grapple select index=1<cr>', desc = 'which_key_ignore' }
+Map { '<c-w>g2', '<c-w>v<cmd>Grapple select index=2<cr>', desc = 'which_key_ignore' }
+Map { '<c-w>g3', '<c-w>v<cmd>Grapple select index=3<cr>', desc = 'which_key_ignore' }
+Map { '<c-w>g4', '<c-w>v<cmd>Grapple select index=4<cr>', desc = 'which_key_ignore' }
+Map { '<c-w>g5', '<c-w>v<cmd>Grapple select index=5<cr>', desc = 'which_key_ignore' }
+Map { '<c-w>g6', '<c-w>v<cmd>Grapple select index=6<cr>', desc = 'which_key_ignore' }
+Map { '<c-w>g7', '<c-w>v<cmd>Grapple select index=7<cr>', desc = 'which_key_ignore' }
+Map { '<c-w>g8', '<c-w>v<cmd>Grapple select index=8<cr>', desc = 'which_key_ignore' }
+Map { '<c-w>g9', '<c-w>v<cmd>Grapple select index=9<cr>', desc = 'which_key_ignore' }
