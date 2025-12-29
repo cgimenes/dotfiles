@@ -1,36 +1,35 @@
 local ensure_installed = {
   'clangd',
   'cssls',
-  'emmet_language_server',
-  'gopls',
-  'intelephense',
-  'jsonls',
   'lua_ls',
   'prettier',
   'prettierd',
-  'prismals',
   'pyright',
-  'reformat-gherkin',
   'ruby_lsp',
   'ruff',
-  'ruff',
   'shfmt',
-  'sleek',
+  'sleek', -- SQL
   'stylua',
   'tailwindcss',
-  'taplo',
-  'yamlls',
+  -- 'emmet_language_server',
+  -- 'gopls',
+  -- 'intelephense',
+  -- 'jsonls',
+  -- 'prismals',
+  -- 'reformat-gherkin',
+  -- 'taplo',
+  -- 'yamlls',
 
   -- Debug
   'codelldb',
-  'debugpy',
-  'delve',
   'js-debug-adapter',
-  'php-debug-adapter',
+  -- 'debugpy',
+  -- 'delve',
+  -- 'php-debug-adapter',
 }
-if vim.fn.executable 'composer' == 1 then
-  vim.list_extend(ensure_installed, { 'pint', 'php-cs-fixer' })
-end
+-- if vim.fn.executable 'composer' == 1 then
+--   vim.list_extend(ensure_installed, { 'pint', 'php-cs-fixer' })
+-- end
 if vim.fn.executable 'gem' == 1 then
   vim.list_extend(ensure_installed, { 'rubocop', 'erb-formatter', 'ruby_lsp' })
 end

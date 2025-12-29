@@ -1,10 +1,6 @@
 -- Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-vim.pack.add {
-  'https://github.com/nvim-treesitter/nvim-treesitter',
-  'https://github.com/MeanderingProgrammer/treesitter-modules.nvim',
-}
-require('nvim-treesitter').setup {}
-require('treesitter-modules').setup {
+vim.pack.add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' } }
+require('nvim-treesitter.configs').setup {
   ensure_installed = {
     'bash',
     'c',
@@ -12,7 +8,6 @@ require('treesitter-modules').setup {
     'csv',
     'diff',
     'dockerfile',
-    'go',
     'html',
     'javascript',
     'json',
@@ -20,7 +15,6 @@ require('treesitter-modules').setup {
     'luadoc',
     'markdown',
     'markdown_inline',
-    'php',
     'python',
     'rasi',
     'ruby',

@@ -1,6 +1,6 @@
 -- Yuck
-vim.pack.add { 'https://github.com/eraserhd/parinfer-rust' }
 BuildAfterUpdate('parinfer-rust', 'cargo build --release')
+vim.pack.add { 'https://github.com/eraserhd/parinfer-rust' }
 
 -- Kitty
 vim.pack.add { 'https://github.com/fladson/vim-kitty' }

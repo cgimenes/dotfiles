@@ -65,7 +65,7 @@ XF86Audio{Play,Stop,Next,Prev}
 #
 
 # launch dm-logout
-super + control + q
+super + ctrl + q
 	dm-logout
 
 # launch mpv with link from clipboard
@@ -73,7 +73,7 @@ super + shift + v
 	mpv $(xclip -out -selection clipboard)
 
 # restart bspwm and make sxhkd reload its configuration files
-super + control + r
+super + ctrl + r
 	bspc wm -r; \
 	pkill -USR1 -x sxhkd
 

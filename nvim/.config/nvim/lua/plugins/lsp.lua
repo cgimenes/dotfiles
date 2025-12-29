@@ -2,18 +2,18 @@ vim.pack.add { 'https://github.com/neovim/nvim-lspconfig' }
 vim.lsp.enable {
   'clangd',
   'cssls',
-  'emmet_language_server',
-  'gopls',
-  'intelephense',
-  'jsonls',
   'lua_ls',
-  'prismals',
   'pyright',
   'ruby_lsp',
   'ruff',
   'tailwindcss',
-  'taplo', -- TOML
-  'yamlls',
+  -- 'emmet_language_server',
+  -- 'gopls',
+  -- 'intelephense',
+  -- 'jsonls',
+  -- 'prismals',
+  -- 'taplo', -- TOML
+  -- 'yamlls',
 }
 
 -- JSON schemas
