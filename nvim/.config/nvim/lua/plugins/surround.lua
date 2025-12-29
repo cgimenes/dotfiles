@@ -4,7 +4,7 @@
 -- Add: saiw]
 -- Visual mode: sa"
 vim.pack.add { 'https://github.com/nvim-mini/mini.surround' }
-require('mini.surround').setup()
+require('mini.surround').setup { search_method = 'cover_or_next' }
 
 -- vim.pack.add { 'https://github.com/tpope/vim-surround' }
 -- vim.pack.add { 'https://github.com/machakann/vim-sandwich' }
