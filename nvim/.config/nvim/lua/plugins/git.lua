@@ -10,10 +10,15 @@ require('diffview').setup {}
 Map { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History' }
 Map { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' }
 
--- Git signs
+-- Git signs (textobjects and hunk actions: gh to apply and gH to reset)
 vim.pack.add { 'https://github.com/nvim-mini/mini.diff' }
 require('mini.diff').setup {
   view = { style = 'sign', signs = { add = '┃', change = '┃', delete = '▁' } },
+}
+Map {
+  '<leader>ho',
+  MiniDiff.toggle_overlay,
+  desc = 'Toggle Git Changes Overlay',
 }
 
 -- Octo.nvim (GitHub PRs and Issues)
