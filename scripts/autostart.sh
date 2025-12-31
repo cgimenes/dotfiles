@@ -26,7 +26,6 @@ pgrep -x xidlehook >/dev/null || xidlehook \
   --timer 540 \
   'systemctl suspend' \
   '' &
-pgrep -x emacs >/dev/null || emacs --daemon &
 nitrogen --restore &
 autorandr -c &
 xset dpms force on &
