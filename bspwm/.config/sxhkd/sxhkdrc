@@ -4,17 +4,17 @@
 
 # terminal emulator
 super + Return
-	kitty
+	alacritty
 super + shift + Return
-	kitty -e zsh -i -c ta
+	alacritty -e zsh -i -c ta
 
 # program launcher
 super + d
-	rofi -show combi -terminal kitty
+	rofi -show combi -terminal alacritty
 
 # bluetui
 super + b
-	kitty -e bluetui
+	alacritty -e bluetui
 
 # rofi-calc
 super + c
@@ -26,7 +26,7 @@ Print
 
 # file explorer
 super + e
-	kitty -e yazi
+	alacritty -e yazi
 
 # plain text accounting
 super + g
@@ -41,7 +41,7 @@ super + u
 	rofi-copyq
 
 super + w
-	kitty -e $HOME/.cargo/bin/wiremix
+	alacritty -e $HOME/.cargo/bin/wiremix
 
 # brightness buttons
 XF86MonBrightness{Up,Down}
