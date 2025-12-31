@@ -6,5 +6,5 @@ import = [ "kanagawa.toml" ]
 opacity = 1
 
 [font]
-normal = { family = "Iosevka Nerd Font Mono", style = "Regular" }
+normal = { family = "Iosevka Nerd Font", style = "Regular" }
 size = 14.0

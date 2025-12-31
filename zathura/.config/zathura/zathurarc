@@ -34,4 +34,4 @@ set default-bg                  "#292D3E" # base02
 set default-fg                  "#93a1a1" # base1
 
 # Font
-set font "iosevka 10"
+set font "iosevka nerd font 10"

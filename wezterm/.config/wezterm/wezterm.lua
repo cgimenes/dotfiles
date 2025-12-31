@@ -18,7 +18,7 @@ config.window_padding = {
 config.initial_rows = 39
 config.initial_cols = 126
 config.font = wezterm.font_with_fallback({
-	{ family = "Iosevka", weight = "Regular" },
+	{ family = "Iosevka Nerd Font", weight = "Regular" },
 	{ family = "JetBrains Mono", weight = "Medium" },
 })
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
