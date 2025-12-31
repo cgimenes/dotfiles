@@ -1,7 +1,7 @@
 configuration {
   modes: "combi";
   combi-modes: [ run, drun ];
-  font: "Iosevka Nerd Font 13";
+  font: "Iosevka Nerd Font 14";
   combi-hide-mode-prefix: false;
   fixed-num-lines: true;
   drun-match-fields: "name,generic,exec,categories,keywords";
