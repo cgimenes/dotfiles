@@ -1,6 +1,6 @@
 #!/bin/bash
 
-nitrogen --restore &
+feh --bg-fill ~/.wallpaper &
 
 # X configs
 xsetroot -cursor_name left_ptr &

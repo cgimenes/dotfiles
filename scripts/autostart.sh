@@ -26,7 +26,7 @@ pgrep -x xidlehook >/dev/null || xidlehook \
   --timer 540 \
   'systemctl suspend' \
   '' &
-nitrogen --restore &
+feh --bg-fill ~/.wallpaper &
 autorandr -c &
 xset dpms force on &
 
