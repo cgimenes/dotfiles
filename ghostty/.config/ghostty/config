@@ -1,9 +1,7 @@
 theme = "Kanagawa Wave"
 background-opacity = 1
 
-font-family = "Iosevka Nerd Font"
-# font-family = "UbuntuMono Nerd Font"
-# font-family = "Zed Mono"
+font-family = "IosevkaTerm Nerd Font"
 font-size = 16
 font-feature = -calt
 font-feature = -liga

@@ -18,10 +18,10 @@ URxvt.depth: 32
 URxvt.scrollBar: false
 
 ! Fonts
-URxvt*font: xft:Iosevka Nerd Font:pixelsize=14:style=Regular
-URxvt.boldFont: xft:Iosevka Nerd Font:pixelsize=14:style=Regular
-URxvt.italicFont: xft:Iosevka Nerd Font:pixelsize=14:Italic
-URxvt.boldItalicFont: xft:Iosevka Nerd Font:pixelsize=14:Bold:Italic
+URxvt*font: xft:IosevkaTerm Nerd Font:pixelsize=14:style=Regular
+URxvt.boldFont: xft:IosevkaTerm Nerd Font:pixelsize=14:style=Regular
+URxvt.italicFont: xft:IosevkaTerm Nerd Font:pixelsize=14:Italic
+URxvt.boldItalicFont: xft:IosevkaTerm Nerd Font:pixelsize=14:Bold:Italic
 
 ! Fix font space (before Terminus it was -1)
 URxvt*letterSpace: 0
