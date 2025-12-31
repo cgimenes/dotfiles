@@ -4,6 +4,12 @@ import = [ "kanagawa.toml" ]
 
 [window]
 opacity = 1
+padding = { x = 1, y = 1 }
+dynamic_padding = true
+decorations = "None"
+
+[scrolling]
+history = 50000
 
 [font]
 normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
