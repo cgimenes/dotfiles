@@ -1,42 +1,10 @@
 -- Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+local languages = {}
 vim.pack.add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' } }
 require('nvim-treesitter.configs').setup {
-  ensure_installed = {
-    'bash',
-    'c',
-    'css',
-    'csv',
-    'diff',
-    'dockerfile',
-    'html',
-    'javascript',
-    'json',
-    'lua',
-    'luadoc',
-    'markdown',
-    'markdown_inline',
-    'python',
-    'rasi',
-    'ruby',
-    'sql',
-    'sxhkdrc',
-    'tmux',
-    'toml',
-    'tsx',
-    'typescript',
-    'vim',
-    'vimdoc',
-    'yaml',
-  },
-  auto_install = true,
-  highlight = {
-    enable = true,
-    -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-    --  If you are experiencing weird indenting issues, add the language to
-    --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-    additional_vim_regex_highlighting = { 'ruby' },
-  },
-  indent = { enable = true, disable = { 'ruby' } },
+  ensure_installed = languages,
+  highlight = { enable = languages },
+  indent = { enable = languages },
 }
 BuildAfterUpdate('nvim-treesitter', ':TSUpdate')
 
