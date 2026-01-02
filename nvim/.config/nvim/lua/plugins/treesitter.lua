@@ -2,34 +2,8 @@
 local languages = {}
 vim.pack.add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' } }
 require('nvim-treesitter.configs').setup {
-  ensure_installed = {
-    'bash',
-    'c',
-    'css',
-    'csv',
-    'diff',
-    'dockerfile',
-    'html',
-    'javascript',
-    'json',
-    'lua',
-    'luadoc',
-    'markdown',
-    'markdown_inline',
-    'python',
-    'rasi',
-    'ruby',
-    'sql',
-    'sxhkdrc',
-    'tmux',
-    'toml',
-    'tsx',
-    'typescript',
-    'vim',
-    'vimdoc',
-    'yaml',
-  },
-  auto_install = true,
+  ensure_installed = languages,
+  auto_install = false,
   highlight = { enable = languages },
   indent = { enable = languages },
 }
@@ -46,8 +20,3 @@ end
 -- Use treesitter to autoclose and autorename html tag
 vim.pack.add { 'https://github.com/windwp/nvim-ts-autotag' }
 require('nvim-ts-autotag').setup {}
-
--- Splitting/joining blocks of code
-vim.pack.add { 'https://github.com/Wansmer/treesj' }
-require('treesj').setup { use_default_keymaps = false }
-Map { '<space>lm', '<cmd>TSJToggle<cr>', desc = 'Split or Join code block with autodetect' }
