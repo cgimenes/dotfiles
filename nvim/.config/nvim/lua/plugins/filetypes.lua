@@ -7,3 +7,6 @@ vim.pack.add { 'https://github.com/fladson/vim-kitty' }
 
 -- JSONL
 vim.pack.add { 'https://github.com/kyoh86/vim-jsonl' }
+
+-- Ledger
+vim.pack.add { 'https://github.com/ledger/vim-ledger' }

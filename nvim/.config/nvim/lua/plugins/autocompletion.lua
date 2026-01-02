@@ -86,6 +86,11 @@ require('blink.cmp').setup {
     window = { border = 'single' },
   },
   completion = {
+    accept = {
+      auto_brackets = {
+        enabled = false,
+      },
+    },
     list = {
       selection = {
         auto_insert = false,
