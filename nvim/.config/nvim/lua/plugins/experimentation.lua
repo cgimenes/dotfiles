@@ -21,3 +21,7 @@ require('mini.bracketed').setup {
   undo = { suffix = '' },
   window = { suffix = '' },
 }
+
+-- CSV viewer
+vim.pack.add { 'https://github.com/hat0uma/csvview.nvim' }
+require('csvview').setup()
