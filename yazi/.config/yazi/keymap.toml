@@ -18,6 +18,11 @@ run = '''
 	shell 'dragon-drop -x -a -T "$@"'
 '''
 
+[[mgr.prepend_keymap]]
+on   = "<C-d>"
+run  = "plugin diff"
+desc = "Diff the selected with the hovered file"
+
 [[mgr.append_keymap]]
 on = ["g", "."]
 run = 'hidden toggle'
