@@ -6,6 +6,12 @@
         "language": [
           "php"
         ]
+      },
+      {
+        "path": "./ledger.json",
+        "language": [
+          "ledger"
+        ]
       }
     ]
   },

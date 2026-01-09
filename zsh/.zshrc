@@ -4,7 +4,6 @@ fi
 source ~/.zprofile
 
 # load configs
-source ~/.zsh/00-env.zsh
 source ~/.zsh/01-opts.zsh
 source ~/.zsh/02-integrations.zsh
 source ~/.zsh/03-zgen.zsh

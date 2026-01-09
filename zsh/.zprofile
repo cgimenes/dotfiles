@@ -14,3 +14,10 @@ export MANPAGER="nvim +Man!"
 
 export PATH="$HOME/.local/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
+
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/rg/config"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+export LEDGER_FILE="$HOME/ledger/current.hledger"

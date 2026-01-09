@@ -1,0 +1,11 @@
+{
+  "transaction": {
+    "prefix": "txn*",
+    "body": [
+      "${1:$CURRENT_YEAR}-${2:$CURRENT_MONTH}-${3:$CURRENT_DATE} ${4:Payee}",
+      "    $5",
+      "    $6                                              $0"
+    ],
+    "description": "Add a transaction"
+  }
+}

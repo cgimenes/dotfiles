@@ -20,7 +20,6 @@ main() {
     declare -a options=(
         "UI"
         "Neovim"
-        "Emacs"
     )
 
     # Piping the above array into dmenu, fzf or rofi.
@@ -30,16 +29,11 @@ main() {
     # What to do when/if we choose one of the options.
     case $choice in
     'UI')
-        kitty -e hledger-ui -f ~/ledger/current.hledger
+        alacritty -e hledger-ui
         ;;
     'Neovim')
-        kitty -d ledger -e nvim current.hledger
+        alacritty --working-directory ~/ledger -e nvim $LEDGER_FILE
         ;;
-    'Emacs')
-        emacs ledger/current.hledger
-        ;;
-    # It is a common practice to use the wildcard asterisk symbol (*) as a final
-    # pattern to define the default case. This pattern will always match.
     *)
         exit 0
         ;;
@@ -47,8 +41,12 @@ main() {
 
 }
 
+# Source environment variables from .zprofile
+if [[ -f "$HOME/.zprofile" ]]; then
+    source "$HOME/.zprofile"
+fi
+
 DMENU="dmenu -i -l 20 -p"
 RMENU="rofi -dmenu -i -matching fuzzy -p"
 MENU=$RMENU
 [[ "${BASH_SOURCE[0]}" == "${0}" ]] && main
-
