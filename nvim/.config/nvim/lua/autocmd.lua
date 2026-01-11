@@ -55,6 +55,9 @@ vim.api.nvim_create_autocmd('WinLeave', {
   group = group,
   desc = 'Remove cursor line highlight in inactive window',
   callback = function()
+    if vim.bo.filetype == 'snacks_picker_list' then
+      return
+    end
     vim.opt_local.cursorlineopt = 'number'
   end,
 })

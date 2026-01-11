@@ -4,7 +4,6 @@ return {
     local scripts = {
       { 'bin/dev' },
       { 'bin/bundle', 'install' },
-      { 'bin/rails', 'db:migrate' },
     }
     local ret = {}
     for _, script in ipairs(scripts) do
