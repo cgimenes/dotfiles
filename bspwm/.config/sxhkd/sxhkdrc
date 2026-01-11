@@ -27,14 +27,18 @@ Print
 # file explorer
 super + e
 	alacritty -e yazi
+super + shift + e
+	pcmanfm
 
 # plain text accounting
 super + g
-	dm-ledger
+	alacritty -e hledger-ui
+super + shift + g
+	alacritty --working-directory ~/ledger -e nvim $LEDGER_FILE
 
-# emacs
+# notes
 super + n
-	emacsclient -c -a ""
+	alacritty -e nvim ~/Obsidian
 
 # access copyq through rofi
 super + u

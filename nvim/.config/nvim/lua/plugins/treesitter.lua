@@ -3,6 +3,7 @@ vim.pack.add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', ver
 require('nvim-treesitter.configs').setup {
   auto_install = false,
   ensure_installed = {
+    'javascript',
     'tsx',
     'typescript',
   },
