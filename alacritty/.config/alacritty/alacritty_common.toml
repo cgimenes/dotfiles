@@ -4,6 +4,8 @@ live_config_reload = true
 
 [window]
 opacity = 0.97
+padding = { x = 1, y = 1 }
+dynamic_padding = true
 
 [scrolling]
 history = 50000
@@ -13,3 +15,4 @@ normal = { family = "IosevkaTerm Nerd Font", style = "Light" }
 bold = { family = "IosevkaTerm Nerd Font", style = "SemiBold" }
 italic = { family = "IosevkaTerm Nerd Font", style = "Light Italic" }
 bold_italic = { family = "IosevkaTerm Nerd Font", style = "SemiBold Italic" }
+offset = { x = -1, y = -1 }
