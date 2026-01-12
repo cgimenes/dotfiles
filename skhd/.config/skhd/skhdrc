@@ -1,4 +1,4 @@
-cmd - return : open -n "/Applications/Kitty.app"
+cmd - return : open -n "/Applications/Alacritty.app"
 
 cmd - h : yabai -m window --focus west || yabai -m display --focus west
 cmd - j : yabai -m window --focus south

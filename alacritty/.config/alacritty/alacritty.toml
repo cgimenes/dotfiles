@@ -1,17 +1,1 @@
-[general]
-live_config_reload = true
-import = [ "kanagawa.toml" ]
-
-[window]
-opacity = 0.97
-padding = { x = 1, y = 1 }
-dynamic_padding = true
-decorations = "None"
-
-[scrolling]
-history = 50000
-
-[font]
-normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
-size = 14.0
-offset = { x = -1, y = -1 }
+alacritty_darwin.toml

@@ -1,0 +1,8 @@
+[general]
+import = [ "alacritty_common.toml" ]
+
+[window]
+option_as_alt = "Both"
+
+[font]
+size = 22
