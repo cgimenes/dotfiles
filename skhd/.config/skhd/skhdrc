@@ -17,3 +17,5 @@ cmd + shift - v : yabai -m window --insert south
 cmd + shift - f : yabai -m window --toggle zoom-fullscreen
 
 cmd - e : yabai -m window --toggle split
+
+cmd + shift - c : yabai -m window --close

@@ -5,4 +5,4 @@ import = [ "alacritty_common.toml" ]
 option_as_alt = "Both"
 
 [font]
-size = 22
+size = 21
