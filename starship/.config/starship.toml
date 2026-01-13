@@ -1,18 +1,13 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
+right_format = """$time"""
 
 [time]
 disabled = false
-format = '[$time]($style) '
+format = '[$time]($style)'
 time_format = '%R'
 style = 'bright-black'
-
-[username]
-format = '\[[$user]($style)\]'
-
-[hostname]
-format = '\[[$hostname]($style)\] '
 
 [nodejs]
 format = '\[[node ($version)]($style)\]'
