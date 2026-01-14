@@ -18,6 +18,7 @@ aur_packages=(
 	"pet-bin"
 	"shikane"
 	"simple-mtpfs"
+	"sesh-bin"
 	"slack-desktop"
 	"spotify"
 	"ttf-tabler-icons"

@@ -127,6 +127,7 @@
   "packages": [
     "7zip",
     "acpilight",
+    "alacritty",
     "arc-gtk-theme",
     "atuin",
     "autorandr",
