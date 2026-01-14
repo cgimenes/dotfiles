@@ -3,7 +3,7 @@ import = [ "kanagawa.toml" ]
 live_config_reload = true
 
 [window]
-opacity = 0.97
+opacity = 1
 padding = { x = 2, y = 2 }
 dynamic_padding = true
 
