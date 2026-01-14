@@ -24,6 +24,8 @@ defaults write com.apple.dock "tilesize" -int "36"
 # configure spaces
 defaults write com.apple.dock "mru-spaces" -bool "false" && killall Dock
 killall Dock
+# configure terminal
+defaults write org.alacritty AppleFontSmoothing -int 0
 
 # install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

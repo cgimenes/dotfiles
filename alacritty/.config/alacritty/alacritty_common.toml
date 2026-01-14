@@ -11,8 +11,8 @@ dynamic_padding = true
 history = 50000
 
 [font]
-normal = { family = "IosevkaTerm Nerd Font", style = "Light" }
-bold = { family = "IosevkaTerm Nerd Font", style = "SemiBold" }
-italic = { family = "IosevkaTerm Nerd Font", style = "Light Italic" }
-bold_italic = { family = "IosevkaTerm Nerd Font", style = "SemiBold Italic" }
+normal = { family = "IosevkaTerm Nerd Font", style = "Regular" }
+bold = { family = "IosevkaTerm Nerd Font", style = "Bold" }
+italic = { family = "IosevkaTerm Nerd Font", style = "Italic" }
+bold_italic = { family = "IosevkaTerm Nerd Font", style = "Bold Italic" }
 offset = { x = -1, y = -1 }
