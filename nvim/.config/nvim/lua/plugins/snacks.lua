@@ -112,21 +112,21 @@ Map {
   end,
   desc = 'Pick Picker',
 }
-Map {
-  '<leader>sf',
-  function()
-    local truncate_width = vim.api.nvim_win_get_width(0) * 0.8
-    Snacks.picker.files {
-      hidden = true,
-      formatters = {
-        file = {
-          truncate = truncate_width,
-        },
-      },
-    }
-  end,
-  desc = 'Find Files',
-}
+-- Map {
+--   '<leader>sf',
+--   function()
+--     local truncate_width = vim.api.nvim_win_get_width(0) * 0.8
+--     Snacks.picker.files {
+--       hidden = true,
+--       formatters = {
+--         file = {
+--           truncate = truncate_width,
+--         },
+--       },
+--     }
+--   end,
+--   desc = 'Find Files',
+-- }
 Map {
   '<leader>e',
   function()

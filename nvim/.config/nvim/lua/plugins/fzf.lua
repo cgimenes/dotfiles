@@ -41,13 +41,7 @@ Map { '<leader>gs', '<cmd>FzfLua git_status<cr>', desc = 'Git Status' }
 --
 -- -- Files
 -- Map { '<leader>sr', '<cmd>FzfLua oldfiles<cr>', desc = '[S]earch [R]ecently opened files' }
--- Map {
---   '<leader>sf',
---   function()
---     require('fzf-lua').files()
---   end,
---   desc = '[S]earch [F]iles',
--- }
+Map { '<leader>sf', '<cmd>FzfLua files<cr>', desc = '[S]earch [F]iles' }
 --
 -- -- Search
 -- Map { '<leader>sl', '<cmd>FzfLua resume<cr>', desc = '[S]earch Resume' }
