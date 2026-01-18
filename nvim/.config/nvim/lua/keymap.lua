@@ -43,6 +43,10 @@ vim.keymap.set('x', '<leader>pp', '"_dP', { desc = 'Without yanking' })
 vim.keymap.set('n', '<leader>pe', '$p', { desc = 'End of current line' })
 vim.keymap.set('n', '<leader>pE', '$pa', { desc = 'End of current line and enter insert mode' })
 
+-- Better insert mode
+vim.keymap.set('i', '<C-a>', '<Home>')
+vim.keymap.set('i', '<C-e>', '<End>')
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
