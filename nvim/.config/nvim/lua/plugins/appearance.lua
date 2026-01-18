@@ -35,7 +35,10 @@ require('noice').setup {
 
 -- Highlight for window separator
 vim.pack.add { 'https://github.com/nvim-zh/colorful-winsep.nvim' }
-require('colorful-winsep').setup { highlight = '#e6c384' }
+require('colorful-winsep').setup {
+  highlight = '#e6c384',
+  animate = { enabled = false },
+}
 
 -- Auto arrange windows
 vim.pack.add { 'https://github.com/folke/edgy.nvim' }
