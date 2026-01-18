@@ -118,6 +118,8 @@ require('kanagawa-paper').setup { transparent = transparent }
 
 vim.pack.add { 'https://github.com/adibhanna/yukinord.nvim' }
 
+vim.pack.add { 'https://gitlab.com/motaz-shokry/gruvbox.nvim' }
+
 -- vim.cmd.colorscheme 'onedark'
 -- vim.cmd.colorscheme 'tokyonight-night'
 -- vim.cmd.colorscheme 'tokyonight-storm'
