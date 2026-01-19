@@ -3,12 +3,15 @@ require('fzf-lua').setup {
   { 'ivy', 'hide' },
   winopts = {
     preview = {
-      wrap = 'wrap',
+      wrap = true,
       hidden = true,
     },
   },
   files = {
     git_icons = false,
+    cwd_prompt = false,
+    prompt = ' ',
+    fzf_opts = { ['--scheme'] = 'path', ['--pointer'] = ' ' },
   },
   grep = {
     rg_opts = '--hidden --column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e',
