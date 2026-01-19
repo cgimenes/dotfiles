@@ -1,3 +1,4 @@
+---@module 'overseer'
 ---@type overseer.TemplateFileDefinition
 return {
   name = 'run script',
@@ -28,7 +29,7 @@ return {
     return {
       cmd = cmd,
       components = {
-        { 'on_output_quickfix', set_diagnostics = true, open = true },
+        { 'on_output_quickfix', set_diagnostics = true, open = false },
         'on_result_diagnostics',
         -- { 'display_duration', detail_level = 2 },
         'on_exit_set_status',

@@ -25,3 +25,9 @@ require('mini.bracketed').setup {
 -- CSV viewer
 vim.pack.add { 'https://github.com/hat0uma/csvview.nvim' }
 require('csvview').setup()
+
+vim.pack.add { 'https://github.com/relf108/nvim-unstack' }
+require('nvim-unstack').setup {
+  mapkey = "<leader>U",
+  layout = "tab"
+}
