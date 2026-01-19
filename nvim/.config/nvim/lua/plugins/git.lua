@@ -52,7 +52,7 @@ Map {
     unclash.set_qflist()
     vim.cmd 'copen'
   end,
-  desc = 'Accept Both',
+  desc = 'List Git Conflicts',
 }
 
 -- vim.pack.add { {
