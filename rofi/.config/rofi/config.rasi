@@ -1,11 +1,18 @@
 configuration {
-  modes: "combi";
+  show-icons: true;
+  font: "Iosevka Nerd Font 12";
+  icon-theme: "Gruvbox-Dark";
+
   combi-modes: [ run, drun ];
-  font: "Iosevka Nerd Font 14";
-  combi-hide-mode-prefix: false;
-  fixed-num-lines: true;
-  drun-match-fields: "name,generic,exec,categories,keywords";
-  drun-display-format: "{name} [<span foreground='#dcd7ba'><i>({generic})</i></span>]";
+
+  display-ssh:    "󰣀 ";
+  display-run:    "󰣖 ";
+  display-drun:   "󱓞 ";
+  display-window: "󱂬 ";
+  display-combi:  "󰕘 ";
+  display-filebrowser: "󰉋 ";
+
+  dpi: 120;
 }
 
-@theme "kanagawa"
+@theme "gruvbox"

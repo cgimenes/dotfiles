@@ -11,6 +11,8 @@ aur_packages=(
 	"eww"
 	"kanagawa-gtk-theme-git"
 	"kanagawa-icon-theme-git"
+	"gruvbox-gtk-theme-git"
+	"gruvbox-icon-theme-git"
 	"lazydocker"
 	"librewolf-bin"
 	"mise-bin"
