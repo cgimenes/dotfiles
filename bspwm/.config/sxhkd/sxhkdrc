@@ -175,7 +175,7 @@ super + ctrl + {1-9}
 #	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
-super + Escape
+super + ctrl + Escape
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 #
