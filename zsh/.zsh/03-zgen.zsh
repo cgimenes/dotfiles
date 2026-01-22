@@ -14,7 +14,7 @@ if ! zgen saved; then
 
 	# plugins
 	zgen load zsh-users/zsh-syntax-highlighting
-	zgen load zsh-users/zsh-completions
+	# zgen load zsh-users/zsh-completions
 	zgen load zsh-users/zsh-autosuggestions
 	zgen load Aloxaf/fzf-tab
 
