@@ -30,6 +30,8 @@ brew 'tmux'
 brew 'yazi'
 brew 'yq'
 brew 'zoxide'
+brew 'FelixKratz/formulae/sketchybar'
+brew 'FelixKratz/formulae/borders'
 
 cask 'bluesnooze'
 cask 'brave-browser'
