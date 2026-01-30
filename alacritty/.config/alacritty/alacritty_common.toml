@@ -1,11 +1,13 @@
 [general]
-import = [ "gruvbox.toml" ]
+import = [ "kanagawa.toml" ]
 live_config_reload = true
 
 [window]
 opacity = 1
 padding = { x = 2, y = 2 }
 dynamic_padding = true
+option_as_alt = "Both"
+decorations = "None"
 
 [scrolling]
 history = 50000
