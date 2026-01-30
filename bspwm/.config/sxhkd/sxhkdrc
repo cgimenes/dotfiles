@@ -38,7 +38,7 @@ super + shift + g
 
 # notes
 super + n
-	alacritty -e nvim ~/Obsidian
+	alacritty -e nvim ~/Obsidian/Personal/GTD.md
 
 # access copyq through rofi
 super + u
