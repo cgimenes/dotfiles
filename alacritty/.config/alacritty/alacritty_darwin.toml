@@ -1,5 +1,8 @@
 [general]
 import = [ "alacritty_common.toml" ]
 
+[window]
+decorations = "Buttonless"
+
 [font]
 size = 23.25
