@@ -242,6 +242,7 @@
     "vulkan-intel",
     "wl-clipboard",
     "xclip",
+    "xdg-desktop-portal-gtk",
     "xf86-input-libinput",
     "xorg-xinput",
     "xorg-xkill",
