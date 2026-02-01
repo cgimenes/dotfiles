@@ -71,9 +71,10 @@ vim.api.nvim_create_user_command('OS', function(params)
       if cmd then
         local task = require('overseer.task').new { cmd = cmd }
         task:add_component { 'keymaps' }
-        if not params.bang then
-          task:start()
+        if params.bang then
+          task:add_component { 'restart_on_save', delay = 1 }
         end
+        task:start()
       end
     end)
   end
