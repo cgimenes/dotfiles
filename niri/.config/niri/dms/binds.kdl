@@ -13,6 +13,12 @@ binds {
     Mod+M hotkey-overlay-title="Task Manager" {
         spawn "dms" "ipc" "call" "processlist" "focusOrToggle";
     }
+    Mod+E hotkey-overlay-title="TUI File Manager" {
+        spawn "alacritty" "-e" "yazi";
+    }
+    Mod+Shift+E hotkey-overlay-title="GUI File Manager" {
+        spawn "pcmanfm";
+    }
 
     Super+X hotkey-overlay-title="Power Menu: Toggle" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
     Mod+Comma hotkey-overlay-title="Settings" {
@@ -28,7 +34,7 @@ binds {
     Mod+Alt+L hotkey-overlay-title="Lock Screen" {
         spawn "dms" "ipc" "call" "lock" "lock";
     }
-    Mod+Shift+E { quit; }
+    Mod+Ctrl+Q { quit; }
     Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" {
         spawn "dms" "ipc" "call" "processlist" "focusOrToggle";
     }
