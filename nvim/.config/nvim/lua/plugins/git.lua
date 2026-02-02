@@ -38,42 +38,32 @@ Map { '<leader>gpr', '<cmd>Octo review<cr>', desc = 'Review' }
 Map { '<leader>gpt', '<cmd>Octo review thread<cr>', desc = 'Show Thread' }
 
 -- Conflicts
-vim.pack.add { {
-  src = 'https://github.com/akinsho/git-conflict.nvim',
-  version = vim.version.range '*',
-} }
-require('git-conflict').setup { default_mappings = false, default_commands = false }
-local group = vim.api.nvim_create_augroup('GitConflictKeymap', { clear = true })
-vim.api.nvim_create_autocmd('User', {
-  group = group,
-  pattern = 'GitConflictDetected',
-  callback = function(event)
-    vim.diagnostic.enable(false, { bufnr = event.buf })
+vim.pack.add { 'https://github.com/spacedentist/resolve.nvim' }
+require('resolve').setup {
+  default_keymaps = false,
+  on_conflict_detected = function(event)
+    vim.diagnostic.enable(false, { bufnr = event.bufnr })
 
-    vim.keymap.set('n', ',o', function()
-      require('git-conflict').choose 'ours'
-    end, { buffer = event.buf, desc = 'Choose ours', silent = true })
-    vim.keymap.set('n', ',t', function()
-      require('git-conflict').choose 'theirs'
-    end, { buffer = event.buf, desc = 'Choose theirs', silent = true })
-    vim.keymap.set('n', ',b', function()
-      require('git-conflict').choose 'both'
-    end, { buffer = event.buf, desc = 'Choose both', silent = true })
-    vim.keymap.set('n', ',n', function()
-      require('git-conflict').choose 'none'
-    end, { buffer = event.buf, desc = 'Choose none', silent = true })
+    vim.keymap.set('n', ']c', '<Plug>(resolve-next)', { desc = 'Next conflict', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', '[c', '<Plug>(resolve-prev)', { desc = 'Previous conflict', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',o', '<Plug>(resolve-ours)', { desc = 'Choose ours', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',t', '<Plug>(resolve-theirs)', { desc = 'Choose theirs', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',b', '<Plug>(resolve-both)', { desc = 'Choose both', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',m', '<Plug>(resolve-base)', { desc = 'Choose base', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',n', '<Plug>(resolve-none)', { desc = 'Choose none', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',do', '<Plug>(resolve-diff-ours)', { desc = 'Diff ours', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',dt', '<Plug>(resolve-diff-theirs)', { desc = 'Diff theirs', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',db', '<Plug>(resolve-diff-both)', { desc = 'Diff both', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',dv', '<Plug>(resolve-diff-vs)', { desc = 'Diff ours → theirs', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',dV', '<Plug>(resolve-diff-vs-reverse)', { desc = 'Diff theirs → ours', buffer = event.bufnr, silent = true })
   end,
-})
-vim.api.nvim_create_autocmd('User', {
-  group = group,
-  pattern = 'GitConflictResolved',
-  callback = function(event)
-    vim.diagnostic.enable(true, { bufnr = event.buf })
+  on_conflicts_resolved = function(event)
+    vim.diagnostic.enable(true, { bufnr = event.bufnr })
 
-    for _, mapping in ipairs { ',o', ',t', ',b', ',n' } do
+    for _, mapping in ipairs { ']c', '[c', ',o', ',t', ',b', ',m', ',n', ',do', ',dt', ',db', ',dv', ',dV' } do
       if vim.fn.hasmapto(mapping, 'n') > 0 then
-        vim.api.nvim_buf_del_keymap(event.buf, 'n', mapping)
+        vim.api.nvim_buf_del_keymap(event.bufnr, 'n', mapping)
       end
     end
   end,
-})
+}
