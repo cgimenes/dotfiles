@@ -4,11 +4,13 @@ Map { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' }
 Map { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' }
 Map { '<leader>gd', '<cmd>vertical G diff HEAD %<cr>', desc = 'Git Diff Current File' }
 
--- Diffview
-vim.pack.add { 'https://github.com/sindrets/diffview.nvim' }
-require('diffview').setup {}
-Map { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History' }
-Map { '<leader>gD', '<cmd>DiffviewOpen<cr>', desc = 'Git Diffview' }
+-- CodeDiff
+vim.pack.add {
+  'https://github.com/MunifTanjim/nui.nvim',
+  'https://github.com/esmuellert/codediff.nvim',
+}
+Map { '<leader>gh', ':CodeDiff history %<cr>', desc = 'File History' }
+Map { '<leader>gD', '<cmd>CodeDiff<cr>', desc = 'Git Diffview' }
 
 -- Git signs (textobjects and hunk actions: gh to apply and gH to reset)
 vim.pack.add { 'https://github.com/nvim-mini/mini.diff' }

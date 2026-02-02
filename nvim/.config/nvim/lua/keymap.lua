@@ -29,7 +29,6 @@ vim.keymap.set('n', '<C-i>', '<C-i>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
-vim.keymap.set('n', '<leader>bn', '<cmd>enew<cr>', { desc = 'New Buffer' })
 vim.keymap.set('n', '<leader>bd', '<cmd>windo diffthis<cr>', { desc = 'Diff' })
 vim.keymap.set('n', '<leader>bs', '<cmd>silent wa!<cr>', { desc = 'Save file' })
 
@@ -40,8 +39,6 @@ vim.keymap.set('x', '$', 'g_')
 
 -- Better pasting experience
 vim.keymap.set('x', '<leader>pp', '"_dP', { desc = 'Without yanking' })
-vim.keymap.set('n', '<leader>pe', '$p', { desc = 'End of current line' })
-vim.keymap.set('n', '<leader>pE', '$pa', { desc = 'End of current line and enter insert mode' })
 
 -- Better insert mode
 vim.keymap.set('i', '<C-a>', '<Home>')
@@ -64,11 +61,8 @@ vim.keymap.set('n', '<X2Mouse>', '<C-i>')
 -- Tabs
 vim.keymap.set('n', 'tn', '<cmd>tabnew<cr>', { desc = 'New tab' })
 vim.keymap.set('n', 'tc', '<cmd>tabclose<cr>', { desc = 'Next tab' })
-vim.keymap.set('n', 'th', '<cmd>-tabmove<cr>', { desc = 'Move tab to the left' })
-vim.keymap.set('n', 'tl', '<cmd>+tabmove<cr>', { desc = 'Move tab to the right' })
-vim.keymap.set('n', 't1', '1gt', { desc = 'Go to tab 1' })
-vim.keymap.set('n', 't2', '2gt', { desc = 'Go to tab 2' })
-vim.keymap.set('n', 't3', '3gt', { desc = 'Go to tab 3' })
+vim.keymap.set('n', 'tH', '<cmd>-tabmove<cr>', { desc = 'Move tab to the left' })
+vim.keymap.set('n', 'tL', '<cmd>+tabmove<cr>', { desc = 'Move tab to the right' })
 
 -- Find/replace
 vim.keymap.set('n', '<leader>fs', function()
