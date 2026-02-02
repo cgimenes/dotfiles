@@ -1,4 +1,4 @@
-local transparent = true
+local transparent = false
 
 vim.pack.add { 'https://github.com/olimorris/onedarkpro.nvim' }
 require('onedarkpro').setup {
