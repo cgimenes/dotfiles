@@ -44,28 +44,40 @@ vim.pack.add { 'https://github.com/spacedentist/resolve.nvim' }
 require('resolve').setup {
   default_keymaps = false,
   on_conflict_detected = function(event)
+    if vim.b[event.bufnr].resolve_keymaps_set then
+      return
+    end
+
     vim.diagnostic.enable(false, { bufnr = event.bufnr })
 
-    vim.keymap.set('n', ']c', '<Plug>(resolve-next)', { desc = 'Next conflict', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', '[c', '<Plug>(resolve-prev)', { desc = 'Previous conflict', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', ',o', '<Plug>(resolve-ours)', { desc = 'Choose ours', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', ',t', '<Plug>(resolve-theirs)', { desc = 'Choose theirs', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', ',b', '<Plug>(resolve-both)', { desc = 'Choose both', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', ',m', '<Plug>(resolve-base)', { desc = 'Choose base', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', ',n', '<Plug>(resolve-none)', { desc = 'Choose none', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', ',do', '<Plug>(resolve-diff-ours)', { desc = 'Diff ours', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', ',dt', '<Plug>(resolve-diff-theirs)', { desc = 'Diff theirs', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', ',db', '<Plug>(resolve-diff-both)', { desc = 'Diff both', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', ',dv', '<Plug>(resolve-diff-vs)', { desc = 'Diff ours → theirs', buffer = event.bufnr, silent = true })
-    vim.keymap.set('n', ',dV', '<Plug>(resolve-diff-vs-reverse)', { desc = 'Diff theirs → ours', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ']c', '<cmd>ResolveNext<cr>zt', { desc = 'Next conflict', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', '[c', '<cmd>ResolvePrev<cr>zt', { desc = 'Previous conflict', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',O', '<cmd>ResolveOurs<cr>', { desc = 'Choose ours', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',T', '<cmd>ResolveTheirs<cr>', { desc = 'Choose theirs', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',B', '<cmd>ResolveBoth<cr>', { desc = 'Choose both', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',M', '<cmd>ResolveBase<cr>', { desc = 'Choose base', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',N', '<cmd>ResolveNone<cr>', { desc = 'Choose none', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',o', '<cmd>ResolveDiffOurs<cr>', { desc = 'Diff ours', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',t', '<cmd>ResolveDiffTheirs<cr>', { desc = 'Diff theirs', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',b', '<cmd>ResolveDiffBoth<cr>', { desc = 'Diff both', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',v', '<cmd>ResolveDiffOursTheir<cr>', { desc = 'Diff ours → theirs', buffer = event.bufnr, silent = true })
+    vim.keymap.set('n', ',V', '<cmd>ResolveDiffTheirsOurs<cr>', { desc = 'Diff theirs → ours', buffer = event.bufnr, silent = true })
+
+    vim.b[event.bufnr].resolve_keymaps_set = true
   end,
   on_conflicts_resolved = function(event)
+    if not vim.b[event.bufnr].resolve_keymaps_set then
+      return
+    end
+
     vim.diagnostic.enable(true, { bufnr = event.bufnr })
 
-    for _, mapping in ipairs { ']c', '[c', ',o', ',t', ',b', ',m', ',n', ',do', ',dt', ',db', ',dv', ',dV' } do
+    for _, mapping in ipairs { ']c', '[c', ',O', ',T', ',B', ',M', ',N', ',o', ',t', ',b', ',v', ',V' } do
       if vim.fn.hasmapto(mapping, 'n') > 0 then
         vim.api.nvim_buf_del_keymap(event.bufnr, 'n', mapping)
       end
     end
+
+    vim.b[event.bufnr].resolve_keymaps_set = nil
   end,
 }
