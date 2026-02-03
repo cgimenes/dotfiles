@@ -7,4 +7,5 @@ require('nvim-navbuddy').setup {
   lsp = { auto_attach = true },
   window = { size = '90%' },
 }
-Map { '<leader>lo', '<cmd>Navbuddy root<cr>', desc = 'Outline' }
+Map { '<leader>lo', '<cmd>Navbuddy<cr>', desc = 'Outline' }
+Map { '<leader>lO', '<cmd>Navbuddy root<cr>', desc = 'Outline (Root)' }

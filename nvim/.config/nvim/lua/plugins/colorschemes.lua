@@ -1,4 +1,5 @@
 local transparent = false
+vim.o.background = 'dark'
 
 vim.pack.add { 'https://github.com/olimorris/onedarkpro.nvim' }
 require('onedarkpro').setup {
@@ -46,6 +47,7 @@ require('synthwave84').setup {
   },
 }
 
+
 vim.pack.add { 'https://github.com/EdenEast/nightfox.nvim' }
 
 vim.pack.add { 'https://github.com/AlexvZyl/nordic.nvim' }
@@ -89,7 +91,6 @@ vim.pack.add { 'https://github.com/xeind/nightingale.nvim' }
 require('nightingale').setup { transparent = transparent }
 
 vim.pack.add { 'https://github.com/NTBBloodbath/sweetie.nvim' }
-vim.o.background = 'dark'
 
 vim.pack.add { 'https://github.com/thesimonho/kanagawa-paper.nvim' }
 require('kanagawa-paper').setup { transparent = transparent }
@@ -124,9 +125,11 @@ vim.cmd.colorscheme 'kanagawa-wave'
 -- vim.cmd.colorscheme 'nordic'
 -- vim.cmd.colorscheme 'gruvbox-baby'
 -- vim.cmd.colorscheme 'gruvbox-hard'
+-- vim.cmd.colorscheme 'gruvbox-light'
 -- vim.cmd.colorscheme 'tokyodark'
 -- vim.cmd.colorscheme 'one_monokai'
 -- vim.cmd.colorscheme 'cyberdream'
+-- vim.cmd.colorscheme 'cyberdream-light'
 -- vim.cmd.colorscheme 'darkplus'
 -- vim.cmd.colorscheme 'moonfly'
 -- vim.cmd.colorscheme 'kanso-zen'
