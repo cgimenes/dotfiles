@@ -15,6 +15,8 @@ local ensure_installed = {
   -- 'gopls',
   -- 'intelephense',
   -- 'jsonls',
+  -- 'php-cs-fixer',
+  -- 'pint',
   -- 'prismals',
   -- 'reformat-gherkin',
   -- 'taplo',
@@ -27,12 +29,7 @@ local ensure_installed = {
   -- 'delve',
   -- 'php-debug-adapter',
 }
--- if vim.fn.executable 'composer' == 1 then
---   vim.list_extend(ensure_installed, { 'pint', 'php-cs-fixer' })
--- end
-if vim.fn.executable 'gem' == 1 then
-  vim.list_extend(ensure_installed, { 'rubocop', 'erb-formatter', 'ruby_lsp' })
-end
+if vim.fn.executable 'gem' == 1 then vim.list_extend(ensure_installed, { 'rubocop', 'erb-formatter', 'ruby_lsp' }) end
 
 vim.pack.add {
   'https://github.com/mason-org/mason.nvim',
@@ -40,5 +37,5 @@ vim.pack.add {
   'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
 }
 require('mason').setup {}
-require('mason-lspconfig').setup()
+require('mason-lspconfig').setup { automatic_enable = true }
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }

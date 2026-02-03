@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
     -- Highlight all references to the symbol under your cursor
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, { bufnr = event.buf }) then
+    if client and client:supports_method('textDocument/documentHighlight', event.buf) then
       local highlight_augroup = vim.api.nvim_create_augroup('highlight-references', { clear = false })
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
         buffer = event.buf,
@@ -75,7 +75,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     -- Enable folding with LSP
-    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_foldingRange) then
+    if client and client:supports_method('textDocument/foldingRange', event.buf) then
       local win = vim.api.nvim_get_current_win()
       vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
     end
