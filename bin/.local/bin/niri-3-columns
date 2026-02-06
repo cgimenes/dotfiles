@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+TOTAL_COLUMNS=3
+
+# Start the process from the leftmost column
+niri msg action focus-column-first
+sleep 0.1
+
+for ((c=0; c<TOTAL_COLUMNS; c++)); do
+    # Set the current column width to 33.333% of the screen
+    niri msg action set-column-width "33.333%"
+    sleep 0.05
+
+    # Move focus to the next available column on the right
+    niri msg action focus-column-right
+    sleep 0.1
+done
+
+# Return focus to the first column to finish the sequence
+niri msg action focus-column-first
