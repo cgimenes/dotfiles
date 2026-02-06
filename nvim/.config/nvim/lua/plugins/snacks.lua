@@ -98,14 +98,6 @@ Map {
   desc = 'Git Log (Pickaxe)',
 }
 Map {
-  '<leader>gB',
-  function()
-    Snacks.gitbrowse()
-  end,
-  desc = 'Git Browse',
-  mode = { 'n', 'x' },
-}
-Map {
   '<leader>?',
   function()
     Snacks.picker.pick()

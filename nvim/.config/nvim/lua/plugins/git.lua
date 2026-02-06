@@ -1,5 +1,9 @@
 -- Fugitive
-vim.pack.add { 'https://github.com/tpope/vim-fugitive' }
+vim.pack.add {
+  'https://github.com/tpope/vim-rhubarb',
+  'https://github.com/tpope/vim-fugitive',
+}
+Map { '<leader>gB', ':GBrowse<cr>', desc = 'Git Browse', mode = { 'n', 'x' } }
 Map { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' }
 Map { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' }
 Map { '<leader>gd', '<cmd>vertical G diff HEAD %<cr>', desc = 'Git Diff Current File' }
@@ -44,9 +48,7 @@ vim.pack.add { 'https://github.com/spacedentist/resolve.nvim' }
 require('resolve').setup {
   default_keymaps = false,
   on_conflict_detected = function(event)
-    if vim.b[event.bufnr].resolve_keymaps_set then
-      return
-    end
+    if vim.b[event.bufnr].resolve_keymaps_set then return end
 
     vim.diagnostic.enable(false, { bufnr = event.bufnr })
 
@@ -66,16 +68,12 @@ require('resolve').setup {
     vim.b[event.bufnr].resolve_keymaps_set = true
   end,
   on_conflicts_resolved = function(event)
-    if not vim.b[event.bufnr].resolve_keymaps_set then
-      return
-    end
+    if not vim.b[event.bufnr].resolve_keymaps_set then return end
 
     vim.diagnostic.enable(true, { bufnr = event.bufnr })
 
     for _, mapping in ipairs { ']c', '[c', ',O', ',T', ',B', ',M', ',N', ',o', ',t', ',b', ',v', ',V' } do
-      if vim.fn.hasmapto(mapping, 'n') > 0 then
-        vim.api.nvim_buf_del_keymap(event.bufnr, 'n', mapping)
-      end
+      if vim.fn.hasmapto(mapping, 'n') > 0 then vim.api.nvim_buf_del_keymap(event.bufnr, 'n', mapping) end
     end
 
     vim.b[event.bufnr].resolve_keymaps_set = nil
