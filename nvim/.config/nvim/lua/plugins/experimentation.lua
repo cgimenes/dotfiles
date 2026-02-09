@@ -32,3 +32,10 @@ require('nvim-unstack').setup {
   mapkey = '<leader>U',
   layout = 'tab',
 }
+
+-- Neogit
+vim.pack.add {
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/sotte/neogit',
+}
+Map { '<leader>gG', '<cmd>Neogit<cr>', desc = 'Neogit' }
