@@ -5,11 +5,11 @@ local on_conflict_detected = function(event)
 
   vim.diagnostic.enable(false, { bufnr = event.bufnr })
 
-  vim.keymap.set('n', ']c', function()
+  vim.keymap.set('n', ']x', function()
     M.next_conflict()
     vim.cmd 'normal! zt'
   end, { desc = 'Next conflict', buffer = event.bufnr, silent = true })
-  vim.keymap.set('n', '[c', function()
+  vim.keymap.set('n', '[x', function()
     M.prev_conflict()
     vim.cmd 'normal! zt'
   end, { desc = 'Previous conflict', buffer = event.bufnr, silent = true })
@@ -31,7 +31,7 @@ local on_conflicts_resolved = function(event)
 
   vim.diagnostic.enable(true, { bufnr = event.bufnr })
 
-  for _, mapping in ipairs { ']c', '[c', ',O', ',T', ',B', ',M', ',N', ',o', ',t', ',b', ',v', ',V' } do
+  for _, mapping in ipairs { ']x', '[x', ',O', ',T', ',B', ',M', ',N', ',o', ',t', ',b', ',v', ',V' } do
     if vim.fn.hasmapto(mapping, 'n') > 0 then vim.api.nvim_buf_del_keymap(event.bufnr, 'n', mapping) end
   end
 
