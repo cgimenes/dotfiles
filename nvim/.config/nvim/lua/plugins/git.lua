@@ -6,7 +6,6 @@ vim.pack.add {
 Map { '<leader>gB', ':GBrowse<cr>', desc = 'Git Browse', mode = { 'n', 'x' } }
 Map { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' }
 Map { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' }
-Map { '<leader>gd', '<cmd>vertical G diff HEAD %<cr>', desc = 'Git Diff Current File' }
 
 -- CodeDiff
 vim.pack.add {
@@ -14,12 +13,19 @@ vim.pack.add {
   'https://github.com/esmuellert/codediff.nvim',
 }
 Map { '<leader>gh', ':CodeDiff history %<cr>', desc = 'File History' }
-Map { '<leader>gD', '<cmd>CodeDiff<cr>', desc = 'Git Diffview' }
+Map { '<leader>gd', '<cmd>CodeDiff<cr>', desc = 'Git Diff' }
+Map { '<leader>gD', '<cmd>CodeDiff main...HEAD<cr>', desc = 'Git Diff main...HEAD (PR-like)' }
 
 -- Git signs (textobjects and hunk actions: gh to apply and gH to reset)
 vim.pack.add { 'https://github.com/nvim-mini/mini.diff' }
 require('mini.diff').setup {
   view = { style = 'sign', signs = { add = '┃', change = '┃', delete = '▁' } },
+  mappings = {
+    goto_first = '[C',
+    goto_prev = '[c',
+    goto_next = ']c',
+    goto_last = ']C',
+  },
 }
 Map {
   '<leader>ho',
