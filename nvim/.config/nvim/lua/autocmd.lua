@@ -87,3 +87,10 @@ vim.api.nvim_create_autocmd('FileType', {
     end, { buffer = true, noremap = true, silent = true, desc = 'Remove quickfix item under cursor' })
   end,
 })
+
+-- Auto resize windows when the Vim window is resized
+vim.api.nvim_create_autocmd('VimResized', {
+  desc = 'Auto resize windows when the Vim window is resized',
+  group = vim.api.nvim_create_augroup('resize-splits', { clear = true }),
+  command = 'tabdo wincmd =',
+})
