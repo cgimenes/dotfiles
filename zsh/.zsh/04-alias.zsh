@@ -41,3 +41,13 @@ alias poetsh='source $(poetry env info --path)/bin/activate' # Activate poetry s
 alias supabase='npx --yes supabase'
 alias nest='npx --yes @nestjs/cli'
 alias tsx='npx --yes tsx'
+
+# Timelog
+alias tli='echo i `date "+%Y-%m-%d %H:%M:%S"` $* >>$TIMELOG_DIR/current.timeclock'
+alias tlo='echo o `date "+%Y-%m-%d %H:%M:%S"` >>$TIMELOG_DIR/current.timeclock'
+alias tll='tail $TIMELOG_DIR/current.timeclock'
+alias tle='nvim $TIMELOG_DIR/current.timeclock'
+alias tlb='hledger -f $TIMELOG_DIR/current.journal bal -D'
+alias tlbm='hledger -f $TIMELOG_DIR/current.journal bal -Xm -D'
+alias tlp='hledger -f $TIMELOG_DIR/current.journal print'
+alias tlpm='hledger -f $TIMELOG_DIR/current.journal print -Xm'
