@@ -1,2 +1,3 @@
 spawn-at-startup "shikane"
 spawn-at-startup "foot" "-s"
+spawn-at-startup "enpass" "-minimize"
