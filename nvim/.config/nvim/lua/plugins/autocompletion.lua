@@ -12,19 +12,18 @@ require('blink.cmp').setup {
   },
   fuzzy = {
     implementation = 'lua',
-    max_typos = function()
-      return 0
-    end,
+    max_typos = function() return 0 end,
     frecency = {
       enabled = false,
     },
   },
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer', 'dadbod', 'copilot' },
+    default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
     per_filetype = {
       lua = { inherit_defaults = true, 'lazydev' },
-      sql = { 'dadbod' },
+      sql = { 'dadbod', 'buffer', 'copilot' },
       markdown = { inherit_defaults = true },
+      hledger = { 'omni', 'snippets', 'buffer', 'copilot' },
     },
     providers = {
       -- dont show LuaLS require statements when lazydev has items
