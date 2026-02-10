@@ -106,13 +106,12 @@ vim.filetype.add {
 -- Configure diagnostics
 vim.diagnostic.config {
   virtual_text = false,
-  -- virtual_text = { current_line = true },
   underline = false,
   severity_sort = true,
   float = {
     focusable = true,
-    border = 'rounded',
-    header = '',
+    -- border = 'bold',
+    -- header = '',
   },
   signs = {
     text = {
@@ -122,5 +121,4 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.HINT] = '',
     },
   },
-  jump = { float = true },
 }
