@@ -30,7 +30,6 @@ vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
 vim.keymap.set('n', '<leader>bd', '<cmd>windo diffthis<cr>', { desc = 'Diff' })
-vim.keymap.set('n', '<leader>bs', '<cmd>silent wa!<cr>', { desc = 'Save file' })
 
 vim.keymap.set('x', '>', '>gv')
 vim.keymap.set('x', '<', '<gv')

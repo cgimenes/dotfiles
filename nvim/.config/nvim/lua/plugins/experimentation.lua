@@ -39,3 +39,7 @@ vim.pack.add {
   'https://github.com/sotte/neogit',
 }
 Map { '<leader>gG', '<cmd>Neogit<cr>', desc = 'Neogit' }
+
+-- Auto save
+vim.pack.add { 'https://github.com/okuuva/auto-save.nvim' }
+require('auto-save').setup {}
