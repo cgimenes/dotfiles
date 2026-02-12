@@ -53,7 +53,12 @@ function tls() {
 
   if [ -n "$ENTRY" ]; then
     echo $ENTRY
-    echo "Running"
+    DESCRIPTION=$(echo $ENTRY | sed 's/^i [0-9-]* [0-9:]* //')
+    START_DATE=$(echo $ENTRY | awk '{print $2}')
+    START_TIME=$(echo $ENTRY | awk '{print $3}' | cut -d: -f1-2)
+    HOURS=$(hledger -f $TIMELOG_DIR/current.journal print | grep "$START_DATE.*$START_TIME" -A 1 | grep "($DESCRIPTION)" | awk '{print $NF}')
+    MINUTES=$(hledger -f $TIMELOG_DIR/current.journal print -Xm | grep "$START_DATE.*$START_TIME" -A 1 | grep "($DESCRIPTION)" | awk '{print $NF}')
+    [ -n "$HOURS" ] && echo "Running time: $HOURS / $MINUTES"
   else
     echo "Stopped"
   fi
