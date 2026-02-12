@@ -85,5 +85,9 @@ sketchybar --add item meeting right \
            --set meeting update_freq=30 \
            script="$PLUGIN_DIR/next_meeting.sh"
 
+sketchybar --add item timelog right \
+           --set timelog update_freq=5 \
+           script="$PLUGIN_DIR/timelog.sh"
+
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
