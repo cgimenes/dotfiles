@@ -1,0 +1,157 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'thor'
+require 'time'
+require 'gum'
+
+class TimeLogCLI < Thor
+  def initialize(*args)
+    super
+    @timelog_dir = ENV['TIMELOG_DIR']
+    error 'Error: TIMELOG_DIR environment variable not set' unless @timelog_dir
+    @timeclock_file = File.join(@timelog_dir, 'current.timeclock')
+    @journal_file = File.join(@timelog_dir, 'current.journal')
+  end
+
+  desc 'in [DESCRIPTION]', 'Clock in with optional description'
+  map 'i' => :in
+  def in(*description_parts)
+    if has_open_entry?
+      error 'Error: There is already an open entry'
+      return
+    end
+
+    description = if description_parts.empty?
+                    select_description_with_gum
+                  else
+                    description_parts.join(' ')
+                  end
+
+    if description.nil? || description.empty?
+      error 'No description selected'
+      return
+    end
+
+    timestamp = Time.now.strftime('%Y-%m-%d %H:%M:%S')
+    File.open(@timeclock_file, 'a') do |f|
+      f.puts "\n"
+      f.puts "i #{timestamp} #{description}"
+    end
+  end
+
+  desc 'out', 'Clock out'
+  map 'o' => :out
+  def out
+    unless has_open_entry?
+      error 'Error: There is no open entry'
+      return
+    end
+
+    timestamp = Time.now.strftime('%Y-%m-%d %H:%M:%S')
+    File.open(@timeclock_file, 'a') do |f|
+      f.puts "o #{timestamp}"
+    end
+  end
+
+  desc 'edit', 'Edit timeclock file'
+  map 'e' => :edit
+  def edit
+    system("#{ENV['EDITOR'] || 'nvim'} #{@timeclock_file}")
+  end
+
+  desc 'balance', 'Show daily balance'
+  map 'b' => :balance
+  option :minutes, type: :boolean, aliases: '-m', desc: 'Show balance in minutes'
+  option :today, type: :boolean, aliases: '-t', desc: 'Print log for today only'
+  def balance
+    args = options[:minutes] ? '-Xm' : ''
+    args += ' date:today' if options[:today]
+    system("hledger -f #{@journal_file} bal -D #{args}")
+  end
+
+  desc 'print', 'Print log'
+  map 'p' => :print
+  option :minutes, type: :boolean, aliases: '-m', desc: 'Print log in minutes'
+  option :today, type: :boolean, aliases: '-t', desc: 'Print log for today only'
+  def print
+    args = options[:minutes] ? '-Xm' : ''
+    args += ' date:today' if options[:today]
+    system("hledger -f #{@journal_file} print #{args}")
+  end
+
+  desc 'status', 'Show current status'
+  map 's' => :status
+  def status
+    say "Today's balance: #{`hledger -f #{@journal_file} bal -0 -D date:today | tail -1 | sed 's/|| *//'`.strip}"
+
+    entry = last_open_entry
+    unless entry
+      say 'Stopped'
+      return
+    end
+
+    description = entry.sub(/^i \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} /, '')
+    parts = entry.split
+    start_date = parts[1]
+    start_time = parts[2]
+    start_datetime = "#{start_date} #{start_time}"
+
+    start_seconds = Time.parse(start_datetime).to_i
+    current_seconds = Time.now.to_i
+    duration_seconds = current_seconds - start_seconds
+
+    hours = duration_seconds / 3600
+    minutes = (duration_seconds % 3600) / 60
+
+    duration = if hours.positive?
+                 "#{hours}h #{minutes}m"
+               else
+                 "#{minutes}m"
+               end
+
+    say "Description: #{description}"
+    say "Start date/time: #{start_datetime}"
+    say "Duration: #{duration}"
+  end
+
+  no_commands do
+    def error(message)
+      say message, :red
+      exit 1
+    end
+
+    def has_open_entry?
+      !last_open_entry.nil?
+    end
+
+    def last_open_entry
+      return nil unless File.exist?(@timeclock_file)
+
+      last_entry = File.readlines(@timeclock_file)
+                       .grep(/^[io]/)
+                       .last
+
+      last_entry&.start_with?('i') ? last_entry.chomp : nil
+    end
+
+    def select_description_with_gum
+      return nil unless File.exist?(@timeclock_file)
+
+      descriptions = File.readlines(@timeclock_file)
+                         .grep(/^i/)
+                         .map { |line| line.sub(/^i \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} /, '').chomp }
+                         .tally
+                         .sort_by { |_, count| -count }
+                         .map(&:first)
+
+      return nil if descriptions.empty?
+
+      Gum.filter(descriptions)
+    rescue Errno::ENOENT
+      error 'Error: gum command not found'
+    end
+  end
+end
+
+TimeLogCLI.start(ARGV) if __FILE__ == $PROGRAM_NAME
