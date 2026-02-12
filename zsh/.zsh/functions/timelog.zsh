@@ -6,7 +6,7 @@ function tli() {
   fi
 
   if [ $# -eq 0 ]; then
-    DESCRIPTION=$(grep -E "^i" $TIMELOG_DIR/current.timeclock | sed 's/^i [0-9-]* [0-9:]* //' | sort | uniq -c | sort -rn | sed 's/^ *[0-9]* //' | gum choose)
+    DESCRIPTION=$(grep -E "^i" $TIMELOG_DIR/current.timeclock | sed 's/^i [0-9-]* [0-9:]* //' | sort | uniq -c | sort -rn | sed 's/^ *[0-9]* //' | gum filter)
     if [ -z "$DESCRIPTION" ]; then
       echo "No description selected"
       return 1
