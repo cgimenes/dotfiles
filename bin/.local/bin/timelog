@@ -5,6 +5,136 @@ require 'thor'
 require 'time'
 require 'gum'
 
+# Utility methods for timeclock calculations and formatting.
+module TimeclockUtils
+  def self.seconds_to_duration(seconds)
+    hours = seconds / 3600
+    minutes = (seconds % 3600) / 60
+
+    if hours.positive?
+      "#{hours}h #{minutes}m"
+    else
+      "#{minutes}m"
+    end
+  end
+
+  def self.balance_seconds(entries)
+    balance_seconds = 0
+    last_clock_in_time = nil
+
+    entries.each do |entry|
+      if entry.type == 'i'
+        last_clock_in_time = entry.timestamp
+      elsif entry.type == 'o' && last_clock_in_time
+        balance_seconds += entry.timestamp.to_i - last_clock_in_time.to_i
+        last_clock_in_time = nil
+      end
+    end
+
+    # If there's an open clock-in, calculate the balance up to now
+    balance_seconds += Time.now.to_i - last_clock_in_time.to_i if last_clock_in_time
+    balance_seconds
+  end
+end
+
+# Represents a timeclock journal, which is a collection of timeclock entries.
+class TimeclockJournal
+  attr_reader :entries
+
+  def initialize(entries = [])
+    @entries = entries
+  end
+
+  def self.from_file(file_path)
+    entries = []
+    unless File.exist?(file_path)
+      warn "Warning: Timeclock file not found at #{file_path}, starting with an empty journal"
+      return new(entries)
+    end
+
+    File.readlines(file_path).each do |line|
+      next if line.strip.empty?
+
+      entries << TimeclockEntry.from_line(line)
+    end
+    new(entries)
+  end
+
+  def open_entry?
+    !last_open_entry.nil?
+  end
+
+  def last_open_entry
+    last_entry = @entries
+                 .sort_by(&:timestamp)
+                 .reverse
+                 .first
+
+    last_entry&.type == 'i' ? last_entry : nil
+  end
+
+  def distinct_descriptions
+    @entries
+      .select { |entry| entry.type == 'i' }
+      .map(&:description)
+      .tally
+      .sort_by { |_, count| -count }
+      .map(&:first)
+  end
+
+  def today_entries
+    today = Date.today
+    @entries.select { |entry| entry.timestamp.to_date == today }
+  end
+
+  def weekly_entries
+    today = Date.today
+    start_of_week = today - today.wday
+    end_of_week = start_of_week + 6
+    @entries.select do |entry|
+      entry.timestamp.to_date >= start_of_week && entry.timestamp.to_date <= end_of_week
+    end
+  end
+
+  def to_s
+    @entries
+      .sort_by(&:timestamp)
+      .map(&:to_s).join("\n")
+  end
+end
+
+# Represents a single timeclock entry (clock in or clock out).
+class TimeclockEntry
+  attr_reader :type, :timestamp, :description
+
+  def initialize(type, timestamp, description = '')
+    @type = type
+    @timestamp = timestamp
+    @description = description
+  end
+
+  def self.from_line(line)
+    parts = line.split
+    type = parts[0]
+    timestamp_str = "#{parts[1]} #{parts[2]}"
+    description = parts[3..].join(' ')
+    timestamp = Time.parse(timestamp_str)
+    new(type, timestamp, description)
+  end
+
+  def duration_until_now
+    start_seconds = timestamp.to_i
+    current_seconds = Time.now.to_i
+    duration_seconds = current_seconds - start_seconds
+    TimeclockUtils.seconds_to_duration(duration_seconds)
+  end
+
+  def to_s
+    "#{type} #{timestamp.strftime('%Y-%m-%d %H:%M:%S')} #{description}"
+  end
+end
+
+# A simple CLI for time logging using hledger.
 class TimeLogCLI < Thor
   def initialize(*args)
     super
@@ -12,12 +142,14 @@ class TimeLogCLI < Thor
     error 'Error: TIMELOG_DIR environment variable not set' unless @timelog_dir
     @timeclock_file = File.join(@timelog_dir, 'current.timeclock')
     @journal_file = File.join(@timelog_dir, 'current.journal')
+
+    @journal = TimeclockJournal.from_file(@timeclock_file)
   end
 
   desc 'in [DESCRIPTION]', 'Clock in with optional description'
   map 'i' => :in
   def in(*description_parts)
-    if has_open_entry?
+    if @journal.open_entry?
       error 'Error: There is already an open entry'
       return
     end
@@ -33,25 +165,20 @@ class TimeLogCLI < Thor
       return
     end
 
-    timestamp = Time.now.strftime('%Y-%m-%d %H:%M:%S')
-    File.open(@timeclock_file, 'a') do |f|
-      f.puts "\n"
-      f.puts "i #{timestamp} #{description}"
-    end
+    new_entry = TimeclockEntry.new('i', Time.now, description)
+    save_entry new_entry
   end
 
   desc 'out', 'Clock out'
   map 'o' => :out
   def out
-    unless has_open_entry?
+    unless @journal.open_entry?
       error 'Error: There is no open entry'
       return
     end
 
-    timestamp = Time.now.strftime('%Y-%m-%d %H:%M:%S')
-    File.open(@timeclock_file, 'a') do |f|
-      f.puts "o #{timestamp}"
-    end
+    new_entry = TimeclockEntry.new('o', Time.now)
+    save_entry new_entry
   end
 
   desc 'edit', 'Edit timeclock file'
@@ -67,7 +194,8 @@ class TimeLogCLI < Thor
   def balance
     args = options[:minutes] ? '-Xm' : ''
     args += ' date:today' if options[:today]
-    system("hledger -f #{@journal_file} bal -D #{args}")
+    system("hledger -f #{@journal_file} bal -2 -D #{args}")
+    system("hledger -f #{@journal_file} bal -2 -W #{args}")
   end
 
   desc 'print', 'Print log'
@@ -83,36 +211,24 @@ class TimeLogCLI < Thor
   desc 'status', 'Show current status'
   map 's' => :status
   def status
-    say "Today's balance: #{`hledger -f #{@journal_file} bal -0 -D date:today | tail -1 | sed 's/|| *//'`.strip}"
+    today_balance_seconds = TimeclockUtils.balance_seconds(@journal.today_entries)
+    today_balance = TimeclockUtils.seconds_to_duration(today_balance_seconds)
+    say "Today's balance: #{today_balance}"
 
-    entry = last_open_entry
+    weekly_balance_seconds = TimeclockUtils.balance_seconds(@journal.weekly_entries)
+    weekly_balance = TimeclockUtils.seconds_to_duration(weekly_balance_seconds)
+    say "This week's balance: #{weekly_balance}"
+    say '---'
+
+    entry = @journal.last_open_entry
     unless entry
       say 'Stopped'
       return
     end
 
-    description = entry.sub(/^i \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} /, '')
-    parts = entry.split
-    start_date = parts[1]
-    start_time = parts[2]
-    start_datetime = "#{start_date} #{start_time}"
-
-    start_seconds = Time.parse(start_datetime).to_i
-    current_seconds = Time.now.to_i
-    duration_seconds = current_seconds - start_seconds
-
-    hours = duration_seconds / 3600
-    minutes = (duration_seconds % 3600) / 60
-
-    duration = if hours.positive?
-                 "#{hours}h #{minutes}m"
-               else
-                 "#{minutes}m"
-               end
-
-    say "Description: #{description}"
-    say "Start date/time: #{start_datetime}"
-    say "Duration: #{duration}"
+    say "Description: #{entry.description}"
+    say "Start date/time: #{entry.timestamp.strftime('%Y-%m-%d %H:%M:%S')}"
+    say "Duration: #{entry.duration_until_now}"
   end
 
   no_commands do
@@ -121,35 +237,24 @@ class TimeLogCLI < Thor
       exit 1
     end
 
-    def has_open_entry?
-      !last_open_entry.nil?
-    end
-
-    def last_open_entry
-      return nil unless File.exist?(@timeclock_file)
-
-      last_entry = File.readlines(@timeclock_file)
-                       .grep(/^[io]/)
-                       .last
-
-      last_entry&.start_with?('i') ? last_entry.chomp : nil
-    end
-
     def select_description_with_gum
       return nil unless File.exist?(@timeclock_file)
 
-      descriptions = File.readlines(@timeclock_file)
-                         .grep(/^i/)
-                         .map { |line| line.sub(/^i \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} /, '').chomp }
-                         .tally
-                         .sort_by { |_, count| -count }
-                         .map(&:first)
-
-      return nil if descriptions.empty?
-
-      Gum.filter(descriptions)
+      descriptions = @journal.distinct_descriptions
+      choose = Gum.filter(['Custom', descriptions])
+      choose = Gum.input(placeholder: 'Enter custom description:') if choose == 'Custom'
+      choose
     rescue Errno::ENOENT
       error 'Error: gum command not found'
+    end
+
+    def save_entry(entry)
+      File.open(@timeclock_file, 'a') do |f|
+        f.puts "\n" if entry.type == 'i'
+        f.puts entry.to_s
+      end
+    rescue Errno::ENOENT
+      error "Error: Timeclock file not found at #{@timeclock_file}"
     end
   end
 end
