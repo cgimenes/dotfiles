@@ -95,6 +95,7 @@ vim.opt.foldlevel = 20
 vim.filetype.add {
   extension = {
     http = 'http',
+    timeclock = 'timeclock',
   },
   filename = {
     ['Brewfile'] = 'ruby',
