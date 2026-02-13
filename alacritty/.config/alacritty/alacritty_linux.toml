@@ -1,7 +1,6 @@
 [general]
 import = [
   "alacritty_common.toml",
-  "~/.config/alacritty/dank-theme.toml"
 ]
 
 [window]
