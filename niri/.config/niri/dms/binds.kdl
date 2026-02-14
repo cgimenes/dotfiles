@@ -20,7 +20,7 @@ binds {
         spawn "pcmanfm";
     }
     Mod+G hotkey-overlay-title="HLedger UI" {
-        spawn "footclient" "-a" "hledger-ui" "-e" "hledger-ui";
+        spawn "footclient" "-e" "hledger-ui";
     }
     Mod+B hotkey-overlay-title="bluetui" {
         spawn "footclient" "-a" "bluetui" "-e" "bluetui";
