@@ -226,6 +226,9 @@ animations {
         spring damping-ratio=0.65 stiffness=923 epsilon=0.001
     }
 }
+switch-events {
+    lid-close { spawn "dms" "ipc" "call" "lock" "lock"; }
+}
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
@@ -235,8 +238,13 @@ window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+    match app-id="foot"
+    match app-id="footclient"
+    default-column-width { proportion 0.33333; }
+}
+window-rule {
+    match app-id="Spotify"
+    open-on-workspace "5"
 }
 window-rule {
     match app-id=r#"^org\.gnome\."#
@@ -261,16 +269,19 @@ window-rule {
     open-floating true
 }
 window-rule {
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    match app-id="Alacritty"
-    match app-id="zen"
-    match app-id="com.mitchellh.ghostty"
-    match app-id="kitty"
+    match app-id="foot"
+    match app-id="footclient"
     draw-border-with-background false
 }
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="zoom"
+    open-floating true
+}
+window-rule {
+    match app-id="bluetui"
+    default-column-width { proportion 0.5; }
+    default-window-height { proportion 0.75; }
     open-floating true
 }
 // Open dms windows as floating by default
