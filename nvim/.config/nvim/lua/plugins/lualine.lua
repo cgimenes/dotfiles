@@ -116,7 +116,6 @@ require('lualine').setup {
           return vim.fn.reg_recording() ~= ''
         end,
       },
-      { 'overseer' },
     },
     lualine_c = {
       {
@@ -125,10 +124,11 @@ require('lualine').setup {
           return { fg = Snacks.util.color 'Statement' }
         end,
       },
+      { 'diagnostics' },
       { 'filename', path = 1 },
     },
     lualine_x = {
-      { 'diagnostics' },
+      { 'overseer' },
       {
         function()
           local buf_clients = vim.lsp.get_clients { bufnr = 0 }
