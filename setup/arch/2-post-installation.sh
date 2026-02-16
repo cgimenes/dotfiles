@@ -1,7 +1,5 @@
 #!/bin/bash
 
-curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | gpg --import -
-
 aur_packages=(
 	"betterlockscreen"
 	"brave-bin"
@@ -22,7 +20,6 @@ aur_packages=(
 	"simple-mtpfs"
 	"sesh-bin"
 	"slack-desktop"
-	"spotify"
 	"ttf-tabler-icons"
 	"xidlehook"
 )
