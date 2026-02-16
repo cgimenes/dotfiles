@@ -1,6 +1,7 @@
 local ensure_installed = {
   'clangd',
   'cssls',
+  'herb_ls',
   'lua_ls',
   'prettier',
   'prettierd',

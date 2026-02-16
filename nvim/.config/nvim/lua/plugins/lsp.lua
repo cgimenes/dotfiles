@@ -5,6 +5,7 @@ vim.lsp.enable {
   'lua_ls',
   'pyright',
   'ruby_lsp',
+  'herb_ls',
   'ruff',
   'tailwindcss',
   -- 'emmet_language_server',
