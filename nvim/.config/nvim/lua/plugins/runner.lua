@@ -107,7 +107,7 @@ Map {
 Map { '<leader>rl', '<cmd>OverseerToggle<cr>', desc = 'Toggle Task List' }
 Map { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Task Action' }
 Map { '<leader>rv', '<cmd>OverseerLastTaskAction open vsplit<cr><cmd>set winbar=<cr>', desc = "Open last task's output in a vsplit" }
-Map { '<leader>rs', '<cmd>OverseerLastTaskAction open hsplit<cr><cmd>set winbar=<cr>', desc = "Open last task's output in a hsplit" }
+Map { '<leader>rs', '<cmd>OverseerLastTaskAction open hsplit<cr><cmd>set winbar=<cr>z12<cr>', desc = "Open last task's output in a hsplit" }
 Map { '<leader>rt', '<cmd>OverseerLastTaskAction open tab<cr><cmd>set winbar=<cr>', desc = "Open last task's output in a tab" }
 Map { '<leader>rD', '<cmd>OverseerLastTaskAction dispose<cr>', desc = 'Dispose last task' }
 Map { '<leader>rR', '<cmd>OverseerLastTaskAction restart<cr>', desc = 'Restart last task' }
