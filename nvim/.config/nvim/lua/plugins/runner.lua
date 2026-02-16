@@ -22,9 +22,7 @@ end, { desc = 'Run action on last Overseer task', nargs = '*' })
 vim.api.nvim_create_user_command('Make', function(params)
   -- Insert args at the '$*' in the makeprg
   local cmd, num_subs = vim.o.makeprg:gsub('%$%*', params.args)
-  if num_subs == 0 then
-    cmd = cmd .. ' ' .. params.args
-  end
+  if num_subs == 0 then cmd = cmd .. ' ' .. params.args end
   local task = require('overseer').new_task {
     cmd = vim.fn.expandcmd(cmd),
     components = {
@@ -38,9 +36,7 @@ end, { desc = 'Run your makeprg as an Overseer task', nargs = '*', bang = true }
 vim.api.nvim_create_user_command('Grep', function(params)
   -- Insert args at the '$*' in the grepprg
   local cmd, num_subs = vim.o.grepprg:gsub('%$%*', params.args)
-  if num_subs == 0 then
-    cmd = cmd .. ' ' .. params.args
-  end
+  if num_subs == 0 then cmd = cmd .. ' ' .. params.args end
   local task = require('overseer').new_task {
     cmd = vim.fn.expandcmd(cmd),
     components = {
@@ -63,17 +59,13 @@ vim.api.nvim_create_user_command('OS', function(params)
   if params.args and params.args ~= '' then
     local task = require('overseer.task').new { cmd = params.args }
     task:add_component { 'keymaps' }
-    if not params.bang then
-      task:start()
-    end
+    if not params.bang then task:start() end
   else
     vim.ui.input({ prompt = 'command', completion = 'shellcmdline' }, function(cmd)
       if cmd then
         local task = require('overseer.task').new { cmd = cmd }
         task:add_component { 'keymaps' }
-        if params.bang then
-          task:add_component { 'restart_on_save', delay = 1 }
-        end
+        if params.bang then task:add_component { 'restart_on_save', delay = 1 } end
         task:start()
       end
     end)
@@ -102,9 +94,7 @@ Map {
     require('overseer').run_task({ autostart = false }, function(task)
       if task then
         task:add_component { 'keymaps' }
-        if task:get_component 'on_complete_dispose' then
-          task:remove_component 'on_complete_dispose'
-        end
+        if task:get_component 'on_complete_dispose' then task:remove_component 'on_complete_dispose' end
         task:add_component { 'on_complete_dispose', statuses = { 'SUCCESS' }, timeout = 5 }
 
         task:start()
@@ -116,7 +106,8 @@ Map {
 }
 Map { '<leader>rl', '<cmd>OverseerToggle<cr>', desc = 'Toggle Task List' }
 Map { '<leader>ra', '<cmd>OverseerTaskAction<cr>', desc = 'Task Action' }
-Map { '<leader>rv', '<cmd>OverseerLastTaskAction open vsplit<cr>', desc = "Open last task's output in a vsplit" }
-Map { '<leader>rt', '<cmd>OverseerLastTaskAction open tab<cr>', desc = "Open last task's output in a tab" }
+Map { '<leader>rv', '<cmd>OverseerLastTaskAction open vsplit<cr><cmd>set winbar=<cr>', desc = "Open last task's output in a vsplit" }
+Map { '<leader>rs', '<cmd>OverseerLastTaskAction open hsplit<cr><cmd>set winbar=<cr>', desc = "Open last task's output in a hsplit" }
+Map { '<leader>rt', '<cmd>OverseerLastTaskAction open tab<cr><cmd>set winbar=<cr>', desc = "Open last task's output in a tab" }
 Map { '<leader>rD', '<cmd>OverseerLastTaskAction dispose<cr>', desc = 'Dispose last task' }
 Map { '<leader>rR', '<cmd>OverseerLastTaskAction restart<cr>', desc = 'Restart last task' }

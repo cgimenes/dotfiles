@@ -1,6 +1,7 @@
 vim.pack.add {
   { src = 'https://github.com/akinsho/toggleterm.nvim', version = vim.version.range '*' },
 }
+---@type ToggleTermConfig
 require('toggleterm').setup {
   size = function(term)
     if term.direction == 'horizontal' then
@@ -20,6 +21,8 @@ require('toggleterm').setup {
       noremap = true,
       silent = true,
     })
+    -- Disable winbar
+    vim.api.nvim_set_option_value('winbar', '', { win = term.window })
   end,
 }
 Map { '<leader>.', '<cmd>ToggleTerm<cr>', desc = 'Toggle Terminal' }
