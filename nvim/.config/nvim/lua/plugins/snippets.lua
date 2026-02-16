@@ -1,14 +1,14 @@
 vim.pack.add { 'https://github.com/chrisgrieser/nvim-scissors' }
 require('scissors').setup { snippetDir = vim.fn.stdpath 'config' .. '/snippets' }
 Map {
-  '<leader>cse',
+  '<leader>Se',
   function()
     require('scissors').editSnippet()
   end,
   desc = 'Edit Snippet',
 }
 Map {
-  '<leader>csa',
+  '<leader>Sa',
   function()
     require('scissors').addNewSnippet()
   end,

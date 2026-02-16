@@ -29,8 +29,6 @@ vim.keymap.set('n', '<C-i>', '<C-i>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
-vim.keymap.set('n', '<leader>bd', '<cmd>windo diffthis<cr>', { desc = 'Diff' })
-
 vim.keymap.set('x', '>', '>gv')
 vim.keymap.set('x', '<', '<gv')
 

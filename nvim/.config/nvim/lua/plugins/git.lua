@@ -45,9 +45,9 @@ require('octo').setup {
   file_panel = { size = 5 },
   reviews = { auto_show_threads = false },
 }
-Map { '<leader>gpl', '<cmd>Octo pr list<cr>', desc = 'List' }
-Map { '<leader>gpr', '<cmd>Octo review<cr>', desc = 'Review' }
-Map { '<leader>gpt', '<cmd>Octo review thread<cr>', desc = 'Show Thread' }
+Map { '<leader>Gl', '<cmd>Octo pr list<cr>', desc = 'List' }
+Map { '<leader>Gr', '<cmd>Octo review<cr>', desc = 'Review' }
+Map { '<leader>Gt', '<cmd>Octo review thread<cr>', desc = 'Show Thread' }
 
 -- Resolve git conflicts
 require('plugins.git-resolve').setup {}
