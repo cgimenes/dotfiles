@@ -171,6 +171,14 @@ layout {
     }
     struts {
     }
+    tab-indicator {
+        place-within-column
+        position "top"
+        gaps-between-tabs 4
+        length total-proportion=0.25
+        corner-radius 4
+        width 4
+    }
 }
 layer-rule {
     match namespace="^quickshell$"
@@ -282,6 +290,7 @@ window-rule {
 window-rule {
     match app-id="bluetui"
     match app-id="wiremix"
+    match app-id="org.keepassxc.KeePassXC"
     default-column-width { proportion 0.5; }
     default-window-height { proportion 0.75; }
     open-floating true
