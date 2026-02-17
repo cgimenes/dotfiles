@@ -22,19 +22,24 @@ binds {
     Mod+G hotkey-overlay-title="HLedger UI" {
         spawn "footclient" "-e" "hledger-ui";
     }
+    Super+Shift+G hotkey-overlay-title="Edit ledger file" {
+        spawn-sh "footclient -D ~/ledger -e nvim $LEDGER_FILE";
+    }
     Mod+B hotkey-overlay-title="bluetui" {
         spawn "footclient" "-a" "bluetui" "-e" "bluetui";
     }
+    Mod+N hotkey-overlay-title="Obsidian" {
+        spawn "obsidian";
+    }
+    Mod+Shift+N hotkey-overlay-title="Neovim Obsidian" {
+        spawn-sh "footclient -D ~/Obsidian -e nvim";
+    }
+    Mod+W hotkey-overlay-title="Wiremix" {
+        spawn-sh "footclient -a wiremix -e ~/.cargo/bin/wiremix"
+    }
 
     Super+Ctrl+Q hotkey-overlay-title="Power Menu: Toggle" { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
-    Mod+Comma hotkey-overlay-title="Settings" {
-        spawn "dms" "ipc" "call" "settings" "focusOrToggle";
-    }
-    Mod+Y hotkey-overlay-title="Browse Wallpapers" {
-        spawn "dms" "ipc" "call" "dankdash" "wallpaper";
-    }
-    Mod+N hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
-    Mod+Shift+N hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
+    // Mod+Shift+N hotkey-overlay-title="Notepad" { spawn "dms" "ipc" "call" "notepad" "toggle"; }
 
     // === Security ===
     Mod+Alt+L hotkey-overlay-title="Lock Screen" {
@@ -58,18 +63,18 @@ binds {
     XF86AudioMicMute allow-when-locked=true {
         spawn "dms" "ipc" "call" "audio" "micmute";
     }
-		XF86AudioPause allow-when-locked=true {
-		    spawn "dms" "ipc" "call" "mpris" "playPause";
-		}
-		XF86AudioPlay allow-when-locked=true {
-		    spawn "dms" "ipc" "call" "mpris" "playPause";
-		}
-		XF86AudioPrev allow-when-locked=true {
-		    spawn "dms" "ipc" "call" "mpris" "previous";
-		}
-		XF86AudioNext allow-when-locked=true {
-		    spawn "dms" "ipc" "call" "mpris" "next";
-		}
+    XF86AudioPause allow-when-locked=true {
+        spawn "dms" "ipc" "call" "mpris" "playPause";
+    }
+    XF86AudioPlay allow-when-locked=true {
+        spawn "dms" "ipc" "call" "mpris" "playPause";
+    }
+    XF86AudioPrev allow-when-locked=true {
+        spawn "dms" "ipc" "call" "mpris" "previous";
+    }
+    XF86AudioNext allow-when-locked=true {
+        spawn "dms" "ipc" "call" "mpris" "next";
+    }
 
     // === Brightness Controls ===
     XF86MonBrightnessUp allow-when-locked=true {
@@ -85,7 +90,7 @@ binds {
     Mod+Shift+F { fullscreen-window; }
     Mod+Shift+Space { toggle-window-floating; }
     Mod+Space { switch-focus-between-floating-and-tiling; }
-    Mod+W { toggle-column-tabbed-display; }
+    Mod+T { toggle-column-tabbed-display; }
 
     // === Focus Navigation ===
     Mod+Left  { focus-column-left; }

@@ -143,7 +143,7 @@ layout {
         proportion 1.0
     }
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.66667; }
+    default-column-width {}
     // If you leave the brackets empty, the windows themselves will decide their initial width.
     // default-column-width {}
     // By default focus ring and border are rendered as a solid background rectangle
@@ -244,6 +244,7 @@ window-rule {
 }
 window-rule {
     match app-id="Spotify"
+    match app-id="spotify"
     open-on-workspace "5"
 }
 window-rule {
@@ -280,6 +281,7 @@ window-rule {
 }
 window-rule {
     match app-id="bluetui"
+    match app-id="wiremix"
     default-column-width { proportion 0.5; }
     default-window-height { proportion 0.75; }
     open-floating true
