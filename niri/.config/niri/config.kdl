@@ -273,7 +273,6 @@ window-rule {
     match app-id=r#"^galculator$"#
     match app-id=r#"^blueman-manager$"#
     match app-id=r#"^org\.gnome\.Nautilus$"#
-    match app-id=r#"^steam$"#
     match app-id=r#"^xdg-desktop-portal$"#
     open-floating true
 }
@@ -281,6 +280,11 @@ window-rule {
     match app-id="foot"
     match app-id="footclient"
     draw-border-with-background false
+}
+window-rule {
+    match app-id=r#"^steam$"# title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false
 }
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
