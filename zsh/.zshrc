@@ -11,6 +11,7 @@ source ~/.zsh/04-alias.zsh
 source ~/.zsh/05-functions.zsh
 source ~/.zsh/06-autocompletion.zsh
 source ~/.zsh/07-oh-my-zsh.zsh
+source ~/.zsh/08-termux.zsh
 [[ -f ~/.zcustom ]] && source ~/.zcustom
 
 if [[ "$ZPROF" = true ]]; then
