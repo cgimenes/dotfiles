@@ -1,6 +1,4 @@
-local function stop_insert()
-  vim.cmd.stopinsert()
-end
+local function stop_insert() vim.cmd.stopinsert() end
 
 vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 require('snacks').setup {
@@ -64,44 +62,32 @@ require('snacks').setup {
 
 Map {
   '<leader>si',
-  function()
-    Snacks.picker.icons()
-  end,
+  function() Snacks.picker.icons() end,
   desc = 'Search Icons',
 }
 Map {
   '<leader>sl',
-  function()
-    Snacks.picker.resume()
-  end,
+  function() Snacks.picker.resume() end,
   desc = 'Resume',
 }
 Map {
   '<leader>n',
-  function()
-    Snacks.notifier.show_history()
-  end,
+  function() Snacks.notifier.show_history() end,
   desc = 'Notification History',
 }
 Map {
   '<leader>gg',
-  function()
-    Snacks.lazygit()
-  end,
+  function() Snacks.lazygit() end,
   desc = 'Lazygit',
 }
 Map {
   '<leader>gl',
-  function()
-    Snacks.picker.git_log()
-  end,
+  function() Snacks.picker.git_log() end,
   desc = 'Git Log (Pickaxe)',
 }
 Map {
   '<leader>?',
-  function()
-    Snacks.picker.pick()
-  end,
+  function() Snacks.picker.pick() end,
   desc = 'Pick Picker',
 }
 Map {
@@ -137,9 +123,7 @@ Map {
 }
 Map {
   '<leader>:',
-  function()
-    Snacks.picker.command_history()
-  end,
+  function() Snacks.picker.command_history() end,
   desc = 'Command History',
 }
 Map {
@@ -160,16 +144,12 @@ Map {
 }
 Map {
   '<leader>s"',
-  function()
-    Snacks.picker.registers { layout = 'vertical', on_show = stop_insert }
-  end,
+  function() Snacks.picker.registers { layout = 'vertical', on_show = stop_insert } end,
   desc = 'Registers',
 }
 Map {
   '<leader>J',
-  function()
-    Snacks.picker.jumps { layout = 'vertical' }
-  end,
+  function() Snacks.picker.jumps { layout = 'vertical' } end,
   desc = 'Jumps',
 }
 Map {
@@ -188,31 +168,23 @@ Map {
 }
 Map {
   '<leader>sh',
-  function()
-    Snacks.picker.help()
-  end,
+  function() Snacks.picker.help() end,
   desc = 'Help Pages',
 }
 Map {
   '<leader>sk',
-  function()
-    Snacks.picker.keymaps()
-  end,
+  function() Snacks.picker.keymaps() end,
   desc = 'Keymaps',
 }
 Map {
   '<leader>sw',
-  function()
-    Snacks.picker.grep_word { hidden = true }
-  end,
+  function() Snacks.picker.grep_word { hidden = true } end,
   desc = 'Visual selection or word',
   mode = { 'n', 'x' },
 }
 Map {
   '<leader>sm',
-  function()
-    Snacks.picker.man()
-  end,
+  function() Snacks.picker.man() end,
   desc = 'Man Pages',
 }
 Map {
@@ -230,18 +202,20 @@ Map {
           truncate = truncate_width,
         },
       },
+      search = function(picker)
+        return picker.visual and picker.visual.text or ""
+      end,
     }
   end,
   desc = 'Grep',
+  mode = { 'n', 'x' },
 }
 Map {
   '<leader>oc',
   function()
     Snacks.picker.colorschemes {
       layout = {
-        config = function(layout)
-          layout.hidden = {}
-        end,
+        config = function(layout) layout.hidden = {} end,
       },
       win = {
         preview = {
@@ -254,9 +228,7 @@ Map {
 }
 Map {
   '<leader>su',
-  function()
-    Snacks.picker.undo { on_show = stop_insert }
-  end,
+  function() Snacks.picker.undo { on_show = stop_insert } end,
   desc = 'Undo History',
 }
 Map {
@@ -266,9 +238,7 @@ Map {
     local entries = vim.fn.getcompletion('', 'filetype')
     entries = vim.tbl_map(function(ft)
       local buficon, hl = icons.get('filetype', ft)
-      if not buficon then
-        buficon = ' '
-      end
+      if not buficon then buficon = ' ' end
       return {
         icon = buficon,
         name = ft,
@@ -296,125 +266,89 @@ Map {
 }
 Map {
   '<leader><cr>',
-  function()
-    Snacks.scratch()
-  end,
+  function() Snacks.scratch() end,
   desc = 'Toggle Scratch',
 }
 -- LSP
 Map {
   'gd',
-  function()
-    Snacks.picker.lsp_definitions()
-  end,
+  function() Snacks.picker.lsp_definitions() end,
   desc = 'Goto Definition',
 }
 Map {
   'gD',
-  function()
-    Snacks.picker.lsp_declarations()
-  end,
+  function() Snacks.picker.lsp_declarations() end,
   desc = 'Goto Declaration',
 }
 Map {
   'grr',
-  function()
-    Snacks.picker.lsp_references { on_show = stop_insert }
-  end,
+  function() Snacks.picker.lsp_references { on_show = stop_insert } end,
   nowait = true,
   desc = 'References',
 }
 Map {
   'gri',
-  function()
-    Snacks.picker.lsp_implementations()
-  end,
+  function() Snacks.picker.lsp_implementations() end,
   desc = 'Goto Implementation',
 }
 Map {
   'grI',
-  function()
-    Snacks.picker.lsp_incoming_calls()
-  end,
+  function() Snacks.picker.lsp_incoming_calls() end,
   desc = 'Incoming Calls',
 }
 Map {
   'grO',
-  function()
-    Snacks.picker.lsp_outgoing_calls()
-  end,
+  function() Snacks.picker.lsp_outgoing_calls() end,
   desc = 'Outgoing Calls',
 }
 Map {
   'grt',
-  function()
-    Snacks.picker.lsp_type_definitions()
-  end,
+  function() Snacks.picker.lsp_type_definitions() end,
   desc = 'Goto T[y]pe Definition',
 }
 Map {
   'gO',
-  function()
-    Snacks.picker.lsp_symbols()
-  end,
+  function() Snacks.picker.lsp_symbols() end,
   desc = 'LSP Symbols',
 }
 Map {
   'gW',
-  function()
-    Snacks.picker.lsp_workspace_symbols()
-  end,
+  function() Snacks.picker.lsp_workspace_symbols() end,
   desc = 'LSP Workspace Symbols',
 }
 Map {
   '<leader>lD',
-  function()
-    Snacks.picker.diagnostics { on_show = stop_insert }
-  end,
+  function() Snacks.picker.diagnostics { on_show = stop_insert } end,
   desc = 'Diagnostics',
 }
 Map {
   '<leader>ld',
-  function()
-    Snacks.picker.diagnostics_buffer { on_show = stop_insert }
-  end,
+  function() Snacks.picker.diagnostics_buffer { on_show = stop_insert } end,
   desc = 'Buffer Diagnostics',
 }
 -- Profiler
 Map {
   '<leader>oPt',
-  function()
-    Snacks.profiler.toggle()
-  end,
+  function() Snacks.profiler.toggle() end,
   desc = 'Toggle Profiler',
 }
 Map {
   '<leader>oPh',
-  function()
-    Snacks.profiler.highlight()
-  end,
+  function() Snacks.profiler.highlight() end,
   desc = 'Toggle Profiler Highlights',
 }
 Map {
   '<leader>oPp',
-  function()
-    Snacks.profiler.highlight()
-  end,
+  function() Snacks.profiler.highlight() end,
   desc = 'Toggle Profiler Picker',
 }
 
 -- Setup some globals for debugging (lazy-loaded)
-_G.dd = function(...)
-  Snacks.debug.inspect(...)
-end
-_G.bt = function()
-  Snacks.debug.backtrace()
-end
+_G.dd = function(...) Snacks.debug.inspect(...) end
+_G.bt = function() Snacks.debug.backtrace() end
 -- Override print to use snacks for `:=` command
 if vim.fn.has 'nvim-0.11' == 1 then
-  vim._print = function(_, ...)
-    dd(...)
-  end
+  vim._print = function(_, ...) dd(...) end
 else
   vim.print = _G.dd
 end
