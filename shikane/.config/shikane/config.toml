@@ -57,3 +57,50 @@ exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""
     transform = "normal"
     adaptive_sync = false
 
+[[profile]]
+name = "docked2"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+    [[profile.output]]
+    enable = false
+    search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
+    [[profile.output]]
+    enable = true
+    search = ["m=DELL P3225QE", "s=8KBS984", "v=Dell Inc."]
+    mode = "2560x1440@59.951Hz"
+    position = "1920,0"
+    scale = 1.0
+    transform = "normal"
+    adaptive_sync = false
+
+[[profile]]
+name = "fallback2"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+    [[profile.output]]
+    enable = true
+    search = ["m=DELL P3225QE", "s=8KBS984", "v=Dell Inc."]
+    mode = "2560x1440@59.951Hz"
+    position = "1920,0"
+    scale = 1.0
+    transform = "normal"
+    adaptive_sync = false
+
+[[profile]]
+name = "both2"
+exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
+    [[profile.output]]
+    enable = true
+    search = ["m=DELL P3225QE", "s=8KBS984", "v=Dell Inc."]
+    mode = "2560x1440@59.951Hz"
+    position = "1920,0"
+    scale = 1.0
+    transform = "normal"
+    adaptive_sync = false
+    [[profile.output]]
+    enable = true
+    search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
+    mode = "1920x1080@60.008Hz"
+    position = "0,0"
+    scale = 1.0
+    transform = "normal"
+    adaptive_sync = false
+

@@ -1,3 +1,4 @@
 spawn-at-startup "shikane"
 spawn-at-startup "foot" "-s"
-spawn-sh-at-startup "QT_QPA_PLATFORM=xcb enpass -minimize"
+spawn-at-startup "udiskie"
+spawn-at-startup "enpass" "-minimize"
