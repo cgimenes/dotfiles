@@ -5,4 +5,4 @@ import = [ "alacritty_common.toml" ]
 decorations = "Buttonless"
 
 [font]
-size = 32
+size = 19
