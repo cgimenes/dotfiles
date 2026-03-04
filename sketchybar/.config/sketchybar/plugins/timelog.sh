@@ -17,7 +17,7 @@ fi
 
 # Extract time and project info
 START_TIME=$(echo "$DATA" | awk '{print $3}' | cut -d: -f1,2)
-PROJECT=$(echo "$DATA" | awk '{print $4}')
+PROJECT=$(echo "$DATA" | awk '{out = ""; for (i = 4; i <= NF; i++) {out = out " " $i}; print out}')
 
 # Calculate duration
 START_SECONDS=$(date -jf "%Y-%m-%d %H:%M:%S" "$(echo $DATA | awk '{print $2, $3}')" +%s 2>/dev/null)
