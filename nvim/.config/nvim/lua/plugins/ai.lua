@@ -6,85 +6,86 @@ require('copilot').setup {
   panel = { enabled = false },
 }
 
--- Sidekick
-vim.pack.add { 'https://github.com/folke/sidekick.nvim' }
+-- Wiremux
 local function read_prompt_files()
   local prompt_path = vim.fn.stdpath 'config' .. '/prompts/'
   local p = io.popen('ls ' .. prompt_path)
   local prompts = {}
-  if not p then
-    return prompts
-  end
+  if not p then return prompts end
 
   for file_name in p:lines() do
     local f = io.open(prompt_path .. file_name, 'r')
     if f then
-      prompts[file_name] = f:read '*a'
+      table.insert(prompts, { label = file_name, value = f:read '*a' })
       f:close()
     end
   end
   return prompts
 end
-require('sidekick').setup {
-  nes = { enabled = false },
-  cli = {
-    mux = { backend = 'tmux', enabled = true },
-    prompts = read_prompt_files(),
+
+vim.pack.add { 'https://github.com/MSmaili/wiremux.nvim' }
+require('wiremux').setup {
+  targets = {
+    definitions = {
+      -- A simple terminal
+      terminal = { kind = 'pane', split = 'vertical', size = '20%' },
+      -- AI assistants
+      copilot = { cmd = 'copilot', kind = 'window', shell = false, size = '30%' },
+    },
+  },
+  picker = {
+    adapter = function(items, opts, on_choice)
+      vim.ui.select(items, {
+        prompt = opts.prompt,
+        format_item = opts.format_item,
+      }, on_choice)
+    end,
   },
 }
-Map {
-  '<c-n>',
-  function()
-    -- if there is a next edit, jump to it, otherwise apply it if any
-    if not require('sidekick').nes_jump_or_apply() then
-      return '<Tab>' -- fallback to normal tab
-    end
-  end,
-  expr = true,
-  desc = 'Goto/Apply Next Edit Suggestion',
-}
-Map {
-  '<leader>on',
-  function()
-    require('sidekick.nes').toggle()
-  end,
-  desc = 'Toggle Sidekick NES',
-}
+Map { '<leader>T', function() require('wiremux').toggle { target = 'terminal' } end, desc = 'Toggle terminal' }
 Map {
   '<leader>aa',
-  function()
-    require('sidekick.cli').toggle { name = 'copilot' }
-  end,
-  desc = 'Sidekick Toggle CLI',
+  function() require('wiremux').toggle { target = 'copilot' } end,
+  desc = 'Toggle AI Assistant',
 }
 Map {
   '<leader>at',
-  function()
-    require('sidekick.cli').send { msg = '{this}' }
-  end,
+  function() require('wiremux').send { msg = '{this}', target = 'copilot' } end,
   mode = { 'x', 'n' },
-  desc = 'Sidekick Send This',
+  desc = 'Send This to AI Assistant',
 }
 Map {
   '<leader>af',
-  function()
-    require('sidekick.cli').send { msg = '{file}' }
-  end,
-  desc = 'Sidekick Send File',
+  function() require('wiremux').send { msg = '{file}', target = 'copilot' } end,
+  desc = 'Send File to AI Assistant',
 }
 Map {
   '<leader>av',
-  function()
-    require('sidekick.cli').send { msg = '{selection}' }
-  end,
+  function() require('wiremux').send { msg = '{selection}', target = 'copilot' } end,
   mode = { 'x' },
-  desc = 'Sidekick Send Visual Selection',
+  desc = 'Send Visual Selection to AI Assistant',
 }
 Map {
   '<leader>ap',
   function()
-    require('sidekick.cli').prompt()
+    local prompts = read_prompt_files()
+    local local_prompts = {
+      { label = 'Review changes', value = 'Can you review my changes?\n{changes}' },
+      {
+        label = 'Fix diagnostics',
+        value = 'Can you help me fix this?\n{diagnostics}',
+        visible = function() return require('wiremux.context').is_available 'diagnostics' end,
+      },
+      { label = 'Explain', value = 'Explain {this}' },
+      { label = 'Write tests', value = 'Can you write tests for {this}?' },
+    }
+
+    for _, v in pairs(local_prompts) do
+      table.insert(prompts, v)
+    end
+
+    require('wiremux').send(prompts, { target = 'copilot' })
   end,
   mode = { 'n', 'x' },
-  desc = 'Sidekick Select Prompt',
+  desc = 'Send Prompt to AI Assistant',
 }
