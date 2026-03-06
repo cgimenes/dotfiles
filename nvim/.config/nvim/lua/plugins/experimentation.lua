@@ -36,6 +36,6 @@ require('nvim-unstack').setup {
 -- Neogit
 vim.pack.add {
   'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/sotte/neogit',
+  'https://github.com/NeogitOrg/neogit',
 }
 Map { '<leader>gG', '<cmd>Neogit<cr>', desc = 'Neogit' }
