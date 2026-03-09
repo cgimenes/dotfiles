@@ -37,14 +37,14 @@ require('fzf-lua').setup {
   },
 }
 -- Git
-Map { '<leader>gs', '<cmd>FzfLua git_status<cr>', desc = 'Git Status' }
+-- Map { '<leader>gs', '<cmd>FzfLua git_status<cr>', desc = 'Git Status' }
 
 -- -- Buffers
 -- Map { '<leader>bl', '<cmd>FzfLua buffers<cr>', desc = '[L]ist existing buffers' }
 --
 -- -- Files
 -- Map { '<leader>sr', '<cmd>FzfLua oldfiles<cr>', desc = '[S]earch [R]ecently opened files' }
-Map { '<leader>sf', '<cmd>FzfLua files<cr>', desc = 'Search Files' }
+-- Map { '<leader>sf', '<cmd>FzfLua files<cr>', desc = 'Search Files' }
 --
 -- -- Search
 -- Map { '<leader>sl', '<cmd>FzfLua resume<cr>', desc = '[S]earch Resume' }

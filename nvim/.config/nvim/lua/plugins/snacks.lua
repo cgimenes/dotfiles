@@ -86,12 +86,17 @@ Map {
   desc = 'Git Log (Pickaxe)',
 }
 Map {
+  '<leader>gs',
+  function() Snacks.picker.git_status() end,
+  desc = 'Git Status',
+}
+Map {
   '<leader>?',
   function() Snacks.picker.pick() end,
   desc = 'Pick Picker',
 }
 Map {
-  '<leader>sF',
+  '<leader>sf',
   function()
     local truncate_width = vim.api.nvim_win_get_width(0) * 0.8
     Snacks.picker.files {
