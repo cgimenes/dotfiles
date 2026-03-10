@@ -292,6 +292,7 @@ window-rule {
     open-focused false
 }
 window-rule {
+    match title="^Picture in picture$"
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id="zoom"
     open-floating true
