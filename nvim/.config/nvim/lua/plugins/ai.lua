@@ -24,6 +24,16 @@ local function read_prompt_files()
 end
 
 vim.pack.add { 'https://github.com/MSmaili/wiremux.nvim' }
+
+-- Monkey patch to get relative current file in context (with @ sign)
+local h = require 'wiremux.context.helpers'
+---@diagnostic disable-next-line: duplicate-set-field
+h.current_file = function()
+  local path = vim.api.nvim_buf_get_name(0)
+  if path == '' then return '' end
+  return '@' .. vim.fn.fnamemodify(path, ':p:.')
+end
+
 require('wiremux').setup {
   targets = {
     definitions = {
@@ -50,18 +60,18 @@ Map {
 }
 Map {
   '<leader>at',
-  function() require('wiremux').send { msg = '{this}', target = 'copilot' } end,
+  function() require('wiremux').send('{this}', { target = 'copilot' }) end,
   mode = { 'x', 'n' },
   desc = 'Send This to AI Assistant',
 }
 Map {
   '<leader>af',
-  function() require('wiremux').send { msg = '{file}', target = 'copilot' } end,
+  function() require('wiremux').send('{file}', { target = 'copilot' }) end,
   desc = 'Send File to AI Assistant',
 }
 Map {
   '<leader>av',
-  function() require('wiremux').send { msg = '{selection}', target = 'copilot' } end,
+  function() require('wiremux').send('{selection}', { target = 'copilot' }) end,
   mode = { 'x' },
   desc = 'Send Visual Selection to AI Assistant',
 }
