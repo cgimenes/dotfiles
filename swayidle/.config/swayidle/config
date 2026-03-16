@@ -1,0 +1,1 @@
+before-sleep 'loginctl lock-session'
