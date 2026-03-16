@@ -1,6 +1,5 @@
 [[profile]]
 name = "default"
-exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
     [[profile.output]]
     enable = true
     search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
@@ -12,7 +11,6 @@ exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""
 
 [[profile]]
 name = "docked"
-exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
     [[profile.output]]
     enable = false
     search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
@@ -27,7 +25,6 @@ exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""
 
 [[profile]]
 name = "fallback"
-exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
     [[profile.output]]
     enable = true
     search = ["m=LC34G55T", "s=HNTW400421", "v=Samsung Electric Company"]
@@ -39,7 +36,6 @@ exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""
 
 [[profile]]
 name = "both"
-exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
     [[profile.output]]
     enable = true
     search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
@@ -59,7 +55,6 @@ exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""
 
 [[profile]]
 name = "docked2"
-exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
     [[profile.output]]
     enable = false
     search = ["m=0x14E5", "s=", "v=Chimei Innolux Corporation"]
@@ -74,7 +69,6 @@ exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""
 
 [[profile]]
 name = "fallback2"
-exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
     [[profile.output]]
     enable = true
     search = ["m=DELL P3225QE", "s=8KBS984", "v=Dell Inc."]
@@ -86,7 +80,6 @@ exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""
 
 [[profile]]
 name = "both2"
-exec = ["notify-send shikane \"Profile $SHIKANE_PROFILE_NAME has been applied\""]
     [[profile.output]]
     enable = true
     search = ["m=DELL P3225QE", "s=8KBS984", "v=Dell Inc."]
