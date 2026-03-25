@@ -29,7 +29,7 @@ binds {
         spawn "footclient" "-a" "bluetui" "-e" "bluetui";
     }
     Mod+N hotkey-overlay-title="Obsidian" {
-        spawn "obsidian";
+        spawn-sh "python3 ~/.config/niri/scripts/niri_spawnjump.py obsidian";
     }
     Mod+Shift+N hotkey-overlay-title="Neovim Obsidian" {
         spawn-sh "footclient -D ~/Obsidian -e nvim";
