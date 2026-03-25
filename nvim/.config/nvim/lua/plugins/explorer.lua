@@ -4,7 +4,7 @@ vim.pack.add {
   'https://github.com/mikavilpas/yazi.nvim',
 }
 require('yazi').setup {
-  open_for_directories = true,
+  open_for_directories = false,
   keymaps = {
     open_file_in_vertical_split = '<m-v>',
     open_file_in_horizontal_split = '<m-h>',
@@ -25,6 +25,7 @@ Map { '-', '<cmd>Yazi<cr>', desc = 'Yazi Explorer' }
 -- Oil
 vim.pack.add { 'https://github.com/stevearc/oil.nvim' }
 require('oil').setup {
+  default_file_explorer = true,
   keymaps = {
     ['q'] = 'actions.close',
     ['<C-t>'] = false,
