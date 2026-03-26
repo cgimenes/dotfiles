@@ -16,7 +16,6 @@ vim.api.nvim_create_autocmd('FileType', {
     'dap-float',
     'fugitive',
     'fugitiveblame',
-    'git',
     'grug-far',
     'help',
     'nvim-undotree',
