@@ -28,3 +28,38 @@ require('render-markdown').setup {
   enabled = true,
   anti_conceal = { enabled = false },
 }
+
+vim.pack.add { 'https://github.com/gbprod/yanky.nvim' }
+require('yanky').setup {
+  highlight = { timer = 150 },
+}
+Map {
+  'y',
+  '<Plug>(YankyYank)',
+  mode = { 'n', 'x' },
+  desc = 'Yank text',
+}
+Map {
+  'p',
+  '<Plug>(YankyPutAfter)',
+  mode = { 'n', 'x' },
+  desc = 'Put yanked text after cursor',
+}
+Map {
+  'P',
+  '<Plug>(YankyPutBefore)',
+  mode = { 'n', 'x' },
+  desc = 'Put yanked text before cursor',
+}
+Map {
+  'gp',
+  '<Plug>(YankyGPutAfter)',
+  mode = { 'n', 'x' },
+  desc = 'Put yanked text after cursor and leave cursor after',
+}
+Map {
+  'gP',
+  '<Plug>(YankyGPutBefore)',
+  mode = { 'n', 'x' },
+  desc = 'Put yanked text before cursor and leave cursor after',
+}
