@@ -38,6 +38,7 @@ go
 go-yq
 grim
 gsimplecal
+gvfs
 hledger
 hledger-ui
 hledger-web
