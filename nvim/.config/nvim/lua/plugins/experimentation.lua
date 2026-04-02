@@ -51,3 +51,13 @@ Map {
   mode = { 'n', 'x' },
   desc = 'Put yanked text before cursor and leave cursor after',
 }
+Map {
+  '<c-p>',
+  '<Plug>(YankyPreviousEntry)',
+  desc = 'Select previous entry through yank history',
+}
+Map {
+  '<c-n>',
+  '<Plug>(YankyNextEntry)',
+  desc = 'Select next entry through yank history',
+}
