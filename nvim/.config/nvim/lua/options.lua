@@ -15,9 +15,7 @@ vim.o.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
+vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -123,3 +121,6 @@ vim.diagnostic.config {
     },
   },
 }
+
+-- Color highlighting
+vim.lsp.document_color.enable(true, {}, { style = 'virtual' })

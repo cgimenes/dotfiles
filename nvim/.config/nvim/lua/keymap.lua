@@ -61,33 +61,9 @@ vim.keymap.set('n', 'tc', '<cmd>tabclose<cr>', { desc = 'Next tab' })
 vim.keymap.set('n', 'tH', '<cmd>-tabmove<cr>', { desc = 'Move tab to the left' })
 vim.keymap.set('n', 'tL', '<cmd>+tabmove<cr>', { desc = 'Move tab to the right' })
 
--- Find/replace
-vim.keymap.set('n', '<leader>fs', function()
-  local cword = vim.fn.expand '<cword>'
-  vim.ui.input({ prompt = 'Pattern: ', default = cword }, function(pattern)
-    if pattern then
-      vim.cmd('silent grep! ' .. pattern)
-      vim.cmd 'copen'
-    end
-  end)
-end, { desc = 'Search using :grep' })
-
-vim.keymap.set('n', '<leader>fr', function()
-  vim.ui.input({ prompt = 'Pattern: ', default = '\\V' }, function(pattern)
-    if pattern then
-      vim.cmd('cdo s/' .. pattern .. '/gc | update')
-    end
-  end)
-end, { desc = 'Replace using :cdo' })
-
 -- Execute code
 vim.keymap.set({ 'n', 'x' }, '<leader>ce', ':.lua<CR>', { desc = 'Execute the current line or selection' })
 vim.keymap.set('n', '<leader>cf', '<cmd>source %<CR>', { desc = 'Execute the current file' })
-
--- Toggle diagnostic virtual text
-vim.keymap.set('n', '<leader>od', function()
-  vim.diagnostic.config { virtual_text = not vim.diagnostic.config().virtual_text }
-end, { desc = 'Toggle Diagnostic virtual text' })
 
 -- LSP
 Map { 'grvd', '<cmd>vsplit<cr><cmd>lua vim.lsp.buf.definition()<cr>', desc = 'Goto Definition in a vsplit' }
@@ -100,11 +76,3 @@ Map {
   end,
   desc = 'Rename',
 }
-Map {
-  '<leader>oh',
-  function()
-    vim.lsp.document_color.enable(not vim.lsp.document_color.is_enabled())
-  end,
-  desc = 'Toggle color highlight',
-}
-
