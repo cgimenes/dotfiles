@@ -1,34 +1,22 @@
--- Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-vim.pack.add { { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' } }
-require('nvim-treesitter.configs').setup {
-  auto_install = false,
-  sync_install = false,
-  ignore_install = {},
+BuildAfterUpdate('nvim-treesitter', ':TSUpdate')
+vim.pack.add {
+  'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/MeanderingProgrammer/treesitter-modules.nvim',
+}
+require('treesitter-modules').setup {
   ensure_installed = {
     'javascript',
     'tsx',
     'typescript',
     'prisma',
   },
-  highlight = {
-    enable = true,
-    disable = function()
-      local bufnr = vim.api.nvim_get_current_buf()
-      local lang = lang or require('nvim-treesitter.parsers').get_buf_lang(bufnr)
-      local langs = { 'prisma' }
-      for _, item in pairs(langs) do
-        if lang == item then
-          return false
-        end
-      end
-      return true
-    end,
-  },
-  indent = {
-    enable = false,
-  },
+  ignore_install = {},
+  sync_install = false,
+  auto_install = false,
+  highlight = { enable = { 'prisma' } },
+  indent = { enable = false },
+  fold = { enable = true },
 }
-BuildAfterUpdate('nvim-treesitter', ':TSUpdate')
 
 -- setting the commentstring option based on the cursor location in the file.
 vim.pack.add { 'https://github.com/JoosepAlviste/nvim-ts-context-commentstring' }
