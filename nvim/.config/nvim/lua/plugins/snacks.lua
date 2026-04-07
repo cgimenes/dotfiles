@@ -14,7 +14,7 @@ require('snacks').setup {
       keys = {
         { icon = ' ', key = ',n', desc = 'New File', action = ':ene' },
         { icon = ' ', key = ',c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-        { icon = ' ', key = ',p', desc = 'Pack', action = ':lua vim.pack.update()' },
+        { icon = ' ', key = ',p', desc = 'Pack', action = ':lua vim.pack.update(nil, {offline = true})' },
         { icon = '󰒲 ', key = ',l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
         { icon = '󰬔 ', key = ',m', desc = 'Mason', action = ':Mason' },
         { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
