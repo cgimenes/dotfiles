@@ -5,6 +5,7 @@ vim.o.relativenumber = true
 -- Tab size
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+vim.o.shiftround = true
 vim.o.expandtab = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -78,11 +79,17 @@ vim.o.endofline = false
 vim.o.endoffile = false
 vim.o.fixendofline = false
 
--- Don't show `~` outside of buffer
-vim.o.fillchars = 'eob: '
+-- Don't show `~` outside of buffer and use a more visible character for diff mode
+vim.opt.fillchars:append({
+    eob = " ",
+    diff = "",
+})
 
 -- Disable splash screen
 vim.opt.shortmess:append 'I'
+
+-- Smooth scrolling. Show wrapped lines if they're in the first line of the window
+vim.opt.smoothscroll = true
 
 -- Folding settings
 vim.opt.foldmethod = 'expr'
