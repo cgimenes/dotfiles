@@ -77,7 +77,7 @@ Map {
   desc = 'Notification History',
 }
 Map {
-  '<leader>gg',
+  '<leader>gG',
   function() Snacks.lazygit() end,
   desc = 'Lazygit',
 }

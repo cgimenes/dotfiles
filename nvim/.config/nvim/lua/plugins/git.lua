@@ -16,6 +16,13 @@ Map { '<leader>gh', ':CodeDiff history %<cr>', desc = 'File History' }
 Map { '<leader>gd', '<cmd>CodeDiff<cr>', desc = 'Git Diff' }
 Map { '<leader>gD', '<cmd>CodeDiff main...HEAD<cr>', desc = 'Git Diff main...HEAD (PR-like)' }
 
+-- Neogit
+vim.pack.add {
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/NeogitOrg/neogit',
+}
+Map { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Neogit' }
+
 -- Git signs (textobjects and hunk actions: gh to apply and gH to reset)
 vim.pack.add { 'https://github.com/nvim-mini/mini.diff' }
 require('mini.diff').setup {

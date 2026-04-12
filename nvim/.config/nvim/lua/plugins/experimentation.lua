@@ -2,13 +2,6 @@
 vim.pack.add { 'https://github.com/hat0uma/csvview.nvim' }
 require('csvview').setup()
 
--- Neogit
-vim.pack.add {
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/NeogitOrg/neogit',
-}
-Map { '<leader>gG', '<cmd>Neogit<cr>', desc = 'Neogit' }
-
 -- Markdown
 vim.pack.add { 'https://github.com/MeanderingProgrammer/render-markdown.nvim' }
 require('render-markdown').setup {
