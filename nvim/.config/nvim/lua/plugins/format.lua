@@ -1,6 +1,6 @@
 local prettier = { 'prettierd', 'prettier', stop_after_first = true }
 
-vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
+vim.pack.add { 'gh:stevearc/conform.nvim' }
 require('conform').setup {
   notify_on_error = true,
   format_on_save = nil,

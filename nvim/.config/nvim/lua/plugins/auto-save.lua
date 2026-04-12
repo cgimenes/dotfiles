@@ -3,7 +3,7 @@ local excluded_filetypes = {
   'oil',
 }
 
-vim.pack.add { 'https://github.com/okuuva/auto-save.nvim' }
+vim.pack.add { 'gh:okuuva/auto-save.nvim' }
 require('auto-save').setup {
   condition = function(buf)
     if vim.tbl_contains(excluded_filetypes, vim.fn.getbufvar(buf, '&filetype')) then

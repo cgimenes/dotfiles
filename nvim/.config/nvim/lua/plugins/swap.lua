@@ -1,2 +1,2 @@
 -- gs to enter swap mode
-vim.pack.add { 'https://github.com/machakann/vim-swap' }
+vim.pack.add { 'gh:machakann/vim-swap' }

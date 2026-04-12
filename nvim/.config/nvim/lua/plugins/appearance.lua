@@ -1,17 +1,17 @@
 -- Cool icons
-vim.pack.add { 'https://github.com/nvim-mini/mini.icons' }
+vim.pack.add { 'gh:nvim-mini/mini.icons' }
 require('mini.icons').setup()
 MiniIcons.mock_nvim_web_devicons()
 
 -- Better quickfix window
-vim.pack.add { 'https://github.com/yorickpeterse/nvim-pqf' }
+vim.pack.add { 'gh:yorickpeterse/nvim-pqf' }
 require('pqf').setup {
   show_multiple_lines = true,
   max_filename_length = 40,
 }
 
 -- Better inline diagnostics
-vim.pack.add { 'https://github.com/rachartier/tiny-inline-diagnostic.nvim' }
+vim.pack.add { 'gh:rachartier/tiny-inline-diagnostic.nvim' }
 require('tiny-inline-diagnostic').setup {
   preset = 'classic',
   options = {
@@ -21,8 +21,8 @@ require('tiny-inline-diagnostic').setup {
 
 -- Improve notifications, command palette and more
 vim.pack.add {
-  'https://github.com/MunifTanjim/nui.nvim',
-  'https://github.com/folke/noice.nvim',
+  'gh:MunifTanjim/nui.nvim',
+  'gh:folke/noice.nvim',
 }
 require('noice').setup {
   cmdline = { view = 'cmdline' },
@@ -34,14 +34,14 @@ require('noice').setup {
 }
 
 -- Highlight for window separator
-vim.pack.add { 'https://github.com/nvim-zh/colorful-winsep.nvim' }
+vim.pack.add { 'gh:nvim-zh/colorful-winsep.nvim' }
 require('colorful-winsep').setup {
   highlight = '#e6c384',
   animate = { enabled = false },
 }
 
 -- Auto arrange windows
-vim.pack.add { 'https://github.com/folke/edgy.nvim' }
+vim.pack.add { 'gh:folke/edgy.nvim' }
 require('edgy').setup {
   animate = { enabled = false },
   left = {

@@ -1,6 +1,6 @@
 vim.pack.add {
-  'https://github.com/nvim-treesitter/nvim-treesitter',
-  'https://github.com/mistweaverco/kulala.nvim',
+  'gh:nvim-treesitter/nvim-treesitter',
+  'gh:mistweaverco/kulala.nvim',
 }
 require('kulala').setup {
   global_keymaps = true,

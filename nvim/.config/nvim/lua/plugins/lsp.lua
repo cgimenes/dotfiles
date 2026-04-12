@@ -1,4 +1,4 @@
-vim.pack.add { 'https://github.com/neovim/nvim-lspconfig' }
+vim.pack.add { 'gh:neovim/nvim-lspconfig' }
 vim.lsp.enable {
   'clangd',
   'cssls',
@@ -18,19 +18,19 @@ vim.lsp.enable {
 }
 
 -- JSON schemas
-vim.pack.add { 'https://github.com/b0o/schemastore.nvim' }
+vim.pack.add { 'gh:b0o/schemastore.nvim' }
 
 -- Typescript LSP
 vim.pack.add {
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/pmizio/typescript-tools.nvim',
+  'gh:nvim-lua/plenary.nvim',
+  'gh:pmizio/typescript-tools.nvim',
 }
 require('typescript-tools').setup {}
 Map { '<leader>lg', '<cmd>TSToolsGoToSourceDefinition<cr>', desc = 'TS: Go to Source Definition' }
 
 -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
 -- used for completion, annotations and signatures of Neovim apis
-vim.pack.add { 'https://github.com/folke/lazydev.nvim' }
+vim.pack.add { 'gh:folke/lazydev.nvim' }
 require('lazydev').setup {
   library = {
     -- Load luvit types when the `vim.uv` word is found
@@ -40,10 +40,10 @@ require('lazydev').setup {
 }
 
 -- Breadcrumbs
-vim.pack.add { 'https://github.com/Bekaboo/dropbar.nvim' }
+vim.pack.add { 'gh:Bekaboo/dropbar.nvim' }
 
 -- LSP progress
-vim.pack.add { 'https://github.com/j-hui/fidget.nvim' }
+vim.pack.add { 'gh:j-hui/fidget.nvim' }
 require('fidget').setup { progress = { display = { done_icon = '' } } }
 
 -- Setup some LSP features

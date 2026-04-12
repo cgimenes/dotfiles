@@ -1,7 +1,7 @@
 -- Fugitive
 vim.pack.add {
-  'https://github.com/tpope/vim-rhubarb',
-  'https://github.com/tpope/vim-fugitive',
+  'gh:tpope/vim-rhubarb',
+  'gh:tpope/vim-fugitive',
 }
 Map { '<leader>gB', ':GBrowse<cr>', desc = 'Git Browse', mode = { 'n', 'x' } }
 Map { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' }
@@ -9,8 +9,8 @@ Map { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' }
 
 -- CodeDiff
 vim.pack.add {
-  'https://github.com/MunifTanjim/nui.nvim',
-  'https://github.com/esmuellert/codediff.nvim',
+  'gh:MunifTanjim/nui.nvim',
+  'gh:esmuellert/codediff.nvim',
 }
 Map { '<leader>gh', ':CodeDiff history %<cr>', desc = 'File History' }
 Map { '<leader>gd', '<cmd>CodeDiff<cr>', desc = 'Git Diff' }
@@ -18,13 +18,13 @@ Map { '<leader>gD', '<cmd>CodeDiff main...HEAD<cr>', desc = 'Git Diff main...HEA
 
 -- Neogit
 vim.pack.add {
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/NeogitOrg/neogit',
+  'gh:nvim-lua/plenary.nvim',
+  'gh:NeogitOrg/neogit',
 }
 Map { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Neogit' }
 
 -- Git signs (textobjects and hunk actions: gh to apply and gH to reset)
-vim.pack.add { 'https://github.com/nvim-mini/mini.diff' }
+vim.pack.add { 'gh:nvim-mini/mini.diff' }
 require('mini.diff').setup {
   view = { style = 'sign', signs = { add = '┃', change = '┃', delete = '▁' } },
   mappings = {
@@ -42,8 +42,8 @@ Map {
 
 -- Octo.nvim (GitHub PRs and Issues)
 vim.pack.add {
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/pwntester/octo.nvim',
+  'gh:nvim-lua/plenary.nvim',
+  'gh:pwntester/octo.nvim',
 }
 require('octo').setup {
   enable_builtin = true,

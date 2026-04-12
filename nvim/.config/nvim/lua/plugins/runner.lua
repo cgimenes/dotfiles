@@ -78,7 +78,7 @@ vim.api.nvim_create_user_command('OS', function(params)
 end, { nargs = '*', bang = true, complete = 'shellcmdline' })
 
 vim.pack.add {
-  { src = 'https://github.com/stevearc/overseer.nvim' },
+  { src = 'gh:stevearc/overseer.nvim' },
 }
 require('overseer').setup {
   dap = false,

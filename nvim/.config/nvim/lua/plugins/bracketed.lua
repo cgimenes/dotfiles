@@ -1,5 +1,5 @@
 -- File on disk [F [f ]f ]F
-vim.pack.add { 'https://github.com/nvim-mini/mini.bracketed' }
+vim.pack.add { 'gh:nvim-mini/mini.bracketed' }
 require('mini.bracketed').setup {
   file = { suffix = 'f' },
   yank = { suffix = '' },

@@ -33,9 +33,9 @@ local ensure_installed = {
 if vim.fn.executable 'gem' == 1 then vim.list_extend(ensure_installed, { 'rubocop', 'erb-formatter', 'ruby_lsp' }) end
 
 vim.pack.add {
-  'https://github.com/mason-org/mason.nvim',
-  'https://github.com/mason-org/mason-lspconfig.nvim',
-  'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim',
+  'gh:mason-org/mason.nvim',
+  'gh:mason-org/mason-lspconfig.nvim',
+  'gh:WhoIsSethDaniel/mason-tool-installer.nvim',
 }
 require('mason').setup {}
 require('mason-lspconfig').setup { automatic_enable = true }

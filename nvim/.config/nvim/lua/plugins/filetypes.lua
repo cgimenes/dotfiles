@@ -1,12 +1,12 @@
 -- Yuck
 BuildAfterUpdate('parinfer-rust', 'cargo build --release')
-vim.pack.add { 'https://github.com/eraserhd/parinfer-rust' }
+vim.pack.add { 'gh:eraserhd/parinfer-rust' }
 
 -- Kitty
-vim.pack.add { 'https://github.com/fladson/vim-kitty' }
+vim.pack.add { 'gh:fladson/vim-kitty' }
 
 -- JSONL
-vim.pack.add { 'https://github.com/kyoh86/vim-jsonl' }
+vim.pack.add { 'gh:kyoh86/vim-jsonl' }
 
 -- Ledger
-vim.pack.add { 'https://github.com/ledger/vim-ledger' }
+vim.pack.add { 'gh:ledger/vim-ledger' }

@@ -1,4 +1,4 @@
-vim.pack.add { 'https://github.com/cbochs/grapple.nvim' }
+vim.pack.add { 'gh:cbochs/grapple.nvim' }
 require('grapple').setup { scope = 'git_branch' }
 Map { 'gm', '<cmd>Grapple toggle<cr>', desc = 'Toggle bookmark' }
 Map { 'gl', '<cmd>Grapple toggle_tags<cr>', desc = 'Open bookmark list' }

@@ -1,4 +1,4 @@
--- vim.pack.add { 'https://github.com/ibhagwan/fzf-lua' }
+-- vim.pack.add { 'gh:ibhagwan/fzf-lua' }
 -- require('fzf-lua').setup {
 --   { 'ivy', 'hide' },
 --   winopts = {

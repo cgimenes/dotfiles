@@ -1,6 +1,6 @@
 -- Copilot
 BuildAfterUpdate('copilot.lua', ':Copilot auth')
-vim.pack.add { 'https://github.com/zbirenbaum/copilot.lua' }
+vim.pack.add { 'gh:zbirenbaum/copilot.lua' }
 require('copilot').setup {
   suggestion = { enabled = false },
   panel = { enabled = false },
@@ -23,7 +23,7 @@ local function read_prompt_files()
   return prompts
 end
 
-vim.pack.add { 'https://github.com/MSmaili/wiremux.nvim' }
+vim.pack.add { 'gh:MSmaili/wiremux.nvim' }
 
 -- Monkey patch to get relative current file in context (with @ sign)
 local h = require 'wiremux.context.helpers'

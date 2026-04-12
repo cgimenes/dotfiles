@@ -1,5 +1,5 @@
 vim.pack.add {
-  { src = 'https://github.com/akinsho/toggleterm.nvim', version = vim.version.range '*' },
+  { src = 'gh:akinsho/toggleterm.nvim', version = vim.version.range '*' },
 }
 ---@type ToggleTermConfig
 require('toggleterm').setup {

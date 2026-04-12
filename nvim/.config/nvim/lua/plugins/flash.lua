@@ -1,4 +1,4 @@
-vim.pack.add { 'https://github.com/folke/flash.nvim' }
+vim.pack.add { 'gh:folke/flash.nvim' }
 require('flash').setup {
   modes = {
     char = {

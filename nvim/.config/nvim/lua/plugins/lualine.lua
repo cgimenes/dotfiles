@@ -70,7 +70,7 @@ vim.cmd [[
 
 local icons = require 'icons'
 
-vim.pack.add { 'https://github.com/nvim-lualine/lualine.nvim' }
+vim.pack.add { 'gh:nvim-lualine/lualine.nvim' }
 require('lualine').setup {
   options = {
     always_show_tabline = true,

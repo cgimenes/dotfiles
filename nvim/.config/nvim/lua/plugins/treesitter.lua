@@ -1,7 +1,7 @@
 BuildAfterUpdate('nvim-treesitter', ':TSUpdate')
 vim.pack.add {
-  'https://github.com/nvim-treesitter/nvim-treesitter',
-  'https://github.com/MeanderingProgrammer/treesitter-modules.nvim',
+  'gh:nvim-treesitter/nvim-treesitter',
+  'gh:MeanderingProgrammer/treesitter-modules.nvim',
 }
 require('treesitter-modules').setup {
   ensure_installed = {
@@ -19,7 +19,7 @@ require('treesitter-modules').setup {
 }
 
 -- setting the commentstring option based on the cursor location in the file.
-vim.pack.add { 'https://github.com/JoosepAlviste/nvim-ts-context-commentstring' }
+vim.pack.add { 'gh:JoosepAlviste/nvim-ts-context-commentstring' }
 require('ts_context_commentstring').setup { enable_autocmd = false }
 local get_option = vim.filetype.get_option
 vim.filetype.get_option = function(filetype, option)
@@ -27,5 +27,5 @@ vim.filetype.get_option = function(filetype, option)
 end
 
 -- Use treesitter to autoclose and autorename html tag
-vim.pack.add { 'https://github.com/windwp/nvim-ts-autotag' }
+vim.pack.add { 'gh:windwp/nvim-ts-autotag' }
 require('nvim-ts-autotag').setup {}

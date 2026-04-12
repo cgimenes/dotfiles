@@ -1,5 +1,5 @@
 -- Better markdown editing
-vim.pack.add { 'https://github.com/YousefHadder/markdown-plus.nvim' }
+vim.pack.add { 'gh:YousefHadder/markdown-plus.nvim' }
 require('markdown-plus').setup {
   keymaps = {
     enabled = false,
@@ -8,7 +8,7 @@ require('markdown-plus').setup {
 
 -- Obsidian
 -- vim.pack.add {
---   { src = 'https://github.com/obsidian-nvim/obsidian.nvim', version = vim.version.range '*' },
+--   { src = 'gh:obsidian-nvim/obsidian.nvim', version = vim.version.range '*' },
 -- }
 -- local workspaces = {
 --   {
@@ -46,7 +46,7 @@ require('markdown-plus').setup {
 -- vim.opt.conceallevel = 1 -- Enable conceal
 
 -- Zk
--- vim.pack.add { 'https://github.com/zk-org/zk-nvim' }
+-- vim.pack.add { 'gh:zk-org/zk-nvim' }
 -- require('zk').setup {
 --   picker = 'snacks_picker',
 --   picker_options = {

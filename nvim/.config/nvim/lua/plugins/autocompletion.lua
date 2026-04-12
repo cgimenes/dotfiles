@@ -1,9 +1,9 @@
 local trigger_text = ';'
 
 vim.pack.add {
-  'https://github.com/rafamadriz/friendly-snippets',
-  'https://github.com/fang2hou/blink-copilot',
-  { src = 'https://github.com/saghen/blink.cmp', version = vim.version.range '*' },
+  'gh:rafamadriz/friendly-snippets',
+  'gh:fang2hou/blink-copilot',
+  { src = 'gh:saghen/blink.cmp', version = vim.version.range '*' },
 }
 require('blink.cmp').setup {
   keymap = {

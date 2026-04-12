@@ -1,4 +1,4 @@
-vim.pack.add { 'https://github.com/chrisgrieser/nvim-scissors' }
+vim.pack.add { 'gh:chrisgrieser/nvim-scissors' }
 require('scissors').setup { snippetDir = vim.fn.stdpath 'config' .. '/snippets' }
 Map {
   '<leader>Se',

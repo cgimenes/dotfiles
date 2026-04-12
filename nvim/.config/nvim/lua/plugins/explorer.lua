@@ -1,7 +1,7 @@
 -- Yazi
 vim.pack.add {
-  'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/mikavilpas/yazi.nvim',
+  'gh:nvim-lua/plenary.nvim',
+  'gh:mikavilpas/yazi.nvim',
 }
 require('yazi').setup {
   open_for_directories = false,
@@ -23,7 +23,7 @@ require('yazi').setup {
 Map { '-', '<cmd>Yazi<cr>', desc = 'Yazi Explorer' }
 
 -- Oil
-vim.pack.add { 'https://github.com/stevearc/oil.nvim' }
+vim.pack.add { 'gh:stevearc/oil.nvim' }
 require('oil').setup {
   default_file_explorer = true,
   keymaps = {

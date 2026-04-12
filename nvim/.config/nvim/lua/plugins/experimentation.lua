@@ -1,16 +1,16 @@
 -- CSV viewer
-vim.pack.add { 'https://github.com/hat0uma/csvview.nvim' }
+vim.pack.add { 'gh:hat0uma/csvview.nvim' }
 require('csvview').setup()
 
 -- Markdown
-vim.pack.add { 'https://github.com/MeanderingProgrammer/render-markdown.nvim' }
+vim.pack.add { 'gh:MeanderingProgrammer/render-markdown.nvim' }
 require('render-markdown').setup {
   enabled = true,
   anti_conceal = { enabled = false },
 }
 
 -- Yanky
-vim.pack.add { 'https://github.com/gbprod/yanky.nvim' }
+vim.pack.add { 'gh:gbprod/yanky.nvim' }
 require('yanky').setup {
   highlight = { timer = 150 },
 }

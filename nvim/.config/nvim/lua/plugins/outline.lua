@@ -1,7 +1,7 @@
 vim.pack.add {
-  'https://github.com/SmiteshP/nvim-navic',
-  'https://github.com/MunifTanjim/nui.nvim',
-  'https://github.com/hasansujon786/nvim-navbuddy',
+  'gh:SmiteshP/nvim-navic',
+  'gh:MunifTanjim/nui.nvim',
+  'gh:hasansujon786/nvim-navbuddy',
 }
 require('nvim-navbuddy').setup {
   lsp = { auto_attach = true },

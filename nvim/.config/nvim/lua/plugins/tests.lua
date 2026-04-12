@@ -1,4 +1,4 @@
-vim.pack.add { 'https://github.com/vim-test/vim-test' }
+vim.pack.add { 'gh:vim-test/vim-test' }
 
 local function OverseerStrategy(cmd)
   local task = require('overseer.task').new {

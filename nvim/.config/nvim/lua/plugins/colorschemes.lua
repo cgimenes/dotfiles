@@ -1,7 +1,7 @@
 local transparent = false
 vim.o.background = 'dark'
 
-vim.pack.add { 'https://github.com/olimorris/onedarkpro.nvim' }
+vim.pack.add { 'gh:olimorris/onedarkpro.nvim' }
 require('onedarkpro').setup {
   options = {
     transparency = transparent,
@@ -9,10 +9,10 @@ require('onedarkpro').setup {
   },
 }
 
-vim.pack.add { 'https://github.com/folke/tokyonight.nvim' }
+vim.pack.add { 'gh:folke/tokyonight.nvim' }
 require('tokyonight').setup { transparent = transparent }
 
-vim.pack.add { 'https://github.com/rebelot/kanagawa.nvim' }
+vim.pack.add { 'gh:rebelot/kanagawa.nvim' }
 require('kanagawa').setup {
   transparent = transparent,
   colors = {
@@ -27,13 +27,13 @@ require('kanagawa').setup {
 }
 
 vim.pack.add {
-  { src = 'https://github.com/catppuccin/nvim', name = 'catppuccin' },
+  { src = 'gh:catppuccin/nvim', name = 'catppuccin' },
 }
 
-vim.pack.add { 'https://github.com/sainnhe/everforest' }
+vim.pack.add { 'gh:sainnhe/everforest' }
 vim.g.everforest_enable_italic = true
 
-vim.pack.add { 'https://github.com/lunarvim/synthwave84.nvim' }
+vim.pack.add { 'gh:lunarvim/synthwave84.nvim' }
 require('synthwave84').setup {
   glow = {
     error_msg = false,
@@ -48,11 +48,11 @@ require('synthwave84').setup {
 }
 
 
-vim.pack.add { 'https://github.com/EdenEast/nightfox.nvim' }
+vim.pack.add { 'gh:EdenEast/nightfox.nvim' }
 
-vim.pack.add { 'https://github.com/AlexvZyl/nordic.nvim' }
+vim.pack.add { 'gh:AlexvZyl/nordic.nvim' }
 
-vim.pack.add { 'https://github.com/luisiacc/gruvbox-baby' }
+vim.pack.add { 'gh:luisiacc/gruvbox-baby' }
 vim.g.gruvbox_material_enable_italic = true
 vim.g.gruvbox_material_enable_bold = true
 vim.g.gruvbox_material_transparent_background = transparent
@@ -61,41 +61,41 @@ vim.g.gruvbox_material_background = 'hard'
 vim.g.gruvbox_material_float_style = 'dim'
 vim.g.gruvbox_material_better_performance = 1
 
-vim.pack.add { 'https://github.com/tiagovla/tokyodark.nvim' }
+vim.pack.add { 'gh:tiagovla/tokyodark.nvim' }
 require('tokyodark').setup { transparent_background = transparent }
 
-vim.pack.add { 'https://github.com/cpea2506/one_monokai.nvim' }
+vim.pack.add { 'gh:cpea2506/one_monokai.nvim' }
 
-vim.pack.add { 'https://github.com/scottmckendry/cyberdream.nvim' }
+vim.pack.add { 'gh:scottmckendry/cyberdream.nvim' }
 require('cyberdream').setup { transparent = transparent }
 
-vim.pack.add { 'https://github.com/lunarvim/darkplus.nvim' }
+vim.pack.add { 'gh:lunarvim/darkplus.nvim' }
 
-vim.pack.add { 'https://github.com/bluz71/vim-moonfly-colors' }
+vim.pack.add { 'gh:bluz71/vim-moonfly-colors' }
 
-vim.pack.add { 'https://github.com/webhooked/kanso.nvim' }
+vim.pack.add { 'gh:webhooked/kanso.nvim' }
 require('kanso').setup { transparent = transparent }
 
-vim.pack.add { 'https://github.com/Yazeed1s/oh-lucy.nvim' }
+vim.pack.add { 'gh:Yazeed1s/oh-lucy.nvim' }
 vim.g.oh_lucy_transparent_background = transparent
 
-vim.pack.add { 'https://github.com/vague2k/vague.nvim' }
+vim.pack.add { 'gh:vague2k/vague.nvim' }
 require('vague').setup { transparent = transparent }
 
-vim.pack.add { 'https://github.com/craftzdog/solarized-osaka.nvim' }
+vim.pack.add { 'gh:craftzdog/solarized-osaka.nvim' }
 require('solarized-osaka').setup { transparent = transparent }
 
-vim.pack.add { 'https://github.com/sainnhe/gruvbox-material' }
+vim.pack.add { 'gh:sainnhe/gruvbox-material' }
 
-vim.pack.add { 'https://github.com/xeind/nightingale.nvim' }
+vim.pack.add { 'gh:xeind/nightingale.nvim' }
 require('nightingale').setup { transparent = transparent }
 
-vim.pack.add { 'https://github.com/NTBBloodbath/sweetie.nvim' }
+vim.pack.add { 'gh:NTBBloodbath/sweetie.nvim' }
 
-vim.pack.add { 'https://github.com/thesimonho/kanagawa-paper.nvim' }
+vim.pack.add { 'gh:thesimonho/kanagawa-paper.nvim' }
 require('kanagawa-paper').setup { transparent = transparent }
 
-vim.pack.add { 'https://github.com/adibhanna/yukinord.nvim' }
+vim.pack.add { 'gh:adibhanna/yukinord.nvim' }
 
 vim.pack.add { 'https://gitlab.com/motaz-shokry/gruvbox.nvim' }
 

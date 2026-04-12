@@ -1,6 +1,6 @@
 local function stop_insert() vim.cmd.stopinsert() end
 
-vim.pack.add { 'https://github.com/folke/snacks.nvim' }
+vim.pack.add { 'gh:folke/snacks.nvim' }
 require('snacks').setup {
   bigfile = {
     enabled = true,

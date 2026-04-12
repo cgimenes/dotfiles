@@ -1,4 +1,4 @@
-vim.pack.add { 'https://github.com/christoomey/vim-tmux-navigator' }
+vim.pack.add { 'gh:christoomey/vim-tmux-navigator' }
 vim.g.tmux_navigator_no_mappings = 1
 vim.g.tmux_navigator_no_wrap = 1
 Map { '<C-h>', '<cmd>TmuxNavigateLeft<cr>', mode = { 'n', 'v' } }

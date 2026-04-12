@@ -1,6 +1,6 @@
 vim.pack.add {
-  'https://github.com/mfussenegger/nvim-dap-python',
-  'https://github.com/mfussenegger/nvim-dap',
+  'gh:mfussenegger/nvim-dap-python',
+  'gh:mfussenegger/nvim-dap',
 }
 
 local dap = require 'dap'
@@ -142,7 +142,7 @@ Map {
 }
 
 -- DAP UI
-vim.pack.add { 'https://github.com/igorlfs/nvim-dap-view' }
+vim.pack.add { 'gh:igorlfs/nvim-dap-view' }
 require('dap-view').setup {
   auto_toggle = true,
   windows = {
@@ -154,7 +154,7 @@ require('dap-view').setup {
 Map { '<leader>dU', '<cmd>DapViewToggle!<cr>', desc = 'Dap UI' }
 
 -- Hydra
-vim.pack.add { 'https://github.com/nvimtools/hydra.nvim' }
+vim.pack.add { 'gh:nvimtools/hydra.nvim' }
 require 'hydra' {
   hint = [[
  _n_: Step Over         _K_: Eval
