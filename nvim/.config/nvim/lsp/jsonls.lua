@@ -1,3 +1,5 @@
+vim.pack.add { 'gh:b0o/schemastore.nvim' }
+
 return {
   settings = {
     json = {
