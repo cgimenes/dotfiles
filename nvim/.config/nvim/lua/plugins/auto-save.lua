@@ -1,6 +1,7 @@
 local excluded_filetypes = {
   'gitcommit',
   'oil',
+  'octo',
 }
 
 vim.pack.add { 'gh:okuuva/auto-save.nvim' }
