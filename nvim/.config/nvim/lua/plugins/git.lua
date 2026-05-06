@@ -21,7 +21,15 @@ vim.pack.add {
   'gh:nvim-lua/plenary.nvim',
   'gh:NeogitOrg/neogit',
 }
-Map { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Neogit' }
+Map {
+  '<leader>gg',
+  function()
+    require('neogit').open {
+      kind = vim.o.columns / 2 < 80 and 'tab' or 'vsplit',
+    }
+  end,
+  desc = 'Neogit',
+}
 
 -- Git signs (textobjects and hunk actions: gh to apply and gH to reset)
 vim.pack.add { 'gh:nvim-mini/mini.diff' }
