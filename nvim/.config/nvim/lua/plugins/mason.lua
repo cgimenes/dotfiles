@@ -12,6 +12,7 @@ local ensure_installed = {
   'sleek', -- SQL
   'stylua',
   'tailwindcss',
+  'ts_ls',
   -- 'emmet_language_server',
   -- 'gopls',
   -- 'intelephense',
@@ -38,5 +39,7 @@ vim.pack.add {
   'gh:WhoIsSethDaniel/mason-tool-installer.nvim',
 }
 require('mason').setup {}
-require('mason-lspconfig').setup { automatic_enable = true }
+require('mason-lspconfig').setup {
+  automatic_enable = { exclude = { 'ts_ls' } },
+}
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }
