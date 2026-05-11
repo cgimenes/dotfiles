@@ -7,5 +7,8 @@ require('nvim-navbuddy').setup {
   lsp = { auto_attach = true },
   window = { size = '90%' },
 }
-Map { '<leader>lo', '<cmd>Navbuddy<cr>', desc = 'Outline' }
-Map { '<leader>lO', '<cmd>Navbuddy root<cr>', desc = 'Outline (Root)' }
+Map { '<leader>lO', '<cmd>Navbuddy<cr>', desc = 'Outline' }
+
+vim.pack.add { 'gh:hedyhli/outline.nvim' }
+vim.keymap.set('n', '<leader>lo', '<cmd>Outline<CR>', { desc = 'Toggle Outline' })
+require('outline').setup {}

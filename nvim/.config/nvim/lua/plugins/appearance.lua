@@ -48,6 +48,8 @@ require('edgy').setup {
     { title = 'Find and Replace', ft = 'grug-far', size = { width = 0.20 } },
     { title = 'DBUI', ft = 'dbui', size = { width = 0.20 } },
     { title = 'UndoTree', ft = 'nvim-undotree', size = { width = 0.30 } },
+  },
+  right = {
     { title = 'Outline', ft = 'Outline', size = { width = 0.30 } },
   },
 }
