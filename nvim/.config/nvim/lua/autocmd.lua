@@ -45,7 +45,8 @@ vim.api.nvim_create_autocmd('WinLeave', {
   group = group,
   desc = 'Remove cursor line highlight in inactive window',
   callback = function()
-    if vim.bo.filetype == 'snacks_picker_list' then
+    local filetypes = { 'snacks_picker_list', 'octo_panel' }
+    if vim.tbl_contains(filetypes, vim.bo.filetype) then
       return
     end
     vim.opt_local.cursorlineopt = 'number'
