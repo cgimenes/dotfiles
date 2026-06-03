@@ -22,3 +22,6 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 export LEDGER_FILE="$HOME/ledger/current.hledger"
 export TIMELOG_DIR="$HOME/Public/Timeclock"
+
+# Fix Java applications not resizing properly
+export _JAVA_AWT_WM_NONREPARENTING=1
