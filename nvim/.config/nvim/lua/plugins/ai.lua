@@ -1,10 +1,10 @@
 -- Copilot
-BuildAfterUpdate('copilot.lua', ':Copilot auth')
-vim.pack.add { 'gh:zbirenbaum/copilot.lua' }
-require('copilot').setup {
-  suggestion = { enabled = false },
-  panel = { enabled = false },
-}
+-- BuildAfterUpdate('copilot.lua', ':Copilot auth')
+-- vim.pack.add { 'gh:zbirenbaum/copilot.lua' }
+-- require('copilot').setup {
+--   suggestion = { enabled = false },
+--   panel = { enabled = false },
+-- }
 
 -- Wiremux
 local function read_prompt_files()
@@ -41,6 +41,7 @@ require('wiremux').setup {
       terminal = { kind = 'pane', split = 'vertical', size = '20%' },
       -- AI assistants
       copilot = { cmd = 'copilot', kind = 'window', shell = false, size = '30%' },
+      claude = { cmd = 'claude', kind = 'window', shell = false, size = '30%' },
     },
   },
   picker = {
@@ -55,23 +56,23 @@ require('wiremux').setup {
 Map { '<leader>T', function() require('wiremux').toggle { target = 'terminal' } end, desc = 'Toggle terminal' }
 Map {
   '<leader>aa',
-  function() require('wiremux').toggle { target = 'copilot' } end,
+  function() require('wiremux').toggle { target = 'claude' } end,
   desc = 'Toggle AI Assistant',
 }
 Map {
   '<leader>at',
-  function() require('wiremux').send('{this}', { target = 'copilot' }) end,
+  function() require('wiremux').send('{this}', { target = 'claude' }) end,
   mode = { 'x', 'n' },
   desc = 'Send This to AI Assistant',
 }
 Map {
   '<leader>af',
-  function() require('wiremux').send('{file}', { target = 'copilot' }) end,
+  function() require('wiremux').send('{file}', { target = 'claude' }) end,
   desc = 'Send File to AI Assistant',
 }
 Map {
   '<leader>av',
-  function() require('wiremux').send('{selection}', { target = 'copilot' }) end,
+  function() require('wiremux').send('{selection}', { target = 'claude' }) end,
   mode = { 'x' },
   desc = 'Send Visual Selection to AI Assistant',
 }
@@ -94,7 +95,7 @@ Map {
       table.insert(prompts, v)
     end
 
-    require('wiremux').send(prompts, { target = 'copilot' })
+    require('wiremux').send(prompts, { target = 'claude' })
   end,
   mode = { 'n', 'x' },
   desc = 'Send Prompt to AI Assistant',

@@ -2,7 +2,7 @@ local trigger_text = ';'
 
 vim.pack.add {
   'gh:rafamadriz/friendly-snippets',
-  'gh:fang2hou/blink-copilot',
+  -- 'gh:fang2hou/blink-copilot',
   { src = 'gh:saghen/blink.cmp', version = vim.version.range '*' },
 }
 require('blink.cmp').setup {
@@ -18,12 +18,27 @@ require('blink.cmp').setup {
     },
   },
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+    default = {
+      'lsp',
+      'path',
+      'snippets',
+      'buffer',
+      -- 'copilot',
+    },
     per_filetype = {
       lua = { inherit_defaults = true, 'lazydev' },
-      sql = { 'dadbod', 'buffer', 'copilot' },
+      sql = {
+        'dadbod',
+        'buffer',
+        -- 'copilot',
+      },
       markdown = { inherit_defaults = true },
-      hledger = { 'omni', 'snippets', 'buffer', 'copilot' },
+      hledger = {
+        'omni',
+        'snippets',
+        'buffer',
+        -- 'copilot',
+      },
     },
     providers = {
       -- dont show LuaLS require statements when lazydev has items
@@ -36,12 +51,12 @@ require('blink.cmp').setup {
         name = 'Dadbod',
         module = 'vim_dadbod_completion.blink',
       },
-      copilot = {
-        name = 'Copilot',
-        module = 'blink-copilot',
-        score_offset = 90,
-        async = true,
-      },
+      -- copilot = {
+      --   name = 'Copilot',
+      --   module = 'blink-copilot',
+      --   score_offset = 90,
+      --   async = true,
+      -- },
       snippets = {
         score_offset = 100,
         -- Only show snippets if I type the trigger_text characters
