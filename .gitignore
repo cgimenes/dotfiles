@@ -3,6 +3,7 @@ nvim/.config/nvim/session/
 nvim/.config/nvim/Session.vim
 bin/.local/bin/trans
 bin/.local/bin/lvim
+bin/.local/bin/claude
 bin/.local/share
 bin/.local/state
 __pycache__/
