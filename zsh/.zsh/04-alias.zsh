@@ -1,6 +1,7 @@
 # Tmux
 alias ta='tmux a || tmux'
 alias tn='tmux new-session'
+alias th='tmux new-session -A -c "~" -s "home" \; new-window'
 
 # Git
 alias gdsn='gds --name-only'

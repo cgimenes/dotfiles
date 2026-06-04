@@ -3,7 +3,12 @@ binds {
     Mod+Tab repeat=false { toggle-overview; }
 
     // === Application Launchers ===
-    Mod+Return hotkey-overlay-title="Open Terminal" { spawn "footclient"; }
+    Mod+Return hotkey-overlay-title="Open Terminal" {
+        spawn-sh "footclient -e $SHELL -i -c th";
+    }
+    Mod+Shift+Return hotkey-overlay-title="Open Terminal" {
+        spawn "footclient";
+    }
     Mod+D hotkey-overlay-title="Application Launcher" {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
     }
