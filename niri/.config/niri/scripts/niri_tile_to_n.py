@@ -267,6 +267,19 @@ class NiriActions(NiriSocket):
 # %% Functions
 
 
+def fetch_output_width_lut() -> dict:
+    tmp = NiriRequests(skt_path)
+    try:
+        is_outputs_ok, outputs_resp = tmp.request("Outputs")
+    finally:
+        tmp.close()
+    if not is_outputs_ok:
+        print("Error requesting info about monitors", outputs_resp, sep="\n")
+        quit()
+    output_full_info = {out_key: out_dict["logical"] for out_key, out_dict in outputs_resp["Outputs"].items()}
+    return {out_key: out_info["width"] for out_key, out_info in output_full_info.items() if out_info is not None}
+
+
 def catch_sigterm(signum, frame):
     """Turn SIGTERM events into exceptions for graceful shutdown"""
     raise InterruptedError
@@ -385,7 +398,7 @@ niri_action = NiriActions(skt_path)
 
 # Sanity check. Make sure we have the right version
 is_version_ok, version_resp = niri_reader.request("Version")
-expected_version, actual_version = "25.11 (b35bcae)", version_resp.get("Version", "unknown")
+expected_version, actual_version = "26.04 (8ed0da4)", version_resp.get("Version", "unknown")
 if actual_version != expected_version:
     print(
         "",
@@ -400,13 +413,8 @@ if actual_version != expected_version:
 # ---------------------------------------------------------------------------------------------------------------------
 # %% *** IPC listening loop ***
 
-# Get monitor into
-is_outputs_ok, outputs_resp = niri_reader.request("Outputs")
-if not is_outputs_ok:
-    print("Error requesting info about monitors", outputs_resp, sep="\n")
-    quit()
-output_full_info = {out_key: out_dict["logical"] for out_key, out_dict in outputs_resp["Outputs"].items()}
-output_width_lut = {out_key: out_info["width"] for out_key, out_info in output_full_info.items() if out_info is not None}
+# Get monitor info
+output_width_lut = fetch_output_width_lut()
 
 # Initialize state tracking
 prev_focus_state = FocusState()
@@ -440,6 +448,8 @@ try:
             for item in wspace_state.values():
                 if item["is_focused"]:
                     focus_state.workspace_id = item["id"]
+            # Refresh output widths (handles monitor hotplug/config changes)
+            output_width_lut = fetch_output_width_lut()
 
         elif evt_name == "WorkspaceUrgencyChanged":
             # Update our existing workspace state
@@ -534,6 +544,10 @@ try:
             # Not doing anything with config...
             pass
 
+        elif evt_name == "CastsChanged":
+            #Not doing anything with screencasts...
+            pass
+            
         else:
             print("Unknown event:", evt_name)
 
