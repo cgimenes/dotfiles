@@ -1,4 +1,4 @@
-local prettier = { 'prettierd', 'prettier', stop_after_first = true }
+local prettier = { 'oxfmt' }
 
 vim.pack.add { 'gh:stevearc/conform.nvim' }
 require('conform').setup {
