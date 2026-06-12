@@ -16,6 +16,10 @@ Map { '<leader>gh', ':CodeDiff history %<cr>', desc = 'File History' }
 Map { '<leader>gd', '<cmd>CodeDiff<cr>', desc = 'Git Diff' }
 Map { '<leader>gD', '<cmd>CodeDiff main...HEAD<cr>', desc = 'Git Diff main...HEAD (PR-like)' }
 
+-- Diffs.nvim
+vim.pack.add { 'https://github.com/barrettruth/diffs.nvim' }
+vim.g.diffs = { integrations = { fugitive = true, neogit = true } }
+
 -- Neogit
 vim.pack.add {
   'gh:nvim-lua/plenary.nvim',
