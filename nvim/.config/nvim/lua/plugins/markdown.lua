@@ -6,6 +6,13 @@ require('markdown-plus').setup {
   },
 }
 
+-- Markdown rendering
+vim.pack.add { 'gh:MeanderingProgrammer/render-markdown.nvim' }
+require('render-markdown').setup {
+  enabled = true,
+  anti_conceal = { enabled = false },
+}
+
 -- Obsidian
 -- vim.pack.add {
 --   { src = 'gh:obsidian-nvim/obsidian.nvim', version = vim.version.range '*' },
