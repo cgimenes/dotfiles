@@ -18,7 +18,13 @@ Map { '<leader>gD', '<cmd>CodeDiff main...HEAD<cr>', desc = 'Git Diff main...HEA
 
 -- Diffs.nvim
 vim.pack.add { 'https://github.com/barrettruth/diffs.nvim' }
-vim.g.diffs = { integrations = { fugitive = true, neogit = true } }
+vim.g.diffs = {
+  integrations = { fugitive = true, neogit = true },
+  highlights = {
+    treesitter = { max_lines = 1000 },
+    vim = { max_lines = 500 },
+  },
+}
 
 -- Neogit
 vim.pack.add {
