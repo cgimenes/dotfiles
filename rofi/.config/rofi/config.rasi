@@ -1,18 +1,18 @@
 configuration {
   show-icons: true;
-  font: "Iosevka Nerd Font 12";
-  icon-theme: "Gruvbox-Dark";
+  font: "Asap 10";
+  // icon-theme: "Gruvbox-Dark";
 
   combi-modes: [ run, drun ];
 
-  display-ssh:    "󰣀 ";
-  display-run:    "󰣖 ";
-  display-drun:   "󱓞 ";
-  display-window: "󱂬 ";
-  display-combi:  "󰕘 ";
-  display-filebrowser: "󰉋 ";
+  display-ssh:    "󰣀  ";
+  display-run:    "󰣖  ";
+  display-drun:   "󱓞  ";
+  display-window: "󱂬  ";
+  display-combi:  "󰕘  ";
+  display-filebrowser: "󰉋  ";
 
   dpi: 120;
 }
 
-@theme "gruvbox"
+@theme "kanagawa"
