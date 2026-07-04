@@ -52,11 +52,6 @@ require('mini.diff').setup {
     goto_last = ']C',
   },
 }
-Map {
-  '<leader>ho',
-  MiniDiff.toggle_overlay,
-  desc = 'Toggle Git Changes Overlay',
-}
 
 -- Octo.nvim (GitHub PRs and Issues)
 vim.pack.add {
