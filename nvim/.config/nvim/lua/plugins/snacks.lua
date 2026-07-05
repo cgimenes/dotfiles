@@ -13,8 +13,8 @@ require('snacks').setup {
     preset = {
       keys = {
         { icon = ' ', key = ',n', desc = 'New File', action = ':ene' },
-        { icon = ' ', key = ',c', desc = 'Config', action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
-        { icon = ' ', key = ',p', desc = 'Pack', action = ':lua vim.pack.update(nil, {offline = true})' },
+        { icon = ' ', key = ',p', desc = 'Pack', action = ':lua vim.pack.update()' },
+        { icon = '󰧧 ', key = ',P', desc = 'Pack Offline', action = ':lua vim.pack.update(nil, {offline = true})' },
         { icon = '󰒲 ', key = ',l', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
         { icon = '󰬔 ', key = ',m', desc = 'Mason', action = ':Mason' },
         { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
@@ -83,7 +83,19 @@ Map {
 }
 Map {
   '<leader>gl',
-  function() Snacks.picker.git_log() end,
+  function()
+    Snacks.picker.git_log {
+      confirm = function(picker, item)
+        picker:close()
+        local cmd = 'CodeDiff ' .. item.commit .. ' ' .. item.commit .. '~1'
+        if item then
+          picker:norm(function()
+            vim.cmd(cmd)
+          end)
+        end
+      end,
+    }
+  end,
   desc = 'Git Log (Pickaxe)',
 }
 Map {
@@ -208,9 +220,7 @@ Map {
           truncate = truncate_width,
         },
       },
-      search = function(picker)
-        return picker.visual and picker.visual.text or ""
-      end,
+      search = function(picker) return picker.visual and picker.visual.text or '' end,
     }
   end,
   desc = 'Grep',
