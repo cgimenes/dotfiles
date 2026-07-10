@@ -19,7 +19,7 @@ run = '''
 '''
 
 [[mgr.prepend_keymap]]
-on   = "<C-d>"
+on   = "D"
 run  = "plugin diff"
 desc = "Diff the selected with the hovered file"
 
