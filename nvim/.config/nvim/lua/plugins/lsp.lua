@@ -40,11 +40,16 @@ require('lazydev').setup {
 }
 
 -- Breadcrumbs
-vim.pack.add { 'gh:Bekaboo/dropbar.nvim' }
+-- vim.pack.add { 'gh:Bekaboo/dropbar.nvim' }
 
 -- LSP progress
 vim.pack.add { 'gh:j-hui/fidget.nvim' }
 require('fidget').setup { progress = { display = { done_icon = '' } } }
+
+-- Outline
+vim.pack.add { 'gh:hedyhli/outline.nvim' }
+vim.keymap.set('n', '<leader>lo', '<cmd>Outline<CR>', { desc = 'Toggle Outline' })
+require('outline').setup {}
 
 -- Setup some LSP features
 vim.api.nvim_create_autocmd('LspAttach', {
