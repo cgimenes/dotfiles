@@ -11,3 +11,4 @@ Brewfile.lock.json
 btop/.config/btop/btop.log
 .uuid
 nvim-pack-lock.json
+fish/.config/fish/fish_variables

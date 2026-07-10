@@ -1,7 +1,7 @@
 export TERM="xterm-256color"
 
 export EDITOR="nvim"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export BROWSER="brave"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	export MACOS=true
