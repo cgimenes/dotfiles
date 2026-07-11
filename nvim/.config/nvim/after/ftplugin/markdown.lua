@@ -2,6 +2,7 @@ local setlocal = vim.opt_local
 
 setlocal.tabstop = 4
 setlocal.shiftwidth = 4
+setlocal.spell = true
 
 vim.b[0].snacks_indent = false
 
