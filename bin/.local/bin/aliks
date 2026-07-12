@@ -43,6 +43,53 @@ class PipeWireProvider:
         return self._list_sink_inputs
 
 
+class EasyEffectsProvider:
+    def list_presets(self):
+        output = subprocess.getoutput('easyeffects -p')
+        presets = []
+        capture = False
+        for line in output.splitlines():
+            if line.strip() == 'Output presets:':
+                capture = True
+                continue
+            if capture:
+                if not line.strip():
+                    break
+                presets.append(line.split('\t')[-1].strip())
+        return presets
+
+    def current_preset(self):
+        output = subprocess.getoutput('easyeffects -s')
+        for line in output.splitlines():
+            if line.startswith('output:'):
+                return line.split(':', 1)[1].strip()
+        return ''
+
+    def load_preset(self, name):
+        subprocess.run(['easyeffects', '-l', name])
+
+
+class EasyEffects:
+    def __init__(self):
+        self._provider = EasyEffectsProvider()
+
+    def get(self):
+        print(self._provider.current_preset())
+
+    def toggle(self, reverse=False):
+        presets = self._provider.list_presets()
+        if not presets:
+            return
+        current = self._provider.current_preset()
+        current_index = presets.index(current) if current in presets else 0
+        order = -1 if reverse else 1
+        next_index = current_index + order
+        count = len(presets)
+        if not (0 <= next_index < count):
+            next_index = count - 1 if reverse else 0
+        self._provider.load_preset(presets[next_index])
+
+
 class Aliks:
     def __init__(self):
         self._config_path = os.path.expanduser('~/.config/aliks.json')
@@ -110,46 +157,71 @@ class Aliks:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Aliks: Manage PipeWire sinks")
+    parser = argparse.ArgumentParser(description="Aliks: Manage PipeWire sinks and EasyEffects presets")
     subparsers = parser.add_subparsers(dest="command")
 
-    # 'get' command
-    subparsers.add_parser('get', help="Prints the default sink alias")
+    # 'sinks' command
+    sinks_parser = subparsers.add_parser('sinks', help="Manage PipeWire sinks")
+    sinks_subparsers = sinks_parser.add_subparsers(dest="sinks_command")
 
-    # 'list' command
-    list_parser = subparsers.add_parser('list', help="List alias of available sinks")
+    # 'sinks get' command
+    sinks_subparsers.add_parser('get', help="Prints the default sink alias")
+
+    # 'sinks list' command
+    list_parser = sinks_subparsers.add_parser('list', help="List alias of available sinks")
     list_parser.add_argument('--json', action='store_true', help="List sinks in JSON format")
 
-    # 'set' command
-    set_parser = subparsers.add_parser('set', help="Set the default sink by alias")
+    # 'sinks set' command
+    set_parser = sinks_subparsers.add_parser('set', help="Set the default sink by alias")
     set_parser.add_argument('sink', help="The sink alias to set")
 
-    # 'setup' command
-    subparsers.add_parser('setup', help="Creates the configuration file (~/.config/aliks.json) with available sinks")
+    # 'sinks setup' command
+    sinks_subparsers.add_parser('setup', help="Creates the configuration file (~/.config/aliks.json) with available sinks")
 
-    # 'toggle' command
-    toggle_parser = subparsers.add_parser('toggle', help="Toggle between available sinks")
+    # 'sinks toggle' command
+    toggle_parser = sinks_subparsers.add_parser('toggle', help="Toggle between available sinks")
     toggle_parser.add_argument('--reverse', action='store_true', help="Reverse the toggle order")
 
-    # 'reset' command
-    subparsers.add_parser('reset', help="Reset default sink")
+    # 'sinks reset' command
+    sinks_subparsers.add_parser('reset', help="Reset default sink")
+
+    # 'easyeffects' command
+    easyeffects_parser = subparsers.add_parser('easyeffects', help="Manage EasyEffects presets")
+    easyeffects_subparsers = easyeffects_parser.add_subparsers(dest="easyeffects_command")
+
+    # 'easyeffects get' command
+    easyeffects_subparsers.add_parser('get', help="Prints the current EasyEffects output preset")
+
+    # 'easyeffects toggle' command
+    easyeffects_toggle_parser = easyeffects_subparsers.add_parser('toggle', help="Toggle between available EasyEffects presets")
+    easyeffects_toggle_parser.add_argument('--reverse', action='store_true', help="Reverse the toggle order")
 
     args = parser.parse_args()
 
-    aliks = Aliks()
-
-    if args.command == 'get':
-        aliks.get()
-    elif args.command == 'list':
-        aliks.list(print_json=args.json)
-    elif args.command == 'set':
-        aliks.set(args.sink)
-    elif args.command == 'setup':
-        aliks.setup()
-    elif args.command == 'toggle':
-        aliks.toggle(reverse=args.reverse)
-    elif args.command == 'reset':
-        aliks.reset()
+    if args.command == 'sinks':
+        aliks = Aliks()
+        if args.sinks_command == 'get':
+            aliks.get()
+        elif args.sinks_command == 'list':
+            aliks.list(print_json=args.json)
+        elif args.sinks_command == 'set':
+            aliks.set(args.sink)
+        elif args.sinks_command == 'setup':
+            aliks.setup()
+        elif args.sinks_command == 'toggle':
+            aliks.toggle(reverse=args.reverse)
+        elif args.sinks_command == 'reset':
+            aliks.reset()
+        else:
+            sinks_parser.print_help()
+    elif args.command == 'easyeffects':
+        easyeffects = EasyEffects()
+        if args.easyeffects_command == 'get':
+            easyeffects.get()
+        elif args.easyeffects_command == 'toggle':
+            easyeffects.toggle(reverse=args.reverse)
+        else:
+            easyeffects_parser.print_help()
     else:
         parser.print_help()
 
