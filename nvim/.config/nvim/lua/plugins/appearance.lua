@@ -13,10 +13,15 @@ require('pqf').setup {
 -- Better inline diagnostics
 vim.pack.add { 'gh:rachartier/tiny-inline-diagnostic.nvim' }
 require('tiny-inline-diagnostic').setup {
-  preset = 'classic',
+  preset = 'simple',
   options = {
     show_all_diags_on_cursorline = true,
   },
+}
+Map {
+  '<leader>od',
+  require('tiny-inline-diagnostic').toggle,
+  desc = 'Toggle inline diagnostics',
 }
 
 -- Improve notifications, command palette and more
