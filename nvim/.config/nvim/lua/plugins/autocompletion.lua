@@ -100,6 +100,7 @@ require('blink.cmp').setup {
     window = { border = 'single' },
   },
   completion = {
+    ghost_text = { enabled = true },
     accept = {
       auto_brackets = {
         enabled = false,
