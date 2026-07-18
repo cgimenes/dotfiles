@@ -1,42 +1,6 @@
-// This config is in the KDL format: https://kdl.dev
-// "/-" comments out the following node.
-// Check the wiki for a full description of the configuration:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 config-notification {
     disable-failed
 }
-// Outputs from existing configuration
-/-output "eDP-1" {
-    // Uncomment this line to disable this output.
-    // off
-
-    // Resolution and, optionally, refresh rate of the output.
-    // The format is "<width>x<height>" or "<width>x<height>@<refresh rate>".
-    // If the refresh rate is omitted, niri will pick the highest refresh rate
-    // for the resolution.
-    // If the mode is omitted altogether or is invalid, niri will pick one automatically.
-    // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
-
-    // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
-
-    // Transform allows to rotate the output counter-clockwise, valid values are:
-    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
-    transform "normal"
-
-    // Position of the output in the global coordinate space.
-    // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
-    // The cursor can only move between directly adjacent outputs.
-    // Output scale and rotation has to be taken into account for positioning:
-    // outputs are sized in logical, or scaled, pixels.
-    // For example, a 3840×2160 output with scale 2.0 will have a logical size of 1920×1080,
-    // so to put another output directly adjacent to it on the right, set its x to 1920.
-    // If the position is unset or results in an overlap, the output is instead placed
-    // automatically.
-    position x=1280 y=0
-}
-
 
 gestures {
     hot-corners {
@@ -44,9 +8,6 @@ gestures {
     }
 }
 
-// Input device configuration.
-// Find the full list of options on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
 input {
     keyboard {
         xkb {
@@ -56,121 +17,53 @@ input {
         }
         repeat-rate 50
         repeat-delay 250
-
-        // Enable numlock on startup, omitting this setting disables it.
         numlock
     }
-
-    // Next sections include libinput settings.
-    // Omitting settings disables them, or leaves them at their default values.
-    // All commented-out settings here are examples, not defaults.
     touchpad {
-        // off
         tap
-        // dwt
-        // dwtp
-        // drag false
-        // drag-lock
         natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "two-finger"
-        // disabled-on-external-mouse
     }
-
     mouse {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "no-scroll"
     }
-
     trackpoint {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // scroll-button-lock
-        // middle-emulation
     }
-
-    // Uncomment this to make the mouse warp to the center of newly focused windows.
-    // warp-mouse-to-focus
-
-    // Focus windows and outputs automatically when moving the mouse into them.
-    // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
 }
-// You can configure outputs by their name, which you can find
-// by running `niri msg outputs` while inside a niri instance.
-// The built-in laptop monitor is usually called "eDP-1".
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
-// Remember to uncomment the node by removing "/-"!
 
-// Settings that influence how windows are positioned and sized.
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
+cursor {
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 24
+}
+
 layout {
-    // Set gaps around windows in logical pixels.
     background-color "transparent"
-    // When to center a column when changing focus, options are:
-    // - "never", default behavior, focusing an off-screen column will keep at the left
-    //   or right edge of the screen.
-    // - "always", the focused column will always be centered.
-    // - "on-overflow", focusing a column will center it if it doesn't fit
-    //   together with the previously focused column.
     center-focused-column "never"
-    // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
-        // Proportion sets the width as a fraction of the output width, taking gaps into account.
-        // For example, you can perfectly fit four windows sized "proportion 0.25" on an output.
-        // The default preset widths are 1/3, 1/2 and 2/3 of the output.
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
-        // proportion 1.0
-        // Fixed sets the width in logical pixels exactly.
-        // fixed 1920
     }
-    // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
     preset-window-heights {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
         proportion 1.0
     }
-    // You can change the default width of the new windows.
     default-column-width {}
-    // If you leave the brackets empty, the windows themselves will decide their initial width.
-    // default-column-width {}
-    // By default focus ring and border are rendered as a solid background rectangle
-    // behind windows. That is, they will show up through semitransparent windows.
-    // This is because windows using client-side decorations can have an arbitrary shape.
-    //
-    // If you don't like that, you should uncomment `prefer-no-csd` below.
-    // Niri will draw focus ring and border *around* windows that agree to omit their
-    // client-side decorations.
-    //
-    // Alternatively, you can override it with a window rule called
-    // `draw-border-with-background`.
+    gaps 4
     border {
+        width 2
+        active-color   "#76946a"
+        urgent-color   "#c34043"
+        inactive-color "#363646"
+    }
+    focus-ring {
         off
-        width 4
-        active-color   "#707070"      // Neutral gray
-        inactive-color "#d0d0d0"      // Light gray
-        urgent-color   "#cc4444"      // Softer red
     }
     shadow {
         softness 30
         spread 5
         offset x=0 y=5
-        color "#0007"
-    }
-    struts {
+        color "#1f1f28"
     }
     tab-indicator {
         place-within-column
@@ -179,30 +72,42 @@ layout {
         length total-proportion=0.25
         corner-radius 4
         width 4
+        active-color   "#76946a"
+        urgent-color   "#c34043"
+        inactive-color "#363646"
+    }
+    insert-hint {
+        color   "#76946a"
     }
 }
+
 layer-rule {
     match namespace="^quickshell$"
     place-within-backdrop true
 }
+
 overview {
     workspace-shadow {
         off
     }
 }
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
-// See the binds section below for more spawn examples.
-// This line starts waybar, a commonly used bar for Wayland compositors.
+
 environment {
   XDG_CURRENT_DESKTOP "niri"
+  QT_QPA_PLATFORM "wayland"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+  QT_QPA_PLATFORMTHEME "gtk3"
+  QT_QPA_PLATFORMTHEME_QT6 "gtk3"
 }
+
 hotkey-overlay {
     skip-at-startup
 }
+
 prefer-no-csd
+
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
 animations {
     workspace-switch {
         spring damping-ratio=0.90 stiffness=923 epsilon=0.0001
@@ -235,18 +140,8 @@ animations {
         spring damping-ratio=0.65 stiffness=923 epsilon=0.001
     }
 }
-switch-events {
-    lid-close { spawn "dms" "ipc" "call" "lock" "lock"; }
-}
-// Window rules let you adjust behavior for individual windows.
-// Find more information on the wiki:
-// https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-// Work around WezTerm's initial configure bug
-// by setting an empty default-column-width.
+
 window-rule {
-    // This regular expression is intentionally made as specific as possible,
-    // since this is the default config, and we want no false positives.
-    // You can get away with just app-id="wezterm" if you want.
     match app-id="foot"
     match app-id="footclient"
     default-column-width { proportion 0.5; }
@@ -282,11 +177,6 @@ window-rule {
     open-floating true
 }
 window-rule {
-    match app-id="foot"
-    match app-id="footclient"
-    draw-border-with-background false
-}
-window-rule {
     match app-id=r#"^steam$"# title=r#"^notificationtoasts_\d+_desktop$"#
     default-floating-position x=10 y=10 relative-to="bottom-right"
     open-focused false
@@ -305,23 +195,13 @@ window-rule {
     default-window-height { proportion 0.75; }
     open-floating true
 }
-// Open dms windows as floating by default
 window-rule {
-    match app-id=r#"org.quickshell$"#
-    open-floating true
-}
-debug {
-    honor-xdg-activation-with-invalid-serial
+  geometry-corner-radius 12
+  clip-to-geometry true
 }
 
-// Override to disable super+tab
-recent-windows {
-    binds {
-        Alt+Tab         { next-window scope="output"; }
-        Alt+Shift+Tab   { previous-window scope="output"; }
-        Alt+grave       { next-window filter="app-id"; }
-        Alt+Shift+grave { previous-window filter="app-id"; }
-    }
+debug {
+    honor-xdg-activation-with-invalid-serial
 }
 
 workspace "1"
@@ -334,11 +214,29 @@ workspace "7"
 workspace "8"
 workspace "9"
 
-// Include dms files
-include "dms/colors.kdl"
-include "dms/layout.kdl"
-include "dms/alttab.kdl"
-include "dms/binds.kdl"
-include "dms/outputs.kdl"
-include "dms/cursor.kdl"
+recent-windows {
+    highlight {
+        corner-radius 12
+        active-color   "#76946a"
+        urgent-color   "#c34043"
+    }
+}
+
+// DMS files
+// include "dms/colors.kdl"
+// include "dms/layout.kdl"
+// include "dms/alttab.kdl"
+// include "dms/outputs.kdl"
+// include "dms/cursor.kdl"
+// include "dms/binds.kdl"
+// include "dms/events.kdl"
+// include "dms/windowrules.kdl"
+
+// Noctalia files
+include "noctalia/binds.kdl"
+include "noctalia/events.kdl"
+include "noctalia/windowrules.kdl"
+
+// General files
+include "binds.kdl"
 include "spawn.kdl"

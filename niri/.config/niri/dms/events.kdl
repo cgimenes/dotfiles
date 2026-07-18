@@ -1,0 +1,4 @@
+switch-events {
+    lid-close { spawn "dms" "ipc" "call" "lock" "lock"; }
+}
+
