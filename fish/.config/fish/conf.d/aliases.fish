@@ -24,11 +24,16 @@ alias v='nvim'
 alias n='nvim'
 
 # ls -> eza
-alias ls='eza --icons --group-directories-first'
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -lAh'
+
+if command -v eza >/dev/null 2>&1
+  alias ls='eza --icons --group-directories-first'
+  alias lsa='ls -a'
+  alias l='ls -lah'
+  alias ll='ls -lh'
+  alias la='ls -lAh'
+  alias lt 'eza --tree --level=2 --long --icons --git'
+  alias lta 'lt -a'
+end
 
 # grep
 alias grep='grep --color=auto'

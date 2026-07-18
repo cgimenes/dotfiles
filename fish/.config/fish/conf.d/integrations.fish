@@ -26,6 +26,13 @@ if status is-interactive
     end
 end
 
+# fzf walks the tree via fd when present.
+if command -v fd >/dev/null 2>&1
+set -gx FZF_DEFAULT_COMMAND 'fd --hidden --follow --exclude .git'
+set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+set -gx FZF_ALT_C_COMMAND 'fd --type d --hidden --follow --exclude .git'
+end
+
 
 # Go
 if command -q go

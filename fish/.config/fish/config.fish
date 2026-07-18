@@ -1,1 +1,3 @@
-set -U fish_greeting
+if status is-interactive
+  set -g fish_greeting
+end
