@@ -38,6 +38,7 @@ gem install thor # for polybar
 gem install erb  # for polybar
 go install github.com/x-motemen/ghq@latest
 go install github.com/jesseduffield/lazydocker@latest
+go install github.com/neur0map/glazepkg/cmd/gpk@latest
 cargo install wiremix
 
 fc-cache -fv
