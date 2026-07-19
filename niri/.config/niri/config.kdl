@@ -81,9 +81,13 @@ layout {
     }
 }
 
+// layer-rule {
+//     match namespace="^quickshell$"
+//     place-within-backdrop true
+// }
 layer-rule {
-    match namespace="^quickshell$"
-    place-within-backdrop true
+  match namespace="^noctalia-wallpaper"
+  place-within-backdrop true
 }
 
 overview {
