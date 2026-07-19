@@ -236,6 +236,7 @@ recent-windows {
 include "noctalia/binds.kdl"
 include "noctalia/events.kdl"
 include "noctalia/windowrules.kdl"
+include "noctalia.kdl"
 
 // General files
 include "binds.kdl"

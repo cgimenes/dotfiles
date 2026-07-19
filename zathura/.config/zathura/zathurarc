@@ -1,37 +1,36 @@
 set selection-clipboard clipboard
 
-# zathurarc-dark
-set notification-error-bg       "#3A3F57" # base01  # seem not work
-set notification-error-fg       "#dc322f" # red
-set notification-warning-bg     "#3A3F57" # base01
-set notification-warning-fg     "#FE5370" # red
-set notification-bg             "#3A3F57" # base01
-set notification-fg             "#FECA6B" # yellow
+set default-bg              "rgba(31, 31, 40, 0.8)"
+set default-fg              "#c8c093"
+set recolor-lightcolor      "rgba(0,0,0,0)"
+set recolor-darkcolor       "#c8c093"
 
-set completion-group-bg         "#002b36" # base03
-set completion-group-fg         "#839496" # base0
-set completion-bg               "#292D3E" # base02
-set completion-fg               "#93a1a1" # base1
-set completion-highlight-bg     "#C792EA" # base01
-set completion-highlight-fg     "#eee8d5" # base2
+set statusbar-bg            "#1f1f28"
+set statusbar-fg            "#76946a"
+set inputbar-bg             "#1f1f28"
+set inputbar-fg             "#76946a"
 
-# Define the color in index mode
-set index-bg                   "#292D3E" # base02
-set index-fg                   "#93a1a1" # base1
-set index-active-bg             "#C792EA" # base01
-set index-active-fg             "#eee8d5" # base2
+set notification-bg         "#1f1f28"
+set notification-fg         "#76946a"
+set notification-error-bg   "#1f1f28"
+set notification-error-fg   "#c34043"
+set notification-warning-bg "#cdf4be"
+set notification-warning-fg "#430d0e"
 
-set inputbar-bg                 "#C792EA" # base01
-set inputbar-fg                 "#eee8d5" # base2
+set index-bg                "rgba(0,0,0,0)"
+set index-fg                "#c8c093"
+set index-active-bg         "#76946a"
+set index-active-fg         "#1f1f28"
+set highlight-color         "rgba(205, 244, 190, 0.5)"
+set highlight-active-color  "rgba(173, 233, 150, 0.5)"
+set highlight-fg            "#1f1f28"
 
-set statusbar-bg                "#292D3E" # base02
-set statusbar-fg                "#93a1a1" # base1
-
-set highlight-color             "#657b83" # base00  # hightlight match when search keyword(vim's /)
-set highlight-active-color      "#268bd2" # blue
-
-set default-bg                  "#292D3E" # base02
-set default-fg                  "#93a1a1" # base1
+set completion-bg           "#1f1f28"
+set completion-fg           "#76946a"
+set completion-group-bg     "#1f1f28"
+set completion-group-fg     "#76946a"
+set completion-highlight-fg "#1f1f28"
+set completion-highlight-bg "#76946a"
 
 # Font
 set font "iosevka nerd font 10"
