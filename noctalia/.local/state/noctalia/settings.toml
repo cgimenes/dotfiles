@@ -154,8 +154,5 @@ show_label = false
 stat = "ram_pct"
 
 [widget.workspaces]
-anchor = true
-capsule_radius = "auto"
 display = "none"
-inactive_pill_size = 1.25
 labels_only_when_occupied = true

@@ -1,7 +1,13 @@
+// DMS
 // spawn-at-startup "dms" "run"
+// spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+
+// Noctalia
 spawn-at-startup "noctalia"
+
+// General
 spawn-at-startup "shikane"
 spawn-at-startup "foot" "-s"
 spawn-at-startup "udiskie"
-// spawn-at-startup "python3" "~/.config/niri/scripts/niri_tile_to_n.py" "-m"
-// spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "python3" "~/.config/niri/scripts/niri_tile_to_n.py" "-m"
+

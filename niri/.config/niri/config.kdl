@@ -128,6 +128,9 @@ animations {
     overview-open-close {
         spring damping-ratio=0.90 stiffness=923 epsilon=0.0001
     }
+    config-notification-open-close {
+        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+    }
     window-open {
         duration-ms 150
         curve "ease-out-expo"
@@ -139,9 +142,6 @@ animations {
     screenshot-ui-open {
         duration-ms 200
         curve "ease-out-quad"
-    }
-    config-notification-open-close {
-        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
     }
 }
 
