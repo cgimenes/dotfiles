@@ -3,7 +3,7 @@ config_version = 2
 [bar.default]
 capsule = true
 center = [ "workspaces" ]
-end = [ "tray", "cpu", "ram", "network", "brightness", "battery", "control-center", "clock" ]
+end = [ "tray", "cpu", "ram", "network", "brightness", "battery", "keyboard_layout", "control-center", "clock" ]
 font_family = "Asap"
 margin_ends = 0
 start = [ "volume", "media" ]
@@ -124,10 +124,15 @@ theme_mode = "auto"
 enabled = false
 
 [widget.clock]
-format = "{:%H:%M}  {:%d %b}"
+format = "{:%H:%M} • {:%d %b}"
 
 [widget.cpu]
 display = "text"
+show_label = false
+
+[widget.keyboard_layout]
+display = "full"
+hide_when_single_layout = true
 show_label = false
 
 [widget.network]
