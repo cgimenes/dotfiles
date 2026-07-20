@@ -8,7 +8,6 @@ end
 # Git
 alias gdsn='git diff --staged --name-only'
 alias lzg='lazygit'
-alias gdnd='git -c pager.diff="less -R" diff'
 alias gst='git status'
 alias gpsup='git push --set-upstream origin $(git_current_branch)'
 alias gp='git push'
@@ -17,6 +16,8 @@ alias gl='git pull'
 alias gcm='git checkout $(git_main_branch)'
 alias gca='git commit --verbose --all'
 alias gcmsg='git commit --message'
+alias gd='git diff'
+alias gaa='git add --all'
 
 # Vim/Nvim
 alias vim='nvim'

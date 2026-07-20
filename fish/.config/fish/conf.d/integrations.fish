@@ -7,12 +7,6 @@ if status is-interactive
     # FZF
     if command -q fzf
         fzf --fish | source
-        set -gx FZF_DEFAULT_OPTS "
-        --cycle
-        --bind=ctrl-u:half-page-up
-        --bind=ctrl-d:half-page-down
-        --color scrollbar:#dcd7ba,marker:#7fb4ca,fg:#dcd7ba,query:#dcd7ba:regular,hl+:#7fb4ca,bg+:#363646,hl:#7fb4ca,info:#54546d,prompt:#7fb4ca,separator:#dcd7ba,border:#dcd7ba,header:#dcd7ba,pointer:#7fb4ca,spinner:#7fb4ca
-        "
     end
 
     # Atuin
@@ -28,11 +22,17 @@ end
 
 # fzf walks the tree via fd when present.
 if command -v fd >/dev/null 2>&1
-set -gx FZF_DEFAULT_COMMAND 'fd --hidden --follow --exclude .git'
-set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
-set -gx FZF_ALT_C_COMMAND 'fd --type d --hidden --follow --exclude .git'
+    set -gx FZF_DEFAULT_COMMAND 'fd --hidden --follow --exclude .git'
+    set -gx FZF_CTRL_T_COMMAND $FZF_DEFAULT_COMMAND
+    set -gx FZF_ALT_C_COMMAND 'fd --type d --hidden --follow --exclude .git'
 end
 
+set -gx FZF_DEFAULT_OPTS "
+--cycle
+--bind=ctrl-u:half-page-up
+--bind=ctrl-d:half-page-down
+--color scrollbar:#dcd7ba,marker:#7fb4ca,fg:#dcd7ba,query:#dcd7ba:regular,hl+:#7fb4ca,bg+:#363646,hl:#7fb4ca,info:#54546d,prompt:#7fb4ca,separator:#dcd7ba,border:#dcd7ba,header:#dcd7ba,pointer:#7fb4ca,spinner:#7fb4ca
+"
 
 # Go
 if command -q go

@@ -106,19 +106,20 @@ font_family = "Asap"
 
 [theme]
 builtin = "Kanagawa"
+mode = "auto"
 
     [theme.templates]
     builtin_ids = [ "gtk3", "gtk4", "niri", "qt" ]
     community_ids = [ "spicetify" ]
 
 [wallpaper.default]
-path = "/home/oliveira/Pictures/Wallpapers/wallhaven-yqv2wx.jpg"
+path = "/home/oliveira/Pictures/Wallpapers/Arch Wallpapers/2.jpg"
 
 [wallpaper.last]
-path = "/home/oliveira/Pictures/Wallpapers/wallhaven-yqv2wx.jpg"
+path = "/home/oliveira/Pictures/Wallpapers/Arch Wallpapers/2.jpg"
 
 [wallpaper.monitors.eDP-1]
-path = "/home/oliveira/Pictures/Wallpapers/wallhaven-yqv2wx.jpg"
+path = "/home/oliveira/Pictures/Wallpapers/Arch Wallpapers/2.jpg"
 
 [[wallpaper.favorite]]
 path = "/home/oliveira/Pictures/Wallpapers/e5evld5dpvjg1.jpeg"
