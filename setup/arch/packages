@@ -55,6 +55,7 @@ inter-font
 jq
 k9s
 kitty
+lazydocker
 lazygit
 ledger
 less
@@ -65,7 +66,9 @@ lxsession
 man-db
 man-pages
 mesa
+mise
 mpv
+ncspot
 neovim
 network-manager-applet
 noto-fonts
@@ -88,6 +91,7 @@ ripgrep
 rofi-calc
 rofi-wayland
 satty
+shikane
 slurp
 socat
 spotify-launcher

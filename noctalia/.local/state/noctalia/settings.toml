@@ -106,7 +106,6 @@ font_family = "Asap"
 
 [theme]
 builtin = "Kanagawa"
-mode = "auto"
 
     [theme.templates]
     builtin_ids = [ "gtk3", "gtk4", "niri", "qt" ]
