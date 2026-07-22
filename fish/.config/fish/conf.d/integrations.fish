@@ -64,6 +64,12 @@ if test -d $HOME/dev/google-cloud-sdk
     fish_add_path $HOME/dev/google-cloud-sdk/bin
 end
 
+
+# cargo
+if command -q cargo
+    fish_add_path $HOME/.cargo/bin
+end
+
 # Android LEDGER_FILE override
 if string match -q Android (uname -o 2>/dev/null)
     set -gx LEDGER_FILE $HOME/storage/shared/Documents/Ledger/2026.hledger
