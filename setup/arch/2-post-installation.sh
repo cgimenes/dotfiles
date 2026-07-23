@@ -32,6 +32,7 @@ go install github.com/x-motemen/ghq@latest
 go install github.com/jesseduffield/lazydocker@latest
 go install github.com/neur0map/glazepkg/cmd/gpk@latest
 cargo install wiremix
+uv tool install sqlit-tui
 
 fc-cache -fv
 bat cache --build

@@ -64,7 +64,6 @@ if test -d $HOME/dev/google-cloud-sdk
     fish_add_path $HOME/dev/google-cloud-sdk/bin
 end
 
-
 # cargo
 if command -q cargo
     fish_add_path $HOME/.cargo/bin
