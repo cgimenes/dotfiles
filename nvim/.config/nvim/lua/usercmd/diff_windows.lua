@@ -10,3 +10,15 @@ vim.api.nvim_create_user_command('DiffWindows', function()
   -- This builds the string "Cmd file1 file2" and runs it
   vim.cmd('CodeDiff file ' .. table.concat(files, ' '))
 end, {})
+
+Map {
+  '<leader>bD',
+  '<cmd>DiffWindows<cr>',
+  desc = 'Diff Windows (Files) with CodeDiff',
+}
+
+Map {
+  '<leader>bd',
+  '<cmd>windo diffthis<cr>',
+  desc = 'Diff Windows',
+}
