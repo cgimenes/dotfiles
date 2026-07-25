@@ -3,10 +3,10 @@ config_version = 2
 [bar.default]
 capsule = true
 center = [ "workspaces" ]
-end = [ "tray", "cpu", "ram", "network", "brightness", "battery", "keyboard_layout", "control-center", "clock" ]
+end = [ "tray", "cpu", "ram", "network", "brightness", "battery", "keyboard_layout", "privacy", "control-center", "clock" ]
 font_family = "Asap"
 margin_ends = 0
-start = [ "volume", "media" ]
+start = [ "Overview", "volume", "media" ]
 
 [control_center]
 sidebar = "full"
@@ -150,6 +150,11 @@ builtin_palette = "Kanagawa"
 palette_source = "builtin"
 path = "/home/oliveira/Pictures/Wallpapers/wallhaven-yqv2wx.jpg"
 theme_mode = "dark"
+
+[widget.Overview]
+command = "niri msg action toggle-overview"
+glyph = "zoom-scan"
+type = "custom_button"
 
 [widget.bluetooth]
 enabled = false

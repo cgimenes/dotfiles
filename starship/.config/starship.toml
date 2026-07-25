@@ -9,6 +9,18 @@ format = '[$time]($style)'
 time_format = '%R'
 style = 'bright-black'
 
+[golang]
+format = '\[[go ($version)]($style)\]'
+style = "blue"
+
+[rust]
+format = '\[[rust ($version)]($style)\]'
+style = "red"
+
+[ruby]
+format = '\[[ruby ($version)]($style)\]'
+style = "red"
+
 [nodejs]
 format = '\[[node ($version)]($style)\]'
 style = "green"
