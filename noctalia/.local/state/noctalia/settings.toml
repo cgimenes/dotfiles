@@ -129,7 +129,7 @@ font_family = "Asap"
 builtin = "Kanagawa"
 
     [theme.templates]
-    builtin_ids = [ "gtk3", "gtk4", "niri", "qt" ]
+    builtin_ids = [ "gtk3", "gtk4", "qt" ]
     community_ids = [ "spicetify" ]
 
 [wallpaper.default]
