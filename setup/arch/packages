@@ -48,7 +48,6 @@ hyprlock
 i3-wm
 i3status
 ijq
-imv
 inotify-tools
 intel-media-driver
 inter-font
@@ -88,6 +87,7 @@ polybar
 postgresql-libs
 qpwgraph
 ripgrep
+ristretto
 rofi-calc
 rofi-wayland
 satty
