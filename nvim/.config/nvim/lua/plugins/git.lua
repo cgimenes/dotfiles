@@ -7,14 +7,29 @@ Map { '<leader>gB', ':GBrowse<cr>', desc = 'Git Browse', mode = { 'n', 'x' } }
 Map { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' }
 Map { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' }
 
--- CodeDiff
+-- CodeDiff (for git-resolve and DiffWindows)
 vim.pack.add {
   'gh:MunifTanjim/nui.nvim',
   'gh:esmuellert/codediff.nvim',
 }
-Map { '<leader>gh', ':CodeDiff history %<cr>', desc = 'File History' }
-Map { '<leader>gd', '<cmd>CodeDiff<cr>', desc = 'Git Diff' }
-Map { '<leader>gD', '<cmd>CodeDiff main...HEAD<cr>', desc = 'Git Diff main...HEAD (PR-like)' }
+-- Map { '<leader>gh', ':CodeDiff history %<cr>', desc = 'File History' }
+-- Map { '<leader>gd', '<cmd>CodeDiff<cr>', desc = 'Git Diff' }
+-- Map { '<leader>gD', '<cmd>CodeDiff main...HEAD<cr>', desc = 'Git Diff main...HEAD (PR-like)' }
+
+-- Diffview
+vim.pack.add { 'gh:sindrets/diffview.nvim' }
+Map { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History' }
+Map { '<leader>gd', ':DiffviewOpen<cr>', desc = 'Git Diff' }
+Map { '<leader>gD', ':DiffviewOpen main...HEAD<cr>', desc = 'Git Diff main...HEAD (PR-like)' }
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Use q to close diffview',
+  group = vim.api.nvim_create_augroup('DiffviewCloseWithQ', { clear = true }),
+  command = [[nnoremap <buffer> q <cmd>tabclose<cr>]],
+  pattern = {
+    'DiffviewFiles',
+    'DiffviewFileHistory',
+  },
+})
 
 -- Diffs.nvim
 vim.pack.add { 'https://github.com/barrettruth/diffs.nvim' }
