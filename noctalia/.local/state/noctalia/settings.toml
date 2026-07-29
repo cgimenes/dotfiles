@@ -2,8 +2,8 @@ config_version = 2
 
 [bar.default]
 capsule = true
-center = [ "workspaces" ]
-end = [ "tray", "cpu", "ram", "network", "brightness", "battery", "keyboard_layout", "privacy", "control-center", "clock" ]
+center = [ "workspaces", "privacy" ]
+end = [ "tray", "cpu", "ram", "network", "brightness", "battery", "keyboard_layout", "control-center", "clock" ]
 font_family = "Asap"
 margin_ends = 0
 start = [ "Overview", "volume", "media" ]
@@ -173,6 +173,10 @@ show_label = false
 
 [widget.network]
 show_label = false
+
+[widget.privacy]
+active_color = "error"
+hide_inactive = true
 
 [widget.ram]
 display = "text"
