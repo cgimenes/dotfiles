@@ -11,3 +11,5 @@ Map {
   require('nvim-highlight-colors').toggle,
   desc = 'Toggle Color Highlight',
 }
+
+vim.pack.add { 'gh:justinmk/guh.nvim' }
