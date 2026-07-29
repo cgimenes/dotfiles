@@ -17,7 +17,7 @@ vim.pack.add {
 -- Map { '<leader>gD', '<cmd>CodeDiff main...HEAD<cr>', desc = 'Git Diff main...HEAD (PR-like)' }
 
 -- Diffview
-vim.pack.add { 'gh:sindrets/diffview.nvim' }
+vim.pack.add { 'gh:dlyongemallo/diffview-plus.nvim' }
 Map { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History' }
 Map { '<leader>gd', ':DiffviewOpen<cr>', desc = 'Git Diff' }
 Map { '<leader>gD', ':DiffviewOpen main...HEAD<cr>', desc = 'Git Diff main...HEAD (PR-like)' }
