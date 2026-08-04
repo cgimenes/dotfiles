@@ -18,6 +18,8 @@ alias gca='git commit --verbose --all'
 alias gcmsg='git commit --message'
 alias gd='git diff'
 alias gaa='git add --all'
+alias gco='git checkout'
+alias gcp='git cherry-pick'
 
 # Vim/Nvim
 alias vim='nvim'
