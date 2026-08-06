@@ -23,7 +23,9 @@ input {
         tap
         natural-scroll
     }
-    mouse {
+    trackball {
+        accel-speed -0.2
+        accel-profile "flat"
     }
     trackpoint {
     }
