@@ -25,6 +25,7 @@ alias gcp='git cherry-pick'
 alias vim='nvim'
 alias v='nvim'
 alias n='nvim'
+alias leetcode='nvim -c Leet'
 
 # ls -> eza
 

@@ -7,12 +7,7 @@ LazyLoad {
       'gh:nvim-lua/plenary.nvim',
       'gh:MunifTanjim/nui.nvim',
     }
-    require('leetcode').setup {
-      lang = 'typescript',
-      plugins = {
-        non_standalone = true,
-      },
-    }
+    require('leetcode').setup { lang = 'typescript' }
   end,
 }
 
