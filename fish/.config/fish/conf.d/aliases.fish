@@ -1,5 +1,6 @@
 # Tmux
-alias ta='tmux a || tmux'
+alias taa='tmux a || tmux'
+alias ta='~/dotfiles/tmux/.config/tmux/plugins/tmux-session-wizard/bin/t'
 alias tn='tmux new-session'
 function th
     tmux new-session -A -c ~ -s home ';' new-window
