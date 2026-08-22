@@ -43,6 +43,7 @@ vim.pack.add { 'gh:nvim-zh/colorful-winsep.nvim' }
 require('colorful-winsep').setup {
   highlight = '#e6c384',
   animate = { enabled = false },
+  border = 'single'
 }
 
 -- Auto arrange windows
