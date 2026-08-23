@@ -1,5 +1,10 @@
 config_version = 2
 
+[backdrop]
+blur_intensity = 0.14999999664723873
+enabled = true
+tint_intensity = 0.74999998323619366
+
 [bar.default]
 capsule = true
 center = [ "workspaces", "privacy" ]
@@ -127,28 +132,58 @@ font_family = "Asap"
 
 [theme]
 builtin = "Kanagawa"
+mode = "dark"
 
     [theme.templates]
     builtin_ids = [ "gtk3", "gtk4", "qt" ]
     community_ids = [ "spicetify" ]
 
 [wallpaper.default]
-path = "/home/oliveira/Pictures/Wallpapers/Arch Wallpapers/2.jpg"
+path = "/home/oliveira/Pictures/Wallpapers/gorgeous-hyper-realistic-painting-of-a-peaceful-nature-landscape-8k-best-most-popular-free-download-wallpapers-for-macbook-pro-and-macbook-air-and-microsoft-windows-desktop-pcs-4k-07-12-2024-1733638449-hd-wallpaper.png"
 
 [wallpaper.last]
-path = "/home/oliveira/Pictures/Wallpapers/Arch Wallpapers/2.jpg"
+path = "/home/oliveira/Pictures/Wallpapers/gorgeous-hyper-realistic-painting-of-a-peaceful-nature-landscape-8k-best-most-popular-free-download-wallpapers-for-macbook-pro-and-macbook-air-and-microsoft-windows-desktop-pcs-4k-07-12-2024-1733638449-hd-wallpaper.png"
+
+[wallpaper.monitors.DP-1]
+path = "/home/oliveira/Pictures/Wallpapers/gorgeous-hyper-realistic-painting-of-a-peaceful-nature-landscape-8k-best-most-popular-free-download-wallpapers-for-macbook-pro-and-macbook-air-and-microsoft-windows-desktop-pcs-4k-07-12-2024-1733638449-hd-wallpaper.png"
 
 [wallpaper.monitors.eDP-1]
 path = "/home/oliveira/Pictures/Wallpapers/Arch Wallpapers/2.jpg"
 
 [[wallpaper.favorite]]
+builtin_palette = "Kanagawa"
+palette_source = "builtin"
 path = "/home/oliveira/Pictures/Wallpapers/e5evld5dpvjg1.jpeg"
-theme_mode = "auto"
+theme_mode = "dark"
 
 [[wallpaper.favorite]]
 builtin_palette = "Kanagawa"
 palette_source = "builtin"
 path = "/home/oliveira/Pictures/Wallpapers/wallhaven-yqv2wx.jpg"
+theme_mode = "dark"
+
+[[wallpaper.favorite]]
+builtin_palette = "Kanagawa"
+palette_source = "builtin"
+path = "/home/oliveira/Pictures/Wallpapers/Arch Wallpapers/2.jpg"
+theme_mode = "dark"
+
+[[wallpaper.favorite]]
+builtin_palette = "Kanagawa"
+palette_source = "builtin"
+path = "/home/oliveira/Pictures/Wallpapers/138032536_p0.jpg"
+theme_mode = "dark"
+
+[[wallpaper.favorite]]
+builtin_palette = "Kanagawa"
+palette_source = "builtin"
+path = "/home/oliveira/Pictures/Wallpapers/wallhaven-w55m8x.jpg"
+theme_mode = "dark"
+
+[[wallpaper.favorite]]
+builtin_palette = "Kanagawa"
+palette_source = "builtin"
+path = "/home/oliveira/Pictures/Wallpapers/gorgeous-hyper-realistic-painting-of-a-peaceful-nature-landscape-8k-best-most-popular-free-download-wallpapers-for-macbook-pro-and-macbook-air-and-microsoft-windows-desktop-pcs-4k-07-12-2024-1733638449-hd-wallpaper.png"
 theme_mode = "dark"
 
 [widget.Overview]
