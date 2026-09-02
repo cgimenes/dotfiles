@@ -1,3 +1,7 @@
+# Writing
+
+Avoid usage of the symbol `—`
+
 # Repository usage
 
 Never change repository status, by commiting, staging/unstaging, checking out another branch/commit and such.
