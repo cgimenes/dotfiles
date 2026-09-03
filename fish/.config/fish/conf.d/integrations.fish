@@ -18,6 +18,11 @@ if status is-interactive
     if command -q zoxide
         zoxide init fish | source
     end
+
+    # elio
+    if command -q elio
+        elio shell init fish | source
+    end
 end
 
 # fzf walks the tree via fd when present.
