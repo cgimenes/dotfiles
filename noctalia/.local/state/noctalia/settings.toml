@@ -10,7 +10,8 @@ capsule = true
 center = [ "workspaces", "privacy" ]
 end = [ "tray", "cpu", "ram", "network", "brightness", "battery", "keyboard_layout", "control-center", "clock" ]
 font_family = "Asap"
-margin_ends = 0
+margin_edge = 4
+margin_ends = 500
 start = [ "Overview", "volume", "media" ]
 
 [control_center]
@@ -139,13 +140,13 @@ mode = "dark"
     community_ids = [ "spicetify" ]
 
 [wallpaper.default]
-path = "/home/oliveira/Pictures/Wallpapers/138032536_p0.jpg"
+path = "/home/oliveira/Pictures/Wallpapers/viynhsjiiet11.png"
 
 [wallpaper.last]
-path = "/home/oliveira/Pictures/Wallpapers/138032536_p0.jpg"
+path = "/home/oliveira/Pictures/Wallpapers/viynhsjiiet11.png"
 
 [wallpaper.monitors.DP-1]
-path = "/home/oliveira/Pictures/Wallpapers/138032536_p0.jpg"
+path = "/home/oliveira/Pictures/Wallpapers/viynhsjiiet11.png"
 
 [wallpaper.monitors.eDP-1]
 path = "/home/oliveira/Pictures/Wallpapers/Arch Wallpapers/2.jpg"
@@ -184,6 +185,12 @@ theme_mode = "dark"
 builtin_palette = "Kanagawa"
 palette_source = "builtin"
 path = "/home/oliveira/Pictures/Wallpapers/gorgeous-hyper-realistic-painting-of-a-peaceful-nature-landscape-8k-best-most-popular-free-download-wallpapers-for-macbook-pro-and-macbook-air-and-microsoft-windows-desktop-pcs-4k-07-12-2024-1733638449-hd-wallpaper.png"
+theme_mode = "dark"
+
+[[wallpaper.favorite]]
+builtin_palette = "Kanagawa"
+palette_source = "builtin"
+path = "/home/oliveira/Pictures/Wallpapers/viynhsjiiet11.png"
 theme_mode = "dark"
 
 [widget.Overview]
