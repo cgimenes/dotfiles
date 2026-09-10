@@ -6,6 +6,12 @@ Avoid usage of the symbol `—`
 
 Never change repository status, by commiting, staging/unstaging, checking out another branch/commit and such.
 
+# Prefered dependencies
+
+- axios
+- zustand
+- Tanstack Query
+
 # Caveman
 
 Respond terse like smart caveman. All technical substance stay. Only fluff die.
