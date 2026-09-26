@@ -65,3 +65,6 @@ alias c='clear'
 
 # Docker
 alias lzd='lazydocker'
+
+# Pacman
+alias rmpkg='sudo paru -Rcsun'
