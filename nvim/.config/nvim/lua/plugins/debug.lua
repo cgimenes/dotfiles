@@ -30,30 +30,22 @@ vim.fn.sign_define('DapLogPoint', {
 vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
 Map {
   '<leader>dB',
-  function()
-    dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-  end,
+  function() dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ') end,
   desc = 'Breakpoint Condition',
 }
 Map {
   '<leader>dC',
-  function()
-    dap.run_to_cursor()
-  end,
+  function() dap.run_to_cursor() end,
   desc = 'Run to Cursor',
 }
 Map {
   '<leader>dK',
-  function()
-    require('dap.ui.widgets').hover(nil, { border = 'rounded' })
-  end,
+  function() require('dap.ui.widgets').hover(nil, { border = 'rounded' }) end,
   desc = 'Eval',
 }
 Map {
   '<leader>dP',
-  function()
-    dap.pause()
-  end,
+  function() dap.pause() end,
   desc = 'Pause',
 }
 Map {
@@ -66,79 +58,57 @@ Map {
 }
 Map {
   '<leader>db',
-  function()
-    dap.toggle_breakpoint()
-  end,
+  function() dap.toggle_breakpoint() end,
   desc = 'Toggle Breakpoint',
 }
 Map {
   '<leader>dc',
-  function()
-    dap.continue()
-  end,
+  function() dap.continue() end,
   desc = 'Run/Continue',
 }
 Map {
   '<leader>dd',
-  function()
-    dap.down()
-  end,
+  function() dap.down() end,
   desc = 'Down in stacktrace',
 }
 Map {
   '<leader>dg',
-  function()
-    dap.goto_()
-  end,
+  function() dap.goto_() end,
   desc = 'Go to Line (No Execute)',
 }
 Map {
   '<leader>di',
-  function()
-    dap.step_into()
-  end,
+  function() dap.step_into() end,
   desc = 'Step Into',
 }
 Map {
   '<leader>dj',
-  function()
-    dap.down()
-  end,
+  function() dap.down() end,
   desc = 'Down',
 }
 Map {
   '<leader>dk',
-  function()
-    dap.up()
-  end,
+  function() dap.up() end,
   desc = 'Up',
 }
 Map {
   '<leader>dl',
-  function()
-    dap.run_last()
-  end,
+  function() dap.run_last() end,
   desc = 'Run Last',
 }
 Map {
   '<leader>dn',
-  function()
-    dap.step_over()
-  end,
+  function() dap.step_over() end,
   desc = 'Step Over',
 }
 Map {
   '<leader>do',
-  function()
-    dap.step_out()
-  end,
+  function() dap.step_out() end,
   desc = 'Step Out',
 }
 Map {
   '<leader>du',
-  function()
-    dap.up()
-  end,
+  function() dap.up() end,
   desc = 'Up in stacktrace',
 }
 
@@ -154,48 +124,35 @@ require('dap-view').setup {
 }
 Map { '<leader>dU', '<cmd>DapViewToggle!<cr>', desc = 'Dap UI' }
 
--- Hydra
-vim.pack.add { 'gh:nvimtools/hydra.nvim' }
-require 'hydra' {
-  hint = [[
- _n_: Step Over         _K_: Eval
- _i_: Step Into         ^ ^
- _o_: Step Out          _T_: Terminate
- _C_: To Cursor         _q_: Exit Mode
- _c_: Continue/Start
-]],
-  config = {
-    color = 'pink',
-    invoke_on_body = true,
-    hint = {
-      position = 'top-right',
-      offset = 1,
-    },
-  },
-  name = 'DAP mode',
-  mode = { 'n', 'x' },
-  body = '<leader>dm',
-  heads = {
-    { 'n', dap.step_over, { silent = true } },
-    { 'i', dap.step_into, { silent = true } },
-    { 'o', dap.step_out, { silent = true } },
-    { 'C', dap.run_to_cursor, { silent = true } },
-    { 'c', dap.continue, { silent = true } },
+-- Debug mode
+vim.pack.add { 'gh:debugloop/layers.nvim' }
+require('layers').setup {}
+local debug_mode = Layers.mode.new()
+debug_mode:auto_show_help()
+debug_mode:keymaps {
+  n = {
+    { 'n', dap.step_over, { desc = 'Step Over' } },
+    { 'i', dap.step_into, { desc = 'Step Into' } },
+    { 'o', dap.step_out, { desc = 'Step Out' } },
+    { 'C', dap.run_to_cursor, { desc = 'To Cursor' } },
+    { 'c', dap.continue, { desc = 'Continue/Start' } },
     {
       'T',
       function()
+        debug_mode:deactivate()
         dap.terminate { all = true, hierarchy = true }
         vim.cmd 'DapViewClose!'
       end,
-      { exit = true, silent = true },
+      { desc = 'Terminate' },
     },
     {
       'K',
-      function()
-        require('dap.ui.widgets').hover(nil, { border = 'rounded' })
-      end,
-      { silent = true },
+      function() require('dap.ui.widgets').hover(nil, { border = 'rounded' }) end,
+      { desc = 'Eval' },
     },
-    { 'q', nil, { exit = true, nowait = true } },
+    { 'q', function() debug_mode:deactivate() end, { desc = 'Exit Mode' } },
   },
 }
+dap.listeners.before.event_terminated['debug_mode'] = function() debug_mode:deactivate() end
+dap.listeners.before.event_exited['debug_mode'] = function() debug_mode:deactivate() end
+Map { '<leader>dm', function() debug_mode:activate() end, desc = 'DAP mode' }
