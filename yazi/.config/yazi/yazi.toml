@@ -1,20 +1,18 @@
 [opener]
-zathura = [{run = 'zathura "$@"', desc = "zathura", orphan = true, for = "unix"}]
-imv = [{run = 'imv "$@"', desc = "imv", orphan = true, for = "unix"}]
-ristretto = [{run = 'ristretto "$@"', desc = "ristretto", orphan = true, for = "unix"}]
-edit = [{ run = 'nvim "$@"', block = true, desc = 'Edit with Neovim', for = 'unix' }]
+zathura = [{ run = 'zathura %s', desc = "zathura", orphan = true }]
+mpv = [{ run = 'mpv %s', desc = "mpv", orphan = true }]
+ristretto = [{ run = 'ristretto %s', desc = "ristretto", orphan = true }]
+edit = [{ run = 'nvim %s', block = true, desc = 'Edit with Neovim' }]
+execute = [{ run = '%s', orphan = true, desc = "Run Executable" }]
 
 [open]
 prepend_rules = [
-  { mime = 'application/pdf', use = ['zathura'] },
-  { mime = 'image/*', use = ['ristretto'] },
+  { mime = 'application/pdf', use = 'zathura' },
+  { mime = 'video/*', use = 'mpv' },
+  { mime = 'image/*', use = 'ristretto' },
   { mime = 'text/*', use = 'edit' },
   { mime = 'application/json', use = 'edit' },
-  { mime = 'application/xml', use = 'edit' },
-  { url = '*.toml', use = 'edit' },
-  { url = '*.json', use = 'edit' },
-  { url = '*.kdl', use = 'edit' },
-  { url = '*.yml', use = 'edit' },
-  { url = '*.yaml', use = 'edit' },
-  { url = '*.conf', use = 'edit' },
+  { mime = "application/x-executable", use = "execute" },
+  { mime = "application/x-pie-executable", use = "execute" },
+  { url = "*.AppImage", use = "execute" },
 ]
