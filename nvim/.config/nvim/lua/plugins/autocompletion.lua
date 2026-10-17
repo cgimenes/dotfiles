@@ -34,7 +34,7 @@ require('blink.cmp').setup {
       },
       markdown = { inherit_defaults = true },
       hledger = {
-        'omni',
+        'lsp',
         'snippets',
         'buffer',
         -- 'copilot',

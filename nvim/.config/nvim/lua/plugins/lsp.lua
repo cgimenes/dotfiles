@@ -8,6 +8,7 @@ vim.lsp.enable {
   'herb_ls',
   'ruff',
   'tailwindcss',
+  'hledger_lsp',
   -- 'emmet_language_server',
   -- 'gopls',
   -- 'intelephense',

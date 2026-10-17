@@ -80,10 +80,10 @@ vim.o.endoffile = false
 vim.o.fixendofline = false
 
 -- Don't show `~` outside of buffer and use a more visible character for diff mode
-vim.opt.fillchars:append({
-    eob = " ",
-    diff = "",
-})
+vim.opt.fillchars:append {
+  eob = ' ',
+  diff = '',
+}
 
 -- Disable splash screen
 vim.opt.shortmess:append 'I'
@@ -101,6 +101,8 @@ vim.filetype.add {
   extension = {
     http = 'http',
     timeclock = 'timeclock',
+    hledger = 'hledger',
+    journal = 'hledger',
   },
   filename = {
     ['Brewfile'] = 'ruby',
