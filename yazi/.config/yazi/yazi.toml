@@ -13,6 +13,7 @@ prepend_rules = [
   { mime = 'text/*', use = 'edit' },
   { mime = 'application/json', use = 'edit' },
   { mime = "application/x-executable", use = "execute" },
+  { mime = "application/executable", use = "execute" },
   { mime = "application/x-pie-executable", use = "execute" },
-  { url = "*.AppImage", use = "execute" },
+  { mime = "application/pie-executable", use = "execute" },
 ]
