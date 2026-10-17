@@ -22,10 +22,9 @@ alias gaa='git add --all'
 alias gco='git checkout'
 alias gcp='git cherry-pick'
 
-# Vim/Nvim
-alias vim='nvim'
-alias v='nvim'
+# Nvim
 alias n='nvim'
+alias nf="nvim -c 'call feedkeys(\"\<space>sf\")'"
 alias leetcode='nvim -c Leet'
 
 # ls -> eza

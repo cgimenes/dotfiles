@@ -26,7 +26,7 @@ end
 require('sidekick').setup {
   nes = { enabled = false },
   cli = {
-    mux = { backend = 'tmux', enabled = true },
+    mux = { backend = 'tmux', enabled = true, create = 'split' },
     prompts = read_prompt_files(),
   },
 }
