@@ -40,7 +40,7 @@ require('lazydev').setup {
 }
 
 -- Breadcrumbs
--- vim.pack.add { 'gh:Bekaboo/dropbar.nvim' }
+vim.pack.add { 'gh:Bekaboo/dropbar.nvim' }
 
 -- LSP progress
 vim.pack.add { 'gh:j-hui/fidget.nvim' }
