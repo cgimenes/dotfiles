@@ -48,11 +48,7 @@ vim.pack.add {
 }
 Map {
   '<leader>gg',
-  function()
-    require('neogit').open {
-      kind = vim.o.columns / 2 < 80 and 'tab' or 'vsplit',
-    }
-  end,
+  function() require('neogit').open() end,
   desc = 'Neogit',
 }
 
