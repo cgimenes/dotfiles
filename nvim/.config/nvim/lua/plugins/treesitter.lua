@@ -16,6 +16,13 @@ require('treesitter-modules').setup {
   highlight = { enable = { 'prisma' } },
   indent = { enable = false },
   fold = { enable = true },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      node_incremental = '+',
+      node_decremental = '-',
+    },
+  },
 }
 
 -- setting the commentstring option based on the cursor location in the file.

@@ -20,7 +20,7 @@ require('yazi').setup {
     grep_in_selected_files = 'snacks.picker',
   },
 }
-Map { '-', '<cmd>Yazi<cr>', desc = 'Yazi Explorer' }
+Map { '<leader>e', '<cmd>Yazi<cr>', desc = 'Yazi Explorer' }
 
 -- Oil
 vim.pack.add { 'gh:stevearc/oil.nvim' }
@@ -47,7 +47,7 @@ require('oil').setup {
     max_width = 100,
   },
 }
-Map { '<leader>-', '<cmd>vertical Oil<cr>', desc = 'Oil Explorer' }
+Map { '<leader>E', '<cmd>vertical Oil<cr>', desc = 'Oil Explorer' }
 -- Use ctrl-q to send oil selection to quickfix
 vim.api.nvim_create_autocmd('FileType', {
   group = vim.api.nvim_create_augroup('oil-quickfix', { clear = true }),
