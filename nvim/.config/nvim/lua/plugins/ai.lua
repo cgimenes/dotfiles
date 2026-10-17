@@ -7,7 +7,7 @@
 -- }
 
 -- Sidekick
-vim.pack.add { 'https://github.com/folke/sidekick.nvim' }
+vim.pack.add { 'gh:folke/sidekick.nvim' }
 local function read_prompt_files()
   local prompt_path = vim.fn.stdpath 'config' .. '/prompts/'
   local p = io.popen('ls ' .. prompt_path)

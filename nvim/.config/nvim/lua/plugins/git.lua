@@ -32,7 +32,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- Diffs.nvim
-vim.pack.add { 'https://github.com/barrettruth/diffs.nvim' }
+vim.pack.add { 'https://forge.barrettruth.com/barrettruth/diffs.nvim' }
 vim.g.diffs = {
   integrations = { fugitive = true, neogit = true },
   highlights = {
