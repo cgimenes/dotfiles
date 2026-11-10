@@ -1,5 +1,6 @@
-cmd - return : open -n "/Applications/Alacritty.app"
-cmd - e : open -n "/Applications/Alacritty.app" --args -e yazi $HOME
+cmd - return : open -n "/Applications/Kitty.app"
+cmd + ctrl - return : open -n "/Applications/Kitty.app" --args -e $SHELL -i -c ta
+cmd - e : open -n "/Applications/Kitty.app" --args -e yazi $HOME
 cmd + shift - e : open $HOME
 
 cmd - h : yabai -m window --focus west || yabai -m display --focus west

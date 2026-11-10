@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Manual todo list:
+# - check/generate ssh key (for git clones, even public ones)
 # - switch caps lock to control
 # - change "Click wallpaper to reveal desktop" to "Stage Manager"
 # - reduce motion on accessibility settings
@@ -22,7 +23,7 @@ defaults write com.apple.dock "orientation" -string "left"
 defaults write com.apple.dock "show-recents" -bool "false"
 defaults write com.apple.dock "tilesize" -int "36"
 # configure spaces
-defaults write com.apple.dock "mru-spaces" -bool "false" && killall Dock
+defaults write com.apple.dock "mru-spaces" -bool "false"
 killall Dock
 # configure terminal
 defaults write org.alacritty AppleFontSmoothing -int 0
@@ -41,7 +42,6 @@ stow atuin
 stow bat
 stow btop
 stow emacs
-stow ghostty
 stow git
 stow kitty
 stow lazygit
@@ -51,9 +51,8 @@ stow rg
 stow skhd
 stow starship
 stow tmux
-stow wezterm
 stow yazi
-stow zsh
+stow fish
 
 # install rosetta
 sudo softwareupdate --install-rosetta
@@ -61,14 +60,12 @@ sudo softwareupdate --install-rosetta
 # run brew bundle
 cd setup/mac; brew bundle
 
-# install doom emacs
-ln -s /opt/homebrew/opt/emacs-mac/Emacs.app /Applications/Emacs.app
-
-git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-~/.emacs.d/bin/doom install
-
 # install bat theme
 bat cache --build
 
 # skhd
 skhd --start-service
+
+# fish
+echo $(which fish) | sudo tee -a /etc/shells
+chsh -s $(which fish)
