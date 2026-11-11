@@ -239,6 +239,9 @@ display = "text"
 show_label = false
 stat = "ram_pct"
 
+[widget.volume.effects_profile_glyphs]
+Edifier = "device-speaker"
+
 [widget.workspaces]
 labels_only_when_occupied = true
 show_labels = false
