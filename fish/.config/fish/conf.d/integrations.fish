@@ -23,6 +23,12 @@ if status is-interactive
     if command -q elio
         elio shell init fish | source
     end
+
+    # brew
+    if command -q brew then
+        brew shellenv | source
+        # fish_add_path (brew --prefix rustup)/bin
+    end
 end
 
 # fzf walks the tree via fd when present.
