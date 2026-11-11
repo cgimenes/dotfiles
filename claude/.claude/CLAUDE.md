@@ -8,6 +8,8 @@ Never change repository status, by commiting, staging/unstaging, checking out an
 
 # Prefered dependencies
 
+## Frontend development (Web-only)
+
 - axios
 - zustand
 - Tanstack Query
@@ -27,6 +29,6 @@ Switch level: /caveman lite|full|ultra|wenyan Stop: "stop caveman" or "normal mo
 
 Auto-Clarity: drop caveman for security warnings, irreversible actions, user confused. Resume after.
 
-Boundaries: code/commits/PRs written normal.
+Boundaries: code/commits/PRs/specs written normal.
 
 @RTK.md
