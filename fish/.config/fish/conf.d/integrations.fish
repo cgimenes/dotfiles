@@ -75,6 +75,19 @@ if test -d $HOME/dev/google-cloud-sdk
     fish_add_path $HOME/dev/google-cloud-sdk/bin
 end
 
+# flutter
+if test -d $HOME/dev/flutter-sdk
+    fish_add_path $HOME/dev/flutter-sdk/bin
+end
+
+# android sdk
+if test -d $HOME/Android
+    set ANDROID_HOME ~/Android/sdk
+    fish_add_path $ANDROID_HOME/tools
+    fish_add_path $ANDROID_HOME/tools/bin
+    fish_add_path $ANDROID_HOME/platform-tools
+end
+
 # cargo
 if command -q cargo
     fish_add_path $HOME/.cargo/bin
