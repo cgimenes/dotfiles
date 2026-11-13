@@ -4,9 +4,13 @@
 [url "https://github.com/"]
   insteadOf = gh:
 
-[url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
-  pushInsteadOf = https://github.com/
+[url "ssh://git@github."]
+  insteadOf = https://github.
+  pushInsteadOf = https://github.
+
+[url "ssh://git@gitlab."]
+  insteadOf = https://gitlab.
+  pushInsteadOf = https://gitlab.
 
 [alias]
   uncommit = reset --soft HEAD^
