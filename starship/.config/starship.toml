@@ -55,6 +55,9 @@ truncation_symbol = "…/"
 success_symbol = "[❯](bright-green)"
 error_symbol = "[❯](bright-red)"
 
+[dotnet]
+disabled = true
+
 [battery]
 disabled = true
 

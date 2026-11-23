@@ -1,4 +1,11 @@
 if status is-interactive
+    set -gx MISE_FISH_AUTO_ACTIVATE 0
+    # brew
+    if command -q brew
+        brew shellenv | source
+        # fish_add_path (brew --prefix rustup)/bin
+    end
+
     # Starship
     if command -q starship
         starship init fish | source
@@ -24,10 +31,11 @@ if status is-interactive
         elio shell init fish | source
     end
 
-    # brew
-    if command -q brew then
-        brew shellenv | source
-        # fish_add_path (brew --prefix rustup)/bin
+    # asdf
+    if command -q asdf
+        # Do not use fish_add_path (added in Fish 3.2) because it
+        # potentially changes the order of items in PATH
+        set -gx --prepend PATH "$HOME/.asdf/shims"
     end
 end
 
@@ -52,11 +60,11 @@ if command -q go
 end
 
 # Ruby gems
-if command -q gem
-    for p in (gem environment path | string split :)
-        fish_add_path $p/bin
-    end
-end
+# if command -q gem
+#     for p in (gem environment path | string split :)
+#         fish_add_path $p/bin
+#     end
+# end
 
 # pyenv
 if command -q pyenv
