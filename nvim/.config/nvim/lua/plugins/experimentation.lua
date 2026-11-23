@@ -13,3 +13,10 @@ Map {
 }
 
 vim.pack.add { 'gh:justinmk/guh.nvim' }
+
+vim.pack.add { 'gh:NicholasZolton/neojj' }
+Map {
+  '<leader>gj',
+  function() require('neojj').open() end,
+  desc = 'Neojj',
+}
