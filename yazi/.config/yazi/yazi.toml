@@ -1,6 +1,6 @@
 [opener]
-zathura = [{ run = 'zathura %s', desc = "zathura", orphan = true }]
-zathura_quit = [{ run = 'ya emit quit; zathura %s', desc = "zathura and quit", orphan = true }]
+pdf = [{ run = 'zathura %s', desc = "zathura", orphan = true, for = "linux" }]
+pdf_quit = [{ run = 'ya emit quit; zathura %s', desc = "zathura and quit", orphan = true, for = "linux" }]
 mpv = [{ run = 'mpv %s', desc = "mpv", orphan = true }]
 mpv_quit = [{ run = 'ya emit quit; mpv %s', desc = "mpv and quit", orphan = true }]
 ristretto = [{ run = 'ristretto %s', desc = "ristretto", orphan = true }]
@@ -8,10 +8,13 @@ ristretto_quit = [{ run = 'ya emit quit; ristretto %s', desc = "ristretto and qu
 execute = [{ run = '%s', orphan = true, desc = "Run" }]
 execute_quit = [{ run = 'ya emit quit; %s', orphan = true, desc = "Run and quit" }]
 edit = [{ run = 'nvim %s', block = true, desc = 'Edit' }]
+open = [{ run = 'open %s', desc = "open", orphan = true, for = "macos" }]
+open_quit = [{ run = 'ya emit quit; open %s', desc = "open and quit", orphan = true, for = "macos" }]
+
 
 [open]
 prepend_rules = [
-  { mime = 'application/pdf', use = ['zathura', 'zathura_quit'] },
+  { mime = 'application/pdf', use = ['pdf', 'pdf_quit', 'open', 'open_quit'] },
   { mime = 'video/*', use = ['mpv', 'mpv_quit'] },
   { mime = 'image/*', use = ['ristretto', 'ristretto_quit'] },
   { mime = 'text/*', use = 'edit' },
