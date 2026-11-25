@@ -105,3 +105,13 @@ end
 if string match -q Android (uname -o 2>/dev/null)
     set -gx LEDGER_FILE $HOME/storage/shared/Documents/Ledger/2026.hledger
 end
+
+# 3DS devkit
+if test -e /etc/profile.d/devkit-env.sh
+    set -gx DEVKITPRO /opt/devkitpro
+    set -gx DEVKITARM $DEVKITPRO/devkitARM
+    set -gx DEVKITPPC $DEVKITPRO/devkitPPC
+
+    set -gx PATH $DEVKITPRO/tools/bin:$PATH
+end
+
