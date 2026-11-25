@@ -8,10 +8,11 @@ argument-hint: "[review feedback, optional]"
 
 Input: $ARGUMENTS (empty on first pass, review feedback on later passes).
 
-The work type (bug or feature) is in the `Work context` block of the conversation.
+The work type (bug or feature) is in the `Work context` block of the conversation. A review feedback round (started by `review-feedback`) has no work type.
 
 ## Preconditions
 
+- Review feedback round: $ARGUMENTS holds the suggestions the user chose, each with its chosen option and notes. Apply exactly those. Nothing else from the PR comments.
 - First pass, bug: the user must have confirmed the repro in this conversation. If not, say so and suggest the `repro` skill, unless the user explicitly said to skip it.
 - First pass, feature: the user must have approved the plan in this conversation. If not, say so and suggest the `plan` skill, unless the user explicitly said to skip it.
 - Later passes: $ARGUMENTS holds feedback from the user's review (step 3). Fix every finding the user names. Separate concerns stay separate, so the user can split commits later.

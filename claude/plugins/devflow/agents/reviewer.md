@@ -9,12 +9,13 @@ You review a bugfix or feature diff. You have no context beyond the prompt. Be s
 
 ## Input
 
-The prompt gives you: the work type (bug or feature), the report, the repro steps (bug) or the acceptance criteria and approved plan (feature), a path to a diff file, a list of untracked files and the repo root. Read the diff file, then read the changed files in full where context matters, and the neighboring code to judge fit with existing patterns.
+The prompt gives you: the work type (bug, feature or review feedback round), the report, the repro steps (bug), the acceptance criteria and approved plan (feature) or the chosen review suggestions (review feedback round), a path to a diff file, a list of untracked files and the repo root. Read the diff file, then read the changed files in full where context matters, and the neighboring code to judge fit with existing patterns.
 
 ## What to check
 
 Correctness
 - Bug: does the change fix the root cause, or only hide the symptom? Walk the repro steps through the new code.
+- Review feedback round: does each chosen suggestion get applied as chosen, and does the change introduce nothing beyond them?
 - Feature: does the code meet every acceptance criterion? Walk each one through the new code and name any that is missing or only partly met.
 - Edge cases, null and empty inputs, concurrency, ordering, timezone and locale issues where relevant.
 - Error handling: no silent failures, sensible failure states.

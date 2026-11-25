@@ -15,8 +15,8 @@ The user typing this command is the permission to branch, commit, push and open 
 
 1. `git diff --cached --name-only` is not empty. If nothing is staged, stop and tell the user to stage first.
 2. Remember the staged file list. Commit exactly that set. Never run `git add`, `git commit -a`, `git stash` or any command that changes what is staged. Unstaged changes stay untouched, mention them to the user.
-3. Ticket id: from $ARGUMENTS, else from the conversation, else ask once. If there is no ticket, say so and use a branch name without it.
-3a. Work type: bug or feature, from the `Work context` block. Not in the conversation: ask once.
+3. Only when a new branch must be created: ticket id from $ARGUMENTS, else from the conversation, else ask once. If there is no ticket, say so and use a branch name without it.
+3a. Only when a new branch must be created: work type, bug or feature, from the `Work context` block. Not in the conversation: ask once. Not needed on a branch that already has an open PR, such as after `review-feedback`.
 4. If the repo has a changelog (look for `CHANGELOG*`) and it is not part of the staged set, stop and tell the user. Do not edit or stage it yourself.
 
 ## Branch

@@ -27,6 +27,10 @@ Ticket workflows with human gates. Start with `/devflow:work <ABC-123 and/or des
 
 `/devflow:bugfix` and `/devflow:feature` detect the current step in their flow and point to the next one.
 
+### Review feedback flow
+
+`/devflow:review-feedback [PR]` lists every review suggestion on a PR with trade-offs and a recommendation. You choose which to do and how, then `fix`, your review, `/devflow:review`, staging and `/devflow:ship` follow. `ship` commits, pushes and extends the PR description. It never replies to or resolves threads.
+
 ### Other skills
 
 - `/devflow:generate-spec`: writes a detailed specification to `specs/[TASK_NAME].md`. `plan` offers it for large features.
@@ -63,6 +67,7 @@ claude/plugins/
     skills/work                  common start and bug/feature router
     skills/bugfix, repro         bugfix flow
     skills/feature, plan         feature flow
+    skills/review-feedback       PR review suggestions flow
     skills/fix, review, ship     shared steps
     skills/generate-spec         specification writer
     skills/pairup                inline `cc:` instruction pairing
