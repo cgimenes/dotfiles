@@ -76,3 +76,10 @@ Map {
   end,
   desc = 'Rename',
 }
+
+-- Diff
+Map {
+  '<leader>bd',
+  '<cmd>windo diffthis<cr>',
+  desc = 'Diff Windows',
+}

@@ -7,15 +7,6 @@ Map { '<leader>gB', ':GBrowse<cr>', desc = 'Git Browse', mode = { 'n', 'x' } }
 Map { '<leader>gb', '<cmd>G blame<cr>', desc = 'Git Blame' }
 Map { '<leader>gc', '<cmd>G mergetool<cr>', desc = 'List Git Conflicts' }
 
--- CodeDiff (for git-resolve and DiffWindows)
-vim.pack.add {
-  'gh:MunifTanjim/nui.nvim',
-  'gh:esmuellert/codediff.nvim',
-}
--- Map { '<leader>gh', ':CodeDiff history %<cr>', desc = 'File History' }
--- Map { '<leader>gd', '<cmd>CodeDiff<cr>', desc = 'Git Diff' }
--- Map { '<leader>gD', '<cmd>CodeDiff main...HEAD<cr>', desc = 'Git Diff main...HEAD (PR-like)' }
-
 -- Diffview
 vim.pack.add { 'gh:dlyongemallo/diffview-plus.nvim' }
 Map { '<leader>gh', ':DiffviewFileHistory %<cr>', desc = 'File History' }
@@ -81,4 +72,8 @@ Map { '<leader>Gr', '<cmd>Octo review<cr>', desc = 'Review' }
 Map { '<leader>Gt', '<cmd>Octo review thread<cr>', desc = 'Show Thread' }
 
 -- Resolve git conflicts
+vim.pack.add {
+  'gh:MunifTanjim/nui.nvim',
+  'gh:esmuellert/codediff.nvim',
+}
 require('plugins.git-resolve').setup {}
