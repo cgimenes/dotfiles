@@ -1,0 +1,14 @@
+{
+  "name": "personal",
+  "description": "Personal plugins for software development",
+  "owner": {
+    "name": "oliveira"
+  },
+  "plugins": [
+    {
+      "name": "devflow",
+      "description": "Ticket workflows with human gates: work routes a ticket to the bugfix flow (repro, fix) or the feature flow (plan, implement), then review loop, subagent review and ship (branch, commit, push, PR). Includes a spec generation skill.",
+      "source": "./devflow"
+    }
+  ]
+}
