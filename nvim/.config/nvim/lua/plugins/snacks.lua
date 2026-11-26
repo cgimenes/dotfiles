@@ -88,11 +88,7 @@ Map {
       confirm = function(picker, item)
         picker:close()
         local cmd = 'CodeDiff ' .. item.commit .. ' ' .. item.commit .. '~1'
-        if item then
-          picker:norm(function()
-            vim.cmd(cmd)
-          end)
-        end
+        if item then picker:norm(function() vim.cmd(cmd) end) end
       end,
     }
   end,
@@ -214,6 +210,31 @@ Map {
       exclude = {
         'package-lock.json',
         'pnpm-lock.yaml',
+        'yarn.lock',
+        '*test.{ts,tsx,js,jsx}',
+        '*_spec.rb',
+      },
+      formatters = {
+        file = {
+          truncate = truncate_width,
+        },
+      },
+      search = function(picker) return picker.visual and picker.visual.text or '' end,
+    }
+  end,
+  desc = 'Grep',
+  mode = { 'n', 'x' },
+}
+Map {
+  '<leader>sG',
+  function()
+    local truncate_width = vim.api.nvim_win_get_width(0) * 0.8
+    Snacks.picker.grep {
+      hidden = true,
+      exclude = {
+        'package-lock.json',
+        'pnpm-lock.yaml',
+        'yarn.lock',
       },
       formatters = {
         file = {
