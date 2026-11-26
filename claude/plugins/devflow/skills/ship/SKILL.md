@@ -17,7 +17,7 @@ The user typing this command is the permission to branch, commit, push and open 
 2. Remember the staged file list. Commit exactly that set. Never run `git add`, `git commit -a`, `git stash` or any command that changes what is staged. Unstaged changes stay untouched, mention them to the user.
 3. Only when a new branch must be created: ticket id from $ARGUMENTS, else from the conversation, else ask once. If there is no ticket, say so and use a branch name without it.
 3a. Only when a new branch must be created: work type, bug or feature, from the `Work context` block. Not in the conversation: ask once. Not needed on a branch that already has an open PR, such as after `review-feedback`.
-4. If the repo has a changelog (look for `CHANGELOG*`) and it is not part of the staged set, stop and tell the user. Do not edit or stage it yourself.
+1. Changelog: if the repo has one and it is not in the staged set, ignore it and ship. Do not stop, warn or edit it. Changelog handling belongs to the `fix` and `review` step.
 
 ## Branch
 
