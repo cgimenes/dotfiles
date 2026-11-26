@@ -384,11 +384,7 @@ Map {
 _G.dd = function(...) Snacks.debug.inspect(...) end
 _G.bt = function() Snacks.debug.backtrace() end
 -- Override print to use snacks for `:=` command
-if vim.fn.has 'nvim-0.11' == 1 then
-  vim._print = function(_, ...) dd(...) end
-else
-  vim.print = _G.dd
-end
+vim._print = function(_, ...) dd(...) end
 
 -- Toggle
 Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>os'
